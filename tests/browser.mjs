@@ -72,7 +72,15 @@ try {
   await page.waitForURL('**page=help');
   await page.goBack();
   await page.getByRole('heading',{name:'Learn at your own pace',exact:true}).waitFor();
+  // A refresh keeps the demo session for this tab and restores the same lesson.
   await page.reload();
+  await page.getByRole('heading',{name:'Learn at your own pace',exact:true}).waitFor();
+  assert.equal(await page.getByPlaceholder('Enter demo').count(),0);
+  assert.equal(await page.locator('details[open] > summary').getByText('Service Models Explained',{exact:true}).count(),1);
+  // Signing out ends the session: reopening the deep link asks for sign-in again.
+  const lessonUrl=page.url();
+  await page.locator('footer').getByRole('button',{name:'Sign out',exact:true}).click();
+  await page.goto(lessonUrl);
   await page.getByRole('button',{name:'Preview help',exact:true}).click();
   await page.getByRole('region',{name:'Preview help',exact:true}).waitFor();
   assert.equal(await page.getByRole('checkbox',{name:'Remember me'}).count(),0);

@@ -29,7 +29,7 @@ try{
   await welcome.waitFor();
  }
  await page.evaluate(()=>document.querySelector('main').scrollTop=99999);await page.screenshot({path:'test-results/homepage/desktop-bottom.png'});
- await page.setViewportSize({width:390,height:844});await page.reload();await signIn();
+ await page.setViewportSize({width:390,height:844});await page.reload();await welcome.waitFor();assert.equal(await page.getByPlaceholder('Enter demo').count(),0,'Refresh keeps the demo session');
  assert.equal(await menu.getAttribute('aria-expanded'),'false');
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),'No mobile page overflow');
  await page.screenshot({path:'test-results/homepage/mobile.png'});
