@@ -1,19 +1,17 @@
 # FERN documentation
 
-Start here. This is the 15 September 2026 engineering handover: one internal portal, with standalone application source preserved but not launched from the website.
+Start here. This repository contains the FERN portal (website) only; FERN applications are developed separately.
 
 ## Read first
 
 | Document | What it is |
 | --- | --- |
-| [Architecture](start/ARCHITECTURE.md) | Portal, applications and shared packages |
-| [Monorepo handover](start/MONOREPO-HANDOVER.md) | Folders, commands and storage |
-| [Website boundary](start/WEBSITE-APPLICATION-BOUNDARY.md) | Website vs applications; Apps remain disabled |
+| [Architecture](start/ARCHITECTURE.md) | Folders, routing, shared platform and conventions |
+| [Website boundary](start/WEBSITE-APPLICATION-BOUNDARY.md) | Website scope; applications shown as "Coming soon" |
 | [Amazon website integration](start/AMAZON-WEBSITE-INTEGRATION-HANDOVER.md) | Quick Suite, CMS, LMS, identity — not connected |
-| [Platform PRD](start/FERN-SOFTWARE-PRD.md) | Product requirements for the working baseline |
 | [Non-technical content administration](start/NON-TECHNICAL-CONTENT-ADMINISTRATION.md) | Production CMS requirement |
 
-Package entry: [START-HERE](../../START-HERE.md). Run the source from [source/README](../README.md).
+Run the source from the [repository README](../README.md).
 
 ## Folder map
 
@@ -21,10 +19,7 @@ Package entry: [START-HERE](../../START-HERE.md). Run the source from [source/RE
 | --- | --- |
 | `start/` | Current engineering baseline |
 | `website/` | Homepage, navigation, reading, BBM reader, visual integration |
-| `apps/` | Pricing, Lifecycle, Mobilisation/Launch Tracker, Pre-Contract, shared reports |
-| `amazon/` | Open Amazon decisions, integration specs, source register, staffing |
-| `verification/` | Earlier test snapshot and pricing acceptance evidence |
 
 ## Rule for new docs
 
-Edit the living document in `start/`, `website/`, `apps/` or `amazon/`. Do not add `*-UPDATE.md` increment notes.
+Edit the living document in `start/` or `website/`. Do not add `*-UPDATE.md` increment notes.

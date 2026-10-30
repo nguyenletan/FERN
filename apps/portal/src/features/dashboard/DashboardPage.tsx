@@ -9,6 +9,7 @@ import HelpGuidance from './HelpGuidance.tsx';
 import Learn from './Learn.tsx';
 import GetStarted from './GetStarted.tsx';
 import FernUpdates from './FernUpdates.tsx';
+import HomeApplications from './HomeApplications.tsx';
 import { useEffect, useRef } from "react";
 import {
   ArrowRight,
@@ -17,38 +18,24 @@ import {
   Buildings,
   ClipboardText,
   FileText,
-  MagnifyingGlass,
-  Question,
-  Sparkle,
   UsersThree,
-  X,
 } from "@phosphor-icons/react";
-import type { SiteConfig } from "../context/prototypeSites.ts";
 import hero from "../../../../../packages/platform/src/assets/home-hero-black-colleague-blended.png";
 import helper from "../../../../../packages/platform/src/assets/fern-guide-transparent.png";
-import { homeApplications } from "./homeApplications.ts";
-import { appIcons, type HomePanel } from "./HomeNavigation.tsx";
-import checklistArt from "../../../../../packages/platform/src/assets/teaser-art-checklist-transparent.png";
-import analysisArt from "../../../../../packages/platform/src/assets/teaser-art-analysis-transparent.png";
+import type { HomePanel } from "./HomeNavigation.tsx";
 import modelArt from "../../../../../packages/platform/src/assets/teaser-art-model-transparent.png";
-import pricingArt from "../../../../../packages/platform/src/assets/teaser-art-pricing-transparent.png";
 import transitionArt from "../../../../../packages/platform/src/assets/teaser-art-transition-transparent.png";
 import facilityArt from "../../../../../packages/platform/src/assets/teaser-art-facility-transparent.png";
 import guidesArt from "../../../../../packages/platform/src/assets/teaser-art-guides-transparent.png";
 import learningArt from "../../../../../packages/platform/src/assets/teaser-art-learning-transparent.png";
 import "./home.css";
-const applicationArt=[checklistArt,analysisArt,modelArt,pricingArt,transitionArt];
 export default function DashboardPage({
-  activeContext,
-  setActiveContext,
   setActiveNav,
   panel,
   setPanel,
   lesson,
   onLesson: openLesson,
 }: {
-  activeContext: SiteConfig;
-  setActiveContext: (context: SiteConfig) => void;
   setActiveNav: (page: string, pillar?:number) => void;
   lesson: {title:string;request:number}|null;
   onLesson: (title:string)=>void;
@@ -184,6 +171,8 @@ export default function DashboardPage({
             </button>
           </section>
         </div>
+
+        <HomeApplications onOpen={setActiveNav}/>
 
         <section className="fern-help fern-assistant-help" aria-labelledby="fern-help-title">
           <img src={helper} alt="" />

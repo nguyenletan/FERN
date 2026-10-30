@@ -1,5 +1,4 @@
 import fern from '../../../../../packages/platform/src/assets/home-fern.png';
-import {homeApplications} from './homeApplications';
 
 export default function SiteFooter({onNavigate,onHome,onSignOut}:{onNavigate:(page:string)=>void;onHome:()=>void;onSignOut:()=>void}) {
  const groups = [

@@ -1,0 +1,20 @@
+.fern-app-page{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:20px;color:#0f1f3d}
+.fern-app-page-header{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid #e1e7ef;border-radius:10px;padding:24px}
+.fern-app-page-header>svg{color:#154dbb;flex-shrink:0;margin-top:4px}
+.fern-app-page-eyebrow{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#51647f}
+.fern-app-page h1{font-size:28px;line-height:1.25;font-weight:700;margin:4px 0 10px}
+.fern-app-page-summary{font-size:15px;line-height:1.7;color:#33445f;margin-bottom:12px;max-width:760px}
+.fern-app-page-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.fern-app-page-grid section,.fern-app-page-status{background:#fff;border:1px solid #e1e7ef;border-radius:10px;padding:20px}
+.fern-app-page h2{font-size:16px;font-weight:700;margin-bottom:10px}
+.fern-app-page ul,.fern-app-page ol{padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.6;color:#33445f}
+.fern-app-page ul{list-style:disc}
+.fern-app-page ol{list-style:decimal}
+.fern-app-page-related{display:flex;flex-wrap:wrap;gap:8px}
+.fern-app-page-related button{border:1px solid #c9d6ea;border-radius:999px;padding:6px 12px;font-size:13px;color:#154dbb;background:#f5f8fd}
+.fern-app-page-related button:hover{background:#eaf1fc}
+.fern-app-page-status{background:#f7f9fc}
+.fern-app-page-status p{font-size:14px;line-height:1.6;color:#33445f;margin-bottom:8px}
+.fern-app-page-draft{font-style:italic;color:#51647f!important}
+.fern-app-page-status button{display:inline-flex;align-items:center;gap:6px;margin-top:6px}
+@media(max-width:800px){.fern-app-page-grid{grid-template-columns:1fr}.fern-app-page-header{flex-direction:column;padding:18px}.fern-app-page h1{font-size:24px}}

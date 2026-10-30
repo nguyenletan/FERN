@@ -12,7 +12,7 @@ The index is a navigation aid. Detailed scope, activities, qualifications, recor
 
 ## Source Packaging
 
-The original supplied PDF is bundled in the portal and embedded in the standalone HTML. The byte-level source hash is tested against the reviewed original. Browsers create a local Blob URL to open/download it; URLs are revoked when the library unmounts. Source files are not uploaded to an external service by this feature.
+(Superseded 30 October 2026: the site build serves PDFs from `bbm/`; only the standalone HTML embeds them. See the BBM HTML reader addendum.) The original supplied PDF is bundled in the portal and embedded in the standalone HTML. The byte-level source hash is tested against the reviewed original. Browsers create a local Blob URL to open/download it; URLs are revoked when the library unmounts. Source files are not uploaded to an external service by this feature.
 
 The full HTML now includes the internal Amazon source document and should be included only in the authorised internal review/handover distribution. A public or externally shared teaser should be generated without the embedded standard. This increment does not modify existing earlier teaser exports.
 

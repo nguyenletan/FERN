@@ -1,17 +1,15 @@
 import {resourceDestinations} from "./resourceDestinations.ts";
+import {homeApplications} from "./homeApplications.ts";
+import {applicationIcons} from "./HomeApplications.tsx";
 import { useEffect, useRef, type ReactNode } from "react";
 import {
-  ArrowRight,
   CaretDown,
   Compass,
   ArrowsLeftRight,
   BookOpen,
-  Buildings,
-  Calculator,
   ChartLineUp,
   ClipboardText,
   FileText,
-  Gear,
   House,
   List,
   Question,
@@ -20,10 +18,7 @@ import {
   X,
   SignOut,
 } from "@phosphor-icons/react";
-import { homeApplications } from "./homeApplications.ts";
-import { integratedApps } from "../../app/integratedApps.tsx";
 import fern from "../../../../../packages/platform/src/assets/home-fern.png";
-export const appIcons = [FileText, ChartLineUp, UsersThree, Calculator, ClipboardText];
 export type HomePanel = "about" | "facility" | "guide" | "learn" | "reference" | "help" | "updates" | null;
 export function HomeHeader({
   currentPanel = null,
@@ -188,9 +183,9 @@ export function HomeSidebar({
               </button>
             );
           })}
-          </SidebarGroup>{integratedApps.length>0&&<SidebarGroup id="fern-home-app-items" title="FERN Apps" open={!!expandedGroups["FERN Apps"]} onToggle={()=>onToggleGroup("FERN Apps")}>
-          {integratedApps.map(app=>{const Icon=appIcons[homeApplications.findIndex(item=>item.name===app.name)]??ClipboardText;return <button key={app.name} onClick={()=>go(app.name)}><Icon size={19}/>{app.name}</button>;})}
-          </SidebarGroup>}<SidebarGroup id="fern-home-resource-items" title="Resources & Help" open={!!expandedGroups["Resources & Help"]} onToggle={()=>onToggleGroup("Resources & Help")}>
+          </SidebarGroup><SidebarGroup id="fern-home-app-items" title="FERN Apps" open={!!expandedGroups["FERN Apps"]} onToggle={()=>onToggleGroup("FERN Apps")}>
+          {homeApplications.map((app,i)=>{const Icon=applicationIcons[i]??ClipboardText;return <button key={app.name} title="Coming soon — read about this application" onClick={()=>go(app.name)}><Icon size={19}/>{app.title}<span className="fern-coming-soon">Soon</span></button>;})}
+          </SidebarGroup><SidebarGroup id="fern-home-resource-items" title="Resources & Help" open={!!expandedGroups["Resources & Help"]} onToggle={()=>onToggleGroup("Resources & Help")}>
           {resourceDestinations.map(item=><button key={item.label} className={currentPanel===item.panel?"current":undefined} aria-current={currentPanel===item.panel?"page":undefined} onClick={()=>panel(item.panel)}><BookOpen size={19}/>{item.label}</button>)}
           </SidebarGroup><SidebarGroup id="fern-home-support-items" title="Support" open={!!expandedGroups["Support"]} onToggle={()=>onToggleGroup("Support")}>
           <button onClick={() => panel("help")}>

@@ -5,7 +5,8 @@ import {createHash} from 'node:crypto';
 import {findStandards} from '../apps/portal/src/features/reference/standardsSearch.ts';
 const base=new URL('../apps/portal/src/features/reference/generated/',import.meta.url);
 const data=JSON.parse(fs.readFileSync(new URL('standards.json',base),'utf8'));
-const files=JSON.parse(fs.readFileSync(new URL('pdfs.json',base),'utf8'));
+const files=JSON.parse(fs.readFileSync(new URL('pdf-files.json',base),'utf8'));
+const pdfSha=key=>createHash('sha256').update(fs.readFileSync(new URL('../public/bbm/'+files[key],import.meta.url))).digest('hex');
 const verification=JSON.parse(fs.readFileSync(new URL('verification.json',base),'utf8'));
 test('Standards search covers both editions, full requirement wording and document filters',()=>{
  assert.equal(findStandards(data.entries,'').length,194);
@@ -19,9 +20,9 @@ test('Standards search covers both editions, full requirement wording and docume
 test('Every source page belongs to exactly one standard or introduction; downloads match verified extracts',()=>{
  for(const [kind,total] of [['Compliance',218],['PM',130]]){
   const entries=data.entries.filter(e=>e.kind===kind);let expected=1;
-  for(const e of entries){assert.equal(e.page,expected);expected=e.endPage+1;assert.ok(files[e.id]);const check=verification.entries.find(c=>c.id===e.id);assert.equal(check.sourcePixelMatch,true);assert.deepEqual(check.pages,Array.from({length:e.endPage-e.page+1},(_,i)=>i+e.page));assert.equal(createHash('sha256').update(Buffer.from(files[e.id].data,'base64')).digest('hex'),check.pdfSha256);}
+  for(const e of entries){assert.equal(e.page,expected);expected=e.endPage+1;assert.ok(files[e.id]);const check=verification.entries.find(c=>c.id===e.id);assert.equal(check.sourcePixelMatch,true);assert.deepEqual(check.pages,Array.from({length:e.endPage-e.page+1},(_,i)=>i+e.page));assert.equal(pdfSha(e.id),check.pdfSha256);}
   assert.equal(expected,total+1);assert.equal(data.pages[kind].length,total);
-  const source=verification.sources.find(s=>s.kind===kind);assert.equal(createHash('sha256').update(Buffer.from(files[kind].data,'base64')).digest('hex'),source.sha256);
+  const source=verification.sources.find(s=>s.kind===kind);assert.equal(pdfSha(kind),source.sha256);
  }
 });
 test('HTML grids preserve merged cells without overlap or missing grid positions',()=>{
@@ -78,4 +79,8 @@ test('Standard URLs preserve edition, collection, search and unrelated parameter
  assert.equal(invalid.selected,'');assert.match(invalid.error,/not available/);
  const back=readStandardLocation(standardLocation(url,undefined,'emergency lighting','PM'),data.entries);
  assert.equal(back.selected,'');assert.equal(back.query,'emergency lighting');
+});
+test('Every PDF in the site folder is referenced and the embedded base64 bundle is gone',()=>{
+ assert.deepEqual(fs.readdirSync(new URL('../public/bbm/',import.meta.url)).sort(),Object.values(files).sort());
+ assert.equal(fs.existsSync(new URL('pdfs.json',base)),false);
 });

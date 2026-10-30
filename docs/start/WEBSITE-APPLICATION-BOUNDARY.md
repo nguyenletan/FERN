@@ -10,9 +10,11 @@ We are completing the FERN website first. The website includes login, Home, the 
 | --- | --- | --- |
 | WEB-SCOPE-01 | Display application descriptions without launching workflows. | Home cards and sidebar application buttons are disabled. Indirect guidance navigation displays an availability description, never a calculation or data-entry workflow. |
 | WEB-SCOPE-02 | Do not select or display a demonstration facility on the website. | No BHX4 status, facility selector or history on Home or FM Overview. Legacy facility guidance displays an explanation only. |
-| WEB-SCOPE-03 | Preserve independent application development. | Standalone source and build entries remain available; website no longer imports their workflow pages. No application records are deleted. |
+| WEB-SCOPE-03 | Preserve independent application development. | Revised 30 October 2026: application source, tests and documentation are maintained in a separate repository, not in the website repository. The website contains no application workflow code (`tests/module-boundaries.test.mjs`). |
 | WEB-SCOPE-04 | Keep website guidance usable on desktop and mobile. | Workspace and learning navigation continue to work; mobile drawer and Home navigation remain available. |
 | WEB-SCOPE-05 | Deliver consistent source, PRD and teaser after website corrections. | Regenerate and reconcile the final handover together; previous ZIPs and teasers are dated snapshots, not automatically refreshed. |
+
+30 October 2026: Home shows a "FERN Applications" section with five "Coming soon" cards, and both sidebars list the five applications marked "Soon". Each card and sidebar entry opens an application introduction page (`?page=pricing`, `lifecycle`, `pre-contract`, `contract-service-model`, `mobilisation`) describing purpose, intended users, planned capabilities, how it will work and related applications. The pages contain no launch control or workflow. Their content comes from the registry in `apps/portal/src/features/dashboard/homeApplications.ts` (website PRD APP-01) and is a draft awaiting product-owner review. Covered by `tests/home-applications.test.mjs`, `tests/portal-routes.test.mjs`, `tests/browser.mjs` and `tests/portal-handover-browser.mjs`.
 
 “Coming soon” means unavailable on the website. It is not a delivery date, a statement that all application functionality is complete, or an Amazon production approval.
 
@@ -22,7 +24,7 @@ After website completion, review each standalone application's functionality, UI
 
 TypeScript check, 124 automated tests and all application builds pass. In-app browser inspection confirmed disabled Home/sidebar application controls. At 492 px width, FM Overview displayed without BHX4, facility selection or horizontal overflow.
 
-The automated website browser suite could not start because the Playwright Chromium executable is missing. Complete desktop/mobile and keyboard regression remains outstanding. The previous integrated application browser scenario is retained as browser-integrated-legacy.mjs for migration to standalone application testing; it is not a current portal acceptance test.
+The automated website browser suite could not start because the Playwright Chromium executable is missing. Complete desktop/mobile and keyboard regression remains outstanding. (30 October 2026: the integrated application browser scenario moved with the application source to the separate application repository.)
 
 The existing source review ZIP and standalone teaser have not been regenerated in this increment.
 

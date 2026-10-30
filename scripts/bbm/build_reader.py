@@ -10,6 +10,8 @@ p=argparse.ArgumentParser();p.add_argument('--sources',type=Path,required=True);
 root=args.workspace; repo=Path(__file__).resolve().parents[2];dest=repo/'apps/portal/src/features/reference/generated';dest.mkdir(exist_ok=True)
 cache=root/'work/bbm-full/cache';cache.mkdir(parents=True,exist_ok=True)
 pdfout=root/'output/pdf/bbm-standards';pdfout.mkdir(parents=True,exist_ok=True)
+# PDFs ship as static files (public/bbm → dist/bbm); pdf-files.json maps entry id → file name.
+site_pdfs=repo/'public/bbm';site_pdfs.mkdir(parents=True,exist_ok=True)
 config=[('Compliance','BBM Compliance Standards_25.04.2024.pdf','April 2024',218),('PM','BBM PM Standards_2025.03.13.pdf','March 2025',130)]
 # Glyph repairs verified against PM pages 2, 4, 5, 6, 43 and Compliance 69.
 GLYPHS={3:' ',4:'A',17:'B',18:'C',24:'D',38:'F',39:'G',44:'H',47:'I',60:'K',62:'L',68:'M',69:'N',75:'O',87:'P',90:'R',94:'S',100:'T',104:'U',116:'W',120:'•',127:'Z',258:'a',271:'b',272:'c',282:'d',286:'e',296:'f',336:'g',346:'h',349:'i',364:'k',367:'l',373:'m',374:'n',381:'o',393:'p',395:'q',396:'r',400:'s',410:'t',415:'ti',437:'u',448:'v',449:'w',454:'x',455:'y',460:'z',853:',',855:':',856:'.',876:'/',882:'-',884:'–',894:'(',895:')',918:"'",1006:'2',1093:'>'}
@@ -77,7 +79,7 @@ for kind,name,edition,total in config:
  path=args.sources/name;data=path.read_bytes();digest=sha(data)
  expected={'PM':'d5906aa9ece2d8e7d5938a30452448c67deb9299becb55593223ccfb1b66096d','Compliance':'0e43f0235ab015604316065424b74fde1ccc81d0796605f6f6f7689f0d63ac21'}
  assert digest==expected[kind], 'Source edition changed: update approved edition metadata and indexes before regeneration'
- files[kind]={'name':name,'data':base64.b64encode(data).decode()}
+ (site_pdfs/name).write_bytes(data);files[kind]=name
  entries=[]
  index=(Path(__file__).parent/f'{kind}-TASK-INDEX.md').read_text()
  for start,end,title,code in re.findall(r'^\| (\d+)[–-](\d+) \| (.*?) \| (.*?) \|$',index,re.M):
@@ -117,13 +119,13 @@ for kind,name,edition,total in config:
   extracted=pypdfium2.PdfDocument(b)
   for i,n in enumerate(nums):
    a=render[n-1].render(scale=.75).to_pil();z=extracted[i].render(scale=.75).to_pil();assert a.size==z.size and a.tobytes()==z.tobytes(),(kind,n)
-  files[e['id']]={'name':fname,'data':base64.b64encode(b).decode()}
+  (site_pdfs/fname).write_bytes(b);files[e['id']]=fname
   checks.append({'id':e['id'],'pages':nums,'pdfSha256':sha(b),'sourcePixelMatch':True})
   extracted.close()
  assert covered==list(range(1,total+1));render.close();all_entries+=entries
  print(kind,'PDF extracts verified',len(entries),flush=True)
 manifest={'sources':[{'kind':k,'file':n,'edition':e,'pageCount':t,'sha256':sha((args.sources/n).read_bytes())} for k,n,e,t in config],'entries':checks,'extractionIssues':issues}
 (dest/'standards.json').write_text(json.dumps({'entries':all_entries,'pages':pages},ensure_ascii=False,separators=(',',':')))
-(dest/'pdfs.json').write_text(json.dumps(files,separators=(',',':')))
+(dest/'pdf-files.json').write_text(json.dumps(files,indent=1)+'\n')
 (dest/'verification.json').write_text(json.dumps(manifest,indent=2))
 print('Complete:',len(all_entries),'entries;',sum(len(v) for v in pages.values()),'pages;',len(issues),'glyph issues',flush=True)
