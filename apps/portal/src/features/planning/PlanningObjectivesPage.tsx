@@ -73,7 +73,7 @@ export default function PlanningObjectivesPage({onNavigate}:{onNavigate:(destina
       <details><summary>Questions for a Planning Review</summary><ul><li>Is the original need still valid?</li><li>Have requirements, operations, asset condition or service arrangements changed?</li><li>Are resources and dependencies in place?</li><li>Does the evidence support the reported progress?</li><li>Are the objective, timeframe and success measure still appropriate?</li></ul></details>
       <p>Record why a plan changes, the evidence supporting the change and the resulting decision. Completing an activity and demonstrating the intended outcome are separate steps.</p>
     </section>
-    <section className="planning-card" id="planning-tools"><h2>Supporting Tools</h2><p>Use the relevant tool for detailed analysis, then use its results as evidence for the planning decision.</p>
+    <section className="planning-card" id="planning-tools"><h2>Supporting Tools</h2><p>When these tools are released, use the relevant one for detailed analysis, then use its results as evidence for the planning decision.</p>
       <div className="planning-grid">{tools.map(([title,text])=><div key={title}><h3>{title}</h3><p>{text}</p><p><strong>Coming soon to the FERN website</strong></p></div>)}</div>
     </section>
   </article>;
