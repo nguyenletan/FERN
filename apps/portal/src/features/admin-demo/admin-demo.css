@@ -1,39 +1,240 @@
-.admin-demo{font:16px/1.55 Inter,Arial,sans-serif;color:#071c45;background:#f5f8fc;min-height:100vh;padding:28px;max-width:1400px;margin:auto}
-.admin-demo,.admin-demo *{box-sizing:border-box}
-.admin-demo header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:start;border-bottom:1px solid #cbd7e8;padding-bottom:18px;margin-bottom:18px}
-.admin-demo header>button{justify-self:end;white-space:nowrap}
-.admin-demo h1{font-size:30px;font-weight:750;line-height:1.25;margin:6px 0 12px}
-.admin-demo h2{font-size:21px;font-weight:700;margin:0 0 16px}
-.admin-demo p{margin:12px 0}
-.admin-kicker{font-weight:700;font-size:13px;color:#365782;text-transform:uppercase;letter-spacing:.06em}
-.admin-demo button{border:1px solid #9cb1d0;border-radius:7px;background:#fff;color:#10386b;padding:10px 14px;cursor:pointer;min-height:44px}
-.admin-demo button:disabled{opacity:.45;cursor:default}
-.admin-controls{display:grid;grid-template-columns:minmax(210px,1fr) auto auto minmax(280px,1.5fr);align-items:end;gap:12px}
-.admin-actions{display:flex;align-items:end;flex-wrap:wrap;gap:12px}
-.admin-demo label{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;font-weight:600;min-width:0}
-.admin-demo input:not([type=checkbox]),.admin-demo textarea,.admin-demo select{width:100%;min-width:0;background:white;border:1px solid #9cb1d0;padding:10px;border-radius:6px;font:inherit;color:inherit}
-.admin-controls>label{margin-bottom:0}
-.admin-controls>button,.admin-controls select,.admin-controls input{height:46px;min-height:46px}
-.admin-controls>button{white-space:nowrap}
-.admin-controls input[type=file]{padding:0;font-weight:400;line-height:44px;overflow:hidden}
-.admin-controls input[type=file]::file-selector-button{height:44px;margin:0 10px 0 0;padding:0 12px;border:0;border-right:1px solid #9cb1d0;background:#e9f2ff;color:#10386b;font:inherit;cursor:pointer}
-.admin-demo textarea{font-weight:400}
-.admin-demo fieldset{border:0;padding:0;margin:0;min-width:0}
-.admin-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:28px}
-.admin-layout>section,.admin-layout>aside{padding:24px;background:white;border:1px solid #d6e1f0;border-radius:10px;min-width:0}
-.admin-layout>aside{align-self:start}
-.admin-status{padding:12px;background:#e9f2ff;border-radius:6px}
-.admin-check{flex-direction:row!important;align-items:center}
-.admin-check input{width:20px;height:20px}
-.admin-preview{padding:22px;border:1px solid #b8cae3;margin-top:22px;border-radius:9px;overflow-wrap:anywhere}
-.admin-preview img{width:100%;max-height:280px;object-fit:contain;background:#f5f8fc}
-.admin-steps{padding-left:20px}
-.admin-steps [aria-current]{font-weight:800;color:#004beb}
-.admin-demo details{margin-top:22px}
-.admin-demo li{overflow-wrap:anywhere}
-.demo-admin-launch{position:fixed;bottom:14px;right:16px;z-index:1000;border:1px solid #071c45;background:#fff;color:#071c45;padding:10px 14px;border-radius:8px;box-shadow:0 2px 10px #00163825;font-size:13px}
-.admin-demo :focus-visible{outline:3px solid #0055ff;outline-offset:3px}
-@media(max-width:1100px){.admin-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){.admin-demo{padding:16px}.admin-demo header{grid-template-columns:1fr;gap:8px}.admin-demo header>button{justify-self:start;white-space:normal}.admin-layout,.admin-controls{grid-template-columns:1fr}.admin-layout>section,.admin-layout>aside{padding:16px}.admin-demo h1{font-size:26px}}
+.admin-demo {
+  font:
+    16px/1.55 Inter,
+    Arial,
+    sans-serif;
+  color: #071c45;
+  background: #f5f8fc;
+  min-height: 100vh;
+  padding: 28px;
+  max-width: 1400px;
+  margin: auto;
+}
+.admin-demo,
+.admin-demo * {
+  box-sizing: border-box;
+}
+.admin-demo header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: start;
+  border-bottom: 1px solid #cbd7e8;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+}
+.admin-demo header > button {
+  justify-self: end;
+  white-space: nowrap;
+}
+.admin-demo h1 {
+  font-size: 30px;
+  font-weight: 750;
+  line-height: 1.25;
+  margin: 6px 0 12px;
+}
+.admin-demo h2 {
+  font-size: 21px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+.admin-demo p {
+  margin: 12px 0;
+}
+.admin-kicker {
+  font-weight: 700;
+  font-size: 13px;
+  color: #365782;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.admin-demo button {
+  border: 1px solid #9cb1d0;
+  border-radius: 7px;
+  background: #fff;
+  color: #10386b;
+  padding: 10px 14px;
+  cursor: pointer;
+  min-height: 44px;
+}
+.admin-demo button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.admin-controls {
+  display: grid;
+  grid-template-columns: minmax(210px, 1fr) auto auto minmax(280px, 1.5fr);
+  align-items: end;
+  gap: 12px;
+}
+.admin-actions {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.admin-demo label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-weight: 600;
+  min-width: 0;
+}
+.admin-demo input:not([type='checkbox']),
+.admin-demo textarea,
+.admin-demo select {
+  width: 100%;
+  min-width: 0;
+  background: white;
+  border: 1px solid #9cb1d0;
+  padding: 10px;
+  border-radius: 6px;
+  font: inherit;
+  color: inherit;
+}
+.admin-controls > label {
+  margin-bottom: 0;
+}
+.admin-controls > button,
+.admin-controls select,
+.admin-controls input {
+  height: 46px;
+  min-height: 46px;
+}
+.admin-controls > button {
+  white-space: nowrap;
+}
+.admin-controls input[type='file'] {
+  padding: 0;
+  font-weight: 400;
+  line-height: 44px;
+  overflow: hidden;
+}
+.admin-controls input[type='file']::file-selector-button {
+  height: 44px;
+  margin: 0 10px 0 0;
+  padding: 0 12px;
+  border: 0;
+  border-right: 1px solid #9cb1d0;
+  background: #e9f2ff;
+  color: #10386b;
+  font: inherit;
+  cursor: pointer;
+}
+.admin-demo textarea {
+  font-weight: 400;
+}
+.admin-demo fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.admin-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 28px;
+}
+.admin-layout > section,
+.admin-layout > aside {
+  padding: 24px;
+  background: white;
+  border: 1px solid #d6e1f0;
+  border-radius: 10px;
+  min-width: 0;
+}
+.admin-layout > aside {
+  align-self: start;
+}
+.admin-status {
+  padding: 12px;
+  background: #e9f2ff;
+  border-radius: 6px;
+}
+.admin-check {
+  flex-direction: row !important;
+  align-items: center;
+}
+.admin-check input {
+  width: 20px;
+  height: 20px;
+}
+.admin-preview {
+  padding: 22px;
+  border: 1px solid #b8cae3;
+  margin-top: 22px;
+  border-radius: 9px;
+  overflow-wrap: anywhere;
+}
+.admin-preview img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  background: #f5f8fc;
+}
+.admin-steps {
+  padding-left: 20px;
+}
+.admin-steps [aria-current] {
+  font-weight: 800;
+  color: #004beb;
+}
+.admin-demo details {
+  margin-top: 22px;
+}
+.admin-demo li {
+  overflow-wrap: anywhere;
+}
+.demo-admin-launch {
+  position: fixed;
+  bottom: 14px;
+  right: 16px;
+  z-index: 1000;
+  border: 1px solid #071c45;
+  background: #fff;
+  color: #071c45;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px #00163825;
+  font-size: 13px;
+}
+.admin-demo :focus-visible {
+  outline: 3px solid #0055ff;
+  outline-offset: 3px;
+}
+@media (max-width: 1100px) {
+  .admin-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .admin-demo {
+    padding: 16px;
+  }
+  .admin-demo header {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .admin-demo header > button {
+    justify-self: start;
+    white-space: normal;
+  }
+  .admin-layout,
+  .admin-controls {
+    grid-template-columns: 1fr;
+  }
+  .admin-layout > section,
+  .admin-layout > aside {
+    padding: 16px;
+  }
+  .admin-demo h1 {
+    font-size: 26px;
+  }
+}
 /* Keep the administration entry clear of the sign-in help controls. */
-.fern-signin+.demo-admin-launch{position:static;display:block;margin:12px 16px}
+.fern-signin + .demo-admin-launch {
+  position: static;
+  display: block;
+  margin: 12px 16px;
+}

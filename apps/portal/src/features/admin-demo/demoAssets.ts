@@ -12,4 +12,19 @@ import performance from '../visual/human-images/performance.jpg';
 import risk from '../visual/human-images/risk.jpg';
 import audit from '../visual/human-images/audit.jpg';
 import improvement from '../visual/human-images/improvement.jpg';
-export const demoAssets:Record<string,string>={hero,helper,team,people,guides,learning,mission,leadership,overview,planning,performance,risk,audit,improvement};
+export const demoAssets: Record<string, string> = {
+  hero,
+  helper,
+  team,
+  people,
+  guides,
+  learning,
+  mission,
+  leadership,
+  overview,
+  planning,
+  performance,
+  risk,
+  audit,
+  improvement,
+};

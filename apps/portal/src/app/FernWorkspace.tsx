@@ -1,404 +1,347 @@
-import SiteFooter from '../features/dashboard/SiteFooter';
-import {SearchNavigation} from '../features/search/FernAISearch';
+import { useEffect, useMemo, useState } from 'react';
+import AppLayout from '@cloudscape-design/components/app-layout';
+import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
+import Badge from '@cloudscape-design/components/badge';
+import Button from '@cloudscape-design/components/button';
+import SideNavigation, { type SideNavigationProps } from '@cloudscape-design/components/side-navigation';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import TopNavigation from '@cloudscape-design/components/top-navigation';
+import { readPortalRoute, portalLocation, routeFor, type PortalRoute } from './portalRoutes';
+import { PortalNavigation, Page, revealSection } from './ui';
+import { PortalPreferences, readPreferredCountry, writePreferredCountry } from './preferences';
+import { countryCodes } from '../features/reference/countrySearch';
+import { regionLabel } from '../features/reference/regionLabels';
+import UserAdministration from '../features/admin/UserAdministration';
+import { homeApplications, applicationByName } from '../features/dashboard/homeApplications.ts';
+import { resourceDestinations } from '../features/dashboard/resourceDestinations.ts';
+import FernSearch from '../features/search/FernAISearch';
+import DashboardPage from '../features/dashboard/DashboardPage.tsx';
+import AboutFern from '../features/dashboard/AboutFern.tsx';
+import GetStarted from '../features/dashboard/GetStarted.tsx';
+import Learn from '../features/dashboard/Learn.tsx';
+import ReferenceLibrary from '../features/dashboard/ReferenceLibrary.tsx';
+import HelpGuidance from '../features/dashboard/HelpGuidance.tsx';
+import FernUpdates from '../features/dashboard/FernUpdates.tsx';
+import ApplicationPage from '../features/dashboard/ApplicationPage.tsx';
+import { ApplicationsIndex } from '../features/dashboard/HomeApplications.tsx';
+import WorkspaceIndex, { workspacePages } from '../features/overview/WorkspaceIndex.tsx';
 import MissionPillars from '../features/framework/MissionPillars';
 import IntegratedWorkspace from '../features/framework/IntegratedWorkspace';
-import {readPortalRoute,portalLocation,type PortalRoute} from './portalRoutes';
-import { homeApplications, applicationByName } from "../features/dashboard/homeApplications.ts";
-import ApplicationPage from "../features/dashboard/ApplicationPage.tsx";
-import {resourceDestinations,legacyResourcePanels} from "../features/dashboard/resourceDestinations.ts";
-import WorkspaceIndex from "../features/overview/WorkspaceIndex.tsx";
-import './home-return.css';
 import FmOverviewPage from '../features/overview/FmOverviewPage.tsx';
-import ContinualImprovementPage from '../features/improvement/ContinualImprovementPage.tsx';
-import AuditAssurancePage from '../features/audit/AuditAssurancePage.tsx';
-import RiskCompliancePage from '../features/risk/RiskCompliancePage.tsx';
-import PerformanceKpiPage from '../features/performance/PerformanceKpiPage.tsx';
-import PlanningObjectivesPage from '../features/planning/PlanningObjectivesPage.tsx';
 import LeadershipPolicyPage from '../features/leadership/LeadershipPolicyPage.tsx';
-import React, { useEffect, useRef, useState } from "react";
-import { navGroups } from "./navigation.tsx";
-import {HomeHeader,HomeSidebar,type HomePanel} from "../features/dashboard/HomeNavigation.tsx";
-import DashboardPage from "../features/dashboard/DashboardPage.tsx";
-import fernAiMascot from "../../../../packages/platform/src/assets/ChatGPT_Image_Sep_4__2026__11_17_37_AM.png";
-import FernPage from "../../../../packages/platform/src/components/layout/UnimplementedPage.tsx";
-import Chevron from "../../../../packages/platform/src/components/ui/Chevron.tsx";
-import InfoIcon from "../../../../packages/platform/src/components/ui/InfoIcon.tsx";
-export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut: () => void }) {
-  const [route,setRoute]=useState(()=>readPortalRoute(window.location.search));
-  const activeNav=route.page;
-  const activeApplication=applicationByName(activeNav);
-  const homePanel=route.panel;
-  const [lesson,setLesson]=useState<{title:string;request:number}|null>(()=>route.lesson?{title:route.lesson,request:0}:null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const applyRoute=(next:PortalRoute)=>{
+import PlanningObjectivesPage from '../features/planning/PlanningObjectivesPage.tsx';
+import PerformanceKpiPage from '../features/performance/PerformanceKpiPage.tsx';
+import RiskCompliancePage from '../features/risk/RiskCompliancePage.tsx';
+import AuditAssurancePage from '../features/audit/AuditAssurancePage.tsx';
+import ContinualImprovementPage from '../features/improvement/ContinualImprovementPage.tsx';
+import fernLogo from '../../../../packages/platform/src/assets/home-fern.png';
+
+// Detailed practice guidance shown inside each Workspace topic.
+const practiceGuides: Record<string, () => React.ReactNode> = {
+  'FM Overview': () => <FmOverviewPage />,
+  'Leadership & Policy': () => <LeadershipPolicyPage />,
+  'Planning & Objectives': () => <PlanningObjectivesPage />,
+  'Performance & KPIs': () => <PerformanceKpiPage />,
+  'Risk & Compliance': () => <RiskCompliancePage />,
+  'Audit & Assurance': () => <AuditAssurancePage />,
+  'Continual Improvement': () => <ContinualImprovementPage />,
+};
+const resourceTitles: Record<string, string> = {
+  about: 'About FERN',
+  guide: 'Get started',
+  learn: 'Learn',
+  reference: 'Standards & Reference Library',
+  help: 'Help & Guidance',
+  updates: 'What’s new in FERN',
+  facility: 'Facility information',
+};
+
+export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () => void; onAdmin?: () => void }) {
+  const [route, setRoute] = useState(() => readPortalRoute(window.location.search));
+  const [lesson, setLesson] = useState<{ title: string; request: number } | null>(() =>
+    route.lesson ? { title: route.lesson, request: 0 } : null,
+  );
+  const [navigationOpen, setNavigationOpen] = useState(() => window.innerWidth >= 900);
+  const [country, setCountryState] = useState(readPreferredCountry);
+  const preferences = useMemo(
+    () => ({
+      country,
+      setCountry: (next: string) => {
+        writePreferredCountry(next);
+        setCountryState(next);
+      },
+    }),
+    [country],
+  );
+  const countryText = (code: string) =>
+    code ? `${regionLabel(code).flag} ${regionLabel(code).label}` : 'All countries';
+  const applyRoute = (next: PortalRoute) => {
     setRoute(next);
-    setLesson(previous=>next.lesson?{title:next.lesson,request:(previous?.request??0)+1}:null);
-    setSidebarOpen(false);
+    setLesson((previous) => (next.lesson ? { title: next.lesson, request: (previous?.request ?? 0) + 1 } : null));
+    if (window.innerWidth < 900) setNavigationOpen(false);
   };
-  const navigate=(next:PortalRoute)=>{
-    const url=window.location.pathname+portalLocation(window.location.search,next);
-    if(url!==window.location.pathname+window.location.search+window.location.hash)window.history.pushState(null,'',url);
+  const urlFor = (next: PortalRoute) => window.location.pathname + portalLocation(window.location.search, next);
+  const navigate = (next: PortalRoute) => {
+    const url = urlFor(next);
+    if (url !== window.location.pathname + window.location.search + window.location.hash)
+      window.history.pushState(null, '', url);
     applyRoute(next);
   };
-  const setHomePanel=(panel:HomePanel)=>navigate({page:'Home',panel});
-  const openLesson=(title:string)=>navigate({page:'Home',panel:'learn',lesson:title});
-  useEffect(()=>{
-    const restore=()=>applyRoute(readPortalRoute(window.location.search));
-    window.addEventListener('popstate',restore);
-    return()=>window.removeEventListener('popstate',restore);
-  },[]);
-  const [mobileNav,setMobileNav]=useState(()=>window.innerWidth<900);
-  const workspaceMenu=useRef<HTMLElement>(null);
-  const closeWorkspaceMenu=()=>{setSidebarOpen(false);requestAnimationFrame(()=>document.querySelector<HTMLButtonElement>('.fern-home-header>button')?.focus());};
-  useEffect(()=>{const mq=window.matchMedia('(max-width: 899px)');const update=()=>setMobileNav(mq.matches);mq.addEventListener('change',update);return()=>mq.removeEventListener('change',update);},[]);
-  useEffect(()=>{
-    if(activeNav==='Home'||!sidebarOpen)return;
-    const menu=workspaceMenu.current;
-    const focusFrame=mobileNav?requestAnimationFrame(()=>menu?.querySelector<HTMLButtonElement>('.fern-workspace-close')?.focus()):null;
-    const key=(e:KeyboardEvent)=>{
-      if(e.key==='Escape'){e.preventDefault();closeWorkspaceMenu();return;}
-      if(e.key!=='Tab'||!mobileNav)return;
-      const items=Array.from(menu?.querySelectorAll<HTMLElement>('button:not([disabled]),a[href]')??[]).filter(el=>el.getClientRects().length>0);
-      const first=items[0],last=items[items.length-1];if(!first)return;
-      if(e.shiftKey&&(document.activeElement===first||!menu?.contains(document.activeElement))){e.preventDefault();last.focus();}
-      else if(!e.shiftKey&&(document.activeElement===last||!menu?.contains(document.activeElement))){e.preventDefault();first.focus();}
-    };
-    document.addEventListener('keydown',key);return()=>{document.removeEventListener('keydown',key);if(focusFrame!==null)cancelAnimationFrame(focusFrame);};
-  },[activeNav,sidebarOpen,mobileNav]);
-  const [launchDirty,setLaunchDirty]=useState(false);
-  const canLeaveLaunch=()=>!launchDirty||window.confirm('Your current assessment or plan has unsaved changes. Leave without saving?');
-  const setActiveNav=(requested:string,pillar?:number)=>{
-    if(!canLeaveLaunch())return;
-    if(requested==='Service Models Explained'){openLesson(requested);return;}
-    const panel=resourceDestinations.find(item=>item.label===requested)?.panel ?? legacyResourcePanels[requested] ?? null;
-    const page=panel||requested==='Programme Overview / Dashboard'?'Home':requested;
-    setLaunchDirty(false);
-    navigate({page,panel,pillar:page==='Mission & Pillars'?pillar:undefined});
-  };
-  const onSignOut=()=>{if(canLeaveLaunch())performSignOut();};
-  const goHome=()=>{if(!canLeaveLaunch())return;setLaunchDirty(false);navigate({page:"Home",panel:null});if(window.innerWidth<900)setSidebarOpen(false);requestAnimationFrame(()=>{document.getElementById("home")?.scrollIntoView({block:"start"});document.querySelector<HTMLElement>(".fern-hero h1")?.focus();});};
-  // Keep group choices across homepage and Workspace navigation.
-  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({
-    "Workspace": true,
-    "FERN Apps": false,
-    "Resources & Help": false,
-  });
-
-  useEffect(()=>{
-    const group=homePanel?"Resources & Help":navGroups.find(group=>group.items.some(item=>item.label===activeNav))?.label;
-    if(group)setExpandedGroups(previous=>({...previous,[group]:true}));
-  },[activeNav,homePanel]);
-
-  function toggleGroup(label: string) {
-    setExpandedGroups((prev) => ({ ...prev, [label]: !prev[label] }));
-  }
-
-  // Find which group the active nav item belongs to
-  const activeGroup =
-    navGroups.find((g) => g.items.some((i) => i.label === activeNav))?.label ?? "";
-
-  const isDashboard = activeNav === "Home";
-  const pageContent = useRef<HTMLElement>(null);
+  const nav = useMemo(
+    () => ({
+      go: (page: string, pillar?: number) => navigate(routeFor(page, pillar)),
+      href: (page: string, pillar?: number) => urlFor(routeFor(page, pillar)),
+    }),
+    [],
+  );
   useEffect(() => {
-    if (activeNav === "Home") return;
+    const restore = () => applyRoute(readPortalRoute(window.location.search));
+    window.addEventListener('popstate', restore);
+    return () => window.removeEventListener('popstate', restore);
+  }, []);
+  // After each page change: start at the top and move focus to the page heading.
+  const key = route.page + '|' + route.panel;
+  useEffect(() => {
+    if (route.lesson || (route.page === 'Mission & Pillars' && route.pillar)) return;
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
     const frame = requestAnimationFrame(() => {
-      const main = pageContent.current;
-      if (!main) return;
-      main.scrollTo({top:0,behavior:'instant'});
-      if(activeNav==='Mission & Pillars'&&route.pillar){
-        const card=main.querySelector<HTMLDetailsElement>(`#fw-pillar-${route.pillar}`);
-        if(card){card.open=true;card.scrollIntoView({block:'start',behavior:'instant'});card.querySelector<HTMLElement>('summary')?.focus({preventScroll:true});return;}
-      }
-      const heading = main.querySelector<HTMLElement>("h1, h2");
+      const heading = document.querySelector<HTMLElement>('#fern-main h1');
       if (heading) {
         heading.tabIndex = -1;
         heading.focus({ preventScroll: true });
       }
     });
     return () => cancelAnimationFrame(frame);
-  }, [activeNav,route.pillar]);
+  }, [key]);
+  // In-page links (#section) open the collapsed section they point to.
+  useEffect(() => {
+    const click = (event: MouseEvent) => {
+      const a = (event.target as Element).closest?.('#fern-main a[href^="#"]');
+      if (!a) return;
+      event.preventDefault();
+      try {
+        revealSection(decodeURIComponent(a.getAttribute('href')!.slice(1)));
+      } catch {
+        /* malformed anchor: ignore */
+      }
+    };
+    document.addEventListener('click', click);
+    return () => document.removeEventListener('click', click);
+  }, []);
 
+  const app = applicationByName(route.page);
+  const inWorkspace = route.page === 'Workspace' || workspacePages.some(([title]) => title === route.page);
+  const pageTitle = route.panel ? resourceTitles[route.panel] : app ? app.title : route.page;
+  const crumbs = [
+    { text: 'FERN', href: nav.href('Home') },
+    ...(route.panel
+      ? [
+          { text: 'Resources', href: nav.href('Get Started') },
+          { text: pageTitle, href: urlFor(route) },
+        ]
+      : []),
+    ...(inWorkspace
+      ? [
+          { text: 'Workspace', href: nav.href('Workspace') },
+          ...(route.page !== 'Workspace' ? [{ text: pageTitle, href: urlFor(route) }] : []),
+        ]
+      : []),
+    ...(route.page === 'Users & roles'
+      ? [
+          { text: 'Administration', href: urlFor(route) },
+          { text: 'Users & roles', href: urlFor(route) },
+        ]
+      : []),
+    ...(app || route.page === 'Applications'
+      ? [
+          { text: 'Applications', href: nav.href('Applications') },
+          ...(app ? [{ text: app.title, href: urlFor(route) }] : []),
+        ]
+      : []),
+  ];
+  const link = (text: string, page: string, info?: React.ReactNode): SideNavigationProps.Link => ({
+    type: 'link',
+    text,
+    href: nav.href(page),
+    info,
+  });
+  const items: SideNavigationProps.Item[] = [
+    link('Home', 'Home'),
+    {
+      type: 'section',
+      text: 'Workspace',
+      defaultExpanded: true,
+      items: [link('All Workspace topics', 'Workspace'), ...workspacePages.map(([title]) => link(title, title))],
+    },
+    {
+      type: 'section',
+      text: 'Applications',
+      defaultExpanded: true,
+      items: [
+        link('All applications', 'Applications'),
+        ...homeApplications.map((item) => link(item.title, item.name, <Badge>Soon</Badge>)),
+      ],
+    },
+    {
+      type: 'section',
+      text: 'Resources',
+      defaultExpanded: true,
+      items: resourceDestinations.map((item) => link(item.panel ? resourceTitles[item.panel] : item.label, item.label)),
+    },
+    {
+      type: 'section',
+      text: 'Administration',
+      defaultExpanded: true,
+      items: [link('Users & roles', 'Users & roles', <Badge color="grey">Demo</Badge>)],
+    },
+  ];
+  const follow = (event: CustomEvent<{ href?: string; external?: boolean }>) => {
+    const href = event.detail.href;
+    if (!href || event.detail.external) return;
+    event.preventDefault();
+    navigate(readPortalRoute(href.slice(href.indexOf('?') >= 0 ? href.indexOf('?') : href.length)));
+  };
+  const practice = practiceGuides[route.page];
 
   return (
-    <div
-      className="fern-portal flex h-full flex-col"
-      style={{
-        fontFamily: "var(--fern-font)",
-      }}
-    >
-      <HomeHeader currentPage={activeNav} currentPanel={isDashboard?homePanel:null} open={sidebarOpen} toggle={()=>setSidebarOpen(v=>!v)} onPanel={setHomePanel} onHome={goHome}/>
-      <div className="fern-portal-body flex flex-1 min-h-0">
-      {!isDashboard && sidebarOpen && <button className="fern-workspace-backdrop" aria-label="Close navigation" onClick={closeWorkspaceMenu}/> }
-      {/* ── Sidebar ── */}
-      {isDashboard ? <HomeSidebar expandedGroups={expandedGroups} onToggleGroup={toggleGroup} currentPanel={homePanel} mobile={mobileNav} onHome={goHome} open={sidebarOpen} close={()=>setSidebarOpen(false)} onNavigate={setActiveNav} onPanel={setHomePanel} onSignOut={onSignOut}/> : <aside
-        ref={workspaceMenu}
-        id="fern-workspace-sidebar"
-        role={mobileNav?"dialog":undefined}
-        aria-modal={mobileNav&&sidebarOpen?true:undefined}
-        aria-label="Workspace navigation"
-        inert={!sidebarOpen}
-        className="fern-workspace-sidebar flex flex-col shrink-0 overflow-hidden transition-all duration-300"
-        style={{
-          width: sidebarOpen ? 264 : 0,
-          background: "#ffffff",
-          borderRight: "1px solid #e5e7eb",
-        }}
-      >
-        {mobileNav && <button className="fern-workspace-close" onClick={closeWorkspaceMenu}>Close menu ×</button>}
-        {/* Brand */}
-        <div
-          className="flex flex-col px-5 pt-4 pb-3 shrink-0"
-          style={{
-            background: "#0d2464",
-            borderBottom: "1px solid rgba(255,255,255,0.1)",
+    <PortalPreferences.Provider value={preferences}>
+      <PortalNavigation.Provider value={nav}>
+        <div id="fern-top-navigation" className="fern-top-navigation">
+          <TopNavigation
+            identity={{
+              href: nav.href('Home'),
+              title: 'FERN',
+              logo: { src: fernLogo, alt: 'FERN' },
+              onFollow: (event) => {
+                event.preventDefault();
+                nav.go('Home');
+              },
+            }}
+            search={<FernSearch />}
+            utilities={[
+              // Language and country are chosen independently (Amazon review, 30 Oct 2026). Only English content exists today.
+              {
+                type: 'menu-dropdown',
+                text: 'English (US)',
+                title: 'Language',
+                ariaLabel: 'Language: English (US)',
+                description: 'Language',
+                items: [
+                  { id: 'en-US', text: 'English (US)', iconName: 'check' },
+                  {
+                    id: 'more',
+                    text: 'Other languages',
+                    disabled: true,
+                    disabledReason: 'Translations are not available yet.',
+                  },
+                ],
+              },
+              {
+                type: 'menu-dropdown',
+                text: countryText(country),
+                title: 'Country',
+                ariaLabel: `Country: ${countryText(country)}`,
+                description: 'Your country filters the Standards & Reference Library.',
+                items: ['', ...countryCodes].map((code) => ({
+                  id: code || 'all',
+                  text: countryText(code),
+                  iconName: code === country ? ('check' as const) : undefined,
+                })),
+                onItemClick: ({ detail }) => preferences.setCountry(detail.id === 'all' ? '' : detail.id),
+              },
+              {
+                type: 'menu-dropdown',
+                text: 'Prototype User',
+                description: 'Demonstration only – not an Amazon account',
+                iconName: 'user-profile',
+                items: [
+                  ...(onAdmin ? [{ id: 'admin', text: 'Proposed administration walkthrough' }] : []),
+                  { id: 'signout', text: 'Sign out' },
+                ],
+                onItemClick: ({ detail }) => {
+                  if (detail.id === 'signout') onSignOut();
+                  if (detail.id === 'admin') onAdmin?.();
+                },
+              },
+            ]}
+            i18nStrings={{
+              overflowMenuTriggerText: 'More',
+              overflowMenuTitleText: 'All',
+              searchIconAriaLabel: 'Search',
+              searchDismissIconAriaLabel: 'Close search',
+            }}
+          />
+        </div>
+        <AppLayout
+          headerSelector="#fern-top-navigation"
+          ariaLabels={{
+            navigation: 'FERN navigation',
+            navigationClose: 'Close navigation',
+            navigationToggle: 'Show navigation',
           }}
-        >
-          <div className="flex items-center gap-2">
-            <button onClick={goHome} aria-label="FERN — return Home"
-              className="text-2xl font-extrabold tracking-tight text-white"
-              style={{ letterSpacing: "-0.03em" }}
-            >
-              FERN
-            </button>
-            <img
-              src={fernAiMascot}
-              alt="FERN AI mascot"
-              style={{
-                width: 52,
-                height: 52,
-                objectFit: "contain",
-                flexShrink: 0,
-              }}
+          navigationOpen={navigationOpen}
+          onNavigationChange={({ detail }) => setNavigationOpen(detail.open)}
+          toolsHide
+          breadcrumbs={<BreadcrumbGroup items={crumbs} onFollow={follow} ariaLabel="Breadcrumbs" />}
+          navigation={
+            <SideNavigation
+              header={{ text: 'Facility Expert Reference Network', href: nav.href('Home') }}
+              activeHref={urlFor({ ...route, lesson: undefined, pillar: undefined })}
+              onFollow={follow}
+              items={items}
             />
-            <span
-              className="text-xs font-medium ml-auto self-start pt-0.5"
-              style={{ color: "rgba(255,255,255,0.4)" }}
-            >
-              v2.4
-            </span>
-          </div>
-          <p
-            className="text-xs font-medium leading-snug mt-0.5"
-            style={{ color: "rgba(255,255,255,0.55)" }}
-          >
-            Facility Expert Reference Network
-          </p>
-        </div>
-
-        {/* Scrollable nav — independent from the sidebar footer */}
-        <nav className="flex-1 overflow-y-auto py-2" style={{ scrollbarWidth: "none" }}>
-          <button onClick={goHome} className="w-full text-left px-5 py-3 text-sm font-semibold text-blue-900">Home</button>
-          {navGroups.map((group) => {
-            const isOpen = expandedGroups[group.label] ?? false;
-            return (
-              <div key={group.label}>
-                {/* Group header — expand/collapse button separate from info icon */}
-                <div className="flex items-center transition-colors hover:bg-gray-50">
-                  <button
-                    onClick={() => toggleGroup(group.label)}
-                    aria-expanded={isOpen}
-                    aria-controls={"fern-workspace-group-"+group.label.replace(/[^a-z0-9]/gi,"-")}
-                    className="flex-1 flex items-center gap-2 px-4 py-2"
-                  >
-                    <span style={{ color: "#9ca3af" }}>{group.icon}</span>
-                    <span className="flex-1 text-left min-w-0">
-                      <span
-                        className="block text-xs font-semibold uppercase tracking-wider"
-                        style={{ color: "#6b7280", letterSpacing: "0.09em" }}
-                      >
-                        {group.label}
-                      </span>
-                      {group.subtitle && (
-                        <span className="text-xs" style={{ color: "#9ca3af", fontSize: 10 }}>
-                          {group.subtitle}
-                        </span>
-                      )}
-                    </span>
-                    <span style={{ color: "#9ca3af" }}>
-                      <Chevron open={isOpen} />
-                    </span>
-                  </button>
-                  <div className="pr-3 flex items-center gap-1">
-                    {(group as { subtitleTip?: string }).subtitleTip && (
-                      <InfoIcon
-                        label={(group as { subtitle?: string }).subtitle ?? group.label}
-                        text={(group as { subtitleTip?: string }).subtitleTip!}
-                        side="right"
-                      />
-                    )}
-                    {group.tooltip && (
-                      <InfoIcon label={group.label} text={group.tooltip} side="right" />
-                    )}
-                  </div>
-                </div>
-
-                {/* Child items */}
-                <div id={"fern-workspace-group-"+group.label.replace(/[^a-z0-9]/gi,"-")} hidden={!isOpen}>
-                  {group.items.map((item) => {
-                    const active = activeNav === item.label;
-                    if (item.tooltip) {
-                      return (
-                        <div
-                          key={item.label}
-                          className="flex items-center transition-all"
-                          style={{
-                            background: active ? "#eff6ff" : "transparent",
-                            borderLeft: active ? "3px solid #1a3fb5" : "3px solid transparent",
-                          }}
-                        >
-                          <button
-                            title={homeApplications.some(app=>app.name===item.label) ? "Coming soon — read about this application" : undefined} onClick={() => setActiveNav(item.label)}
-                            className="flex-1 text-left flex items-center gap-1 py-2 text-xs hover:bg-gray-50"
-                            style={{
-                              paddingLeft: 25,
-                              color: active ? "#1a3fb5" : "#4b5563",
-                              fontWeight: active ? 600 : 400,
-                            }}
-                          >
-                            <span className="leading-snug flex-1 pr-1">{item.label}</span>
-                            {(item.tag || homeApplications.some(app=>app.name===item.label)) && (
-                              <span
-                                className="shrink-0 px-1.5 py-0.5 rounded mr-1"
-                                style={{
-                                  background: "#eff6ff",
-                                  color: "#1a56db",
-                                  fontSize: 10,
-                                  fontWeight: 600,
-                                }}
-                              >
-                                {homeApplications.some(app=>app.name===item.label) ? "Soon" : item.tag}
-                              </span>
-                            )}
-                          </button>
-                          <div className="pr-3">
-                            <InfoIcon label={item.label} text={item.tooltip} side="right" />
-                          </div>
-                        </div>
-                      );
-                    }
-                    return (
-                      <button
-                        key={item.label}
-                        title={homeApplications.some(app=>app.name===item.label) ? "Coming soon — read about this application" : undefined} onClick={() => setActiveNav(item.label)}
-                        className="w-full text-left flex items-center justify-between py-2 text-sm transition-all hover:bg-gray-50"
-                        style={{
-                          paddingLeft: 28,
-                          paddingRight: 12,
-                          background: active ? "#eff6ff" : "transparent",
-                          color: active ? "#1a3fb5" : "#4b5563",
-                          borderLeft: active ? "3px solid #1a3fb5" : "3px solid transparent",
-                          fontWeight: active ? 600 : 400,
-                        }}
-                      >
-                        <span className="leading-snug pr-2 text-xs">{item.label}</span>
-                        {(item.tag || homeApplications.some(app=>app.name===item.label)) && (
-                          <span
-                            className="shrink-0 px-1.5 py-0.5 rounded"
-                            style={{
-                              background: "#eff6ff",
-                              color: "#1a56db",
-                              fontSize: 10,
-                              fontWeight: 600,
-                            }}
-                          >
-                            {homeApplications.some(app=>app.name===item.label) ? "Soon" : item.tag}
-                          </span>
-                        )}
-                      </button>
-                    );
-                  })}</div>
-              </div>
-            );
-          })}
-        </nav>
-
-        {/* Sidebar footer — fixed at bottom */}
-        <div className="px-4 py-4 border-t shrink-0" style={{ borderColor: "#e5e7eb" }}>
-          <div className="flex items-center gap-2.5">
-            <div
-              className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
-              style={{ background: "#1a56db" }}
-            >
-              RK
+          }
+          content={
+            <div id="fern-main">
+              {route.panel === 'about' ? (
+                <AboutFern />
+              ) : route.panel === 'guide' ? (
+                <GetStarted />
+              ) : route.panel === 'learn' ? (
+                <Learn requestedLesson={lesson} />
+              ) : route.panel === 'reference' ? (
+                <ReferenceLibrary />
+              ) : route.panel === 'help' ? (
+                <HelpGuidance />
+              ) : route.panel === 'updates' ? (
+                <FernUpdates />
+              ) : route.panel === 'facility' ? (
+                <Page title={pageTitle}>
+                  <p>
+                    Facility selection and site history will be available with the applications. You can explore this
+                    website without selecting a facility.
+                  </p>
+                </Page>
+              ) : route.page === 'Home' ? (
+                <DashboardPage />
+              ) : route.page === 'Workspace' ? (
+                <WorkspaceIndex />
+              ) : route.page === 'Applications' ? (
+                <ApplicationsIndex />
+              ) : route.page === 'Users & roles' ? (
+                <UserAdministration onContentWalkthrough={onAdmin} />
+              ) : route.page === 'Mission & Pillars' ? (
+                <MissionPillars pillar={route.pillar} />
+              ) : practice ? (
+                <IntegratedWorkspace key={route.page} title={route.page}>
+                  {practice()}
+                </IntegratedWorkspace>
+              ) : app ? (
+                <ApplicationPage key={app.slug} app={app} />
+              ) : (
+                <Page title={route.page} description="This page is not available in this version of FERN.">
+                  <SpaceBetween direction="horizontal" size="xs">
+                    <Button variant="primary" onClick={() => nav.go('Home')}>
+                      Return to Home
+                    </Button>
+                    <Button onClick={() => nav.go('Help & Guidance')}>Help &amp; Guidance</Button>
+                  </SpaceBetween>
+                </Page>
+              )}
             </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs font-semibold truncate" style={{ color: "#0d2464" }}>
-                Prototype User
-              </p>
-              <p className="text-xs truncate" style={{ color: "#6b7280" }}>
-                Prototype — Demonstration Only
-              </p>
-            </div>
-            <button
-              onClick={onSignOut}
-              title="Sign out"
-              className="hover:opacity-70 transition-opacity shrink-0"
-              style={{ color: "#9ca3af" }}
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path
-                  d="M6 2H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"
-                  stroke="currentColor"
-                  strokeWidth="1.3"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M10 11l3-3-3-3M13 8H6"
-                  stroke="currentColor"
-                  strokeWidth="1.3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </aside>}
-
-      {/* ── Main content ── */}
-      <div inert={mobileNav && sidebarOpen} className="flex-1 flex flex-col min-w-0 bg-gray-50">
-        {/* Page content */}
-        <main ref={pageContent} className={isDashboard ? "flex-1 overflow-y-auto bg-white" : "flex-1 overflow-y-auto px-2 py-3 sm:px-6 sm:py-6"}>
-
-          {!isDashboard && <nav className="fern-page-breadcrumb" aria-label="Breadcrumb"><button onClick={goHome}>Home</button><span>/</span>{activeApplication?<span>FERN Apps</span>:<button onClick={()=>setActiveNav("Workspace")}>Workspace</button>}<span>/</span><span aria-current="page">{activeApplication?.title??activeNav}</span></nav>}
-          <SearchNavigation.Provider value={setActiveNav}><React.Suspense fallback={<p role="status">Loading application…</p>}>
-            {isDashboard ? (
-              <DashboardPage
-                setActiveNav={setActiveNav}
-                lesson={lesson}
-                onLesson={openLesson}
-                panel={homePanel}
-                setPanel={setHomePanel}
-              />
-            ) : activeNav === "Mission & Pillars" ? (
-              <MissionPillars onNavigate={setActiveNav}/>
-            ) : activeNav === "Workspace" ? (
-              <WorkspaceIndex onNavigate={setActiveNav}/>
-            ) : activeNav === "FM Overview" ? (
-              <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><FmOverviewPage onNavigate={setActiveNav}/></IntegratedWorkspace>
-            ) : activeNav === "Leadership & Policy" ? (
-              <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><LeadershipPolicyPage onNavigate={setActiveNav}/></IntegratedWorkspace>
-            ) : activeNav === "Planning & Objectives" ? (
-              <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><PlanningObjectivesPage onNavigate={setActiveNav}/></IntegratedWorkspace>
-            ) : activeNav === "Performance & KPIs" ? (
-              <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><PerformanceKpiPage/></IntegratedWorkspace>
-            ) : activeNav === "Risk & Compliance" ? (
-              <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><RiskCompliancePage onNavigate={setActiveNav}/></IntegratedWorkspace>
-            ) : activeNav === "Audit & Assurance" ? (
-              <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><AuditAssurancePage onNavigate={setActiveNav}/></IntegratedWorkspace>
-            ) : activeNav === "Continual Improvement" ? (
-              <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><ContinualImprovementPage/></IntegratedWorkspace>
-            ) : activeApplication ? (
-              <ApplicationPage key={activeApplication.slug} app={activeApplication} onNavigate={setActiveNav} onHome={goHome}/>
-            ) : (
-              <FernPage title={activeNav} group={activeGroup} onHome={goHome} onHelp={()=>setActiveNav("Help & Guidance")} />
-            )}
-          </React.Suspense></SearchNavigation.Provider>
-          <SiteFooter onNavigate={setActiveNav} onHome={goHome} onSignOut={onSignOut}/>
-          
-        </main>
-      </div>
-      </div>
-    </div>
+          }
+        />
+      </PortalNavigation.Provider>
+    </PortalPreferences.Provider>
   );
 }

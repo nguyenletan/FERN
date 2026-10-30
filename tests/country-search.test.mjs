@@ -1,11 +1,108 @@
-import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
-import {countryCatalogue,countryContent,normaliseCountry,visibleCountryRow} from '../apps/portal/src/features/reference/countrySearch.ts';
-import {findStandards} from '../apps/portal/src/features/reference/standardsSearch.ts';
-import {readStandardLocation,standardLocation} from '../apps/portal/src/features/reference/standardContext.ts';
-const table=values=>({type:'table',header:true,widths:[20,80],rows:[['Region','Relevant legislation'],...values].map(row=>row.map((text,col)=>({text,col,colSpan:1,rowSpan:1})))});
-const pages=[{number:1,blocks:[{type:'text',text:'Shared scope'},table([['SK','Slovak inspection'],['CZ','Czech-only phrase'],['All','Shared requirement'],['','Unspecified note']])]}];
-const entry={id:'test',kind:'Compliance',title:'Equipment',code:'CODE',page:1,endPage:1,edition:'2024',searchText:'Czech-only phrase Slovak inspection'};
-test('country search keeps intact local, shared and unspecified rows without mutating sources',()=>{const before=JSON.stringify(pages);const result=countryContent(pages,'SK');assert.deepEqual(result.coverage,{country:true,shared:true,unspecified:true});assert.match(result.searchText,/Slovak inspection/);assert.match(result.searchText,/Shared requirement/);assert.match(result.searchText,/Unspecified note/);assert.doesNotMatch(result.searchText,/Czech-only/);assert.equal(JSON.stringify(pages),before);const catalogue=countryCatalogue([entry],{Compliance:pages},'SK');assert.equal(findStandards(catalogue.map(x=>x.entry),'Czech-only','all').length,0);});
-test('country-only documents exclude other countries; unknown documents are optional; shared documents remain',()=>{for(const [region,expected] of [['SK',1],['CZ',0],['All',1],['EU',0]]){const source=[{number:1,blocks:[table([[region,'Requirement']])]}];assert.equal(countryCatalogue([entry],{Compliance:source},'SK',false).length,expected);}assert.equal(countryCatalogue([entry],{Compliance:[{number:1,blocks:[]}]},'SK',true).length,1);});
-test('country URLs preserve edition, query and unknown toggle, and validate country codes',()=>{const location=standardLocation('?page=reference',entry,'inspection','Compliance',{country:'SK',includeUnspecified:false});const read=readStandardLocation(location,[entry]);assert.equal(read.country,'SK');assert.equal(read.includeUnspecified,false);assert.equal(read.selected,'test');assert.equal(read.query,'inspection');const back=readStandardLocation(standardLocation(location,undefined,'inspection','Compliance'),[entry]);assert.equal(back.country,'SK');assert.equal(back.selected,'');assert.equal(back.includeUnspecified,false);assert.equal(normaliseCountry('XX'),'');assert.equal(normaliseCountry('uk'),'UK');assert(!standardLocation(location,undefined,'','all',{country:'',includeUnspecified:true}).includes('bbmCountry'));});
-test('actual supplied standards retain source integrity and country-specific PAT rows',()=>{const data=JSON.parse(fs.readFileSync(new URL('../apps/portal/src/features/reference/generated/standards.json',import.meta.url)));const all=countryCatalogue(data.entries,data.pages,'SK',true);const known=countryCatalogue(data.entries,data.pages,'SK',false);assert(known.length<all.length);assert(known.length>0);const pat=all.find(x=>x.entry.code==='CT.ELEC.PAT');assert(pat.coverage.country);assert.match(pat.searchText,/SK/);assert(!visibleCountryRow({fields:[{label:'Region',value:'CZ'}]},'SK'));assert(visibleCountryRow({fields:[{label:'Region',value:'All'}]},'SK'));});
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {
+  countryCatalogue,
+  countryContent,
+  normaliseCountry,
+  visibleCountryRow,
+} from '../apps/portal/src/features/reference/countrySearch.ts';
+import { findStandards } from '../apps/portal/src/features/reference/standardsSearch.ts';
+import { readStandardLocation, standardLocation } from '../apps/portal/src/features/reference/standardContext.ts';
+const table = (values) => ({
+  type: 'table',
+  header: true,
+  widths: [20, 80],
+  rows: [['Region', 'Relevant legislation'], ...values].map((row) =>
+    row.map((text, col) => ({ text, col, colSpan: 1, rowSpan: 1 })),
+  ),
+});
+const pages = [
+  {
+    number: 1,
+    blocks: [
+      { type: 'text', text: 'Shared scope' },
+      table([
+        ['SK', 'Slovak inspection'],
+        ['CZ', 'Czech-only phrase'],
+        ['All', 'Shared requirement'],
+        ['', 'Unspecified note'],
+      ]),
+    ],
+  },
+];
+const entry = {
+  id: 'test',
+  kind: 'Compliance',
+  title: 'Equipment',
+  code: 'CODE',
+  page: 1,
+  endPage: 1,
+  edition: '2024',
+  searchText: 'Czech-only phrase Slovak inspection',
+};
+test('country search keeps intact local, shared and unspecified rows without mutating sources', () => {
+  const before = JSON.stringify(pages);
+  const result = countryContent(pages, 'SK');
+  assert.deepEqual(result.coverage, { country: true, shared: true, unspecified: true });
+  assert.match(result.searchText, /Slovak inspection/);
+  assert.match(result.searchText, /Shared requirement/);
+  assert.match(result.searchText, /Unspecified note/);
+  assert.doesNotMatch(result.searchText, /Czech-only/);
+  assert.equal(JSON.stringify(pages), before);
+  const catalogue = countryCatalogue([entry], { Compliance: pages }, 'SK');
+  assert.equal(
+    findStandards(
+      catalogue.map((x) => x.entry),
+      'Czech-only',
+      'all',
+    ).length,
+    0,
+  );
+});
+test('country-only documents exclude other countries; unknown documents are optional; shared documents remain', () => {
+  for (const [region, expected] of [
+    ['SK', 1],
+    ['CZ', 0],
+    ['All', 1],
+    ['EU', 0],
+  ]) {
+    const source = [{ number: 1, blocks: [table([[region, 'Requirement']])] }];
+    assert.equal(countryCatalogue([entry], { Compliance: source }, 'SK', false).length, expected);
+  }
+  assert.equal(countryCatalogue([entry], { Compliance: [{ number: 1, blocks: [] }] }, 'SK', true).length, 1);
+});
+test('country URLs preserve edition, query and unknown toggle, and validate country codes', () => {
+  const location = standardLocation('?page=reference', entry, 'inspection', 'Compliance', {
+    country: 'SK',
+    includeUnspecified: false,
+  });
+  const read = readStandardLocation(location, [entry]);
+  assert.equal(read.country, 'SK');
+  assert.equal(read.includeUnspecified, false);
+  assert.equal(read.selected, 'test');
+  assert.equal(read.query, 'inspection');
+  const back = readStandardLocation(standardLocation(location, undefined, 'inspection', 'Compliance'), [entry]);
+  assert.equal(back.country, 'SK');
+  assert.equal(back.selected, '');
+  assert.equal(back.includeUnspecified, false);
+  assert.equal(normaliseCountry('XX'), '');
+  assert.equal(normaliseCountry('uk'), 'UK');
+  assert(
+    !standardLocation(location, undefined, '', 'all', { country: '', includeUnspecified: true }).includes('bbmCountry'),
+  );
+});
+test('actual supplied standards retain source integrity and country-specific PAT rows', () => {
+  const data = JSON.parse(
+    fs.readFileSync(new URL('../apps/portal/src/features/reference/generated/standards.json', import.meta.url)),
+  );
+  const all = countryCatalogue(data.entries, data.pages, 'SK', true);
+  const known = countryCatalogue(data.entries, data.pages, 'SK', false);
+  assert(known.length < all.length);
+  assert(known.length > 0);
+  const pat = all.find((x) => x.entry.code === 'CT.ELEC.PAT');
+  assert(pat.coverage.country);
+  assert.match(pat.searchText, /SK/);
+  assert(!visibleCountryRow({ fields: [{ label: 'Region', value: 'CZ' }] }, 'SK'));
+  assert(visibleCountryRow({ fields: [{ label: 'Region', value: 'All' }] }, 'SK'));
+});

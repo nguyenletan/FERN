@@ -3,50 +3,56 @@
 // Run after `pnpm build` and `pnpm export:portal`.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {createHash} from 'node:crypto';
-import {pathToFileURL} from 'node:url';
-import {chromium} from 'playwright';
-import {preview} from 'vite';
+import { createHash } from 'node:crypto';
+import { pathToFileURL } from 'node:url';
+import { chromium } from 'playwright';
+import { preview } from 'vite';
 const files = JSON.parse(fs.readFileSync('apps/portal/src/features/reference/generated/pdf-files.json', 'utf8'));
 const sha = (b) => createHash('sha256').update(b).digest('hex');
 const expected = (key) => sha(fs.readFileSync('public/bbm/' + files[key]));
-const button = (page, name) => page.getByRole('button', {name, exact: true});
+const button = (page, name) => page.getByRole('button', { name, exact: true });
 async function openStandard(page) {
   await page.getByPlaceholder('Enter demo').fill('demo');
   await page.getByPlaceholder('Enter your password').fill('demo');
   await button(page, 'Sign in').click();
-  await page.locator('.fern-hero').waitFor();
-  await page.locator('.fern-home-header').getByRole('button', {name: 'Reference library', exact: true}).click();
-  const search = page.getByRole('searchbox', {name: 'Search standards', exact: true});
+  await page.locator('#fern-main').getByRole('heading', { level: 1, name: 'Welcome to FERN', exact: true }).waitFor();
+  await page
+    .getByRole('navigation', { name: 'FERN navigation' })
+    .getByRole('link', { name: 'Standards & Reference Library', exact: true })
+    .click();
+  const search = page.getByRole('searchbox', { name: 'Search standards', exact: true });
   await search.fill('fire doors');
   await search.press('Enter');
-  await page.locator('.fs-result-row').first().click();
-  await page.locator('.fs-reading').waitFor();
-  return (await page.locator('.fs-reading').innerText()).match(/CT\.FIRE\.DOORS/) ? 'Compliance-CT.FIRE.DOORS' : null;
+  await page.locator('#bbm-search-results li').first().getByRole('link').first().click();
+  await page.locator('#bbm-standard-title').waitFor();
+  return (await page.locator('#fern-main').innerText()).match(/CT\.FIRE\.DOORS/) ? 'Compliance-CT.FIRE.DOORS' : null;
 }
 async function downloadBytes(page, name) {
   const pending = page.waitForEvent('download');
   await button(page, name).click();
   const download = await pending;
-  return {name: download.suggestedFilename(), bytes: fs.readFileSync(await download.path())};
+  return { name: download.suggestedFilename(), bytes: fs.readFileSync(await download.path()) };
 }
 const browser = await chromium.launch();
-const server = await preview({logLevel: 'warn', preview: {port: 0, strictPort: false}});
+const server = await preview({ logLevel: 'warn', preview: { port: 0, strictPort: false } });
 try {
   // Server build
   const url = server.resolvedUrls.local[0];
-  const context = await browser.newContext({acceptDownloads: true});
+  const context = await browser.newContext({ acceptDownloads: true });
   const page = await context.newPage();
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   const requested = [];
   page.on('request', (r) => requested.push(new URL(r.url()).pathname));
   await page.goto(url);
-  await page.locator('.fern-hero').or(page.getByPlaceholder('Enter demo')).first().waitFor();
+  await page.getByPlaceholder('Enter demo').waitFor();
   assert.ok(!requested.some((p) => p.includes('StandardsLibrary')), 'reader must not load before the library opens');
   const key = await openStandard(page);
   assert.equal(key, 'Compliance-CT.FIRE.DOORS');
-  assert.ok(requested.some((p) => p.includes('StandardsLibrary')), 'reader loads on demand');
+  assert.ok(
+    requested.some((p) => p.includes('StandardsLibrary')),
+    'reader loads on demand',
+  );
   const task = await downloadBytes(page, 'Download Selected Standard');
   assert.equal(task.name, files[key]);
   assert.equal(sha(task.bytes), expected(key));
@@ -64,7 +70,7 @@ try {
   console.log('Server build: reader on demand; task, full and original PDFs served from bbm/ with verified hashes.');
 
   // Single-file export, offline
-  const offline = await browser.newContext({acceptDownloads: true, offline: true});
+  const offline = await browser.newContext({ acceptDownloads: true, offline: true });
   const filePage = await offline.newPage();
   filePage.on('pageerror', (e) => errors.push(e.message));
   await filePage.goto(pathToFileURL('dist-share/FERN-Internal-Portal.html').href);
