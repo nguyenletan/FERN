@@ -123,7 +123,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
     <div
       className="fern-portal flex h-full flex-col"
       style={{
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+        fontFamily: "var(--fern-font)",
       }}
     >
       <HomeHeader currentPage={activeNav} currentPanel={isDashboard?homePanel:null} open={sidebarOpen} toggle={()=>setSidebarOpen(v=>!v)} onPanel={setHomePanel} onHome={goHome}/>

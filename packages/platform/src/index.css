@@ -1,18 +1,19 @@
-/* Self-hosted so the portal and the offline export make no third-party requests. */
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/inter/700.css";
-@import "@fontsource/inter/800.css";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 @source "../../../apps";
 @source "../../";
+
+/* Inter from Google Fonts; if it cannot load (offline or blocked), use the system font:
+   San Francisco on macOS/iOS, Segoe UI on Windows, Roboto on Android. */
+:root {
+  --fern-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
 
 html,
 body,
 #root {
   height: 100%;
-  font-family: "Inter", sans-serif;
+  font-family: var(--fern-font);
 }
 
 * {
