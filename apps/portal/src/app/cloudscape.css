@@ -29,9 +29,9 @@
 .fern-banner img {
   display: block;
   width: 100%;
-  height: clamp(160px, 22vw, 260px);
+  height: clamp(160px, 28vw, 420px);
   object-fit: cover;
-  object-position: 35% 10%;
+  object-position: 35% 5%;
   border-radius: 16px;
 }
 .fern-icon {
