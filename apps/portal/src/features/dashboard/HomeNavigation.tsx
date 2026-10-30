@@ -1,17 +1,13 @@
 import {resourceDestinations} from "./resourceDestinations.ts";
 import { useEffect, useRef, type ReactNode } from "react";
 import {
-  ArrowRight,
   CaretDown,
   Compass,
   ArrowsLeftRight,
   BookOpen,
-  Buildings,
-  Calculator,
   ChartLineUp,
   ClipboardText,
   FileText,
-  Gear,
   House,
   List,
   Question,
@@ -20,9 +16,7 @@ import {
   X,
   SignOut,
 } from "@phosphor-icons/react";
-import { homeApplications } from "./homeApplications.ts";
 import fern from "../../../../../packages/platform/src/assets/home-fern.png";
-export const appIcons = [FileText, ChartLineUp, UsersThree, Calculator, ClipboardText];
 export type HomePanel = "about" | "facility" | "guide" | "learn" | "reference" | "help" | "updates" | null;
 export function HomeHeader({
   currentPanel = null,

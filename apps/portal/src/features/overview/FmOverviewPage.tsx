@@ -1,6 +1,5 @@
 import FernAISearch from '../search/FernAISearch';
 import {PageArtwork} from '../visual/VisualGuide';
-import type {SiteConfig} from '../context/prototypeSites.ts';
 import './overview.css';
 
 const areas = [
@@ -12,7 +11,7 @@ const areas = [
   ['Evidence & Data Gaps','An aggregated evidence-gap assessment is not available.','Read Evidence Guidance','Audit & Assurance'],
   ['Improvement Signals','Recurring-issue summaries and verified improvements are not available.','Read Improvement Guidance','Continual Improvement'],
 ];
-export default function FmOverviewPage({context,onSelect,onNavigate}:{context:SiteConfig;onSelect:(value:SiteConfig)=>void;onNavigate:(destination:string)=>void}){
+export default function FmOverviewPage({onNavigate}:{onNavigate:(destination:string)=>void}){
  return <article className="fern-overview" aria-labelledby="overview-title">
   <header className="overview-card"><PageArtwork art="people"/><p className="overview-eyebrow">Your FM Workspace</p><h1 id="overview-title">FM Overview</h1><p className="overview-intro">See the FM information that needs attention and find the right place to investigate.</p><p>Review performance, requirements, risk, assurance and lifecycle information together. Detailed guidance and analysis remain in the relevant Workspace areas and applications.</p></header><FernAISearch page="FM Overview"/>
 

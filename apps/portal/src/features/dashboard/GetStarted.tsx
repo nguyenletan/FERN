@@ -1,16 +1,8 @@
 import {BookOpen,Compass,Files,ArrowRight} from '@phosphor-icons/react';
 import {openGuidanceSection} from '../visual/GuidanceRoute';
-import { homeApplications } from './homeApplications.ts';
 import type { HomePanel } from './HomeNavigation.tsx';
 import './get-started.css';
 
-const tasks = [
-  'Prepare for a new or renewed FM contract',
-  'Review asset lifecycle or replacement options',
-  'Compare FM delivery approaches',
-  'Prepare staff and service pricing',
-  'Plan a mobilisation or transition',
-];
 const workspaceTasks = [
   ['Understand the FM picture', 'FM Overview'],
   ['Explore planning and objectives', 'Planning & Objectives'],

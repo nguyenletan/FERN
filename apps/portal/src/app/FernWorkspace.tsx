@@ -19,13 +19,9 @@ import { navGroups } from "./navigation.tsx";
 import {HomeHeader,HomeSidebar,type HomePanel} from "../features/dashboard/HomeNavigation.tsx";
 import DashboardPage from "../features/dashboard/DashboardPage.tsx";
 import fernAiMascot from "../../../../packages/platform/src/assets/ChatGPT_Image_Sep_4__2026__11_17_37_AM.png";
-import DataSourceBadge from "../../../../packages/platform/src/components/data/DataSourceBadge.tsx";
 import FernPage from "../../../../packages/platform/src/components/layout/UnimplementedPage.tsx";
 import Chevron from "../../../../packages/platform/src/components/ui/Chevron.tsx";
 import InfoIcon from "../../../../packages/platform/src/components/ui/InfoIcon.tsx";
-import type { SourceStatus } from "../../../../packages/platform/src/domain/dataStatus.ts";
-import { PROTOTYPE_SITES } from "../features/context/prototypeSites.ts";
-import FernAppCard from "../features/dashboard/FernAppCard.tsx";
 export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut: () => void }) {
   const [route,setRoute]=useState(()=>readPortalRoute(window.location.search));
   const activeNav=route.page;
@@ -51,7 +47,6 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
   },[]);
   const [mobileNav,setMobileNav]=useState(()=>window.innerWidth<900);
   const workspaceMenu=useRef<HTMLElement>(null);
-  const menuToggle=useRef<HTMLButtonElement>(null);
   const closeWorkspaceMenu=()=>{setSidebarOpen(false);requestAnimationFrame(()=>document.querySelector<HTMLButtonElement>('.fern-home-header>button')?.focus());};
   useEffect(()=>{const mq=window.matchMedia('(max-width: 899px)');const update=()=>setMobileNav(mq.matches);mq.addEventListener('change',update);return()=>mq.removeEventListener('change',update);},[]);
   useEffect(()=>{
@@ -68,11 +63,6 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
     };
     document.addEventListener('keydown',key);return()=>{document.removeEventListener('keydown',key);if(focusFrame!==null)cancelAnimationFrame(focusFrame);};
   },[activeNav,sidebarOpen,mobileNav]);
-  const [avatarOpen, setAvatarOpen] = useState(false);
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
-  const notificationsRef = useRef<HTMLDivElement>(null);
-  const [contextPanelOpen, setContextPanelOpen] = useState(false);
-  const [activeContext, setActiveContextRaw] = useState(PROTOTYPE_SITES[0]);
   const [launchDirty,setLaunchDirty]=useState(false);
   const canLeaveLaunch=()=>!launchDirty||window.confirm('Your current assessment or plan has unsaved changes. Leave without saving?');
   const setActiveNav=(requested:string,pillar?:number)=>{
@@ -83,9 +73,8 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
     setLaunchDirty(false);
     navigate({page,panel,pillar:page==='Mission & Pillars'?pillar:undefined});
   };
-  const setActiveContext:typeof setActiveContextRaw=(next)=>{const value=typeof next==='function'?next(activeContext):next;if(value.site!==activeContext.site&&!(launchDirty?canLeaveLaunch():activeNav==="Home"||activeNav==="FM Overview"||window.confirm("Change facility? Save any current tool inputs first. Unsaved inputs may be lost.")))return;if(value.site!==activeContext.site)setLaunchDirty(false);setActiveContextRaw(value);};
   const onSignOut=()=>{if(canLeaveLaunch())performSignOut();};
-  const goHome=()=>{if(!canLeaveLaunch())return;setLaunchDirty(false);navigate({page:"Home",panel:null});setAvatarOpen(false);setNotificationsOpen(false);if(window.innerWidth<900)setSidebarOpen(false);requestAnimationFrame(()=>{document.getElementById("home")?.scrollIntoView({block:"start"});document.querySelector<HTMLElement>(".fern-hero h1")?.focus();});};
+  const goHome=()=>{if(!canLeaveLaunch())return;setLaunchDirty(false);navigate({page:"Home",panel:null});if(window.innerWidth<900)setSidebarOpen(false);requestAnimationFrame(()=>{document.getElementById("home")?.scrollIntoView({block:"start"});document.querySelector<HTMLElement>(".fern-hero h1")?.focus();});};
   // Keep group choices across homepage and Workspace navigation.
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({
     "Workspace": true,
@@ -97,21 +86,6 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
     const group=homePanel?"Resources & Help":navGroups.find(group=>group.items.some(item=>item.label===activeNav))?.label;
     if(group)setExpandedGroups(previous=>({...previous,[group]:true}));
   },[activeNav,homePanel]);
-
-  const avatarRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (avatarRef.current && !avatarRef.current.contains(e.target as Node)) {
-        setAvatarOpen(false);
-      }
-      if (notificationsRef.current && !notificationsRef.current.contains(e.target as Node)) {
-        setNotificationsOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   function toggleGroup(label: string) {
     setExpandedGroups((prev) => ({ ...prev, [label]: !prev[label] }));
@@ -385,11 +359,9 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
         <main ref={pageContent} className={isDashboard ? "flex-1 overflow-y-auto bg-white" : "flex-1 overflow-y-auto px-2 py-3 sm:px-6 sm:py-6"}>
 
           {!isDashboard && <nav className="fern-page-breadcrumb" aria-label="Breadcrumb"><button onClick={goHome}>Home</button><span>/</span><button onClick={()=>setActiveNav("Workspace")}>Workspace</button><span>/</span><span aria-current="page">{activeNav}</span></nav>}
-          <SearchNavigation.Provider value={setActiveNav}><React.Suspense key={activeContext.site} fallback={<p role="status">Loading application…</p>}>
+          <SearchNavigation.Provider value={setActiveNav}><React.Suspense fallback={<p role="status">Loading application…</p>}>
             {isDashboard ? (
               <DashboardPage
-                activeContext={activeContext}
-                setActiveContext={setActiveContext}
                 setActiveNav={setActiveNav}
                 lesson={lesson}
                 onLesson={openLesson}
@@ -401,7 +373,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
             ) : activeNav === "Workspace" ? (
               <WorkspaceIndex onNavigate={setActiveNav}/>
             ) : activeNav === "FM Overview" ? (
-              <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><FmOverviewPage context={activeContext} onSelect={setActiveContext} onNavigate={setActiveNav}/></IntegratedWorkspace>
+              <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><FmOverviewPage onNavigate={setActiveNav}/></IntegratedWorkspace>
             ) : activeNav === "Leadership & Policy" ? (
               <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><LeadershipPolicyPage onNavigate={setActiveNav}/></IntegratedWorkspace>
             ) : activeNav === "Planning & Objectives" ? (

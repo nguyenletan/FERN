@@ -1,5 +1,4 @@
 import ReadingControls from '../reading/ReadingControls';
-import {VisualGuide} from '../visual/VisualGuide';
 import ComplianceLibrary from '../reference/ComplianceLibrary';
 import './get-started.css';
 
