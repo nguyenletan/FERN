@@ -1,23 +1,36 @@
-# FERN PRD demonstration source — 17 September 2026
+# FERN portal — website source
 
-Start with [the package guide](../START-HERE.md), [the illustrated PRD](../FERN-Illustrated-PRD.html) and [verification](../verification/VERIFICATION.md).
+FERN (Facility Expert Reference Network) internal portal: Home, the seven Workspace guidance sections, Learn, Reference Library (BBM standards and compliance), Help and a proposed content-administration walkthrough.
 
-This copy preserves the engineering baseline and adds a separate proposed content-administration demonstration. Future application discovery is omitted from the website. Existing application source is retained for engineering context and is outside this website delivery scope. Older documents describe earlier increments; the new PRD takes precedence for this handover.
+This repository contains the website only. The FERN applications (Pricing Template Generator, Lifecycle & Asset Analysis, FM Pre-Contract / Pre-Tender Assessment, FM Mobilisation & Transition Tracker, FM Contract & Service Model and future applications) are developed in a separate repository. The portal lists them as "Coming soon" and is the intended single entry point for them once they are released.
 
-## Run and build
+## Quick start
 
-Use Node.js 24 and pnpm 11.19.0. Install with `pnpm install --frozen-lockfile`, then run `pnpm dev`. Sign in with `demo` / `demo`.
+Use Node.js 24 and pnpm 11.19.0.
+
+```sh
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+Open the address Vite prints (http://127.0.0.1:5173 by default) and sign in with `demo` / `demo`. This is demonstration sign-in only, not production authentication.
+
+## Commands
 
 - `pnpm typecheck` — TypeScript check.
 - `pnpm test` — unit and source-data checks.
-- `pnpm build:all` — all inherited application distributions.
-- `pnpm export:portal` — creates `dist-share/FERN-Internal-Portal.html`, the single-file website demonstration.
-- `pnpm test:browser` — browser suite against a running development server (defaults to port 4173).
-- `pnpm test:portal-handover` — production build/offline smoke suite. Install Playwright Chromium before running browser suites.
-- `pnpm dev:integrated` / `pnpm build:integrated` — portal with Pricing, Lifecycle, Pre-contract and Mobilisation composed on one origin, sharing issued pricing without file transfer. The default website build still excludes them. See [integrated application mode](docs/start/INTEGRATED-APPS.md).
-- `pnpm check:bundles` — confirms the website build has no application code and the integrated build has all four; `pnpm test:browser:integrated` runs the integrated browser acceptance.
+- `pnpm build` — production build in `dist/`; `pnpm preview` serves it.
+- `pnpm build:all` — root build plus the `apps/portal` distribution in `dist/portal`.
+- `pnpm export:portal` — creates `dist-share/FERN-Internal-Portal.html`, a single self-contained file for offline demonstration.
+- `pnpm test:browser` — browser suite against a running development server (`FERN_TEST_URL`, default http://127.0.0.1:4173).
+- `pnpm test:portal-handover` — production build and offline smoke suite.
+- `pnpm verify` — typecheck, tests, builds and browser suite; writes `test-results/verification.json`.
 
-The current handover verification records what was actually run. Retained automated browser scripts were updated for this demo scope but were not executed in this session; browser checks used the desktop browser tool.
+Browser suites need Playwright Chromium: `pnpm exec playwright install chromium`.
+
+## Where things are
+
+See [architecture](docs/start/ARCHITECTURE.md) and the [documentation index](docs/README.md).
 
 ## Proposed administration
 
@@ -27,4 +40,4 @@ The current handover verification records what was actually run. Retained automa
 
 Content migration must cover all page/section rows in the package inventory and all approved shared components. Reference documents remain controlled source files; catalogue editing and source replacement are distinct operations.
 
-Amazon-approved identity, CMS/content storage, hosting, Learning Portal and application integration choices remain open. Historical engineering documentation is retained under `docs` and in `BASELINE-README-HISTORY.md`; it is not evidence of production approval.
+Amazon-approved identity, CMS/content storage, hosting, Learning Portal and application integration choices remain open.

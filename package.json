@@ -16,23 +16,11 @@
     "verify:core": "node scripts/verify.mjs --core",
     "build:all": "node scripts/build-apps.mjs",
     "dev:portal": "pnpm --filter @fern/portal dev",
-    "dev:pricing": "pnpm --filter @fern/pricing dev",
-    "dev:lifecycle": "pnpm --filter @fern/lifecycle dev",
-    "dev:pre-contract": "pnpm --filter @fern/pre-contract dev",
-    "dev:launch-tracker": "pnpm --filter @fern/launch-tracker dev",
-    "test:browser:pricing-transfer": "node tests/pricing-transfer-browser.mjs",
     "export:portal": "node scripts/export-portal.mjs",
-    "test:portal-handover": "node tests/portal-handover-browser.mjs",
-    "dev:integrated": "vite --mode integrated",
-    "build:integrated": "vite build --mode integrated",
-    "preview:integrated": "vite preview --mode integrated",
-    "check:bundles": "node scripts/check-bundles.mjs",
-    "test:browser:integrated": "node tests/integrated-browser.mjs"
+    "test:portal-handover": "node tests/portal-handover-browser.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
-    "fast-xml-parser": "5.11.1",
-    "jszip": "3.10.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

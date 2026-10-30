@@ -1,6 +1,5 @@
 import { homeApplications } from "../features/dashboard/homeApplications.ts";
 import { resourceDestinations } from "../features/dashboard/resourceDestinations.ts";
-import { appsEnabled } from "./integratedApps.tsx";
 const allNavGroups = [
   {
     label: "Workspace",
@@ -101,4 +100,4 @@ const allNavGroups = [
   },
 ];
 
-export const navGroups = appsEnabled ? allNavGroups : allNavGroups.filter(group=>group.label!=="FERN Apps");
+export const navGroups = allNavGroups.filter(group=>group.label!=="FERN Apps");

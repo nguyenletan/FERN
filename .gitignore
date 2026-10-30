@@ -1,7 +1,6 @@
 node_modules/
 dist/
 dist-share/
-dist-integrated/
 .build-standalone/
 test-results/
 .env

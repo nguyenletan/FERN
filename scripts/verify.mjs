@@ -14,7 +14,7 @@ function run(script,env={}){
  });
 }
 try{
- for(const name of ['typecheck','test','build:all','check:bundles']){
+ for(const name of ['typecheck','test','build:all']){
   const row={name,status:'running'};report.checks.push(row);
   try{await run(name);row.status='passed';}catch(error){row.status='failed';throw error;}
  }

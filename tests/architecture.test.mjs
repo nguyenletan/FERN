@@ -33,23 +33,3 @@ test("React state hooks are never invoked inside JSX callbacks or IIFEs", () => 
   }
   assert.deepEqual(violations, []);
 });
-
-test("Launch assessment, human review, decision and report have one ordered composition", () => {
-  const source = fs.readFileSync("apps/launch-tracker/src/IFMLaunchTrackerPage.tsx", "utf8");
-  const sequence = [
-    "LaunchExecutionAssuranceSection",
-    "LaunchAssuranceSection",
-    "LaunchAssessmentSection",
-    "LaunchHumanReviewSection",
-    "LaunchDecisionSection",
-    "LaunchReportSection",
-  ];
-  let previous = -1;
-  for (const name of sequence) {
-    assert.equal(source.split("<" + name).length - 1, 1);
-    const index = source.indexOf("<" + name);
-    assert.ok(index > previous, name);
-    previous = index;
-  }
-  assert.equal((source.match(/\[launchReportOpen, setLaunchReportOpen\]/g) || []).length, 1);
-});

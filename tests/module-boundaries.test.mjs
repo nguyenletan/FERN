@@ -16,19 +16,18 @@ test('Application and package imports respect ownership boundaries',()=>{
     const target=path.relative(process.cwd(),path.resolve(path.dirname(file),spec)).split(path.sep);
     const owner=file.split(path.sep);
     if(owner[0]==='packages'&&target[0]==='apps')violations.push(`${file} imports application ${spec}`);
-    if(owner[0]==='apps'&&target[0]==='apps'&&owner[1]!==target[1]&&(owner[1]!=='portal'||!spec.endsWith('/src/index.ts')))violations.push(`${file} bypasses application public entry ${spec}`);
-    if(owner[0]==='packages'&&owner[1].endsWith('-core')&&target[0]==='packages'&&!['core','pricing-core','lifecycle-core','pre-contract-core'].includes(target[1]))violations.push(`${file} imports UI ${spec}`);
    }
    ts.forEachChild(node,visit);
   }visit(source);
  }assert.deepEqual(violations,[]);
 });
-test('Every application has its own entry and run/build commands',()=>{
- for(const name of ['portal','pricing','lifecycle','pre-contract','launch-tracker']){
-  const manifest=JSON.parse(fs.readFileSync(`apps/${name}/package.json`,'utf8'));
-  assert.ok(manifest.scripts.dev.includes(`--mode ${name}`));
-  assert.ok(manifest.scripts.build.includes(`--mode ${name}`));
-  assert.ok(fs.existsSync(`apps/${name}/index.html`));
-  assert.ok(fs.existsSync(`apps/${name}/src/main.tsx`));
- }
+test('The website repository contains only the portal and its shared platform',()=>{
+ // Application workflows are maintained in a separate private repository; the portal lists them as "Coming soon".
+ assert.deepEqual(fs.readdirSync('apps'),['portal']);
+ assert.deepEqual(fs.readdirSync('packages'),['platform']);
+ const manifest=JSON.parse(fs.readFileSync('apps/portal/package.json','utf8'));
+ assert.ok(manifest.scripts.dev.includes('--mode portal'));
+ assert.ok(manifest.scripts.build.includes('--mode portal'));
+ assert.ok(fs.existsSync('apps/portal/index.html'));
+ assert.ok(fs.existsSync('apps/portal/src/main.tsx'));
 });

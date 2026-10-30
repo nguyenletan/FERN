@@ -10,7 +10,7 @@ We are completing the FERN website first. The website includes login, Home, the 
 | --- | --- | --- |
 | WEB-SCOPE-01 | Display application descriptions without launching workflows. | Home cards and sidebar application buttons are disabled. Indirect guidance navigation displays an availability description, never a calculation or data-entry workflow. |
 | WEB-SCOPE-02 | Do not select or display a demonstration facility on the website. | No BHX4 status, facility selector or history on Home or FM Overview. Legacy facility guidance displays an explanation only. |
-| WEB-SCOPE-03 | Preserve independent application development. | Standalone source and build entries remain available; website no longer imports their workflow pages. No application records are deleted. |
+| WEB-SCOPE-03 | Preserve independent application development. | Revised 30 October 2026: application source, tests and documentation are maintained in a separate repository, not in the website repository. The website contains no application workflow code (`tests/module-boundaries.test.mjs`). |
 | WEB-SCOPE-04 | Keep website guidance usable on desktop and mobile. | Workspace and learning navigation continue to work; mobile drawer and Home navigation remain available. |
 | WEB-SCOPE-05 | Deliver consistent source, PRD and teaser after website corrections. | Regenerate and reconcile the final handover together; previous ZIPs and teasers are dated snapshots, not automatically refreshed. |
 
@@ -22,7 +22,7 @@ After website completion, review each standalone application's functionality, UI
 
 TypeScript check, 124 automated tests and all application builds pass. In-app browser inspection confirmed disabled Home/sidebar application controls. At 492 px width, FM Overview displayed without BHX4, facility selection or horizontal overflow.
 
-The automated website browser suite could not start because the Playwright Chromium executable is missing. Complete desktop/mobile and keyboard regression remains outstanding. The previous integrated application browser scenario is retained as browser-integrated-legacy.mjs for migration to standalone application testing; it is not a current portal acceptance test.
+The automated website browser suite could not start because the Playwright Chromium executable is missing. Complete desktop/mobile and keyboard regression remains outstanding. (30 October 2026: the integrated application browser scenario moved with the application source to the separate application repository.)
 
 The existing source review ZIP and standalone teaser have not been regenerated in this increment.
 

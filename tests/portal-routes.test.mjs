@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readPortalRoute,portalLocation,lessonTitles,appPages} from '../apps/portal/src/app/portalRoutes.ts';
+import {readPortalRoute,portalLocation,lessonTitles} from '../apps/portal/src/app/portalRoutes.ts';
 test('All baseline pages and resource panels survive a copied URL',()=>{
  for(const page of ['Home','Workspace','Mission & Pillars','Leadership & Policy','FM Overview','Planning & Objectives','Performance & KPIs','Risk & Compliance','Audit & Assurance','Continual Improvement']){
   const route={page,panel:null};const restored=readPortalRoute(portalLocation('',route));assert.equal(restored.page,page);assert.equal(restored.panel,null);
@@ -42,13 +42,4 @@ test('Invalid pillar links are ignored and leaving Mission clears the selection'
  assert.equal(readPortalRoute('?page=leadership&pillar=1').pillar,undefined);
  assert.equal(portalLocation('?page=mission&pillar=3',{page:'Home',panel:null}),'');
  assert.equal(portalLocation('?page=mission&pillar=3',{page:'Mission & Pillars',panel:null}),'?page=mission');
-});
-test('Application pages resolve only in integrated mode and survive a copied URL',()=>{
- for(const [key,page] of Object.entries(appPages)){
-  assert.equal(readPortalRoute('?page='+key).page,'Home');
-  const location=portalLocation('',{page,panel:null});
-  assert.equal(location,'?page='+key);
-  assert.equal(readPortalRoute(location,{apps:true}).page,page);
- }
- assert.equal(readPortalRoute('?page=constructor',{apps:true}).page,'Home');
 });

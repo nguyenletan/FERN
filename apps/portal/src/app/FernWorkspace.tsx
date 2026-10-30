@@ -3,7 +3,6 @@ import {SearchNavigation} from '../features/search/FernAISearch';
 import MissionPillars from '../features/framework/MissionPillars';
 import IntegratedWorkspace from '../features/framework/IntegratedWorkspace';
 import {readPortalRoute,portalLocation,type PortalRoute} from './portalRoutes';
-import {appsEnabled,integratedApp,IntegratedAppView} from './integratedApps.tsx';
 import { homeApplications } from "../features/dashboard/homeApplications.ts";
 import {resourceDestinations,legacyResourcePanels} from "../features/dashboard/resourceDestinations.ts";
 import WorkspaceIndex from "../features/overview/WorkspaceIndex.tsx";
@@ -28,8 +27,7 @@ import type { SourceStatus } from "../../../../packages/platform/src/domain/data
 import { PROTOTYPE_SITES } from "../features/context/prototypeSites.ts";
 import FernAppCard from "../features/dashboard/FernAppCard.tsx";
 export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut: () => void }) {
-  const [route,setRoute]=useState(()=>readPortalRoute(window.location.search,{apps:appsEnabled}));
-  const unavailable=(label:string)=>homeApplications.some(app=>app.name===label)&&!integratedApp(label);
+  const [route,setRoute]=useState(()=>readPortalRoute(window.location.search));
   const activeNav=route.page;
   const homePanel=route.panel;
   const [lesson,setLesson]=useState<{title:string;request:number}|null>(()=>route.lesson?{title:route.lesson,request:0}:null);
@@ -47,7 +45,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
   const setHomePanel=(panel:HomePanel)=>navigate({page:'Home',panel});
   const openLesson=(title:string)=>navigate({page:'Home',panel:'learn',lesson:title});
   useEffect(()=>{
-    const restore=()=>applyRoute(readPortalRoute(window.location.search,{apps:appsEnabled}));
+    const restore=()=>applyRoute(readPortalRoute(window.location.search));
     window.addEventListener('popstate',restore);
     return()=>window.removeEventListener('popstate',restore);
   },[]);
@@ -273,7 +271,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
                           }}
                         >
                           <button
-                            disabled={unavailable(item.label)} title={unavailable(item.label) ? "Coming soon to the FERN website" : undefined} onClick={() => setActiveNav(item.label)}
+                            disabled={homeApplications.some(app=>app.name===item.label)} title={homeApplications.some(app=>app.name===item.label) ? "Coming soon to the FERN website" : undefined} onClick={() => setActiveNav(item.label)}
                             className="flex-1 text-left flex items-center gap-1 py-2 text-xs hover:bg-gray-50"
                             style={{
                               paddingLeft: 25,
@@ -282,7 +280,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
                             }}
                           >
                             <span className="leading-snug flex-1 pr-1">{item.label}</span>
-                            {(item.tag || unavailable(item.label)) && (
+                            {(item.tag || homeApplications.some(app=>app.name===item.label)) && (
                               <span
                                 className="shrink-0 px-1.5 py-0.5 rounded mr-1"
                                 style={{
@@ -292,7 +290,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
                                   fontWeight: 600,
                                 }}
                               >
-                                {unavailable(item.label) ? "Coming soon" : item.tag}
+                                {homeApplications.some(app=>app.name===item.label) ? "Coming soon" : item.tag}
                               </span>
                             )}
                           </button>
@@ -305,7 +303,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
                     return (
                       <button
                         key={item.label}
-                        disabled={unavailable(item.label)} title={unavailable(item.label) ? "Coming soon to the FERN website" : undefined} onClick={() => setActiveNav(item.label)}
+                        disabled={homeApplications.some(app=>app.name===item.label)} title={homeApplications.some(app=>app.name===item.label) ? "Coming soon to the FERN website" : undefined} onClick={() => setActiveNav(item.label)}
                         className="w-full text-left flex items-center justify-between py-2 text-sm transition-all hover:bg-gray-50"
                         style={{
                           paddingLeft: 28,
@@ -317,7 +315,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
                         }}
                       >
                         <span className="leading-snug pr-2 text-xs">{item.label}</span>
-                        {(item.tag || unavailable(item.label)) && (
+                        {(item.tag || homeApplications.some(app=>app.name===item.label)) && (
                           <span
                             className="shrink-0 px-1.5 py-0.5 rounded"
                             style={{
@@ -327,7 +325,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
                               fontWeight: 600,
                             }}
                           >
-                            {unavailable(item.label) ? "Coming soon" : item.tag}
+                            {homeApplications.some(app=>app.name===item.label) ? "Coming soon" : item.tag}
                           </span>
                         )}
                       </button>
@@ -386,7 +384,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
         {/* Page content */}
         <main ref={pageContent} className={isDashboard ? "flex-1 overflow-y-auto bg-white" : "flex-1 overflow-y-auto px-2 py-3 sm:px-6 sm:py-6"}>
 
-          {!isDashboard && <nav className="fern-page-breadcrumb" aria-label="Breadcrumb"><button onClick={goHome}>Home</button><span>/</span>{integratedApp(activeNav)?<span>FERN Apps</span>:<button onClick={()=>setActiveNav("Workspace")}>Workspace</button>}<span>/</span><span aria-current="page">{activeNav}</span></nav>}
+          {!isDashboard && <nav className="fern-page-breadcrumb" aria-label="Breadcrumb"><button onClick={goHome}>Home</button><span>/</span><button onClick={()=>setActiveNav("Workspace")}>Workspace</button><span>/</span><span aria-current="page">{activeNav}</span></nav>}
           <SearchNavigation.Provider value={setActiveNav}><React.Suspense key={activeContext.site} fallback={<p role="status">Loading application…</p>}>
             {isDashboard ? (
               <DashboardPage
@@ -416,8 +414,6 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
               <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><AuditAssurancePage onNavigate={setActiveNav}/></IntegratedWorkspace>
             ) : activeNav === "Continual Improvement" ? (
               <IntegratedWorkspace key={activeNav} title={activeNav} onNavigate={setActiveNav}><ContinualImprovementPage/></IntegratedWorkspace>
-            ) : integratedApp(activeNav) ? (
-              <IntegratedAppView app={integratedApp(activeNav)!} context={activeContext} onNavigate={setActiveNav} onDirtyChange={setLaunchDirty}/>
             ) : homeApplications.some(app=>app.name===activeNav) ? (
               <section className="rounded-xl border bg-white p-6"><h1 className="text-2xl font-bold">{activeNav}</h1><p className="my-4">{homeApplications.find(app=>app.name===activeNav)?.description}</p><p>Coming soon to the FERN website. This application is not available here.</p><button className="fern-primary mt-4" onClick={goHome}>Return to Home</button></section>
             ) : (
