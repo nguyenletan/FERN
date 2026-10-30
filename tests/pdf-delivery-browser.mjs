@@ -15,14 +15,14 @@ async function openStandard(page) {
   await page.getByPlaceholder('Enter demo').fill('demo');
   await page.getByPlaceholder('Enter your password').fill('demo');
   await button(page, 'Sign in').click();
-  await page.locator('.fern-hero').waitFor();
-  await page.locator('.fern-home-header').getByRole('button', {name: 'Reference library', exact: true}).click();
+  await page.locator('#fern-main').getByRole('heading', {level: 1, name: 'Welcome to FERN', exact: true}).waitFor();
+  await page.getByRole('navigation', {name: 'FERN navigation'}).getByRole('link', {name: 'Standards & Reference Library', exact: true}).click();
   const search = page.getByRole('searchbox', {name: 'Search standards', exact: true});
   await search.fill('fire doors');
   await search.press('Enter');
-  await page.locator('.fs-result-row').first().click();
-  await page.locator('.fs-reading').waitFor();
-  return (await page.locator('.fs-reading').innerText()).match(/CT\.FIRE\.DOORS/) ? 'Compliance-CT.FIRE.DOORS' : null;
+  await page.locator('#bbm-search-results li').first().getByRole('link').first().click();
+  await page.locator('#bbm-standard-title').waitFor();
+  return (await page.locator('#fern-main').innerText()).match(/CT\.FIRE\.DOORS/) ? 'Compliance-CT.FIRE.DOORS' : null;
 }
 async function downloadBytes(page, name) {
   const pending = page.waitForEvent('download');
@@ -42,7 +42,7 @@ try {
   const requested = [];
   page.on('request', (r) => requested.push(new URL(r.url()).pathname));
   await page.goto(url);
-  await page.locator('.fern-hero').or(page.getByPlaceholder('Enter demo')).first().waitFor();
+  await page.getByPlaceholder('Enter demo').waitFor();
   assert.ok(!requested.some((p) => p.includes('StandardsLibrary')), 'reader must not load before the library opens');
   const key = await openStandard(page);
   assert.equal(key, 'Compliance-CT.FIRE.DOORS');

@@ -1,10 +1,12 @@
-import type {HomePanel} from '../features/dashboard/HomeNavigation.tsx';
 import {homeApplications} from '../features/dashboard/homeApplications.ts';
+import {resourceDestinations,legacyResourcePanels} from '../features/dashboard/resourceDestinations.ts';
 
+export type HomePanel = "about" | "facility" | "guide" | "learn" | "reference" | "help" | "updates" | null;
 const pages: Record<string,string> = {
  home:'Home', workspace:'Workspace', mission:'Mission & Pillars', leadership:'Leadership & Policy',
  overview:'FM Overview', planning:'Planning & Objectives', performance:'Performance & KPIs',
  risk:'Risk & Compliance', assurance:'Audit & Assurance', improvement:'Continual Improvement',
+ applications:'Applications', admin:'Users & roles',
  // Application introduction pages, e.g. ?page=pricing
  ...Object.fromEntries(homeApplications.map(app=>[app.slug,app.name])),
 };
@@ -29,4 +31,12 @@ export function portalLocation(search:string,route:PortalRoute) {
  if(route.panel==='learn'&&lesson)params.set('lesson',slug(lesson));else params.delete('lesson');
  if(route.page==='Mission & Pillars'&&!route.panel&&route.pillar!==undefined&&Number.isInteger(route.pillar)&&route.pillar>=1&&route.pillar<=8)params.set('pillar',String(route.pillar));else params.delete('pillar');
  return params.size?'?'+params.toString():'';
+}
+/** The route for a destination label used across the portal: a page, a resource, a lesson or an application name. */
+export function routeFor(requested:string,pillar?:number):PortalRoute {
+ const lesson=lessonTitles.find(title=>title.toLowerCase()===requested.toLowerCase());
+ if(lesson)return {page:'Home',panel:'learn',lesson};
+ const panel=resourceDestinations.find(item=>item.label===requested)?.panel ?? legacyResourcePanels[requested] ?? null;
+ const page=panel||requested==='Home'||requested==='Programme Overview / Dashboard'?'Home':requested;
+ return {page,panel,pillar:page==='Mission & Pillars'?pillar:undefined};
 }

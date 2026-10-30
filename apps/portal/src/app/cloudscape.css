@@ -1,0 +1,60 @@
+/* FERN portal on Cloudscape. Keep the top navigation visible while the page scrolls. */
+.fern-top-navigation {
+  position: sticky;
+  top: 0;
+  z-index: 1002;
+}
+
+/* Sections opened from links scroll clear of the sticky top navigation. */
+#fern-main [id] {
+  scroll-margin-top: 72px;
+}
+
+/* The Tailwind reset removes list markers and indents; restore them inside Cloudscape text content. */
+[class*="awsui_text-content_"] ul,
+[class*="awsui_text-content_"] ol {
+  padding-left: 1.4rem;
+}
+[class*="awsui_text-content_"] ul {
+  list-style: disc;
+}
+[class*="awsui_text-content_"] ol {
+  list-style: decimal;
+}
+
+/* Secondary text placed after a section title (e.g. "Planned Maintenance — what it covers"). */
+.fern-section-description {
+  display: block;
+  font-weight: 400;
+  color: var(--color-text-body-secondary-h9w9la, #5f6b7a);
+}
+
+/* Responsive grid of small blocks inside a container. */
+.fern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+}
+.fern-grid > * {
+  min-width: 0;
+}
+
+/* Wide source tables scroll sideways instead of widening the page. */
+.fern-table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.fern-table-scroll table {
+  border-collapse: collapse;
+  min-width: 100%;
+}
+.fern-table-scroll th,
+.fern-table-scroll td {
+  border: 1px solid #d1d5db;
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+.fern-table-scroll th {
+  background: #f3f4f6;
+}

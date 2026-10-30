@@ -19,6 +19,7 @@
     "test:browser:pdf": "node tests/pdf-delivery-browser.mjs"
   },
   "dependencies": {
+    "@cloudscape-design/components": "^3.0.1407",
     "@phosphor-icons/react": "^2.1.10",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

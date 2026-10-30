@@ -1,3 +1,4 @@
+import Alert from '@cloudscape-design/components/alert';
 const lessons: Record<string, {heading:string; text?:string; steps?:[string,string][]; example?:string}[]> = {
  'Understanding FERN': [
   {heading:'Four Questions to Ask', steps:[
@@ -39,7 +40,7 @@ export default function IntroductoryLearning({topic}:{topic:string}) {
  return <>{(lessons[topic]??[]).map(lesson=><section key={lesson.heading}>
   <h3>{lesson.heading}</h3>
   {lesson.text&&<p>{lesson.text}</p>}
-  {lesson.example&&<p className="fern-learning-example">{lesson.example}</p>}
-  {lesson.steps&&<ol className="fern-learning-steps">{lesson.steps.map(([title,detail])=><li key={title}><strong>{/[.?!]$/.test(title)?title:title+'.'}</strong> {detail}</li>)}</ol>}
+  {lesson.example&&<Alert type="info" header="Example">{lesson.example}</Alert>}
+  {lesson.steps&&<ol>{lesson.steps.map(([title,detail])=><li key={title}><strong>{/[.?!]$/.test(title)?title:title+'.'}</strong> {detail}</li>)}</ol>}
  </section>)}</>;
 }

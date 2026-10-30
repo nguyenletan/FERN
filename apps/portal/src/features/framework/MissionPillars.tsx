@@ -1,23 +1,43 @@
-import {portalLocation} from '../../app/portalRoutes';
-import ReadingControls from '../reading/ReadingControls';
-import FernAISearch from '../search/FernAISearch';
-import {useEffect,useRef} from 'react';
-import {ArrowRight,Compass,UsersThree,ShieldCheck,Plant,Flag,Lightbulb,GraduationCap,CheckSquare,ChartLineUp,ArrowsClockwise} from '@phosphor-icons/react';
+import {useEffect} from 'react';
+import Box from '@cloudscape-design/components/box';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
+import Container from '@cloudscape-design/components/container';
+import Header from '@cloudscape-design/components/header';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import StatusIndicator from '@cloudscape-design/components/status-indicator';
 import data from './frameworkContent.json';
-import FrameworkContent,{type Navigate} from './FrameworkContent';
-import HumanImage from '../visual/HumanImage';
-import './framework.css';
-const icons=[Compass,UsersThree,Flag,Lightbulb,GraduationCap,CheckSquare,ChartLineUp,ArrowsClockwise];
-export function HomeMission({onNavigate}:{onNavigate:Navigate}){
- return <section className="fw-home-mission" aria-labelledby="fw-home-mission-title"><div className="fw-home-mission-copy"><p className="fw-eyebrow">Our purpose. Your everyday impact.</p><h2 id="fw-home-mission-title">One mission. Eight ways to make it happen.</h2><p>{data.mission}</p><button className="fw-primary" onClick={()=>onNavigate('Mission & Pillars')}>Explore our mission & pillars <ArrowRight size={19}/></button></div><div className="fw-home-pillars" aria-label="The eight FERN pillars">{data.pillars.map((p,i)=>{const Icon=icons[i];return <a key={p.number} href={portalLocation('',{page:'Mission & Pillars',panel:null,pillar:p.number})} onClick={event=>{if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();onNavigate('Mission & Pillars',p.number);}}><Icon size={23} aria-hidden="true"/><span>{p.name}</span></a>;})}</div></section>;
+import FrameworkContent from './FrameworkContent';
+import {Card,ExpandAllControls,NavButton,NavLink,Page,Prose,Section,revealSection} from '../../app/ui';
+
+/** Home page summary: the mission and the eight pillar names, with one link to the full page. */
+export function HomeMission(){
+ return <Container header={<Header variant="h2" description="Our purpose. Your everyday impact." actions={<NavButton to="Mission & Pillars">Explore our mission &amp; pillars</NavButton>}>One mission. Eight ways to make it happen.</Header>}>
+  <SpaceBetween size="m">
+   <Prose><p>{data.mission}</p></Prose>
+   <ColumnLayout columns={4} variant="text-grid" minColumnWidth={160}>
+    {data.pillars.map(p=><Box key={p.number} variant="small"><Box variant="awsui-key-label">Pillar {p.number}</Box>{p.name}</Box>)}
+   </ColumnLayout>
+  </SpaceBetween>
+ </Container>;
 }
-export default function MissionPillars({onNavigate}:{onNavigate:Navigate}){
- const root=useRef<HTMLElement>(null);
- useEffect(()=>{root.current?.querySelector<HTMLElement>('h1')?.focus({preventScroll:true});},[]);
- const jump=(number:number)=>{const card=root.current?.querySelector<HTMLDetailsElement>(`#fw-pillar-${number}`);if(card){card.open=true;card.scrollIntoView({block:'start',behavior:'auto'});card.querySelector<HTMLElement>('summary')?.focus({preventScroll:true});}};
- return <article ref={root} className="fw-page fw-mission-page" data-reading-scope><header className="fw-hero"><HumanImage discipline="Mission & Pillars"/><div><p className="fw-eyebrow">The purpose behind our work</p><h1 tabIndex={-1}>Mission &amp; Pillars</h1><p className="fw-lead">Better facilities begin with clear direction.</p><p className="fw-mission-statement">{data.mission}</p><div className="fw-outcomes"><span><ShieldCheck size={19}/>Safe &amp; reliable</span><span><Plant size={19}/>Efficient &amp; sustainable</span><span><UsersThree size={19}/>People &amp; outcomes</span></div></div></header><FernAISearch page="Mission & Pillars"/><ReadingControls label="Mission & Pillars"/>
- <section className="fw-card"><h2>From purpose to everyday practice</h2><p>The eight pillars connect our FM mission with the way we lead, decide and learn. They bring Amazon leadership behaviours and relevant ISO management-system guidance into practical FM work.</p><ol className="fw-cycle">{['Understand the need','Plan the response','Coordinate delivery','Check the evidence','Verify and learn'].map(s=><li key={s}>{s}</li>)}</ol></section>
- <section className="fw-card" aria-labelledby="fw-eight-title"><div className="fw-section-heading"><div><p className="fw-eyebrow">Explore the framework</p><h2 id="fw-eight-title">The eight FERN pillars</h2><p>Choose a pillar to see its meaning, the behaviours behind it and how to apply it.</p></div></div><details className="fern-reading-detail"><summary>Jump to a pillar</summary><nav className="fw-pillar-jump" aria-label="Choose a pillar">{data.pillars.map(p=><button key={p.number} onClick={()=>jump(p.number)}>{String(p.number).padStart(2,'0')} · {p.name}</button>)}</nav></details><div className="fw-pillar-grid">{data.pillars.map((p,i)=>{const Icon=icons[i];const [intro,...rest]=p.body.split('\n\n');return <details id={`fw-pillar-${p.number}`} className="fw-pillar-card" key={p.number}><summary><span className="fw-pillar-icon"><Icon size={26}/></span><span><small>Pillar {p.number}</small><strong>{p.name}</strong><span className="fw-pillar-preview">{intro.replace(/\*\*/g,'')}</span></span><span className="fw-expand" aria-hidden="true">+</span></summary><FrameworkContent text={rest.join('\n\n')} onNavigate={onNavigate}/><button className="fw-text-link" onClick={()=>onNavigate('Workspace')}>Apply this in the Workspace →</button></details>;})}</div></section>
- <section className="fw-next"><div><h2>Put the pillars into practice</h2><p>Start with the guidance that supports your next decision.</p></div><button className="fw-primary" onClick={()=>onNavigate('Workspace')}>Explore the Workspace <ArrowRight size={19}/></button><button className="fw-secondary" onClick={()=>onNavigate('Leadership & Policy')}>Read Leadership &amp; Policy</button></section>
- </article>;
+export default function MissionPillars({pillar}:{pillar?:number}){
+ useEffect(()=>{if(pillar)revealSection(`fw-pillar-${pillar}`);},[pillar]);
+ return <Page title="Mission & Pillars" description="Better facilities begin with clear direction.">
+  <Container header={<Header variant="h2" description="The purpose behind our work">Our mission</Header>}>
+   <SpaceBetween size="m">
+    <Prose><p>{data.mission}</p></Prose>
+    <SpaceBetween direction="horizontal" size="l"><StatusIndicator type="success">Safe &amp; reliable</StatusIndicator><StatusIndicator type="success">Efficient &amp; sustainable</StatusIndicator><StatusIndicator type="success">People &amp; outcomes</StatusIndicator></SpaceBetween>
+   </SpaceBetween>
+  </Container>
+  <Card title="From purpose to everyday practice">
+   <p>The eight pillars connect our FM mission with the way we lead, decide and learn. They bring Amazon leadership behaviours and relevant ISO management-system guidance into practical FM work.</p>
+   <ol>{['Understand the need','Plan the response','Coordinate delivery','Check the evidence','Verify and learn'].map(s=><li key={s}>{s}</li>)}</ol>
+  </Card>
+  <Container header={<Header variant="h2" description="Choose a pillar to see its meaning, the behaviours behind it and how to apply it." actions={<ExpandAllControls label="the eight pillars"/>}>The eight FERN pillars</Header>}>
+   <SpaceBetween size="s">{data.pillars.map(p=>{const [intro,...rest]=p.body.split('\n\n');return <Section id={`fw-pillar-${p.number}`} key={p.number} variant="default" header={`Pillar ${p.number} · ${p.name}`} description={intro.replace(/\*\*/g,'')}>
+    <SpaceBetween size="s"><FrameworkContent text={rest.join('\n\n')}/><NavLink to="Workspace">Apply this in the Workspace</NavLink></SpaceBetween>
+   </Section>;})}</SpaceBetween>
+  </Container>
+  <Container header={<Header variant="h2" description="Start with the guidance that supports your next decision." actions={<SpaceBetween direction="horizontal" size="xs"><NavButton to="Leadership & Policy">Read Leadership &amp; Policy</NavButton><NavButton to="Workspace" variant="primary">Explore the Workspace</NavButton></SpaceBetween>}>Put the pillars into practice</Header>}/>
+ </Page>;
 }
