@@ -38,8 +38,8 @@ import risk from '../features/visual/human-images/risk.jpg';
 import audit from '../features/visual/human-images/audit.jpg';
 import improvement from '../features/visual/human-images/improvement.jpg';
 import learn from '../features/visual/human-images/learn.jpg';
-import heroImage from '../../../../packages/platform/src/assets/home-hero-black-colleague-blended.png';
-import guideImage from '../../../../packages/platform/src/assets/fern-guide-transparent.png';
+import heroImage from '../assets/home-hero-black-colleague-blended.png';
+import guideImage from '../assets/fern-guide-transparent.png';
 
 export const hero = { src: heroImage, alt: 'Facilities colleagues reviewing a tablet in a warehouse' };
 /** Side-by-side image and text on wide screens; the image moves above the text on phones (side media cannot wrap). */

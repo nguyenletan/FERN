@@ -34,7 +34,7 @@ See [architecture](docs/start/ARCHITECTURE.md) and the [documentation index](doc
 
 ## Proposed administration
 
-`apps/portal/src/features/admin-demo` contains the sample catalogue, local editor and transition validation. Requirements CMS-01 through CMS-10 govern production implementation. The editor covers 66 sample sections, not the full production inventory. Roles, approvals and publishing are local simulations. Saved/imported drafts never update the current website.
+`src/features/admin-demo` contains the sample catalogue, local editor and transition validation. Requirements CMS-01 through CMS-10 govern production implementation. The editor covers 66 sample sections, not the full production inventory. Roles, approvals and publishing are local simulations. Saved/imported drafts never update the current website.
 
 `tests/admin-demo.test.mjs` checks content validation, import boundaries and allowed role/state transitions. The publication state is a demonstration and offers no security boundary. Do not deploy this demo sign-in or browser storage as an internal production service.
 

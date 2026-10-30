@@ -6,9 +6,9 @@ import {
   countryContent,
   normaliseCountry,
   visibleCountryRow,
-} from '../apps/portal/src/features/reference/countrySearch.ts';
-import { findStandards } from '../apps/portal/src/features/reference/standardsSearch.ts';
-import { readStandardLocation, standardLocation } from '../apps/portal/src/features/reference/standardContext.ts';
+} from '../src/features/reference/countrySearch.ts';
+import { findStandards } from '../src/features/reference/standardsSearch.ts';
+import { readStandardLocation, standardLocation } from '../src/features/reference/standardContext.ts';
 const table = (values) => ({
   type: 'table',
   header: true,
@@ -94,7 +94,7 @@ test('country URLs preserve edition, query and unknown toggle, and validate coun
 });
 test('actual supplied standards retain source integrity and country-specific PAT rows', () => {
   const data = JSON.parse(
-    fs.readFileSync(new URL('../apps/portal/src/features/reference/generated/standards.json', import.meta.url)),
+    fs.readFileSync(new URL('../src/features/reference/generated/standards.json', import.meta.url)),
   );
   const all = countryCatalogue(data.entries, data.pages, 'SK', true);
   const known = countryCatalogue(data.entries, data.pages, 'SK', false);

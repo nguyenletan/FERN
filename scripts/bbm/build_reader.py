@@ -7,7 +7,7 @@ from collections import Counter
 import pdfplumber,pypdfium2
 from pypdf import PdfReader,PdfWriter
 p=argparse.ArgumentParser();p.add_argument('--sources',type=Path,required=True);p.add_argument('--workspace',type=Path,required=True);args=p.parse_args()
-root=args.workspace; repo=Path(__file__).resolve().parents[2];dest=repo/'apps/portal/src/features/reference/generated';dest.mkdir(exist_ok=True)
+root=args.workspace; repo=Path(__file__).resolve().parents[2];dest=repo/'src/features/reference/generated';dest.mkdir(exist_ok=True)
 cache=root/'work/bbm-full/cache';cache.mkdir(parents=True,exist_ok=True)
 pdfout=root/'output/pdf/bbm-standards';pdfout.mkdir(parents=True,exist_ok=True)
 # PDFs ship as static files (public/bbm → dist/bbm); pdf-files.json maps entry id → file name.

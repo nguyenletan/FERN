@@ -28,8 +28,6 @@
   },
   "include": [
     "src",
-    "apps",
-    "packages",
     "vite.config.ts"
   ]
 }

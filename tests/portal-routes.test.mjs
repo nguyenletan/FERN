@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readPortalRoute, portalLocation, lessonTitles } from '../apps/portal/src/app/portalRoutes.ts';
+import { readPortalRoute, portalLocation, lessonTitles } from '../src/app/portalRoutes.ts';
 test('All baseline pages and resource panels survive a copied URL', () => {
   for (const page of [
     'Home',

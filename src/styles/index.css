@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
-@source "../../../apps";
-@source "../../";
+@source "../";
 
 /* Inter from Google Fonts; if it cannot load (offline or blocked), use the system font:
    San Francisco on macOS/iOS, Segoe UI on Windows, Roboto on Android. */

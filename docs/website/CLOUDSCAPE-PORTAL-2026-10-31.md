@@ -92,13 +92,13 @@ The page also links to the existing content-administration walkthrough.
 
 | File | Purpose |
 | --- | --- |
-| `apps/portal/src/app/FernWorkspace.tsx` | Shell: header, navigation, breadcrumbs, routing, page switch |
-| `apps/portal/src/app/ui.tsx` | Shared blocks: Cloudscape theme, `Page`, `Card`, `Section`, `ExpandAllControls`, `Terms`, `NavLink` / `NavButton`, `revealSection` |
-| `apps/portal/src/app/cloudscape.css` | Sticky header, list markers under the Tailwind reset, grid and wide-table helpers, scroll offset for anchors |
-| `apps/portal/src/app/portalRoutes.ts` | URL ↔ page, plus `routeFor(label)`, which maps a page, resource, lesson or application name to its route |
-| `apps/portal/src/app/preferences.ts` | Header country preference |
-| `apps/portal/src/app/visuals.tsx` | Photographs (`PageBanner`), hero, mascot, icon sets and `IconTitle` / `FernIcon` |
-| `apps/portal/src/features/admin/` | Users & roles demonstration and its sample data |
+| `src/app/FernWorkspace.tsx` | Shell: header, navigation, breadcrumbs, routing, page switch |
+| `src/app/ui.tsx` | Shared blocks: Cloudscape theme, `Page`, `Card`, `Section`, `ExpandAllControls`, `Terms`, `NavLink` / `NavButton`, `revealSection` |
+| `src/app/cloudscape.css` | Sticky header, list markers under the Tailwind reset, grid and wide-table helpers, scroll offset for anchors |
+| `src/app/portalRoutes.ts` | URL ↔ page, plus `routeFor(label)`, which maps a page, resource, lesson or application name to its route |
+| `src/app/preferences.ts` | Header country preference |
+| `src/app/visuals.tsx` | Photographs (`PageBanner`), hero, mascot, icon sets and `IconTitle` / `FernIcon` |
+| `src/features/admin/` | Users & roles demonstration and its sample data |
 
 - **Links inside the portal** use `NavLink` or `NavButton` with a page label (e.g. `<NavLink to="Performance & KPIs">`). They render a real `href`, so ctrl/cmd-click opens a new tab, and a plain click navigates in place.
 - **Reading sections** use `Section`. "Expand all" opens every section inside the nearest `[data-reading-scope]`. A `#id` link, or `revealSection(id)`, opens the section that contains the target and scrolls to it.
