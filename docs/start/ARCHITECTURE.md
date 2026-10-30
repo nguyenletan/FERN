@@ -22,9 +22,21 @@ This repository delivers the FERN website: demo sign-in, Home, the seven Workspa
 | `src/auth` | Demo sign-in (Cloudscape form); to be replaced by Midway |
 | `src/styles/index.css`, `src/assets` | Global stylesheet (bundled Open Sans, Tailwind reset, pointer cursor) and shared images |
 | `tests/` | `node --test` unit and source-data checks; Playwright browser suites (`browser.mjs`, `homepage-browser.mjs`, `portal-handover-browser.mjs`, `pdf-delivery-browser.mjs`) |
-| `scripts/` | Build, verification, single-file export and BBM reader generation |
+| `scripts/` | Development tooling only: verification, single-file export and BBM reader generation. **Removed when the portal is deployed to Amazon's environment** (see below) |
 
 This is a single Vite application (no pnpm workspace): all source is under `src/`. `pnpm dev` serves it at http://127.0.0.1:4173 and `pnpm build` writes `dist/`. The CMS and the FERN applications are separate services and repositories; if code ever needs sharing with them, publish it as a package rather than adding workspace folders here.
+
+## Deployment note: `scripts/` is not deployed
+
+The `scripts/` folder is development tooling and **will be deleted when FERN is deployed to Amazon's environment**. The deployed website does not need it: `pnpm build` produces `dist/` (`index.html`, `assets/`, `bbm/`) without any of these files.
+
+| Script | Purpose | After deletion |
+| --- | --- | --- |
+| `scripts/verify.mjs` (`pnpm verify`) | Runs typecheck, tests, build and the browser suite | Replace with Amazon's CI/CD pipeline running `pnpm typecheck`, `pnpm test` and `pnpm build` |
+| `scripts/export-portal.mjs` (`pnpm export:portal`) | Builds the single-file HTML for offline review (BBM-HTML-07) | Not needed in production. `pnpm test:browser:pdf` also checks this file, so drop its single-file part with the script |
+| `scripts/bbm/build_reader.py` and the two `*-TASK-INDEX.md` files | Regenerate the Standards & Reference Library data (`src/features/reference/generated/`, `public/bbm/`) from new BBM PDF editions | Keep a copy outside the deployed repository, with whoever maintains the BBM content, until the CMS handles BBM source intake (CMS requirements, section 11). The TASK-INDEX files are required inputs |
+
+When the folder is removed, also remove the `verify`, `verify:core` and `export:portal` entries from `package.json` and the `scripts` path from the `format` commands.
 
 ## Routing and state
 
