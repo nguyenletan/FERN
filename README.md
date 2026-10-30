@@ -14,6 +14,8 @@ Use Node.js 24 and pnpm 11.19.0. Install with `pnpm install --frozen-lockfile`, 
 - `pnpm export:portal` — creates `dist-share/FERN-Internal-Portal.html`, the single-file website demonstration.
 - `pnpm test:browser` — browser suite against a running development server (defaults to port 4173).
 - `pnpm test:portal-handover` — production build/offline smoke suite. Install Playwright Chromium before running browser suites.
+- `pnpm dev:integrated` / `pnpm build:integrated` — portal with Pricing, Lifecycle, Pre-contract and Mobilisation composed on one origin, sharing issued pricing without file transfer. The default website build still excludes them. See [integrated application mode](docs/start/INTEGRATED-APPS.md).
+- `pnpm check:bundles` — confirms the website build has no application code and the integrated build has all four; `pnpm test:browser:integrated` runs the integrated browser acceptance.
 
 The current handover verification records what was actually run. Retained automated browser scripts were updated for this demo scope but were not executed in this session; browser checks used the desktop browser tool.
 

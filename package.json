@@ -22,7 +22,12 @@
     "dev:launch-tracker": "pnpm --filter @fern/launch-tracker dev",
     "test:browser:pricing-transfer": "node tests/pricing-transfer-browser.mjs",
     "export:portal": "node scripts/export-portal.mjs",
-    "test:portal-handover": "node tests/portal-handover-browser.mjs"
+    "test:portal-handover": "node tests/portal-handover-browser.mjs",
+    "dev:integrated": "vite --mode integrated",
+    "build:integrated": "vite build --mode integrated",
+    "preview:integrated": "vite preview --mode integrated",
+    "check:bundles": "node scripts/check-bundles.mjs",
+    "test:browser:integrated": "node tests/integrated-browser.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
