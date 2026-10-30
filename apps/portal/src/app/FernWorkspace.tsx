@@ -264,7 +264,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
                                   fontWeight: 600,
                                 }}
                               >
-                                {homeApplications.some(app=>app.name===item.label) ? "Coming soon" : item.tag}
+                                {homeApplications.some(app=>app.name===item.label) ? "Soon" : item.tag}
                               </span>
                             )}
                           </button>
@@ -299,7 +299,7 @@ export default function FernHomepage({ onSignOut: performSignOut }: { onSignOut:
                               fontWeight: 600,
                             }}
                           >
-                            {homeApplications.some(app=>app.name===item.label) ? "Coming soon" : item.tag}
+                            {homeApplications.some(app=>app.name===item.label) ? "Soon" : item.tag}
                           </span>
                         )}
                       </button>

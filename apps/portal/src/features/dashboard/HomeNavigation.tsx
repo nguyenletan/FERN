@@ -1,4 +1,6 @@
 import {resourceDestinations} from "./resourceDestinations.ts";
+import {homeApplications} from "./homeApplications.ts";
+import {applicationIcons} from "./HomeApplications.tsx";
 import { useEffect, useRef, type ReactNode } from "react";
 import {
   CaretDown,
@@ -181,6 +183,8 @@ export function HomeSidebar({
               </button>
             );
           })}
+          </SidebarGroup><SidebarGroup id="fern-home-app-items" title="FERN Apps" open={!!expandedGroups["FERN Apps"]} onToggle={()=>onToggleGroup("FERN Apps")}>
+          {homeApplications.map((app,i)=>{const Icon=applicationIcons[i]??ClipboardText;return <button key={app.name} disabled title="Coming soon to the FERN website"><Icon size={19}/>{app.title}<span className="fern-coming-soon">Soon</span></button>;})}
           </SidebarGroup><SidebarGroup id="fern-home-resource-items" title="Resources & Help" open={!!expandedGroups["Resources & Help"]} onToggle={()=>onToggleGroup("Resources & Help")}>
           {resourceDestinations.map(item=><button key={item.label} className={currentPanel===item.panel?"current":undefined} aria-current={currentPanel===item.panel?"page":undefined} onClick={()=>panel(item.panel)}><BookOpen size={19}/>{item.label}</button>)}
           </SidebarGroup><SidebarGroup id="fern-home-support-items" title="Support" open={!!expandedGroups["Support"]} onToggle={()=>onToggleGroup("Support")}>

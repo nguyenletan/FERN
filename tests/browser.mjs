@@ -41,8 +41,11 @@ try {
 
 
   assert.equal(await page.getByText("BHX4", {exact:true}).count(),0);
-  const cards=page.locator(".fern-app-grid");
-  assert.equal(await cards.count(),0);
+  // WEB-SCOPE-01: five application cards are described as "Coming soon" and launch nothing.
+  const cards=page.locator(".fern-app-grid article");
+  assert.equal(await cards.count(),5);
+  assert.equal(await cards.getByText("Coming soon",{exact:true}).count(),5);
+  assert.equal(await page.locator(".fern-app-grid").locator("button, a").count(),0);
   await nav("FM Overview");
   assert.equal(await page.getByText("Selected Facility",{exact:true}).count(),0);
   assert.equal(await page.getByText("BHX4",{exact:true}).count(),0);

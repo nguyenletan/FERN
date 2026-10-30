@@ -14,6 +14,8 @@ We are completing the FERN website first. The website includes login, Home, the 
 | WEB-SCOPE-04 | Keep website guidance usable on desktop and mobile. | Workspace and learning navigation continue to work; mobile drawer and Home navigation remain available. |
 | WEB-SCOPE-05 | Deliver consistent source, PRD and teaser after website corrections. | Regenerate and reconcile the final handover together; previous ZIPs and teasers are dated snapshots, not automatically refreshed. |
 
+30 October 2026: Home shows a "FERN Applications" section with five non-interactive cards (title, description, "Coming soon"), and both sidebars list the five applications as disabled "Coming soon" entries. Covered by `tests/browser.mjs` and `tests/portal-handover-browser.mjs`.
+
 “Coming soon” means unavailable on the website. It is not a delivery date, a statement that all application functionality is complete, or an Amazon production approval.
 
 After website completion, review each standalone application's functionality, UI and authorised real-data validation. Amazon integration specifications, source ownership, authorised contacts, identity, shared storage and formal approvals remain controlled handover dependencies.

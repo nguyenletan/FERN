@@ -100,4 +100,5 @@ const allNavGroups = [
   },
 ];
 
-export const navGroups = allNavGroups.filter(group=>group.label!=="FERN Apps");
+// Applications are listed as "Coming soon" (disabled) until released; see FernWorkspace and WEB-SCOPE-01.
+export const navGroups = allNavGroups;

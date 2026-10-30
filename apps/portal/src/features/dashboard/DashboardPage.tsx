@@ -9,6 +9,7 @@ import HelpGuidance from './HelpGuidance.tsx';
 import Learn from './Learn.tsx';
 import GetStarted from './GetStarted.tsx';
 import FernUpdates from './FernUpdates.tsx';
+import HomeApplications from './HomeApplications.tsx';
 import { useEffect, useRef } from "react";
 import {
   ArrowRight,
@@ -170,6 +171,8 @@ export default function DashboardPage({
             </button>
           </section>
         </div>
+
+        <HomeApplications/>
 
         <section className="fern-help fern-assistant-help" aria-labelledby="fern-help-title">
           <img src={helper} alt="" />
