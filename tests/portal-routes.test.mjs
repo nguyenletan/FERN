@@ -43,3 +43,9 @@ test('Invalid pillar links are ignored and leaving Mission clears the selection'
  assert.equal(portalLocation('?page=mission&pillar=3',{page:'Home',panel:null}),'');
  assert.equal(portalLocation('?page=mission&pillar=3',{page:'Mission & Pillars',panel:null}),'?page=mission');
 });
+test('Every application introduction page has a stable restorable URL',()=>{
+ for(const [slug,page] of [['pricing','Pricing Template Generator'],['lifecycle','Lifecycle & Asset Analysis'],['pre-contract','FM Pre-Contract / Pre-Tender Assessment'],['contract-service-model','FM Contract & Service Model'],['mobilisation','FM Mobilisation & Transition Tracker']]){
+  assert.equal(portalLocation('',{page,panel:null}),'?page='+slug);
+  assert.equal(readPortalRoute('?page='+slug).page,page);
+ }
+});

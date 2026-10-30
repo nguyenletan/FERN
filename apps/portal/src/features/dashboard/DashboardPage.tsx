@@ -172,7 +172,7 @@ export default function DashboardPage({
           </section>
         </div>
 
-        <HomeApplications/>
+        <HomeApplications onOpen={setActiveNav}/>
 
         <section className="fern-help fern-assistant-help" aria-labelledby="fern-help-title">
           <img src={helper} alt="" />

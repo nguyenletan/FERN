@@ -1,9 +1,12 @@
 import type {HomePanel} from '../features/dashboard/HomeNavigation.tsx';
+import {homeApplications} from '../features/dashboard/homeApplications.ts';
 
 const pages: Record<string,string> = {
  home:'Home', workspace:'Workspace', mission:'Mission & Pillars', leadership:'Leadership & Policy',
  overview:'FM Overview', planning:'Planning & Objectives', performance:'Performance & KPIs',
  risk:'Risk & Compliance', assurance:'Audit & Assurance', improvement:'Continual Improvement',
+ // Application introduction pages, e.g. ?page=pricing
+ ...Object.fromEntries(homeApplications.map(app=>[app.slug,app.name])),
 };
 const panels: Record<string,HomePanel> = {about:'about', 'getting-started':'guide', learn:'learn', reference:'reference', help:'help', updates:'updates', facility:'facility'};
 export const lessonTitles = ['Understanding FERN','Service Models Explained','From Tender to Transition','Assets, Condition and Lifecycle','Risk, Criticality and Maintenance','Performance, KPIs and SLAs','Sources and Evidence','Policies, BBM Standards and Requirements','Assurance and Continual Improvement'];

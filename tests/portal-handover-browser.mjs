@@ -19,8 +19,8 @@ try{
  const home=async()=>{const a=page.getByRole('link',{name:'FERN home',exact:true});if(await a.count())await a.click();else await page.getByRole('button',{name:'Home',exact:true}).first().click();await page.locator('.fern-hero').waitFor();};
  await page.goto(url);await login();report.checks.push('Production-format build: demonstration sign-in and homepage');
  assert.equal(await page.getByText('BHX4',{exact:true}).count(),0);
- assert.equal(await page.locator('.fern-app-grid article').count(),5);assert.equal(await page.locator('.fern-app-grid').getByText('Coming soon',{exact:true}).count(),5);assert.equal(await page.locator('.fern-app-grid').locator('button, a').count(),0);report.checks.push('Five application cards shown as Coming soon without launch controls; no homepage BHX4 label');
- assert.equal(await page.locator('#fern-home-app-items button:not([disabled])').count(),0);report.checks.push('Sidebar application entries are disabled');
+ assert.equal(await page.locator('.fern-app-grid article').count(),5);assert.equal(await page.locator('.fern-app-grid').getByText('Coming soon',{exact:true}).count(),5);assert.equal(await page.locator('.fern-app-grid').getByRole('button',{name:/^About /}).count(),5);report.checks.push('Five application cards shown as Coming soon with an About link; no homepage BHX4 label');
+ assert.equal(await page.locator('#fern-home-app-items button').count(),5);report.checks.push('Sidebar lists the five applications as Soon');
  for(const title of ['Mission & Pillars','Leadership & Policy','FM Overview','Planning & Objectives','Performance & KPIs','Risk & Compliance','Audit & Assurance','Continual Improvement']){
   await page.locator('aside').getByRole('button',{name:title,exact:true}).click();await page.getByRole('heading',{name:title,exact:true}).first().waitFor();await page.locator('.fern-ai-search').waitFor();report.checks.push('Page and shared search: '+title);
  }

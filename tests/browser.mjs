@@ -41,11 +41,22 @@ try {
 
 
   assert.equal(await page.getByText("BHX4", {exact:true}).count(),0);
-  // WEB-SCOPE-01: five application cards are described as "Coming soon" and launch nothing.
+  // WEB-SCOPE-01: five "Coming soon" cards each open an introduction page that describes, but never launches, the application.
   const cards=page.locator(".fern-app-grid article");
   assert.equal(await cards.count(),5);
   assert.equal(await cards.getByText("Coming soon",{exact:true}).count(),5);
-  assert.equal(await page.locator(".fern-app-grid").locator("button, a").count(),0);
+  assert.equal(await page.locator(".fern-app-grid").locator("button, a").count(),5);
+  await page.getByRole("button",{name:"About Pricing Template Generator",exact:true}).click();
+  await page.getByRole("heading",{level:1,name:"Pricing Template Generator",exact:true}).waitFor();
+  assert.ok(new URL(page.url()).searchParams.get("page")==="pricing");
+  assert.equal(await page.locator(".fern-app-page").getByText("Coming soon",{exact:true}).count(),1);
+  assert.equal(await page.locator(".fern-app-page").getByRole("button",{name:/open|launch|start/i}).count(),0);
+  await page.locator(".fern-app-page-related").getByRole("button",{name:"Lifecycle & Asset Analysis",exact:true}).click();
+  await page.getByRole("heading",{level:1,name:"Lifecycle & Asset Analysis",exact:true}).waitFor();
+  await page.goBack();
+  await page.getByRole("heading",{level:1,name:"Pricing Template Generator",exact:true}).waitFor();
+  await page.getByRole("button",{name:"Return to Home",exact:true}).click();
+  await page.locator(".fern-hero").waitFor();
   await nav("FM Overview");
   assert.equal(await page.getByText("Selected Facility",{exact:true}).count(),0);
   assert.equal(await page.getByText("BHX4",{exact:true}).count(),0);
