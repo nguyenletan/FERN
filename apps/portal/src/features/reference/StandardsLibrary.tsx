@@ -8,7 +8,7 @@ import '../visual/coordinated-design.css';
 import {ReadingRoute} from '../visual/VisualGuide';
 import {useEffect,useRef,useState,useMemo} from 'react';
 import sourceData from './generated/standards.json';
-import pdfData from './generated/pdfs.json';
+import pdfFiles from './generated/pdf-files.json';
 import {type StandardEntry} from './standardsSearch';
 import './standards-reader.css';
 import './library-usability.css';
@@ -17,7 +17,11 @@ type Cell={text:string;col:number;colSpan:number;rowSpan:number};
 type Block={type:string;text?:string;widths?:number[];header?:boolean;rows?:Cell[][]};
 type Page={number:number;text:string;blocks:Block[];figures?:string[]};
 const data=sourceData as {entries:StandardEntry[];pages:Record<string,Page[]>};
-const files=pdfData as Record<string,{name:string;data:string}>;
+// PDFs are static files in public/bbm, served beside the site. The single-file export (scripts/export-portal.mjs)
+// embeds them as base64 in window.__FERN_PDFS__ so the offline review copy still downloads (BBM-HTML-07).
+declare global{interface Window{__FERN_PDFS__?:Record<string,string>}}
+const files=pdfFiles as Record<string,string>;
+const pdfPath=(key:string)=>import.meta.env.BASE_URL+'bbm/'+encodeURIComponent(files[key]);
 const links=Object.fromEntries(data.entries.map(entry=>[entry.id,relatedStandards(data.pages[entry.kind][entry.page-1].blocks,entry,data.entries).flatMap(r=>r.target?[r.target.id]:[])]));
 const browseTopics=['Emergency lighting','Fire doors','Legionella','Air conditioning','Lifts','Generators'];
 function Highlight({text,query}:{text:string;query:string}){const terms=query.toLowerCase().split(/\s+/).filter(t=>t.length>2);return <>{text.split(/(\s+)/).map((part,i)=>terms.some(t=>part.toLowerCase().includes(t))?<mark key={i}>{part}</mark>:part)}</>;}
@@ -46,8 +50,8 @@ export default function StandardsLibrary(){
   window.history.replaceState(null,'',window.location.pathname+standardLocation(window.location.search,undefined,nextQuery,nextKind,{country:nextCountry,includeUnspecified:nextInclude}));
  }
  function showResults(){setShowAll(true);resultsRef.current?.focus({preventScroll:true});}
- function url(key:string){if(!urls.current.has(key)){const bytes=Uint8Array.from(atob(files[key].data),c=>c.charCodeAt(0));urls.current.set(key,URL.createObjectURL(new Blob([bytes],{type:'application/pdf'})));}return urls.current.get(key)!;}
- function download(key:string){try{const a=document.createElement('a');a.href=url(key);a.download=files[key].name;document.body.append(a);a.click();a.remove();setStatus('Download requested: '+files[key].name);}catch{setStatus('This PDF could not be prepared. Please reopen the file in a browser that supports downloads.');}}
+ function url(key:string){const embedded=window.__FERN_PDFS__?.[key];if(!embedded)return pdfPath(key);if(!urls.current.has(key)){const bytes=Uint8Array.from(atob(embedded),c=>c.charCodeAt(0));urls.current.set(key,URL.createObjectURL(new Blob([bytes],{type:'application/pdf'})));}return urls.current.get(key)!;}
+ function download(key:string){try{const a=document.createElement('a');a.href=url(key);a.download=files[key];document.body.append(a);a.click();a.remove();setStatus('Download requested: '+files[key]);}catch{setStatus('This PDF could not be prepared. Please reopen the file in a browser that supports downloads.');}}
  function choose(id:string){if(!entry)returnTo.current={id,scroll:searchFormRef.current?.closest('main')?.scrollTop??0};setReadingView('tasks');const next=data.entries.find(e=>e.id===id);if(!next)return;window.history.pushState(null,'',window.location.pathname+standardLocation(window.location.search,next,query,kind,{country,includeUnspecified}));setOriginal('');setStatus('');setSelected(id);}
  function restoreResults(){requestAnimationFrame(()=>requestAnimationFrame(()=>{
   const saved=returnTo.current;const main=searchFormRef.current?.closest('main');

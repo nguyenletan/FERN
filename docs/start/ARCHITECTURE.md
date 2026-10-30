@@ -14,7 +14,8 @@ This repository delivers the FERN website: demo sign-in, Home, the seven Workspa
 | `apps/portal/src/app` | `FernWorkspace` shell (header, sidebars, page switching, unsaved-change guard), `portalRoutes` (URL ↔ page), `navigation` |
 | `apps/portal/src/features/dashboard` | Home, Get Started, Learn, Reference Library panel, Help, updates, footer and the application descriptions (`homeApplications.ts`) |
 | `apps/portal/src/features/{overview,leadership,planning,performance,risk,audit,improvement,framework}` | Workspace guidance pages and Mission & Pillars |
-| `apps/portal/src/features/reference` | BBM standards and compliance library, task reader, search; `generated/` holds data built by `scripts/bbm` |
+| `apps/portal/src/features/reference` | BBM standards and compliance library, task reader, search; `generated/` holds data built by `scripts/bbm`. The reader is lazy-loaded when the Reference Library opens |
+| `public/bbm` | 198 verified BBM PDFs served as static files (`dist/bbm/`); embedded only in the single-file export. Internal Amazon documents: serve behind authentication |
 | `apps/portal/src/features/search`, `ask-fern` | Keyword guidance search; scripted assistant responses (not an AI service) |
 | `apps/portal/src/features/admin-demo` | Proposed CMS walkthrough with local drafts and simulated roles |
 | `packages/platform/src` | Shared stylesheet, images, demo sign-in, status vocabulary and small UI components |

@@ -19,10 +19,11 @@ Open http://127.0.0.1:4173 and sign in with `demo` / `demo`. This is demonstrati
 
 - `pnpm typecheck` — TypeScript check.
 - `pnpm test` — unit and source-data checks.
-- `pnpm build` — production build in `dist/` (`index.html` plus `assets/`; needs a web server); `pnpm preview` serves it at http://127.0.0.1:4273.
+- `pnpm build` — production build in `dist/` (`index.html`, `assets/` and `bbm/` with the BBM PDFs; needs a web server); `pnpm preview` serves it at http://127.0.0.1:4273. `dist/bbm/` holds internal Amazon documents: deploy behind authenticated access only.
 - `pnpm export:portal` — creates `dist-share/FERN-Internal-Portal.html`, a single self-contained file for offline demonstration.
 - `pnpm test:browser` — browser suite against a running development server (`FERN_TEST_URL`, default http://127.0.0.1:4173).
 - `pnpm test:portal-handover` — production build and offline smoke suite.
+- `pnpm test:browser:pdf` — BBM PDF downloads in the server build and the single-file export (run after `pnpm build` and `pnpm export:portal`).
 - `pnpm verify` — typecheck, tests, builds and browser suite; writes `test-results/verification.json`.
 
 Browser suites need Playwright Chromium: `pnpm exec playwright install chromium`.

@@ -34,6 +34,8 @@ Amazon must designate an authorised document owner or specialist for each editio
 
 For each replacement edition, the owner supplies the authoritative PDF, document identifier, version, effective date, approval status and applicability. Engineering then regenerates the HTML and downloads, compares added/changed/withdrawn standards and code mappings, runs coverage and source-fidelity checks, and submits the changed content for specialist review. Publication requires owner approval. Retain the previous edition and change record in the controlled repository; do not silently overwrite an edition.
 
+**30 October 2026 — PDF delivery.** The site build no longer embeds PDFs. The 198 verified PDFs (two full editions, introductions and per-standard extracts) are static files in `public/bbm/`, copied to `dist/bbm/` by `pnpm build`; `generated/pdf-files.json` maps each entry to its file. The reader (`StandardsLibrary`, including the 6.8 MB standards text) loads only when the Reference Library opens, so the initial script fell from 33.2 MB to 0.56 MB. `pnpm export:portal` still embeds every PDF in the single HTML file for offline review (BBM-HTML-07). `tests/standards-reader.test.mjs` checks every file hash against `verification.json`; `pnpm test:browser:pdf` checks downloads and the original-PDF link in both builds. The `bbm/` folder contains internal Amazon documents: host it behind authenticated access, never publicly.
+
 The production Amazon CMS/document service should own the approved catalogue and enforce access rights. Serve PDFs and standard content on demand in production rather than embedding every document in the initial application bundle. The large self-contained HTML is for offline review and handover.
 
 ## Outstanding acceptance

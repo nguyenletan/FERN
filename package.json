@@ -15,7 +15,8 @@
     "verify": "node scripts/verify.mjs",
     "verify:core": "node scripts/verify.mjs --core",
     "export:portal": "node scripts/export-portal.mjs",
-    "test:portal-handover": "node tests/portal-handover-browser.mjs"
+    "test:portal-handover": "node tests/portal-handover-browser.mjs",
+    "test:browser:pdf": "node tests/pdf-delivery-browser.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
