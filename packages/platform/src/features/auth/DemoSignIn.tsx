@@ -52,7 +52,7 @@ export default function DemoSignIn({renderApp}:{renderApp:(onSignOut:()=>void)=>
     <div
       className="fern-signin"
       style={{
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+        fontFamily: "var(--fern-font)",
       }}
     >
       <section className="fern-signin-story" aria-label="About FERN">

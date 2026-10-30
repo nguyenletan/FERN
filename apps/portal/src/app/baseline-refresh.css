@@ -86,7 +86,7 @@
 .fern-portal .fern-home-sidebar,.fern-portal .fern-workspace-sidebar{position:fixed;top:76px;bottom:0;left:0;z-index:64;box-shadow:8px 0 30px #001c4514}
 .fern-portal .fern-home-sidebar:not(.is-open){visibility:hidden}
 .fern-portal .fern-menu-backdrop,.fern-portal .fern-workspace-backdrop{display:block;position:fixed;inset:76px 0 0;z-index:63;background:#03153466}
-.fern-site-footer{background:#031534;color:white;margin-top:20px;padding:30px 3.8% 20px;font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif}
+.fern-site-footer{background:#031534;color:white;margin-top:20px;padding:30px 3.8% 20px;font-family:var(--fern-font)}
 .fern-footer-grid{max-width:1380px;margin:auto;display:grid;grid-template-columns:1.3fr 1.5fr repeat(4,1fr);gap:26px}
 .fern-footer-grid h2{font-size:14px;font-weight:650;margin-bottom:10px;color:#fff}
 .fern-footer-grid p{font-size:12px;line-height:1.5;margin:8px 0;max-width:220px}

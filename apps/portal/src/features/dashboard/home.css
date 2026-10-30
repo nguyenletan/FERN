@@ -1,12 +1,7 @@
 .fern-home {
   color: #071c45;
   background: white;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: var(--fern-font);
   font-size: 14px;
   line-height: 1.55;
 }
