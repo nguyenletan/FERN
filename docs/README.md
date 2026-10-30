@@ -10,6 +10,7 @@ Start here. This repository contains the FERN portal (website) only; FERN applic
 | [Website boundary](start/WEBSITE-APPLICATION-BOUNDARY.md) | Website scope; applications shown as "Coming soon" |
 | [Amazon website integration](start/AMAZON-WEBSITE-INTEGRATION-HANDOVER.md) | Quick Suite, CMS, LMS, identity — not connected |
 | [Non-technical content administration](start/NON-TECHNICAL-CONTENT-ADMINISTRATION.md) | Production CMS requirement |
+| [Cloudscape portal (31 Oct 2026)](website/CLOUDSCAPE-PORTAL-2026-10-31.md) | Cloudscape UI, Amazon review fixes, header language/country, Users & roles demo, open items |
 
 Run the source from the [repository README](../README.md).
 

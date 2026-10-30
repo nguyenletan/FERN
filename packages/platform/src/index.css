@@ -1,12 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
 @source "../../../apps";
 @source "../../";
 
 /* Inter from Google Fonts; if it cannot load (offline or blocked), use the system font:
    San Francisco on macOS/iOS, Segoe UI on Windows, Roboto on Android. */
 :root {
-  --fern-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fern-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 html,
@@ -23,7 +23,7 @@ body,
 /* Tailwind v4 gives buttons the default arrow cursor; show a pointer on everything clickable. Disabled controls keep the arrow. */
 @layer base {
   button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]) {
+  [role='button']:not([aria-disabled='true']) {
     cursor: pointer;
   }
 }
@@ -48,11 +48,11 @@ input:-webkit-autofill {
 }
 
 #root details > summary::marker {
-  content: "";
+  content: '';
 }
 
 #root details > summary::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 1rem;
   top: calc(0.625rem + 0.75em);

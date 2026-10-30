@@ -11,15 +11,41 @@
 }
 
 /* The Tailwind reset removes list markers and indents; restore them inside Cloudscape text content. */
-[class*="awsui_text-content_"] ul,
-[class*="awsui_text-content_"] ol {
+[class*='awsui_text-content_'] ul,
+[class*='awsui_text-content_'] ol {
   padding-left: 1.4rem;
 }
-[class*="awsui_text-content_"] ul {
+[class*='awsui_text-content_'] ul {
   list-style: disc;
 }
-[class*="awsui_text-content_"] ol {
+[class*='awsui_text-content_'] ol {
   list-style: decimal;
+}
+
+/* FERN imagery: page photographs, icons beside titles. */
+.fern-banner {
+  margin: 0;
+}
+.fern-banner img {
+  display: block;
+  width: 100%;
+  height: clamp(160px, 22vw, 260px);
+  object-fit: cover;
+  object-position: 35% 10%;
+  border-radius: 16px;
+}
+.fern-icon {
+  flex-shrink: 0;
+  color: #1a3fb5;
+}
+.fern-icon-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.fern-guide-mascot img {
+  object-fit: contain !important;
+  background: #eef3ff;
 }
 
 /* Secondary text placed after a section title (e.g. "Planned Maintenance — what it covers"). */
