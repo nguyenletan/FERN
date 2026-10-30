@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@cloudscape-design/components": "^3.0.1407",
+    "@fontsource/open-sans": "^5.3.0",
     "@phosphor-icons/react": "^2.1.10",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

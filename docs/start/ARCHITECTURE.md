@@ -20,7 +20,7 @@ This repository delivers the FERN website: demo sign-in, Home, the seven Workspa
 | `src/features/search` | Header keyword search (Cloudscape Autosuggest; not an AI service) |
 | `src/features/admin-demo` | Proposed CMS walkthrough with local drafts and simulated roles |
 | `src/auth` | Demo sign-in (Cloudscape form); to be replaced by Midway |
-| `src/styles/index.css`, `src/assets` | Global stylesheet (fonts, Tailwind reset, pointer cursor) and shared images |
+| `src/styles/index.css`, `src/assets` | Global stylesheet (bundled Open Sans, Tailwind reset, pointer cursor) and shared images |
 | `tests/` | `node --test` unit and source-data checks; Playwright browser suites (`browser.mjs`, `homepage-browser.mjs`, `portal-handover-browser.mjs`, `pdf-delivery-browser.mjs`) |
 | `scripts/` | Build, verification, single-file export and BBM reader generation |
 

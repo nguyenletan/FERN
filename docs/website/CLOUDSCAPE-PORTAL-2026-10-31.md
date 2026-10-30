@@ -39,7 +39,7 @@ Every page now uses Cloudscape components (`@cloudscape-design/components`). The
 | Demo sign-in | Custom form | The FERN brand panel is kept; the form uses Cloudscape `Container`, `Form` (with `errorText`), `FormField`, `Input`, a "Show password" `Checkbox` and a primary `Button`. Privacy, terms and help open a dismissible `Alert`. It is still a demonstration and will be replaced by Midway |
 | Content-administration walkthrough | — | Unchanged. The CMS keeps its own editing screens (agreed: Cloudscape for the portal, not the CMS) |
 
-The look follows Cloudscape defaults, with FERN blue for primary buttons and links and the existing Inter/system font stack.
+The look follows Cloudscape defaults, with FERN blue for primary buttons and links. Text uses **Open Sans**, the Cloudscape default font, bundled with the site through `@fontsource/open-sans` (Latin and Latin Extended; weights 300, 400, 400 italic, 600, 700 and 800; about 216 KB of WOFF2). There is no Google Fonts or other external font request, so the portal and the single-file export render the same offline. The Standards & Reference Library and the content-administration walkthrough use the same font. Whether Amazon internal tools should use Amazon Ember instead is to be confirmed with Guzman.
 
 **FERN imagery is kept inside the Cloudscape layout** (`app/visuals.tsx`):
 

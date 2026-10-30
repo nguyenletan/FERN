@@ -12,12 +12,10 @@ import SpaceBetween from '@cloudscape-design/components/space-between';
 import TextContent from '@cloudscape-design/components/text-content';
 import './cloudscape.css';
 
-// FERN blue for primary actions and links; text keeps the portal font stack (Inter, then the system font).
+// FERN blue for primary actions and links. Text uses the Cloudscape default font (Open Sans, bundled in styles/index.css).
 applyTheme({
   theme: {
     tokens: {
-      fontFamilyBase:
-        "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
       colorBackgroundButtonPrimaryDefault: '#1a3fb5',
       colorBorderButtonPrimaryDefault: '#1a3fb5',
       colorBackgroundButtonPrimaryHover: '#0d2464',

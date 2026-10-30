@@ -1,5 +1,5 @@
 .fern-standards {
-  font-family: Arial, sans-serif;
+  font-family: var(--fern-font);
   color: #233858;
   min-width: 0;
   line-height: 1.6;
