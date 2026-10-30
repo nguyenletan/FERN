@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validateItem, parseDraft, nextDraft } from '../apps/portal/src/features/admin-demo/adminModel.ts';
+import { validateItem, parseDraft, nextDraft } from '../src/features/admin-demo/adminModel.ts';
 const item = { id: 'test', page: 'Home', title: 'Title', body: 'Content', asset: 'hero', alt: 'Team' };
 test('Admin validates required fields and rejects unsafe link/image schemes', () => {
   assert.equal(validateItem(item), '');

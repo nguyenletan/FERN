@@ -2,5 +2,5 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "printWidth": 120,
   "singleQuote": true,
-  "ignorePatterns": ["apps/portal/src/features/reference/generated/**", "tests/fixtures/**", "scripts/bbm/*-TASK-INDEX.md"]
+  "ignorePatterns": ["src/features/reference/generated/**", "tests/fixtures/**", "scripts/bbm/*-TASK-INDEX.md"]
 }

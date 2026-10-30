@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
-import { findStandards } from '../apps/portal/src/features/reference/standardsSearch.ts';
-const base = new URL('../apps/portal/src/features/reference/generated/', import.meta.url);
+import { findStandards } from '../src/features/reference/standardsSearch.ts';
+const base = new URL('../src/features/reference/generated/', import.meta.url);
 const data = JSON.parse(fs.readFileSync(new URL('standards.json', base), 'utf8'));
 const files = JSON.parse(fs.readFileSync(new URL('pdf-files.json', base), 'utf8'));
 const pdfSha = (key) =>
@@ -91,13 +91,13 @@ test('Full conversion preserves every task cell and frequency from the four appr
   }
 });
 
-import { standardMatch } from '../apps/portal/src/features/reference/standardsSearch.ts';
+import { standardMatch } from '../src/features/reference/standardsSearch.ts';
 import {
   standardOverview,
   relatedStandards,
   standardLocation,
   readStandardLocation,
-} from '../apps/portal/src/features/reference/standardContext.ts';
+} from '../src/features/reference/standardContext.ts';
 test('Exact codes and titles rank above incidental source wording; empty search preserves catalogue order', () => {
   const make = (id, title, code, searchText) => ({ id, title, code, searchText, kind: 'PM' });
   const entries = [

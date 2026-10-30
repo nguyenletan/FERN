@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { regionLabel } from '../apps/portal/src/features/reference/regionLabels.ts';
+import { regionLabel } from '../src/features/reference/regionLabels.ts';
 test('All source country codes show their full names and matching flags without replacing aliases', () => {
   const expected = [
     ['CZ', 'Czech Republic', '🇨🇿'],

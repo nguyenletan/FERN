@@ -7,7 +7,7 @@ import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright';
 import { preview } from 'vite';
-const files = JSON.parse(fs.readFileSync('apps/portal/src/features/reference/generated/pdf-files.json', 'utf8'));
+const files = JSON.parse(fs.readFileSync('src/features/reference/generated/pdf-files.json', 'utf8'));
 const sha = (b) => createHash('sha256').update(b).digest('hex');
 const expected = (key) => sha(fs.readFileSync('public/bbm/' + files[key]));
 const button = (page, name) => page.getByRole('button', { name, exact: true });

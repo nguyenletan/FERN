@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { sectionSummary } from '../apps/portal/src/features/framework/sectionSummary.ts';
+import { sectionSummary } from '../src/features/framework/sectionSummary.ts';
 const data = JSON.parse(
-  fs.readFileSync(new URL('../apps/portal/src/features/framework/frameworkContent.json', import.meta.url), 'utf8'),
+  fs.readFileSync(new URL('../src/features/framework/frameworkContent.json', import.meta.url), 'utf8'),
 );
 test('Closed Workspace sections show a readable plain-text summary', () => {
   for (const page of data.pages)

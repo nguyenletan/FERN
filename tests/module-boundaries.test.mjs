@@ -7,16 +7,16 @@ function files(dir) {
   return fs
     .readdirSync(dir, { withFileTypes: true })
     .flatMap((e) =>
-      e.isDirectory() && e.name !== 'node_modules'
+      e.isDirectory()
         ? files(path.join(dir, e.name))
         : e.isFile() && /\.tsx?$/.test(e.name)
           ? [path.join(dir, e.name)]
           : [],
     );
 }
-test('Application and package imports respect ownership boundaries', () => {
+test('Relative imports stay inside src', () => {
   const violations = [];
-  for (const file of [...files('apps'), ...files('packages')]) {
+  for (const file of files('src')) {
     const source = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true);
     function visit(node) {
       let spec;
@@ -33,9 +33,8 @@ test('Application and package imports respect ownership boundaries', () => {
       )
         spec = node.arguments[0].text;
       if (spec?.startsWith('.')) {
-        const target = path.relative(process.cwd(), path.resolve(path.dirname(file), spec)).split(path.sep);
-        const owner = file.split(path.sep);
-        if (owner[0] === 'packages' && target[0] === 'apps') violations.push(`${file} imports application ${spec}`);
+        const target = path.relative('src', path.resolve(path.dirname(file), spec));
+        if (target.startsWith('..')) violations.push(`${file} imports ${spec} outside src`);
       }
       ts.forEachChild(node, visit);
     }
@@ -43,13 +42,10 @@ test('Application and package imports respect ownership boundaries', () => {
   }
   assert.deepEqual(violations, []);
 });
-test('The website repository contains only the portal and its shared platform', () => {
-  // Application workflows are maintained in a separate private repository; the portal lists them as "Coming soon".
-  assert.deepEqual(fs.readdirSync('apps'), ['portal']);
-  assert.deepEqual(fs.readdirSync('packages'), ['platform']);
-  // One entry: index.html → src/main.tsx renders the portal; apps/portal holds source only.
-  assert.ok(fs.existsSync('index.html'));
+test('The website is a single Vite application in src', () => {
+  // FERN applications and the CMS live elsewhere; this repository is the portal only (WEB-SCOPE-03).
+  for (const removed of ['apps', 'packages', 'pnpm-workspace.yaml', 'vite.app.config.ts'])
+    assert.ok(!fs.existsSync(removed), removed + ' should not exist');
+  assert.match(fs.readFileSync('index.html', 'utf8'), /src="\/src\/main\.tsx"/);
   assert.ok(fs.existsSync('src/main.tsx'));
-  assert.ok(!fs.existsSync('apps/portal/index.html'));
-  assert.ok(!fs.existsSync('vite.app.config.ts'));
 });

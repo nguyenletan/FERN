@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { homeApplications, suggestedApplications } from '../apps/portal/src/features/dashboard/homeApplications.ts';
+import { homeApplications, suggestedApplications } from '../src/features/dashboard/homeApplications.ts';
 test('Homepage task prompts route to the relevant existing tool', () => {
   assert.equal(suggestedApplications('Compare FM service options')[0].name, 'FM Pre-Contract / Pre-Tender Assessment');
   assert.equal(suggestedApplications('Plan asset replacements')[0].name, 'Lifecycle & Asset Analysis');

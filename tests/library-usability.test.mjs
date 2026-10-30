@@ -6,11 +6,11 @@ import {
   suggestSearch,
   matchingSourceText,
   sourceExcerpt,
-} from '../apps/portal/src/features/reference/libraryDiscovery.ts';
-import { taskReading, sourceGrid } from '../apps/portal/src/features/reference/taskReading.ts';
-import { relatedStandards } from '../apps/portal/src/features/reference/standardContext.ts';
+} from '../src/features/reference/libraryDiscovery.ts';
+import { taskReading, sourceGrid } from '../src/features/reference/taskReading.ts';
+import { relatedStandards } from '../src/features/reference/standardContext.ts';
 const data = JSON.parse(
-  fs.readFileSync(new URL('../apps/portal/src/features/reference/generated/standards.json', import.meta.url), 'utf8'),
+  fs.readFileSync(new URL('../src/features/reference/generated/standards.json', import.meta.url), 'utf8'),
 );
 const links = Object.fromEntries(
   data.entries.map((e) => [

@@ -11,19 +11,20 @@ This repository delivers the FERN website: demo sign-in, Home, the seven Workspa
 | Path | Responsibility |
 | --- | --- |
 | `index.html`, `src/main.tsx`, `src/App.tsx` | Entry point: demo sign-in, then the portal; the content-administration walkthrough opens from the user menu |
-| `apps/portal/src/app` | `FernWorkspace` shell (Cloudscape top navigation, side navigation, breadcrumbs, page switching), `portalRoutes` (URL ↔ page, `routeFor`), `ui.tsx` (shared Cloudscape blocks and theme), `preferences.ts` (header country) |
-| `apps/portal/src/features/dashboard` | Home, Applications, Get Started, Learn, Standards & Reference Library page, Help, About, updates and the application descriptions (`homeApplications.ts`) |
-| `apps/portal/src/features/admin` | Users & roles demonstration (sample data, browser-tab only) |
-| `apps/portal/src/features/{overview,leadership,planning,performance,risk,audit,improvement,framework}` | Workspace guidance pages and Mission & Pillars |
-| `apps/portal/src/features/reference` | BBM standards and compliance library, task reader, search; `generated/` holds data built by `scripts/bbm`. The reader is lazy-loaded when the Reference Library opens |
+| `src/app` | `FernWorkspace` shell (Cloudscape top navigation, side navigation, breadcrumbs, page switching), `portalRoutes` (URL ↔ page, `routeFor`), `ui.tsx` (shared Cloudscape blocks and theme), `preferences.ts` (header country) |
+| `src/features/dashboard` | Home, Applications, Get Started, Learn, Standards & Reference Library page, Help, About, updates and the application descriptions (`homeApplications.ts`) |
+| `src/features/admin` | Users & roles demonstration (sample data, browser-tab only) |
+| `src/features/{overview,leadership,planning,performance,risk,audit,improvement,framework}` | Workspace guidance pages and Mission & Pillars |
+| `src/features/reference` | BBM standards and compliance library, task reader, search; `generated/` holds data built by `scripts/bbm`. The reader is lazy-loaded when the Reference Library opens |
 | `public/bbm` | 198 verified BBM PDFs served as static files (`dist/bbm/`); embedded only in the single-file export. Internal Amazon documents: serve behind authentication |
-| `apps/portal/src/features/search` | Header keyword search (Cloudscape Autosuggest; not an AI service) |
-| `apps/portal/src/features/admin-demo` | Proposed CMS walkthrough with local drafts and simulated roles |
-| `packages/platform/src` | Shared stylesheet (fonts, Tailwind reset), images, demo sign-in and status vocabulary |
+| `src/features/search` | Header keyword search (Cloudscape Autosuggest; not an AI service) |
+| `src/features/admin-demo` | Proposed CMS walkthrough with local drafts and simulated roles |
+| `src/auth` | Demo sign-in (Cloudscape form); to be replaced by Midway |
+| `src/styles/index.css`, `src/assets` | Global stylesheet (bundled Open Sans, Tailwind reset, pointer cursor) and shared images |
 | `tests/` | `node --test` unit and source-data checks; Playwright browser suites (`browser.mjs`, `homepage-browser.mjs`, `portal-handover-browser.mjs`, `pdf-delivery-browser.mjs`) |
 | `scripts/` | Build, verification, single-file export and BBM reader generation |
 
-There is one entry point: `pnpm dev` serves it at http://127.0.0.1:4173 and `pnpm build` writes `dist/`. `apps/portal` holds source only.
+This is a single Vite application (no pnpm workspace): all source is under `src/`. `pnpm dev` serves it at http://127.0.0.1:4173 and `pnpm build` writes `dist/`. The CMS and the FERN applications are separate services and repositories; if code ever needs sharing with them, publish it as a package rather than adding workspace folders here.
 
 ## Routing and state
 
@@ -35,7 +36,7 @@ Identity, CMS, LMS, Quick Suite and application launch are not connected. See [A
 
 ## Conventions
 
-- Shared packages must not import the portal (`tests/module-boundaries.test.mjs`); this repository holds only `apps/portal` and `packages/platform`.
+- Relative imports stay inside `src/`, and the repository holds one application (`tests/module-boundaries.test.mjs`).
 - React state hooks are never created inside JSX callbacks (`tests/architecture.test.mjs`).
 - Keep unavailable and unconnected states explicit; never imply live data, AI answers or approval.
 - Build pages from Cloudscape components and the shared blocks in `app/ui.tsx`; do not add page-specific CSS for layout.

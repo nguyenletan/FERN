@@ -12,7 +12,7 @@ function files(dir) {
 
 test('React state hooks are never invoked inside JSX callbacks or IIFEs', () => {
   const violations = [];
-  for (const file of [...files('src'), ...files('apps'), ...files('packages')].filter((f) => /\.tsx$/.test(f))) {
+  for (const file of files('src').filter((f) => /\.tsx$/.test(f))) {
     const sf = ts.createSourceFile(
       file,
       fs.readFileSync(file, 'utf8'),

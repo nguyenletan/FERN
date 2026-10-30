@@ -2,7 +2,7 @@
 
 This repository is the FERN portal (website), a React, TypeScript, Vite and Tailwind prototype extracted from the supplied Figma Make ZIP. Read README.md and docs/start/ARCHITECTURE.md before changes.
 
-- Portal UI lives in apps/portal/src; common UI, assets, status definitions and demo sign-in live in packages/platform/src. Shared packages must not import the portal.
+- This is one Vite application: all source lives in src/ (shell in src/app, pages in src/features, demo sign-in in src/auth, global CSS in src/styles, images in src/assets). Do not add apps/ or packages/ workspace folders.
 - FERN applications are maintained in a separate repository. Do not add application workflows here; the portal shows them as "Coming soon" until an approved launch integration exists.
 - Keep page composition separate from immutable content and configuration.
 - Preserve explicit unavailable, unconnected and unassessed states. Never manufacture evidence, approval, scores or production integration.

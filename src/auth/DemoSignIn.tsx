@@ -1,6 +1,6 @@
-import teamImage from '../../assets/fern-team-transparent.png';
-import guideImage from '../../assets/fern-guide-transparent.png';
-import fernMark from '../../assets/home-fern.png';
+import teamImage from '../assets/fern-team-transparent.png';
+import guideImage from '../assets/fern-guide-transparent.png';
+import fernMark from '../assets/home-fern.png';
 import { Buildings, ShieldCheck, ChartBar } from '@phosphor-icons/react';
 import Alert from '@cloudscape-design/components/alert';
 import Box from '@cloudscape-design/components/box';

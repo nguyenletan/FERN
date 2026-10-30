@@ -34,7 +34,7 @@ import PerformanceKpiPage from '../features/performance/PerformanceKpiPage.tsx';
 import RiskCompliancePage from '../features/risk/RiskCompliancePage.tsx';
 import AuditAssurancePage from '../features/audit/AuditAssurancePage.tsx';
 import ContinualImprovementPage from '../features/improvement/ContinualImprovementPage.tsx';
-import fernLogo from '../../../../packages/platform/src/assets/home-fern.png';
+import fernLogo from '../assets/home-fern.png';
 
 // Detailed practice guidance shown inside each Workspace topic.
 const practiceGuides: Record<string, () => React.ReactNode> = {

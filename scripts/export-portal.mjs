@@ -32,7 +32,7 @@ for (const tag of [...html.matchAll(/<link\b[^>]*href="([^"]+)"[^>]*>/g)]) {
 }
 // BBM-HTML-07: a single file has no bbm/ folder beside it, so embed the PDFs for offline download (read by StandardsLibrary).
 const pdfFiles = JSON.parse(
-  await fs.readFile(path.join(root, 'apps/portal/src/features/reference/generated/pdf-files.json'), 'utf8'),
+  await fs.readFile(path.join(root, 'src/features/reference/generated/pdf-files.json'), 'utf8'),
 );
 const embedded = {};
 for (const [key, name] of Object.entries(pdfFiles))
