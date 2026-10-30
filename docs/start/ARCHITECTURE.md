@@ -21,7 +21,7 @@ This repository delivers the FERN website: demo sign-in, Home, the seven Workspa
 | `tests/` | `node --test` unit and source-data checks; Playwright browser suites (`browser.mjs`, `homepage-browser.mjs`, `portal-handover-browser.mjs`) |
 | `scripts/` | Build, verification, single-file export and BBM reader generation |
 
-`apps/portal` also has its own Vite entry (`pnpm dev:portal`, port 4173) that renders the same application as the root entry.
+There is one entry point: `pnpm dev` serves it at http://127.0.0.1:4173 and `pnpm build` writes `dist/`. `apps/portal` holds source only.
 
 ## Routing and state
 

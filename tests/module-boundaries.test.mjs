@@ -25,9 +25,9 @@ test('The website repository contains only the portal and its shared platform',(
  // Application workflows are maintained in a separate private repository; the portal lists them as "Coming soon".
  assert.deepEqual(fs.readdirSync('apps'),['portal']);
  assert.deepEqual(fs.readdirSync('packages'),['platform']);
- const manifest=JSON.parse(fs.readFileSync('apps/portal/package.json','utf8'));
- assert.ok(manifest.scripts.dev.includes('--mode portal'));
- assert.ok(manifest.scripts.build.includes('--mode portal'));
- assert.ok(fs.existsSync('apps/portal/index.html'));
- assert.ok(fs.existsSync('apps/portal/src/main.tsx'));
+ // One entry: index.html → src/main.tsx renders the portal; apps/portal holds source only.
+ assert.ok(fs.existsSync('index.html'));
+ assert.ok(fs.existsSync('src/main.tsx'));
+ assert.ok(!fs.existsSync('apps/portal/index.html'));
+ assert.ok(!fs.existsSync('vite.app.config.ts'));
 });

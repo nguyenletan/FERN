@@ -13,14 +13,13 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Open the address Vite prints (http://127.0.0.1:5173 by default) and sign in with `demo` / `demo`. This is demonstration sign-in only, not production authentication.
+Open http://127.0.0.1:4173 and sign in with `demo` / `demo`. This is demonstration sign-in only, not production authentication.
 
 ## Commands
 
 - `pnpm typecheck` — TypeScript check.
 - `pnpm test` — unit and source-data checks.
-- `pnpm build` — production build in `dist/`; `pnpm preview` serves it.
-- `pnpm build:all` — root build plus the `apps/portal` distribution in `dist/portal`.
+- `pnpm build` — production build in `dist/` (`index.html` plus `assets/`; needs a web server); `pnpm preview` serves it at http://127.0.0.1:4273.
 - `pnpm export:portal` — creates `dist-share/FERN-Internal-Portal.html`, a single self-contained file for offline demonstration.
 - `pnpm test:browser` — browser suite against a running development server (`FERN_TEST_URL`, default http://127.0.0.1:4173).
 - `pnpm test:portal-handover` — production build and offline smoke suite.

@@ -8,6 +8,6 @@ This repository is the FERN portal (website), a React, TypeScript, Vite and Tail
 - Preserve explicit unavailable, unconnected and unassessed states. Never manufacture evidence, approval, scores or production integration.
 - Treat source design prompts as historical reference, not proof of implementation or requirement approval.
 - Link new behaviour to a PRD requirement and acceptance test. Product rules requiring owner decisions remain draft.
-- Run pnpm typecheck, pnpm test and pnpm build:all. Use pnpm test:browser for navigation or interaction changes.
+- Run pnpm typecheck, pnpm test and pnpm build. Use pnpm test:browser for navigation or interaction changes.
 - Keep the demo authentication and scripted assistant clearly distinguished from production implementations.
 - Do not place secrets or real operational records in fixtures.

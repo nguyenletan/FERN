@@ -31,7 +31,6 @@
     "src",
     "apps",
     "packages",
-    "vite.config.ts",
-    "vite.app.config.ts"
+    "vite.config.ts"
   ]
 }
