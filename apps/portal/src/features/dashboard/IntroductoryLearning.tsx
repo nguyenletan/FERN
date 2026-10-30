@@ -8,7 +8,7 @@ const lessons: Record<string, {heading:string; text?:string; steps?:[string,stri
   ]},
   {heading:'An Asset’s Age Is Only One Input',example:'Illustrative example: an air-handling unit is recorded as 17 years old. Age alone does not decide whether it should be replaced. Condition, failure history, maintenance cost, remaining life, redundancy, parts availability and operational consequences may change the decision.'},
   {heading:'A Useful Result Can Include a Gap',text:'Incomplete information does not make every part of an assessment useless. Retain what is known, state the assumption or gap and identify which conclusion needs more evidence. Never turn an unknown quantity or cost into zero just to produce a total.'},
-  {heading:'Try It',text:'Choose a decision you are considering. Write down what you know, the source of each input, what is uncertain and who needs to review the outcome. Use Get Started to find the relevant tool.'}
+  {heading:'Try It',text:'Choose a decision you are considering. Write down what you know, the source of each input, what is uncertain and who needs to review the outcome. Use Get Started to find the relevant guidance.'}
  ],
  'Service Models Explained': [
   {heading:'Separate Delivery From Service Level',steps:[
@@ -31,7 +31,7 @@ const lessons: Record<string, {heading:string; text?:string; steps?:[string,stri
    ['Operate and Review','Use operational records, performance and assurance evidence to identify issues and improvements.']
   ]},
   {heading:'Keep the Handover Traceable',text:'Carry forward the selected scope, pricing version, assumptions, unresolved issues and the actual decision. Newer pricing must not silently replace the version used for an earlier assessment. If inputs change, review the comparison again.'},
-  {heading:'What the Current Tools Support',text:'Pre-Contract supports local assessments and service alternatives. Pricing supplies fixed provisional pricing issues that can be selected in Pre-Contract and Lifecycle. Mobilisation supports a local manual plan. Moving between these tools does not automatically transfer an approved decision or establish readiness.'},
+  {heading:'What the Planned Tools Will Support',text:'Pre-Contract will support assessments and service alternatives. Pricing will issue fixed provisional pricing versions that can be selected in Pre-Contract and Lifecycle. Mobilisation will support a manual transition plan. Moving between these tools will not automatically transfer an approved decision or establish readiness.'},
   {heading:'Before Starting Mobilisation',text:'Check that the selected arrangement, responsibilities, acceptance criteria and outstanding issues are understood by the responsible people. Completing a task is different from verifying its evidence or approving a launch.'}
  ]
 };
@@ -40,6 +40,6 @@ export default function IntroductoryLearning({topic}:{topic:string}) {
   <h3>{lesson.heading}</h3>
   {lesson.text&&<p>{lesson.text}</p>}
   {lesson.example&&<p className="fern-learning-example">{lesson.example}</p>}
-  {lesson.steps&&<ol className="fern-learning-steps">{lesson.steps.map(([title,detail])=><li key={title}><strong>{title}.</strong> {detail}</li>)}</ol>}
+  {lesson.steps&&<ol className="fern-learning-steps">{lesson.steps.map(([title,detail])=><li key={title}><strong>{/[.?!]$/.test(title)?title:title+'.'}</strong> {detail}</li>)}</ol>}
  </section>)}</>;
 }

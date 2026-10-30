@@ -27,7 +27,7 @@ export default function AboutFern({onPanel}:{onPanel:(panel:HomePanel)=>void}) {
     <li><strong>Define the question.</strong> Decide what you need to understand or compare.</li>
     <li><strong>Explore the guidance.</strong> Browse Workspace topics, learning and reference guidance to understand your next step. No facility selection is needed.</li>
     <li><strong>Check the information.</strong> Identify sources, dates, scope, assumptions and gaps.</li>
-    <li><strong>Use the relevant tool.</strong> Enter or select the inputs and review how the result is calculated.</li>
+    <li><strong>Use the relevant tool once it is released.</strong> FERN applications are coming soon. Each will show its inputs and how its results are calculated.</li>
     <li><strong>Review the result.</strong> Consider the evidence and limitations with the appropriate specialist or decision owner.</li>
    </ol>
   </section>

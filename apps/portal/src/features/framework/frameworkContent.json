@@ -101,6 +101,7 @@
       "sections": [
         {
           "title": "Build the Plan",
+          "summary": "Review the planning elements and the information to establish for each.",
           "body": "| Planning element | Information to establish |\n|---|---|\n| Need and purpose | The problem or opportunity, affected users and policy connection |\n| Outcome and scope | The intended result and affected facilities, services or assets |\n| Requirements | Applicable obligations and the sources supporting them |\n| Evidence baseline | Relevant starting data, period, method and limitations |\n| Success measure | How results will be evaluated, with the applicable target or agreed acceptance basis |\n| Accountability | The decision owner, delivery responsibilities and approval boundary |\n| Resources and capability | People, competence, budget, access, information and specialist support |\n| Risks and dependencies | Constraints, consequences and connected services or teams |\n| Timing and review | Delivery timing, review responsibilities and change triggers |"
         },
         {
@@ -209,6 +210,7 @@
       "sections": [
         {
           "title": "Distinguish the Type of Action",
+          "summary": "Tell a correction, corrective action, preventive action and improvement apart.",
           "body": "| Action | Purpose | Practical test |\n|---|---|---|\n| Correction | Address the immediate issue and its consequences | Has the immediate problem been controlled or corrected? |\n| Corrective action | Address the cause of a nonconformity and prevent recurrence | Is there evidence that the cause has been addressed and the action is effective? |\n| Preventive action | Address a potential service or performance gap before failure | Has the potential gap been evaluated and the response tested? |\n| Improvement | Enhance the FM system or its outcomes | Is there a supported, sustained benefit without unacceptable consequences elsewhere? |"
         },
         {

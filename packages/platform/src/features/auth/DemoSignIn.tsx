@@ -8,6 +8,18 @@ import { DEMO_PASSWORD } from "./demoCredentials.ts";
 import React from "react";
 import { useState } from "react";
 
+// Keep the demo session for this browser tab so a refresh does not sign the viewer out.
+const SESSION_KEY = "fern-demo-session";
+function readSession() {
+  try { return sessionStorage.getItem(SESSION_KEY) === "signed-in"; } catch { return false; }
+}
+function writeSession(signedIn: boolean) {
+  try {
+    if (signedIn) sessionStorage.setItem(SESSION_KEY, "signed-in");
+    else sessionStorage.removeItem(SESSION_KEY);
+  } catch { /* Storage blocked: the session lasts until the page is refreshed. */ }
+}
+
 export default function DemoSignIn({renderApp}:{renderApp:(onSignOut:()=>void)=>React.ReactNode}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +27,7 @@ export default function DemoSignIn({renderApp}:{renderApp:(onSignOut:()=>void)=>
   const [info, setInfo] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(readSession);
 
   function handleSignIn(e: React.FormEvent) {
     e.preventDefault();
@@ -24,6 +36,7 @@ export default function DemoSignIn({renderApp}:{renderApp:(onSignOut:()=>void)=>
     setTimeout(() => {
       if (email.trim().toLowerCase() === DEMO_EMAIL && password === DEMO_PASSWORD) {
         setLoggedIn(true);
+        writeSession(true);
       } else {
         setError("Use demo for both the username and password to enter this preview.");
       }
@@ -32,7 +45,7 @@ export default function DemoSignIn({renderApp}:{renderApp:(onSignOut:()=>void)=>
   }
 
   if (loggedIn) {
-    return renderApp(() => {setLoggedIn(false);setEmail("");setPassword("");});
+    return renderApp(() => {writeSession(false);setLoggedIn(false);setEmail("");setPassword("");});
   }
 
   return (
@@ -252,7 +265,7 @@ export default function DemoSignIn({renderApp}:{renderApp:(onSignOut:()=>void)=>
                 </div>
               )}
 
-              <p className="fern-signin-preview-note">This is a demonstration, not an Amazon account sign-in. Each refresh requires demo sign-in again.</p>
+              <p className="fern-signin-preview-note">This is a demonstration, not an Amazon account sign-in. You stay signed in on this tab until you sign out or close it.</p>
 
               <button
                 type="submit"

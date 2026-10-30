@@ -8,3 +8,4 @@ test-results/
 !.env.example
 .DS_Store
 .idea
+/fern-source-code*.zip
