@@ -1,0 +1,9 @@
+node_modules/
+dist/
+dist-share/
+.build-standalone/
+test-results/
+.env
+.env.*
+!.env.example
+.DS_Store

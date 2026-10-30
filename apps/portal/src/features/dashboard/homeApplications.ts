@@ -1,0 +1,8 @@
+export const homeApplications=[
+ {name:'FM Pre-Contract / Pre-Tender Assessment',title:'Pre-Contract & Tender Assessment',description:'Compare the current FM arrangement with service alternatives and pricing.',action:'Review service options',keywords:['tender','precontract','pre-contract','procurement','compare','comparison','renewal']},
+ {name:'Lifecycle & Asset Analysis',title:'Lifecycle & Asset Analysis',description:'Review asset condition, maintenance costs and future replacement needs.',action:'Explore asset costs',keywords:['asset','lifecycle','life cycle','replacement','condition','equipment','maintenance']},
+ {name:'FM Contract & Service Model',title:'Contract & Service Model',description:'Explore how FM services, responsibilities and delivery models fit together.',action:'Explore service models',keywords:['contract','delivery model','service model','responsibility','responsibilities','blue badge','yellow badge'],note:'Being developed'},
+ {name:'Pricing Template Generator',title:'Pricing Template Generator',description:'Build staff and service costs, then issue pricing for use in assessments.',action:'Build a pricing template',keywords:['pricing','price','staff','rate','budget','cost template']},
+ {name:'FM Mobilisation & Transition Tracker',title:'Mobilisation & Transition Tracker',description:'Plan a service transition and track tasks, owners and evidence.',action:'Plan a transition',keywords:['mobilisation','mobilization','transition','launch','handover','task','tracker']}
+];
+export function suggestedApplications(query:string){const q=query.toLowerCase().trim();if(!q)return [];return homeApplications.filter(app=>app.keywords.some(word=>q.includes(word)));}

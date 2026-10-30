@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {economicProfile} from '../packages/lifecycle-core/src/economics.ts';
+import {emptyProject,parseProject} from '../packages/lifecycle-core/src/assetModel.ts';
+const e=()=>({country:'Synthetic location',inflation:'10',discount:'10',evidence:'Synthetic nominal rates only',timing:'year-end'});
+const years=n=>Array.from({length:n},(_,i)=>({year:2026+i,total:100}));
+test('Inflation starts in second year and end-year discounting uses a nominal rate',()=>{const r=economicProfile(years(2),e());assert.equal(r.years[0].nominal,100);assert.ok(Math.abs(r.years[1].nominal-110)<1e-10);assert.ok(Math.abs(r.total-210)<1e-10);assert.ok(Math.abs(r.npc-200/1.1)<1e-10);});
+test('Zero rates preserve totals across all five horizons without inventing uncovered years',()=>{const r=economicProfile(years(25),{...e(),inflation:'0',discount:'0'});assert.deepEqual(r.horizons.map(h=>h.npc),[500,1000,1500,2000,2500]);assert.equal(economicProfile(years(5),e()).horizons[1].npc,null);});
+test('Missing rates, invalid rates, missing evidence, timing and overflow withhold economics',()=>{for(const patch of [{inflation:''},{discount:'-100'},{evidence:''},{country:''},{timing:''},{inflation:'1e308'}])assert.equal(economicProfile(years(25),{...e(),...patch}).npc,null);assert.equal(economicProfile(null,e()).npc,null);assert.equal(economicProfile([{year:2026,total:100},{year:2028,total:100}],e()).npc,null);});
+test('Negative rates greater than minus 100 percent are explicit valid assumptions',()=>{const r=economicProfile(years(2),{...e(),inflation:'-10',discount:'0'});assert.equal(r.total,190);assert.equal(r.npc,190);});
+test('Economic assumptions survive project backups; malformed timing is rejected',()=>{const p={...emptyProject('TEST'),economics:e()};assert.deepEqual(parseProject(JSON.stringify(p)).economics,p.economics);assert.throws(()=>parseProject(JSON.stringify({...p,economics:{...e(),timing:'unrecognised'}})));});

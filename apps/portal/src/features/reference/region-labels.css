@@ -1,0 +1,3 @@
+.fern-standards .fs-region-label{display:inline-flex;align-items:center;gap:8px;max-width:100%;margin:0;font:inherit;color:inherit;vertical-align:middle}
+.fern-standards .fs-region-label .fs-country-flag{display:inline-block;flex:none;width:1.5em;margin:0;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-size:20px;line-height:1.2;font-weight:400;color:inherit}
+.fern-standards .fs-region-label .fs-country-name{display:inline;margin:0;min-width:0;font:inherit;color:inherit;white-space:normal;overflow-wrap:anywhere}

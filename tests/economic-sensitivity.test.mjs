@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {sensitivityResults} from '../packages/lifecycle-core/src/sensitivity.ts';
+import {economicCsv} from '../packages/lifecycle-core/src/economicReport.ts';
+import {emptyProject,parseProject} from '../packages/lifecycle-core/src/assetModel.ts';
+const years=Array.from({length:5},(_,i)=>({year:2026+i,total:100}));
+const baseline={country:'Synthetic',inflation:'0',discount:'0',timing:'year-end',evidence:'Synthetic baseline'};
+const scenario={id:'s',name:'Synthetic escalation',inflation:'10',discount:'0',evidence:'Synthetic sensitivity only'};
+test('Sensitivity alters only scenario rates and calculates difference against unchanged baseline',()=>{const before=JSON.stringify({years,baseline,scenario});const r=sensitivityResults(years,baseline,[scenario])[0];assert.deepEqual(r.gaps,[]);assert.ok(Math.abs(r.result.npc-610.51)<1e-8);assert.ok(Math.abs(r.delta-110.51)<1e-8);assert.ok(Math.abs(r.percentage-22.102)<1e-8);assert.equal(JSON.stringify({years,baseline,scenario}),before);});
+test('Missing baseline, missing rationale and invalid case rates withhold comparison',()=>{for(const c of [{...scenario,evidence:''},{...scenario,inflation:''},{...scenario,discount:'-100'},{...scenario,name:''}])assert.equal(sensitivityResults(years,baseline,[c])[0].delta,null);assert.equal(sensitivityResults(years,undefined,[scenario])[0].delta,null);});
+test('Zero baseline preserves amount difference but never invents a percentage',()=>{const r=sensitivityResults(years.map(y=>({...y,total:0})),baseline,[scenario])[0];assert.equal(r.delta,0);assert.equal(r.percentage,null);});
+test('Uncovered horizons remain unavailable and scenario CSV retains baseline identity',()=>{const r=sensitivityResults(years,baseline,[scenario])[0];assert.equal(r.result.horizons[1].npc,null);const csv=economicCsv(years,r.assumptions,'EUR',{site:'TEST',source:'Asset costs',basis:'Synthetic',sensitivity:{id:scenario.id,name:scenario.name,baselineInflation:'0',baselineDiscount:'0',baselineEvidence:baseline.evidence}});assert.match(csv,/"Sensitivity case ID","s"/);assert.match(csv,/"Baseline rate evidence","Synthetic baseline"/);assert.match(csv,/"Annual inflation percent","10"/);});
+test('Project backups preserve cases and reject duplicate IDs or oversized case sets',()=>{const p={...emptyProject('TEST'),sensitivities:[scenario]};assert.deepEqual(parseProject(JSON.stringify(p)).sensitivities,p.sensitivities);assert.throws(()=>parseProject(JSON.stringify({...p,sensitivities:[scenario,scenario]})));assert.throws(()=>parseProject(JSON.stringify({...p,sensitivities:Array.from({length:31},(_,i)=>({...scenario,id:String(i)}))})));});

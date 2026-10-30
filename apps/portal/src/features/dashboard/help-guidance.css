@@ -1,0 +1,9 @@
+#root .fern-help-guidance>details>summary{display:grid;grid-template-columns:22px minmax(0,1fr) 16px;gap:12px;align-items:center;min-height:44px;padding:10px 8px;list-style:none}
+#root .fern-help-guidance>details>summary::-webkit-details-marker{display:none}
+#root .fern-help-guidance>details>summary::marker{content:""}
+.fern-help-topic-icon{display:block;width:22px;height:22px;color:#0758ed;background:transparent}
+.fern-help-topic-chevron{display:block;width:16px;height:16px;color:#365782}
+.fern-help-guidance>details[open]>summary .fern-help-topic-chevron{transform:rotate(90deg)}
+#root .fern-help-guidance>details>summary:hover .fern-help-topic-icon{color:#003db8}
+
+#root .fern-help-guidance>details>summary::before{display:none;content:none}

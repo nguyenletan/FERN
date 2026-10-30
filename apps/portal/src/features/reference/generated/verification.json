@@ -1,0 +1,1741 @@
+{
+  "sources": [
+    {
+      "kind": "Compliance",
+      "file": "BBM Compliance Standards_25.04.2024.pdf",
+      "edition": "April 2024",
+      "pageCount": 218,
+      "sha256": "0e43f0235ab015604316065424b74fde1ccc81d0796605f6f6f7689f0d63ac21"
+    },
+    {
+      "kind": "PM",
+      "file": "BBM PM Standards_2025.03.13.pdf",
+      "edition": "March 2025",
+      "pageCount": 130,
+      "sha256": "d5906aa9ece2d8e7d5938a30452448c67deb9299becb55593223ccfb1b66096d"
+    }
+  ],
+  "entries": [
+    {
+      "id": "Compliance-introduction",
+      "pages": [
+        1,
+        2
+      ],
+      "pdfSha256": "861d7cd10019a8ee900670dcd6bcbf13896b24efa3943fc42752b247d04b8a80",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.AIR.ENCSPACE",
+      "pages": [
+        3,
+        4
+      ],
+      "pdfSha256": "97065659e4c4df66ef70d5328011c00bd2f2aeee8cd671f3703167c81cbccb53",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.AIR.INDOOR",
+      "pages": [
+        5,
+        6
+      ],
+      "pdfSha256": "4730ec7c6347d1b24a9785c5c13bc6fa6a09ffb61b56d57f502aa784181d9524",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.AIR.LEV",
+      "pages": [
+        7,
+        8
+      ],
+      "pdfSha256": "7dff83b02d58f9cb9d2c3a712d96bd4c2c869521c01a6b42b1135b8e450e5621",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.DISCHARGE",
+      "pages": [
+        9,
+        10,
+        11
+      ],
+      "pdfSha256": "7cf9594d6cee827ed5682515220ace48fcb05a6cf8ea6ceeae280fde280798e1",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.ELECINST",
+      "pages": [
+        12,
+        13,
+        14
+      ],
+      "pdfSha256": "e5223915f548a8e4c8f1b8c971a65cc98cf55f18273bd78df7e7a778e726b467",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.EMERGENCYAC",
+      "pages": [
+        15,
+        16,
+        17
+      ],
+      "pdfSha256": "9194d7cbafe0faaa71e77b5514182faf8eb37e820e11cbb3e730ad5d2b7e5b54",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.FIXEDWIRE",
+      "pages": [
+        18,
+        19,
+        20
+      ],
+      "pdfSha256": "901a30a43e6f2d6974e7d6ae4c77f6b29a7515f27f0640d5f44e0aab73f0fe9a",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.LIGHTING",
+      "pages": [
+        21,
+        22
+      ],
+      "pdfSha256": "b0f13bf22c06fa0dc773e2cbee7beee66a970f40ccbdc112684425acb30486ac",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.LIGHTNING",
+      "pages": [
+        23,
+        24
+      ],
+      "pdfSha256": "c38b937f6b5af57b0182fa9d6d0e330eb77f3447eba675cd90fecba345cf6979",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.PAT",
+      "pages": [
+        25,
+        26,
+        27
+      ],
+      "pdfSha256": "c5ed61d2af3e65f3b1e98fb9b30f1d3f7f340bced84f724f20773fdd40bf538c",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.PHOTOV",
+      "pages": [
+        28,
+        29,
+        30
+      ],
+      "pdfSha256": "dfc6897f735015e3d7185e360d263c73cdbf0f0820b78595b2e4b39136d8124f",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.POWERGENERATOR",
+      "pages": [
+        31,
+        32
+      ],
+      "pdfSha256": "f185400009c5b53308fb311b83cc8527efd4b31ef4f2fe9f8b85cca65f42d5d2",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.RCDMETER",
+      "pages": [
+        33,
+        34
+      ],
+      "pdfSha256": "9e6d5d182ef304880ede7aeb51dc2f42cc5234936225079caf1c6e3f4e505c68",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.SHOCKPROTECTION",
+      "pages": [
+        35,
+        36
+      ],
+      "pdfSha256": "83e4fea54d4614343a311e37c3afa7b9747456cd5d17e5159d79d494498d1880",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.THERMAL",
+      "pages": [
+        37,
+        38
+      ],
+      "pdfSha256": "31d6059b4b600931739e5eb8b1c64eccf00ef295976089e3b72e3104fadbe98d",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.TROILTEST",
+      "pages": [
+        39,
+        40
+      ],
+      "pdfSha256": "c6ae045068c82b113baa566cb3d4ba03f383b0e6fdfca088d909138ac96a65be",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.TVSS",
+      "pages": [
+        41,
+        42
+      ],
+      "pdfSha256": "b7cf081a25b6601b6ec8b1cf16b8e5ef1833a43cba59a9db85049b20fb881db1",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ELEC.UPS",
+      "pages": [
+        43,
+        44
+      ],
+      "pdfSha256": "db415d0ad6f0e7f12532b4383822f2542d3478b2dbf984a3df8d9ac701cb064b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ENVIRO.ASBESTOS",
+      "pages": [
+        45,
+        46
+      ],
+      "pdfSha256": "aaf13992243b6761a9fcc84b37019f59cd888d2f9b6fad666c31d7ce617a5dd8",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ENVIRO.EXTRACT",
+      "pages": [
+        47,
+        48
+      ],
+      "pdfSha256": "15348170300a3586baa949e2b85c5b0cd842f24b901f913265065e958ba2a7f4",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ENVIRO.HAZCAB",
+      "pages": [
+        49,
+        50
+      ],
+      "pdfSha256": "63bbe4a6874360e6b012016a51f45fa6a0c55b79c3445173c5d044988ad435fd",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ENVIRO.INTERCEPTOR",
+      "pages": [
+        51,
+        52
+      ],
+      "pdfSha256": "64f3257f212e92ab695380b070a6419a849dd98b43e062ae679dfc66cfe3fa36",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ENVIRO.OIL",
+      "pages": [
+        53,
+        54
+      ],
+      "pdfSha256": "c097837a10ed5abe621236f0b243892e786346b955a013c346c5ea4b9d9b6bde",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.ENVIRO.WASTE",
+      "pages": [
+        55,
+        56,
+        57
+      ],
+      "pdfSha256": "67809651f79f0d6ebb4dd946ea1f47e9326d26ffe7715a6e6702cca7520538ac",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FAC.BUILDING",
+      "pages": [
+        58,
+        59,
+        60
+      ],
+      "pdfSha256": "40c57cb96dd4dfb6cd30bc59f6d6fd866fc82aa3cc1cea34eb571678aee292b7",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FAC.DRAIN",
+      "pages": [
+        61,
+        62
+      ],
+      "pdfSha256": "7d2db69c0c14dbcfd4bbb564e7c347612f8ea2eeb7fc4957180d957b2707e89b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FAC.ROOFTOPINSPECT",
+      "pages": [
+        63,
+        64
+      ],
+      "pdfSha256": "130aa70df0bf9b5d7d2eeb59d1fdde535fa8654bf2ef9fa6ceb68b67834a6db7",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.ASD",
+      "pages": [
+        65,
+        66
+      ],
+      "pdfSha256": "4d92f2bc3b09aee52a6b88c9f95e55ed436e045edb9a3616b582e5bd5feb1c50",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.DAMPERS",
+      "pages": [
+        67,
+        68
+      ],
+      "pdfSha256": "a6c35574d3edf0153ce809e0a35c9101e093783d5f037d9c809a3dcf24d6ac5d",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.DOORS",
+      "pages": [
+        69,
+        70
+      ],
+      "pdfSha256": "49ac270801084b19f5b9f1efd3beb3fed64d01f5686eca064892e33fe58826cc",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.DRYRISERS",
+      "pages": [
+        71,
+        72
+      ],
+      "pdfSha256": "6c492ed15846478125136249839fd8137f4dc6dda1b9b1637c3e78f638334dbb",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.EVACUATION",
+      "pages": [
+        73,
+        74
+      ],
+      "pdfSha256": "532ce8aa74b62f112871816519eec8eda752d5cf73a84b3d14dbb51c4fefb92c",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.FAS",
+      "pages": [
+        75,
+        76,
+        77
+      ],
+      "pdfSha256": "2a4976eef0f33a8e07a11e334a498e4c33db3845a565ee0ed154eb82914f769c",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.FIGHTINGEQUIP",
+      "pages": [
+        78,
+        79,
+        80
+      ],
+      "pdfSha256": "5cad73415f4441fe004ca21d34c5cb03d10bcf62cb8a2dc85fd95e75d452c9e3",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.FRAMANAGEMENT",
+      "pages": [
+        81,
+        82,
+        83
+      ],
+      "pdfSha256": "399071e51527e7c863118a10cc7523d947e6cebea288694815a59c50d62ae2d3",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.HOSES",
+      "pages": [
+        84,
+        85
+      ],
+      "pdfSha256": "1b29849e98a46039c5f4a72846d2d0fc24acd7bbcfcf543093dbf8856791a9f8",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.HYDRANTS",
+      "pages": [
+        86,
+        87,
+        88
+      ],
+      "pdfSha256": "f08919fcef32a7ff112b710852e4eeab5a4d4264bf1598b6a1fd8ae9f3b6ac6a",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.PUMP",
+      "pages": [
+        89,
+        90,
+        91
+      ],
+      "pdfSha256": "4fb1c300d439d17ff133597f3ea7d56efd5210f33fa106b67a8a2e80dfaea4e1",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.SHUTTERS",
+      "pages": [
+        92,
+        93
+      ],
+      "pdfSha256": "1e62033aa532acb09b3f6bb785b5d4bbdae3108f0bcd3fcc560448126ea206af",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.SMOKEDETECT",
+      "pages": [
+        94,
+        95,
+        96
+      ],
+      "pdfSha256": "151f3978a29c9ccc1cc9a97dbc6f24d01fcfeca31ba651b7a602e78424854c6e",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.SMOKEVENTS",
+      "pages": [
+        97,
+        98,
+        99
+      ],
+      "pdfSha256": "0b103e9081b1bc7b417f7d9e24b3a08d78b2e280aaad999f042373c4096849c5",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.SPRINKSERVICE",
+      "pages": [
+        100,
+        101,
+        102
+      ],
+      "pdfSha256": "5d3f2870ce14d0d2021ad6025aef28e9b6304511c82d4cceda553cff7299e318",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.STAIRCASE",
+      "pages": [
+        103,
+        104
+      ],
+      "pdfSha256": "08f79304cf57114812a162b32d8410f401c8af8c40b1962d7991a38edf158e04",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.FIRE.SUPPRESSION",
+      "pages": [
+        105,
+        106,
+        107
+      ],
+      "pdfSha256": "80bda9bdad7d2e4820b7c3789ab6e3740142a21b14224ba99a2e2300f10b3782",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HEIGHT.LADDERS.F",
+      "pages": [
+        108,
+        109
+      ],
+      "pdfSha256": "1ef36fa4a06cc2b446de2bdf67aaa846c649454d64dc93271af46c6620c9d821",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HEIGHT.LADDERS.M",
+      "pages": [
+        110,
+        111
+      ],
+      "pdfSha256": "40de52ab7ca5b1e28121ee2534fc5afffcc346b71096df99f125bc9e2650e52b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HEIGHT.MOBILEPLAT",
+      "pages": [
+        112,
+        113
+      ],
+      "pdfSha256": "c148713db5ae94474d73ac80e595b42226b0315bc215a93011a318bd5b12256f",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HEIGHT.PPE",
+      "pages": [
+        114,
+        115
+      ],
+      "pdfSha256": "4257ca765b3eec4d582afe4d440cabbb81161755f0ac794803126ed9af12d78e",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HEIGHT.RESTRAINT",
+      "pages": [
+        116,
+        117
+      ],
+      "pdfSha256": "df79842323f5ca5b7b420f6cd98a56cc8af78d03f858924a7c1b2d50d3c5c210",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HEIGHT.SCAFFOLD",
+      "pages": [
+        118,
+        119
+      ],
+      "pdfSha256": "d26e2c7e80add95e4ff08004cb143eb651f62cca8064d961af78a530728c6562",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HVAC.12kW",
+      "pages": [
+        120,
+        121
+      ],
+      "pdfSha256": "6416ef710b534611b52ab17f22f99834006eaa63d04e69339ec09b62e0b2735b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HVAC.BOILERS",
+      "pages": [
+        122,
+        123,
+        124
+      ],
+      "pdfSha256": "1d1b0229b7c5c6ae02368eb46c8b759ae9081910e626e3186e9b6ba39f72e93e",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HVAC.COMBINEDHP",
+      "pages": [
+        125,
+        126,
+        127
+      ],
+      "pdfSha256": "4459ad41ccd7e3ea7efaa28f99d927e96e44e83838aa0eb8b8001c3b51525364",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HVAC.FGAS",
+      "pages": [
+        128,
+        129,
+        130
+      ],
+      "pdfSha256": "33e37647a7492ebae318a3bf1eeeb205776a745e1ddc52739cbbe44554311547",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HVAC.GASAPPLIANCE",
+      "pages": [
+        131,
+        132
+      ],
+      "pdfSha256": "f76f1121c0d926e6491eadf60f38656c180129d9ea06b3d446681ac16b6318bc",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HVAC.GASDET",
+      "pages": [
+        133,
+        134
+      ],
+      "pdfSha256": "bc23b4eb5dc025c979bc6e2bc157c25996a64450a3dcb66e21a338c6d5d5324b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HVAC.GASINSTALL",
+      "pages": [
+        135,
+        136,
+        137
+      ],
+      "pdfSha256": "7a83a287bc66d5e92c1721ae5659e7d7c178c9e983eda95f9bb01568c5a30c45",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.HVAC.ODS",
+      "pages": [
+        138,
+        139,
+        140
+      ],
+      "pdfSha256": "dbf9ddccdd5c135cedb560aeee6e814817c8beea581e7f37bd3a4052ad3b3909",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.LIFT.ACCESSORIES",
+      "pages": [
+        141,
+        142,
+        143
+      ],
+      "pdfSha256": "21508e64d90b8326955019bfeba46ed67ea33d3bdb74cd8a2c699db5cf028e80",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.LIFT.ESCALATOR",
+      "pages": [
+        144,
+        145
+      ],
+      "pdfSha256": "63b6c8913aed5aa55ffbecb91d7016f542e057ea07ce312b24048340044b0a20",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.LIFT.GOODS",
+      "pages": [
+        146,
+        147,
+        148
+      ],
+      "pdfSha256": "67c3f63684cd444a07dac9cfee5df8dbab49f8cf0920a95f5af766a6638362f1",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.LIFT.HOIST",
+      "pages": [
+        149,
+        150
+      ],
+      "pdfSha256": "d89d2ba1c6623712ee4cfc12d786e050a8c1624e94daa22ac677881eaac9011a",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.LIFT.PASSENGER",
+      "pages": [
+        151,
+        152,
+        153
+      ],
+      "pdfSha256": "2038b5c91557f344e7225b4c286a20b68977829a08002e90436a9453704e1100",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.LIFT.VACUUM",
+      "pages": [
+        154,
+        155
+      ],
+      "pdfSha256": "cc5938c1838f35b04735e365d87910a79d81731b3ffc4d1f223ba349a1825e9e",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.PRESSURE.SYS",
+      "pages": [
+        156,
+        157,
+        158
+      ],
+      "pdfSha256": "f648ce35fd07b5991d7aa2ab2693d3dfc943dd3f13b853b12e1f16f0780d1298",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.RAD.MICROWAVES",
+      "pages": [
+        159,
+        160
+      ],
+      "pdfSha256": "e64821ebcd20e68c0a0e52ba2a05a800a0dfc2dc7b1b5b04bcbfdb0f2c7b764c",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.RAINWATERPUMP",
+      "pages": [
+        161,
+        162
+      ],
+      "pdfSha256": "fe2d91504c97e2b729d38dafab1288ac5a06bfc65a010b5075de96a758c2da11",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.SAFE.CONVGUARDING",
+      "pages": [
+        163,
+        164
+      ],
+      "pdfSha256": "143cb0d2025c9a9ef9a81ab17fd21121822c3e3473698bfe8145c58a7e02dd78",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.SAFE.FLAMGASDETECT",
+      "pages": [
+        165,
+        166
+      ],
+      "pdfSha256": "d7128ea357b0b3bc8b68cfd53f39d49ee2a11ef095575960bda0739f678cb228",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.SAFE.LIGHTBARRIERS",
+      "pages": [
+        167,
+        168
+      ],
+      "pdfSha256": "3c30d32c96a314f1f00e4fb53e882dc7404dcaf8455204d19a8053cfc2216fdc",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.SAFE.WASH",
+      "pages": [
+        169,
+        170
+      ],
+      "pdfSha256": "a4237633d4e19beeae311bb26efcd1cf323f86196e01ea41d2d40f4d76d0177c",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.SEWAGE.SEWAGEPUMP",
+      "pages": [
+        171,
+        172
+      ],
+      "pdfSha256": "3cf9f3f84c2dd25ac4e15b066e280a48feed3b2060eb12acce1b7dffc64d3ce9",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WATER.BACKFLOW",
+      "pages": [
+        173,
+        174
+      ],
+      "pdfSha256": "9522aa1ceb9ea1f0888b5ef156a63e3906d35b03d87eaada8f73d38f1cfb669c",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WATER.COLDSERVICE",
+      "pages": [
+        175,
+        176,
+        177
+      ],
+      "pdfSha256": "dd5b11b912b9f90d9a0ddb6b0bd8e12d7f1e581256a881020166c38330b7911a",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WATER.DRINKING",
+      "pages": [
+        178,
+        179
+      ],
+      "pdfSha256": "300e6e5be875cf402639306ecdfae2685bc0212bee122c1fee7669cd7136cb24",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WATER.HOTSERVICE",
+      "pages": [
+        180,
+        181,
+        182
+      ],
+      "pdfSha256": "c7d1fb94e617ccf818e1aa5f5f54a5ad05fe359f2d118642395a9d50cc020890",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WATER.LEAD",
+      "pages": [
+        183,
+        184
+      ],
+      "pdfSha256": "dcedd1764bac224038af374e326822008209ef4af69168fd76499f4c84c565db",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WATER.LEGIONELLA",
+      "pages": [
+        185,
+        186
+      ],
+      "pdfSha256": "aaee0f8efbed7ca671e0323c624389c8ee27aa8f72220893fae2cc0344915afb",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WATER.OSMOSISSYS",
+      "pages": [
+        187,
+        188
+      ],
+      "pdfSha256": "96cbd36b4c53b80dcfcc073450a51814dcbd90679ad5706d37d74a345cdd1f8e",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WHS.NOISE",
+      "pages": [
+        189,
+        190
+      ],
+      "pdfSha256": "fc6e996c11236856953a051cc171cef46c1511508835056c78052a617a51919a",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WORK.ABRASIVE",
+      "pages": [
+        191,
+        192,
+        193
+      ],
+      "pdfSha256": "0ce3f9d15e83be4551c29d127d5f73458cc37d5fe92801dea4a7948bace75276",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WORK.AUTOGATE-PEDESTRIAN",
+      "pages": [
+        194,
+        195,
+        196
+      ],
+      "pdfSha256": "243f8d1de9abba0600a871f176d9f910c18fdf716df0685a6885c98a003aa577",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WORK.BALER",
+      "pages": [
+        197,
+        198,
+        199
+      ],
+      "pdfSha256": "749271f2cc01db5119ea604869314aaa81979f74b83ff5d4c189a19d12c63f50",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WORK.COMPACTOR",
+      "pages": [
+        200,
+        201
+      ],
+      "pdfSha256": "9d7256d9036cd60a9b797aab35fa5503cb88a2dbf5fda873b040bb6f7dd13429",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WORK.DOCK",
+      "pages": [
+        202,
+        203,
+        204
+      ],
+      "pdfSha256": "9662235766780a32ffe01879aba18de38559c57f52a4e71a6bdf2c8b55edcbf2",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WORK.GOODSMOVE",
+      "pages": [
+        205,
+        206
+      ],
+      "pdfSha256": "65ac34183f501b17b6437734f0b3d5e4dc2a7eb346c9682e829872a119cc0d5a",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WORK.LIFTING",
+      "pages": [
+        207,
+        208,
+        209
+      ],
+      "pdfSha256": "744fa046a658716748317ba92fa5ad8de684c81987bdaec94b7a65dc554ed181",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WORK.PEST",
+      "pages": [
+        210,
+        211
+      ],
+      "pdfSha256": "a1339ac9b38389ccf1a718a48cc1263c99077e38defdaa33041a3e710d59b306",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WORK.STORAGE",
+      "pages": [
+        212,
+        213
+      ],
+      "pdfSha256": "16b2aee43409ac2b7bb8017ee90c370ce1f81274f988895fffa74772849a0ada",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.WORK.TRAILER",
+      "pages": [
+        214,
+        215,
+        216
+      ],
+      "pdfSha256": "3e840b78934beca2fef0e565d8778ddbc836b0dffd576af45ad008450f647c8e",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "Compliance-CT.REFR.FGAS",
+      "pages": [
+        217,
+        218
+      ],
+      "pdfSha256": "d35902c09478bc431dc5bac3e7c230edbd0c1cd41d6dab49b7377b025ce7e773",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-introduction",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pdfSha256": "1c5e992276fbb4924be6a5c195a7debb7f68ad895709d040c94bc315fd65e050",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.BMS",
+      "pages": [
+        7
+      ],
+      "pdfSha256": "f01f1d2a955a6c21a9e262a75d79083849c4323cd46b4240e9400c146a81c0cd",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.BUSSHELTER",
+      "pages": [
+        8
+      ],
+      "pdfSha256": "3f3795be17f075b00a65ad45c75cbdebb8b48e583e667e520b1882c0ddb7f71b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.CRANES",
+      "pages": [
+        9
+      ],
+      "pdfSha256": "392cc26b301c55192eebd76ae560ce1840a49da5ac3ce04aa2612e5336de9074",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.DISABL.CLLPNT",
+      "pages": [
+        10
+      ],
+      "pdfSha256": "9a5a2b05683d6862e75e419b233779f687f940408a4cde3476d83ba2cecf2d77",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.DOOR",
+      "pages": [
+        11
+      ],
+      "pdfSha256": "7105c705d5e88a1451b2120676247176f44e31895f87763a3f4a2fdd383989b3",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.DOOR.AUTODOOR",
+      "pages": [
+        12
+      ],
+      "pdfSha256": "3e0ff8addb6f1b314ae11a03941548a3a552a0e74761e44b70d9ac742f798c48",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.DOOR.RLRDOORS",
+      "pages": [
+        13
+      ],
+      "pdfSha256": "d60fcec8574d0b6c9d7133d85813d2df1f38024d7cfc50b4e0a0ed3280888aa7",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.DRAIN",
+      "pages": [
+        14
+      ],
+      "pdfSha256": "ec5962f6aadb6052fa7dec820639cdf3ead30e4182aa010efeadd656c93ef72e",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.DWDISP",
+      "pages": [
+        15
+      ],
+      "pdfSha256": "aa69704a688a5de0d8eb7fccc7c9eec7d4be9c062891c3eaee0275a5f49e5459",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.EARTHING",
+      "pages": [
+        16
+      ],
+      "pdfSha256": "ac8eccfb6d73f95c9db09c2636ed4b15e7129e6508e05e11334d3ed213a6efcd",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.EMERDOOR",
+      "pages": [
+        17
+      ],
+      "pdfSha256": "ede4bce067ea252b2cd1d7e1b0aae6b36cbcff7594d05e2004fb8f010f2bf876",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.EXT",
+      "pages": [
+        18
+      ],
+      "pdfSha256": "aeb9a01541f233f0aaf46e4236593316505c1992e0b0148846ccb69cc4ab7651",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.EXTSURFACES",
+      "pages": [
+        19
+      ],
+      "pdfSha256": "83f1b44ddca35bc68c05dd8a299afe2898b966087841bd3ed095b1ba74c59f8b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.FUELSTOR",
+      "pages": [
+        20
+      ],
+      "pdfSha256": "41944924e8f7cd077f4bdcf82dff18ff4806980a7771f0f548b4f4442f5a3378",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.GATEBARRIER",
+      "pages": [
+        21
+      ],
+      "pdfSha256": "72850d97e3bfcb330eaf16cdf503e9eb12f61f53cfae3d7b65285cbb400fe325",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.GREASESEP",
+      "pages": [
+        22
+      ],
+      "pdfSha256": "a0dd30a5b804a1d114fc6b72ab31515e938c87aef9adfaa8284c00bd79a11534",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.HEARING.LOOP",
+      "pages": [
+        23
+      ],
+      "pdfSha256": "f77faad2279067e7bdaeff0f35b95a2c98728c3ff5eeed40d0f2d1943af04eb1",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.INT",
+      "pages": [
+        24
+      ],
+      "pdfSha256": "08015c97958cc44ca7d2f63abade6358f0ba7ec5c36b689c38ce0fe9682d13d2",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.LIGHTNING",
+      "pages": [
+        25
+      ],
+      "pdfSha256": "1e2cf0a97b324fdf732da7926419cfba613aad32e513d1dcb980059b7b81258d",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.MCRTRPMP",
+      "pages": [
+        26
+      ],
+      "pdfSha256": "776f3e81cc777a5dfaa57862ae3e8a03736d6879631856c2cd3581b474fd974b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.METALDET",
+      "pages": [
+        27
+      ],
+      "pdfSha256": "f64d990184893235fbece2900ddc4a30f868d34f994fe9e9df5d6b21c4874317",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.MEZZANINE",
+      "pages": [
+        28
+      ],
+      "pdfSha256": "6eba00a476e23fd7257ef6fdfacea9a88ea08b00316936062d9bb4ad806122e2",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.OILSEP",
+      "pages": [
+        29
+      ],
+      "pdfSha256": "4528056848430510ebbde9d00145f00b9db42d29b66c153498adafeb5fe37741",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.RAINCOLL",
+      "pages": [
+        30
+      ],
+      "pdfSha256": "cdae79caa539f1aa38de19c3d7fb7bddb51e1777cf14dd0f940134cf88aad547",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.ROOF",
+      "pages": [
+        31
+      ],
+      "pdfSha256": "72adbcbcea1304cc0cbde6bc7c83ff4908ab1e4a737fa52896cc8d3fdb4da6b5",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.SEWAGE.WTRPMP",
+      "pages": [
+        32,
+        33
+      ],
+      "pdfSha256": "e85bda52b3a8f813849d44a4d0c7ee2c5663660c2246e1ad450b4f37227952ce",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.SHADING",
+      "pages": [
+        34
+      ],
+      "pdfSha256": "3514fc5ace8cdf292c4db962492db629759e55d4941409d02e930668b6c8c2e7",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.SPEEDGATE",
+      "pages": [
+        35
+      ],
+      "pdfSha256": "ececcfca2ff7eef168a9854dbab07cba49045ab1fb4e4f5e63f100d9155e98ad",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.SRMS",
+      "pages": [
+        36
+      ],
+      "pdfSha256": "653bc509b6dadd5ec6f7f6ffb67ece7068bd86c0098f254b2a0e08214fac07ce",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.STRUCTURE",
+      "pages": [
+        37
+      ],
+      "pdfSha256": "f598ff0d03f35ba422d3cd7610e05c37dde72fdd1a6a08090f8a4fe06ccc24ef",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.TOIL",
+      "pages": [
+        38
+      ],
+      "pdfSha256": "d678777580d8bec1b2164eca2a1669482ae9826ef6e20dbfb69e61db55fdc6f3",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.TURNST",
+      "pages": [
+        39
+      ],
+      "pdfSha256": "4b7d5e7215d748f6300d9c51913dadf7f4869a9ab994855fe177151b64402084",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-BLDG.WINDOWS",
+      "pages": [
+        40
+      ],
+      "pdfSha256": "337179bcf17e2f204427938804ab99b8652523c0ede83f37df8fdeb9e04cfbf1",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-COMPR",
+      "pages": [
+        41,
+        42
+      ],
+      "pdfSha256": "fd92f496d5855dac26ffaf368bda6d94c16d5a649b1f83efbe8ce80a217281e4",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-DOCKS.01",
+      "pages": [
+        43,
+        44,
+        45
+      ],
+      "pdfSha256": "647e620322895a56463c77cdb5980d21190d8515cd8fb44fcc5e9c830c1571fd",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-ELEC.GEN",
+      "pages": [
+        46,
+        47
+      ],
+      "pdfSha256": "3fbedb433b0d3e7eb4ef32f19ccb5d7cd34d69782da1c5eea9ac75fb5139f7b2",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-ELEC.HV.SWGR",
+      "pages": [
+        48,
+        49
+      ],
+      "pdfSha256": "dae98bbf762bc2c2ce5db941048c82e58a86b43e8a2cab073a71a9d978b1aecb",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-ELEC.HV.TX",
+      "pages": [
+        50,
+        51
+      ],
+      "pdfSha256": "97e826f02e1a2c5de62d2a745cd424ce49c0d988d3dfec581a7d3c4c4b79bf04",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-ELEC.LV.BSBR",
+      "pages": [
+        52
+      ],
+      "pdfSha256": "f0dfc10bba72befde82ee79b6f7978b1e725ca1be78316e2edc431ded8653e02",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-ELEC.LV.CABS",
+      "pages": [
+        53
+      ],
+      "pdfSha256": "fe8947002667350b10e7d38ee6e32c58f664e91b224e9efc3d684ac552f3f20d",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-ELEC.LV.PFC",
+      "pages": [
+        54
+      ],
+      "pdfSha256": "406880abd7eb69784563af09951ce8cf1c6e4d4fda07607301020012761c399c",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-ELEC.LV.SWBD",
+      "pages": [
+        55,
+        56
+      ],
+      "pdfSha256": "9746063904928b24af22fa2d208f6b71024c6ced9416ffd61f2001cfbf38f698",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-ELEC.MET",
+      "pages": [
+        57
+      ],
+      "pdfSha256": "5bfad8b410eea490213091f93b5960f49e9413e1aeedffc765d6049309f5e47f",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-ELEC.UPS",
+      "pages": [
+        58
+      ],
+      "pdfSha256": "504773608b303539354fb5a47a59c4fcc95d8202874c33a5a1cb92ebfff4947b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.ALRMPNL",
+      "pages": [
+        59
+      ],
+      "pdfSha256": "bc9b76bc33b207a442e2a4fdb4a78674fcd8cf16326162016400030f857c0115",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.ASD",
+      "pages": [
+        60
+      ],
+      "pdfSha256": "580809e7b19a73d764afdbf247fd673c5a911864d610bf7fcc38e0ffab9a8876",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.BEAM",
+      "pages": [
+        61
+      ],
+      "pdfSha256": "bd77ee78271b2fb8d36869e8c81e0433af51056081913e8659c0e7171f179642",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.COMM",
+      "pages": [
+        62
+      ],
+      "pdfSha256": "ae0d24ca930bab9b2f565afc0754f37b4a3bdd1230f1f3d8db32ac8a30fc0de7",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.DUCT",
+      "pages": [
+        63
+      ],
+      "pdfSha256": "38ec1d8612b94d8410063a56d7086fc6ddb7ad21ca7ac6274b652260e06839c9",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.FLAME",
+      "pages": [
+        64
+      ],
+      "pdfSha256": "69251950343f3b18960cb81dc0ddd9a5acd03623bbef4e073bf10c66fd4ac9f7",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.HEAT",
+      "pages": [
+        65
+      ],
+      "pdfSha256": "ebec0e43244d6304075adc757a4b54836e9e4bd52cf718139e647f75362ecd48",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.LINEAR",
+      "pages": [
+        66
+      ],
+      "pdfSha256": "db09e12ada5051be1e3c40c9c63b1e9b682d01caced6aa784a5479747681d92b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.MCP",
+      "pages": [
+        67
+      ],
+      "pdfSha256": "19e90da3b6b5c169aeb0d22e8599bd9751257a352b5e032a7541bd01417ef9ba",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.RADIO",
+      "pages": [
+        68
+      ],
+      "pdfSha256": "51c408bd3fe5bce3123876f3be5e71d9e8ef4d99da856598ca2858d59c2ced19",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.SMOKE",
+      "pages": [
+        69
+      ],
+      "pdfSha256": "082f3a74a5acc91737b309bc7bceec21e2b34d17dee7d6e7975f42e7aa703450",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.SMOKEHEAT",
+      "pages": [
+        70
+      ],
+      "pdfSha256": "9cad60f3ab9b08c3ebbcca440e61747da9f3313e44ce85125d9a462936892512",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.DET.SMOKEHEATCO",
+      "pages": [
+        71
+      ],
+      "pdfSha256": "d0d45201eb33ad2772f41c82baeb5051307bc181a7cd4ce4f7d5835297a22517",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.FLS.DMP",
+      "pages": [
+        72
+      ],
+      "pdfSha256": "9e5c5da50e15f90c769e1f143019b04ad8c387b4c38919b95377784e689e2cf6",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.FLS.FIREDOOR",
+      "pages": [
+        73
+      ],
+      "pdfSha256": "fe6e61610e0af5644420347278776d3089ba0ea87fea973d2a34ab151186bf73",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.FLS.FIRESLD",
+      "pages": [
+        74
+      ],
+      "pdfSha256": "da936c9bcc9cdba13887009927e86443baaed7f5792888c6affeb7734e4424f1",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.FLS.HOLDDOOR",
+      "pages": [
+        75
+      ],
+      "pdfSha256": "a07ab85143af3f622dadcaaa1b5b3d8d55fa833231f7e157f4c1250f3ba65aaf",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.FLS.SMOKEEXT",
+      "pages": [
+        76
+      ],
+      "pdfSha256": "31e6c12a3336ae4a2387fbb5cc4859de6c102df74c7591cb704e30c4abe788f3",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.FLS.SMOKEHEATVENT",
+      "pages": [
+        77
+      ],
+      "pdfSha256": "eaeeeb907cb47f4d21817de4f57a160514ec77db204e3cdfb6f717898c3842a0",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SPHZRD.HYDRO",
+      "pages": [
+        78
+      ],
+      "pdfSha256": "d8aeb18022efdb85264e22233c1c2fb0e68bd824482360b11b74f43f898e8199",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SPHZRD.KITCHEN",
+      "pages": [
+        79
+      ],
+      "pdfSha256": "fb93012625c5c09979874062ad20cbd251d9639475eaa7ae089c4907d6237975",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.DRYRISERS",
+      "pages": [
+        80
+      ],
+      "pdfSha256": "292585a112bf4757d5251efb841f01877e0cff6db256350542eea29040b845ae",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.EQP.EXT",
+      "pages": [
+        81
+      ],
+      "pdfSha256": "0220846d8a32f680fb2706502cdbce09620eba81566e630b1024fc97fa815710",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.FOAM",
+      "pages": [
+        82
+      ],
+      "pdfSha256": "bd34ca6aa2f50838119a6f882952a168bb80bddb2c5a52f783614b8255cfec70",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.HDRNT",
+      "pages": [
+        83
+      ],
+      "pdfSha256": "4d55741054ce85d7ce792cf7be4b45b7dd22d53a785bfb8a0e5f94919a6022a2",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.PRESSWTR.VESSELS",
+      "pages": [
+        84
+      ],
+      "pdfSha256": "901457eb87715b45d5a12043f5891ccdd00e68ded9931de8e18718496005c73c",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.PUMP.AS01",
+      "pages": [
+        85,
+        86,
+        87
+      ],
+      "pdfSha256": "1aaee8b6320dc8cbfbc7b33d88c4b0ada3305608bf4569181595f00dd6026afb",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.PUMP.JP01",
+      "pages": [
+        88
+      ],
+      "pdfSha256": "ef1cdff5d3c662de5a2e6be60b8408a811544f56bc1b584f1374f499315cc8ba",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.SHUTTER",
+      "pages": [
+        89
+      ],
+      "pdfSha256": "08dc4c66f6974fbe3d381e0967fdff483f8cdc32e3c764bbb386599702f3ca40",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.SPRK",
+      "pages": [
+        90,
+        91
+      ],
+      "pdfSha256": "d69f5ed9c496cf254df24d90ebe52bde29de915beb6eefcaf66dae9977599d22",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.VALV",
+      "pages": [
+        92
+      ],
+      "pdfSha256": "70d1e6808c2512a4883caa5386c95aea51e41de265903b591929820a7ad873af",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.WETRISERS",
+      "pages": [
+        93
+      ],
+      "pdfSha256": "15f2c76fd55b64a13e3fbdb5a12f880d400eca6c01331fd20802fdef14272006",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-FIRE.SUP.WTRTNK",
+      "pages": [
+        94
+      ],
+      "pdfSha256": "3ef84269e2eccad2663d775f33213ca20bc770b742421fd6f17b30e4cdbf9f3b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-GAS",
+      "pages": [
+        95
+      ],
+      "pdfSha256": "72f40e7394b8d4dd69b87a9620a730d69f7776cef7309e977783e0f5604a5630",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.AC",
+      "pages": [
+        96
+      ],
+      "pdfSha256": "1a674044d7bb4f092fe6f573386e91f8a7db5fc1f090c3268d72da03722d5303",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.AHU",
+      "pages": [
+        97,
+        98
+      ],
+      "pdfSha256": "ab40856f9b2f2bf1e3cc6ff8c48011349a1730c2891d9f48633334d6075ee3b1",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.BLR",
+      "pages": [
+        99
+      ],
+      "pdfSha256": "5dd316601b1ea14d63323ff1824b598da35f6561fd4baa019b38f2e7ef931ac2",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.CHILL",
+      "pages": [
+        100,
+        101
+      ],
+      "pdfSha256": "414cef7904e4b63d8d0492a4438be83359b660bbe9beb0977f90ecf7ae0e40da",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.CNV",
+      "pages": [
+        102
+      ],
+      "pdfSha256": "4c7c9dcf92b8a9804e3beddfbc6e067990d9b76aa6da3fa4b16c662f6a59e864",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.CU",
+      "pages": [
+        103,
+        104
+      ],
+      "pdfSha256": "5818ec4babecd10249674c07ad74cfe9a7b6fe2c53770f948e78bdea36899bb5",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.DH",
+      "pages": [
+        105
+      ],
+      "pdfSha256": "95a9c1558d8c6732b6d05ab2f447a743c122d1d714d3e483becb543fbe3b5f43",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.EF",
+      "pages": [
+        106
+      ],
+      "pdfSha256": "8fea39413bdf4685320945e113843107f80312f46d3a5617ebdb3f831a41f6af",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.GH",
+      "pages": [
+        107
+      ],
+      "pdfSha256": "a9d821dbf0539fd6aa93cfae99558c9744b2a471fc822927d705c082acba6853",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.HMD",
+      "pages": [
+        108
+      ],
+      "pdfSha256": "8a5de9780cb0ba63971895d24aa9c6a76a08a17627e3a1cf07342d90fca8e220",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.RTU",
+      "pages": [
+        109,
+        110,
+        111
+      ],
+      "pdfSha256": "5f1512facab860a2cf91f4888f4152aa4d7af535177c98976b566a64d932f32e",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.SUP",
+      "pages": [
+        112
+      ],
+      "pdfSha256": "503e9883c6e41d5677d788279d21fb729c4c41c2c85c14a877aaa5c3ddc3ba57",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-HVAC.WTR",
+      "pages": [
+        113,
+        114
+      ],
+      "pdfSha256": "83b1a66f619f6bb78bd7dc95dcb2a43457893a0dd86b064ea3ad4269d0319a8d",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-LADDERS.FIXED",
+      "pages": [
+        115
+      ],
+      "pdfSha256": "8ac24c4842dd9000b0a579cac6c8fa788fec63684ade0e5340d38c040e66f409",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-LADDERS.MOBILE",
+      "pages": [
+        116
+      ],
+      "pdfSha256": "62257b1b425114da27560a76b839ab1837351412538c7bfd2e0528e287e4394d",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-LIFTS.GOODS",
+      "pages": [
+        117,
+        118
+      ],
+      "pdfSha256": "e79fd583f0d6572456153d8d3cbeb3267a3f170b46bacc6ffd8b7de3433b40da",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-LIFTS.PASSENGER",
+      "pages": [
+        119,
+        120
+      ],
+      "pdfSha256": "755367fc297e6184d15d8d0e436427e9d761d4eff1e810676d00a9b8c7e2423b",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-LIFTS.V2G",
+      "pages": [
+        121,
+        122
+      ],
+      "pdfSha256": "d5f7a90d01278b0bfe1fad8ee016a0a8f6659f81b8b3c3ecc53b847dfa26dc95",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-LIGHT.EXT",
+      "pages": [
+        123
+      ],
+      "pdfSha256": "7c205bc5688a15b5b4c03feab07b5707db19c44f9cf69f5748560eac24d36385",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-LIGHT.INT",
+      "pages": [
+        124
+      ],
+      "pdfSha256": "c99789fe5d0e658a8c796c36b7043d548f1816c9ba28031a82a22f4307ed8fa5",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-LIGHT.SAFETY",
+      "pages": [
+        125,
+        126
+      ],
+      "pdfSha256": "3f02a92c6af94f633c561e50d46492b1ae1997eefd886f0d7a2a30241108f2e6",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-STOR.HRACK",
+      "pages": [
+        127
+      ],
+      "pdfSha256": "4bc15a8a0d884cad78a53877dad3982767fb7ba7dbfb1d61bb188832713aed39",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-STOR.SHELV",
+      "pages": [
+        128
+      ],
+      "pdfSha256": "6e7f7e443ec62d38fe13f43ec2e74a66cc74e5091042ad55145a3ce2d6dfd5d4",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-WTR.SUPPLY",
+      "pages": [
+        129
+      ],
+      "pdfSha256": "7f3d7220f2cec6940498c1852bf269b31492736a02fe969c90ec323b5ff57f2f",
+      "sourcePixelMatch": true
+    },
+    {
+      "id": "PM-WTR.SUPPLY.HTR",
+      "pages": [
+        130
+      ],
+      "pdfSha256": "e6df891d4d2dd51a92e21b2340559833c1dca39a7d10d65c5a0baa007b8a8926",
+      "sourcePixelMatch": true
+    }
+  ],
+  "extractionIssues": []
+}

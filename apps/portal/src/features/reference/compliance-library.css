@@ -1,0 +1,12 @@
+.fern-compliance-library label{display:block;font-weight:650;margin-bottom:.5rem}
+.compliance-search-row{display:flex;gap:.75rem;flex-wrap:wrap}
+.compliance-search-row input{flex:1;min-width:180px;border:1px solid #9aabc4;border-radius:8px;padding:.75rem;font:inherit;background:#fff;color:#233858}
+.compliance-search-row button{padding:.75rem 1rem;border:1px solid #9aabc4;border-radius:8px;background:white;color:#174581;font:inherit;cursor:pointer}
+.compliance-search-row button:disabled{opacity:.5;cursor:default}
+.compliance-search-row input:focus-visible,.compliance-source-actions a:focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+.compliance-code{display:block;font-size:.85em;font-weight:400;overflow-wrap:anywhere}
+.compliance-entry{overflow-wrap:anywhere}
+.compliance-source-actions{display:flex;flex-wrap:wrap;gap:1rem}
+.compliance-source-actions a{color:#174fc0;text-decoration:underline}
+.compliance-reader-note{font-size:.9em}
+@media(max-width:600px){.compliance-search-row{flex-direction:column}.compliance-search-row input{min-width:0;width:100%}.compliance-source-actions{flex-direction:column}}

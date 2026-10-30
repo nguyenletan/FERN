@@ -1,0 +1,2 @@
+import {VisualGuide} from '../visual/VisualGuide';
+export default function FernUpdates(){return <div className="fern-guidance-copy"><VisualGuide art="learning" steps={["Explore updates","Check availability","Find guidance"]}/><h3>Current website preview</h3><p>This demonstration includes the FERN workspace, introductory learning, reference search and source reading, help and navigation.</p><p>No published release announcements are available here yet.</p></div>;}

@@ -1,0 +1,6 @@
+import {useState, type ComponentType} from 'react';
+type Context={onDirtyChange?:(dirty:boolean)=>void;site:string;facilityType:string;serviceModel:string;tier:string;region:string;onNavigate:(destination:string)=>void};
+export default function StandaloneShell({title,Page,onSignOut}:{title:string;Page:ComponentType<Context>;onSignOut:()=>void}){
+ const [notice,setNotice]=useState('');const [dirty,setDirty]=useState(false);
+ return <main className="min-h-screen bg-slate-50"><header className="p-4 bg-slate-900 text-white"><div className="flex justify-between gap-4"><h1>{title} — standalone development</h1><button onClick={()=>{if(!dirty||window.confirm("Your plan has unsaved changes. Sign out without saving?"))onSignOut();}}>Sign out</button></div><p>Demo context: BHX4 · UK · Fulfilment Centre · IFM · Plus. Browser-local storage; Amazon accounts and approvals are not connected.</p><p>Standalone applications use separate browser storage. Use supported file transfers to exchange issued records.</p>{notice&&<p role="status">{notice}</p>}</header><Page onDirtyChange={setDirty} site="BHX4" facilityType="Fulfilment Centre" serviceModel="IFM" tier="Plus" region="UK" onNavigate={destination=>setNotice(`Open ${destination} from the integrated FERN portal navigation. Save and export your work before changing web addresses.`)}/></main>;
+}

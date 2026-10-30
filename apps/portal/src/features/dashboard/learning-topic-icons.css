@@ -1,0 +1,8 @@
+#root .fern-learning-topics>details>summary{display:grid;grid-template-columns:22px minmax(0,1fr) 16px;gap:12px;align-items:center;min-height:44px;padding:10px 8px;list-style:none}
+#root .fern-learning-topics>details>summary::-webkit-details-marker{display:none}
+#root .fern-learning-topics>details>summary::marker{content:""}
+#root .fern-learning-topics>details>summary::before{display:none;content:none}
+.fern-learning-topic-icon{display:block;width:22px;height:22px;color:#0758ed;background:transparent}
+.fern-learning-topic-chevron{display:block;width:16px;height:16px;color:#365782}
+.fern-learning-topics>details[open]>summary .fern-learning-topic-chevron{transform:rotate(90deg)}
+#root .fern-learning-topics>details>summary:hover .fern-learning-topic-icon{color:#003db8}

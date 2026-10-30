@@ -1,0 +1,23 @@
+import {useState} from 'react';
+import {sensitivityResults,type SensitivityCase} from '../../../packages/lifecycle-core/src/sensitivity.ts';
+import {economicCsv,type EconomicReportContext} from '../../../packages/lifecycle-core/src/economicReport.ts';
+import type {Economics} from '../../../packages/lifecycle-core/src/economics.ts';
+const field='border rounded p-2 w-full';
+export default function SensitivityPanel({years,baseline,cases,onChange,currency,context}:{years:{year:number;total:number}[]|null;baseline?:Economics;cases:SensitivityCase[];onChange?:(cases:SensitivityCase[])=>void;currency:string;context:EconomicReportContext}){
+ const [message,setMessage]=useState('');const results=sensitivityResults(years,baseline,cases);
+ const patch=(id:string,p:Partial<SensitivityCase>)=>onChange?.(cases.map(c=>c.id===id?{...c,...p}:c));
+ const money=(n:number)=>`${currency} ${n.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+ return <section className="border rounded p-4 bg-white space-y-3" aria-label={`${context.source} economic sensitivity`}><h3 className="font-bold">{context.source}: economic sensitivity</h3>
+ <p className="text-sm">Explore user-defined rate alternatives. Each case keeps the same asset/pricing scope, currency, location and timing as the baseline and changes only inflation and nominal discount rates. Cases are not forecasts, probabilities or approved recommendations.</p>
+ {onChange&&<button className="border rounded px-3 py-2 bg-blue-50 disabled:opacity-50" disabled={cases.length>=30} onClick={()=>onChange([...cases,{id:crypto.randomUUID(),name:'',inflation:'',discount:'',evidence:''}])}>Add economic sensitivity case</button>}
+ {!cases.length&&<p className="text-sm">No alternative assumptions entered.</p>}
+ {cases.map(c=>{const r=results.find(r=>r.id===c.id)!;return <fieldset key={c.id} className="border rounded p-3 space-y-2"><legend>{c.name||'New sensitivity case'}</legend>
+ {onChange?<><div className="grid sm:grid-cols-2 gap-3"><label>Sensitivity case name<input className={field} value={c.name} onChange={e=>patch(c.id,{name:e.target.value})}/></label><label>Sensitivity inflation (%)<input className={field} type="number" step="any" value={c.inflation} onChange={e=>patch(c.id,{inflation:e.target.value})}/></label><label>Sensitivity nominal discount (%)<input className={field} type="number" step="any" value={c.discount} onChange={e=>patch(c.id,{discount:e.target.value})}/></label></div><label className="block">Sensitivity rationale and source<textarea className={field} value={c.evidence} onChange={e=>patch(c.id,{evidence:e.target.value})}/></label></>:<p>Inflation {c.inflation||'missing'}%; nominal discount {c.discount||'missing'}%. Rationale: {c.evidence||'missing'}.</p>}
+ {r.gaps.length?<ul className="list-disc pl-5 text-sm">{r.gaps.map((g,i)=><li key={i}>{g}</li>)}</ul>:<><p className="font-semibold">Case NPC: {money(r.result.npc!)} · Change from baseline: {money(r.delta!)} ({r.percentage===null?'percentage unavailable for zero baseline':r.percentage.toFixed(2)+'%'})</p><p>Undiscounted cash flow: {money(r.result.total!)}</p><details><summary>View sensitivity horizon totals</summary><ul>{r.result.horizons!.map(h=><li key={h.horizon}>{h.horizon} years: {h.npc===null?'Unavailable — extend assessment horizon':`NPC ${money(h.npc)}; cash flow ${money(h.nominal!)}`}</li>)}</ul></details></>}
+ <button className="border rounded px-3 py-2 bg-blue-50 disabled:opacity-50" disabled={r.gaps.length>0} onClick={()=>{try{const csv=economicCsv(years,r.assumptions,currency,{...context,sensitivity:{id:c.id,name:c.name,baselineInflation:baseline!.inflation,baselineDiscount:baseline!.discount,baselineEvidence:baseline!.evidence}});const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=context.source==='Combined costs'?'FERN-combined-economic-sensitivity.csv':'FERN-asset-economic-sensitivity.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('Sensitivity CSV generated. Check browser downloads.');}catch(e){setMessage(e instanceof Error?e.message:'Export failed.');}}}>Download sensitivity case CSV</button>
+ {onChange&&<button className="border rounded px-3 py-2" onClick={()=>onChange(cases.filter(x=>x.id!==c.id))}>Remove sensitivity case {c.name||'row'}</button>}
+ </fieldset>})}
+ {message&&<p role="status">{message}</p>}
+ <p className="text-sm text-amber-900">Save the asset project to retain cases. The combined view uses these same cases against its combined cost schedule. Amazon economic method and domain approvals remain open.</p>
+ </section>;
+}
