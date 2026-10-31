@@ -267,6 +267,19 @@ Checked against [Cloudscape responsive design](https://cloudscape.design/foundat
 | Don't remove content on small screens | Fixed: on phones the sign-in page hid its whole introduction (tagline, team illustration, "One platform. Complete visibility.", the three benefits and "FERN is an Amazon internal platform"). It now appears below the form, benefits in one column; only the logo and title it repeats from the mobile header are hidden |
 | Use the system breakpoints | Fixed: custom breakpoints now use Cloudscape's (xxs 465, xs 688 = mobile, s 912): sign-in 767 → 688 and 360 → 465, reader PDF height 700 → 688, navigation open by default and closed on page change 900 → 912. The home and help media position already used 688. Sign-in, reader and app layout now switch to their phone layouts together |
 
+### 18. Bidirectionality (right-to-left)
+
+Checked against [Cloudscape bidirectionality](https://cloudscape.design/foundation/core-principles/bidirectionality/). No right-to-left language is planned (the header offers English only), but the portal is ready for one: with `dir="rtl"` on the page, the layout mirrors with no horizontal scroll.
+
+| Guideline | Result |
+| --- | --- |
+| Cloudscape components are bidirectional | Used throughout; `Box float="right"` compiles to `float: inline-end`, and the Cloudscape `arrow-left` / `arrow-right` icons mirror |
+| Logical, not physical, CSS properties | Fixed: the six physical properties in portal styles are now logical (`padding-inline-start` for list indents, `text-align: start` in source tables and sign-in benefits, `border-inline-start` between the sign-in introduction and form, `padding-inline` on narrow phones). No `left` / `right` remains outside the content-administration walkthrough |
+| Mirror elements that show direction | Fixed: five buttons ended with a typed "→" (four of them read aloud as "right arrow"): "Read a supporting BBM standard", "Explore BBM standards", "Review maintenance standards", "Find a compliance standard" and the FM Overview area buttons. They now use the Cloudscape `arrow-right` icon, which mirrors and is not announced. The rising-trend icon (Performance & KPIs, Lifecycle & Asset Analysis) mirrors on right-to-left pages (`.fern-icon-directional`) |
+| Don't mirror physical objects, numbers, code | Other icons (book, buildings, magnifier…) and photographs are not mirrored |
+
+If a right-to-left language is added: set `dir` on `<html>` from the selected language, mark untranslated English fragments with `dir="ltr"`, and have a native speaker review the pages.
+
 ## Developer notes
 
 | File | Purpose |

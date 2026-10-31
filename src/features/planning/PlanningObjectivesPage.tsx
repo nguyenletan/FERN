@@ -199,12 +199,14 @@ export default function PlanningObjectivesPage() {
         {onNavigate && (
           <p>
             <Button
+              iconName="arrow-right"
+              iconAlign="right"
               onClick={() => {
                 openStandardCollection('PM');
                 onNavigate('Reference Library');
               }}
             >
-              Review maintenance standards →
+              Review maintenance standards
             </Button>
           </p>
         )}

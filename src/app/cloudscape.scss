@@ -21,7 +21,7 @@ input:-webkit-autofill {
 /* Consistent list markers and indent inside Cloudscape text content. */
 [class*='awsui_text-content_'] ul,
 [class*='awsui_text-content_'] ol {
-  padding-left: awsui.$space-scaled-xl;
+  padding-inline-start: awsui.$space-scaled-xl;
 }
 [class*='awsui_text-content_'] ul {
   list-style: disc;
@@ -47,6 +47,9 @@ input:-webkit-autofill {
   display: inline-flex;
   flex-shrink: 0;
   color: awsui.$color-text-accent;
+}
+.fern-icon-directional:dir(rtl) svg {
+  transform: scaleX(-1);
 }
 .fern-icon-title {
   display: inline-flex;
@@ -84,7 +87,7 @@ input:-webkit-autofill {
 .fern-table-scroll td {
   border: 1px solid awsui.$color-border-divider-default;
   padding: awsui.$space-scaled-xxs awsui.$space-scaled-xs;
-  text-align: left;
+  text-align: start;
   vertical-align: top;
 }
 .fern-table-scroll th {

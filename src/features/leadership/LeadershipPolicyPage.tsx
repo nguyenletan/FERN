@@ -178,12 +178,14 @@ export default function LeadershipPolicyPage() {
         {onNavigate && (
           <p>
             <Button
+              iconName="arrow-right"
+              iconAlign="right"
               onClick={() => {
                 openStandardCollection('all');
                 onNavigate('Standards & Reference Library');
               }}
             >
-              Explore BBM standards →
+              Explore BBM standards
             </Button>
           </p>
         )}

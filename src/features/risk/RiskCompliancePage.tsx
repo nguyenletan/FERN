@@ -94,12 +94,14 @@ export default function RiskCompliancePage() {
         {onNavigate && (
           <p>
             <Button
+              iconName="arrow-right"
+              iconAlign="right"
               onClick={() => {
                 openStandardCollection('Compliance');
                 onNavigate('Reference Library');
               }}
             >
-              Find a compliance standard →
+              Find a compliance standard
             </Button>
           </p>
         )}

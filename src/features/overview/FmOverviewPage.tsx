@@ -70,9 +70,8 @@ export default function FmOverviewPage() {
             <div key={title}>
               <h3>{title}</h3>
               <p>{text}</p>
-              <Button onClick={() => onNavigate(destination)}>
+              <Button iconName="arrow-right" iconAlign="right" onClick={() => onNavigate(destination)}>
                 {action}
-                <span aria-hidden="true"> →</span>
               </Button>
             </div>
           ))}
