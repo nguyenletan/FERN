@@ -145,6 +145,12 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
   const app = applicationByName(route.page);
   const inWorkspace = route.page === 'Workspace' || workspacePages.some(([title]) => title === route.page);
   const pageTitle = route.panel ? resourceTitles[route.panel] : app ? app.title : route.page;
+  // A unique browser tab title for every page, so tabs, history and screen readers say where you are.
+  useEffect(() => {
+    const title = route.panel === 'search' && route.query ? `Search results for “${route.query}”` : pageTitle;
+    document.title =
+      route.page === 'Home' && !route.panel ? 'FERN — Facility Management' : /\bFERN\b/.test(title) ? title : `${title} – FERN`;
+  }, [pageTitle, route]);
   const crumbs = [
     { text: 'FERN', href: nav.href('Home') },
     ...(route.panel === 'search'

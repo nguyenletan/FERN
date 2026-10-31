@@ -58,6 +58,9 @@ export default function DemoSignIn({ renderApp }: { renderApp: (onSignOut: () =>
   }, [info]);
   const [error, setError] = useState('');
   const [loggedIn, setLoggedIn] = useState(readSession);
+  useEffect(() => {
+    if (!loggedIn) document.title = 'Sign in – FERN';
+  }, [loggedIn]);
 
   function handleSignIn(e: React.FormEvent) {
     e.preventDefault();
@@ -81,7 +84,7 @@ export default function DemoSignIn({ renderApp }: { renderApp: (onSignOut: () =>
   }
 
   return (
-    <div className="fern-signin">
+    <main className="fern-signin">
       <section className="fern-signin-story" aria-label="About FERN">
         <div className="fern-signin-brand">
           <strong>FERN</strong>
@@ -237,6 +240,6 @@ export default function DemoSignIn({ renderApp }: { renderApp: (onSignOut: () =>
           </SpaceBetween>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

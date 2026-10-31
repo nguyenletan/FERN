@@ -238,6 +238,22 @@ Checked with the keyboard against [Cloudscape focus management principles](https
 
 Expanding sections, opening the help panel and switching tabs do not move focus.
 
+### 16. Building accessible experiences
+
+Checked against [Cloudscape: building accessible experiences](https://cloudscape.design/foundation/core-principles/accessibility/Building-accessible-experiences/) with axe-core 4.10 (WCAG 2.2 A and AA rules) on 25 screens (sign-in, all routes, search results, the standards reader in both views, Learn with the help panel open), plus heading, title, landmark and 320 px reflow checks. Result: **0 axe violations**.
+
+| Guideline | Result |
+| --- | --- |
+| Clear, unique page title | Fixed: every page had "FERN — Facility Management". The browser tab now names the page ("Performance & KPIs – FERN", "Search results for “kpi” – FERN", "Sign in – FERN"); Home keeps "FERN — Facility Management" |
+| Heading hierarchy | Fixed: one h1 per page and no skipped levels. In the standards reader, "Source interval / evidence columns" was h5 and the original document headings h4 directly under h2; both are now h3 (same visual size) |
+| Landmarks | App layout provides navigation, main and tools on every portal page. Fixed: the sign-in page now uses `<main>` |
+| Accessible names for all components | Fixed: the clear (×) button of the two search inputs had no name (axe: critical); both now have `clearAriaLabel="Clear search"`. All other buttons, links, form fields and images pass |
+| Contrast; not colour alone | Passes axe colour-contrast on every screen; statuses and badges carry text or icons (section 6) |
+| Keyboard access and focus | Section 15 |
+| Reflow (no horizontal page scroll) | No horizontal scroll at 320 px on any route; wide source tables scroll inside their own region |
+| Motion | Section 10 |
+| Table headers | Data tables use Cloudscape `Table`. The original source tables in the reader reproduce the PDF tables and have no marked header cells, because the extracted data does not say which row is the header; the task reading view is the structured, accessible version of the same content |
+
 ## Developer notes
 
 | File | Purpose |

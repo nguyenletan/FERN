@@ -298,6 +298,7 @@ export default function StandardsLibrary() {
                 >
                   <Input
                     type="search"
+                    clearAriaLabel="Clear search"
                     value={query}
                     onChange={({ detail }) => changeSearch(detail.value)}
                     placeholder="Try emergency lighting, fire doors or an object code"
@@ -806,7 +807,7 @@ export default function StandardsLibrary() {
                             </table>
                           </div>
                         ) : block.type === 'heading' ? (
-                          <Box key={i} variant="h4">
+                          <Box key={i} variant="h3" fontSize="heading-s">
                             <span id={`bbm-${entry.kind}-${page.number}-heading-${i}`}>{block.text}</span>
                           </Box>
                         ) : (
