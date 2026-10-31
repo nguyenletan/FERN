@@ -10,7 +10,7 @@ import KeyValuePairs from '@cloudscape-design/components/key-value-pairs';
 import Link, { type LinkProps } from '@cloudscape-design/components/link';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import TextContent from '@cloudscape-design/components/text-content';
-import './cloudscape.css';
+import './cloudscape.scss';
 
 // FERN blue for primary actions and links. Text uses the Cloudscape default font (Open Sans, bundled in styles/index.css).
 applyTheme({

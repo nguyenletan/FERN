@@ -20,11 +20,11 @@ This repository delivers the FERN website: demo sign-in, Home, the seven Workspa
 | `src/features/search` | Header keyword search (Cloudscape Autosuggest; not an AI service) |
 | `src/features/admin-demo` | Proposed CMS walkthrough with local drafts and simulated roles |
 | `src/auth` | Demo sign-in (Cloudscape form); to be replaced by Midway |
-| `src/styles/index.css`, `src/assets` | Global stylesheet (Cloudscape global styles: normalize.css and Open Sans; portal base rules; pointer cursor) and shared images |
+| `src/styles/index.css`, `src/assets` | Global stylesheet (Cloudscape global styles: normalize.css and Open Sans; portal base rules; pointer cursor) and shared images. Other portal stylesheets are Sass (`.scss`) so they can use `@cloudscape-design/design-tokens` |
 | `tests/` | `node --test` unit and source-data checks; Playwright browser suites (`browser.mjs`, `homepage-browser.mjs`, `portal-handover-browser.mjs`, `pdf-delivery-browser.mjs`) |
 | `scripts/` | Development tooling only: verification, single-file export and BBM reader generation. **Removed when the portal is deployed to Amazon's environment** (see below) |
 
-This is a single Vite application (no pnpm workspace): all source is under `src/`. `pnpm dev` serves it at http://127.0.0.1:4173 and `pnpm build` writes `dist/`. The CMS and the FERN applications are separate services and repositories; if code ever needs sharing with them, publish it as a package rather than adding workspace folders here.
+This is a single Vite application: all source is under `src/`. `pnpm-workspace.yaml` holds pnpm settings only (it declares no workspace packages; pnpm 11 reads settings there), currently `allowBuilds` to skip the optional `@parcel/watcher` build script that `sass` pulls in. `pnpm dev` serves it at http://127.0.0.1:4173 and `pnpm build` writes `dist/`. The CMS and the FERN applications are separate services and repositories; if code ever needs sharing with them, publish it as a package rather than adding workspace folders here.
 
 ## Deployment note: `scripts/` is not deployed
 

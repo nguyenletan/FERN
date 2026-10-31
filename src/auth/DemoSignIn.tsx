@@ -12,7 +12,7 @@ import FormField from '@cloudscape-design/components/form-field';
 import Header from '@cloudscape-design/components/header';
 import Input from '@cloudscape-design/components/input';
 import SpaceBetween from '@cloudscape-design/components/space-between';
-import './demo-sign-in.css';
+import './demo-sign-in.scss';
 import { DEMO_EMAIL, DEMO_PASSWORD } from './demoCredentials.ts';
 import React, { useState } from 'react';
 

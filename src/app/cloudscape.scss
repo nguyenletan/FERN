@@ -1,3 +1,5 @@
+@use '@cloudscape-design/design-tokens/index.scss' as awsui;
+
 /* FERN portal on Cloudscape. Keep the top navigation visible while the page scrolls. */
 .fern-top-navigation {
   position: sticky;
@@ -36,7 +38,7 @@
 }
 .fern-icon {
   flex-shrink: 0;
-  color: #1a3fb5;
+  color: awsui.$color-text-accent;
 }
 .fern-icon-title {
   display: inline-flex;
@@ -45,14 +47,14 @@
 }
 .fern-guide-mascot img {
   object-fit: contain !important;
-  background: #eef3ff;
+  background: awsui.$color-background-item-selected;
 }
 
 /* Secondary text placed after a section title (e.g. "Planned Maintenance — what it covers"). */
 .fern-section-description {
   display: block;
   font-weight: 400;
-  color: var(--color-text-body-secondary-h9w9la, #5f6b7a);
+  color: awsui.$color-text-body-secondary;
 }
 
 /* Responsive grid of small blocks inside a container. */
@@ -76,11 +78,11 @@
 }
 .fern-table-scroll th,
 .fern-table-scroll td {
-  border: 1px solid #d1d5db;
+  border: 1px solid awsui.$color-border-divider-default;
   padding: 6px 8px;
   text-align: left;
   vertical-align: top;
 }
 .fern-table-scroll th {
-  background: #f3f4f6;
+  background: awsui.$color-background-cell-shaded;
 }

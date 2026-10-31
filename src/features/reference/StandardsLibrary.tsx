@@ -24,7 +24,7 @@ import { type StandardEntry } from './standardsSearch';
 import { ExpandAllControls, Prose, Section } from '../../app/ui';
 import { usePortalPreferences } from '../../app/preferences';
 import { standardOverview, relatedStandards, readStandardLocation, standardLocation } from './standardContext';
-import './standards-reader.css';
+import './standards-reader.scss';
 type Cell = { text: string; col: number; colSpan: number; rowSpan: number };
 type Block = { type: string; text?: string; widths?: number[]; header?: boolean; rows?: Cell[][] };
 type Page = { number: number; text: string; blocks: Block[]; figures?: string[] };

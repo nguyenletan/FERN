@@ -102,13 +102,26 @@ Checked against [Cloudscape typography](https://cloudscape.design/foundation/vis
 
 Sentence case keeps capitals for names: page and application names (for example "Leadership & Policy", "Pricing Template Generator"), the pillars, FERN, Workspace, Learn, Amazon and BBM terms (Blue Badge, IFM Hybrid, Prime / Plus / Core), demo role names, and acronyms (FM, KPIs, SLAs, AI, PDF). Lesson titles changed too (for example "Service models explained"); their URLs are unchanged because lesson slugs are lower case. New content should be written in sentence case.
 
+### 6. Colours follow the Cloudscape guidelines
+
+Checked against [Cloudscape colors](https://cloudscape.design/foundation/visual-foundation/colors/):
+
+| Guideline | Result |
+| --- | --- |
+| Use design tokens, not hard-coded colours | Portal styles that are not Cloudscape components (`src/app/cloudscape.scss`, `src/auth/demo-sign-in.scss`, `src/features/reference/standards-reader.scss`) use `@cloudscape-design/design-tokens` through Sass, for example `awsui.$color-text-body-secondary`; 59 hard-coded colours were replaced. The only remaining colour values are the FERN blue theme tokens in `src/app/ui.tsx` (`applyTheme`) and the content-administration walkthrough, which keeps its own screens |
+| Blue for primary actions, links and interactive accents | Yes; FERN blue is applied as theme tokens, so token-based styles (links, accents, primary buttons) follow it |
+| Red and green only for status | Yes; the three mission values on Mission & Pillars now use a neutral check icon instead of the green success indicator |
+| Do not rely on colour alone; sufficient contrast | All badges and statuses carry text or icons; 0 contrast failures across 1,403 text elements on 20 routes (WCAG AA) |
+
+Keep `@cloudscape-design/design-tokens` at the version released with `@cloudscape-design/components` when upgrading: token CSS variable names change between releases. Dark mode is not offered; the token-based styles would follow it if it is enabled later.
+
 ## Developer notes
 
 | File | Purpose |
 | --- | --- |
 | `src/app/FernWorkspace.tsx` | Shell: header, navigation, breadcrumbs, routing, page switch |
 | `src/app/ui.tsx` | Shared blocks: Cloudscape theme, `Page`, `Card`, `Section`, `ExpandAllControls`, `Terms`, `NavLink` / `NavButton`, `revealSection` |
-| `src/app/cloudscape.css` | Sticky header, list markers and indent in text content, grid and wide-table helpers, scroll offset for anchors |
+| `src/app/cloudscape.scss` | Sticky header, list markers and indent in text content, grid and wide-table helpers, scroll offset for anchors |
 | `src/app/portalRoutes.ts` | URL ↔ page, plus `routeFor(label)`, which maps a page, resource, lesson or application name to its route |
 | `src/app/preferences.ts` | Header country preference |
 | `src/app/visuals.tsx` | Photographs (`PageBanner`), hero, mascot, icon sets and `IconTitle` / `FernIcon` |

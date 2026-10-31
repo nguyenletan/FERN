@@ -1,0 +1,6 @@
+# pnpm settings only. This repository is a single application: no workspace packages are declared.
+# @parcel/watcher is an optional native watcher pulled in by sass for its own --watch CLI; Vite does not need its build script.
+allowBuilds:
+  '@parcel/watcher': false
+minimumReleaseAgeExclude:
+  - sass@1.107.1

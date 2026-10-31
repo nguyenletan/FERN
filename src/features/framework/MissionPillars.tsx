@@ -4,7 +4,7 @@ import ColumnLayout from '@cloudscape-design/components/column-layout';
 import Container from '@cloudscape-design/components/container';
 import Header from '@cloudscape-design/components/header';
 import SpaceBetween from '@cloudscape-design/components/space-between';
-import StatusIndicator from '@cloudscape-design/components/status-indicator';
+import Icon from '@cloudscape-design/components/icon';
 import data from './frameworkContent.json';
 import FrameworkContent from './FrameworkContent';
 import { Card, ExpandAllControls, NavButton, NavLink, Page, Prose, Section, revealSection } from '../../app/ui';
@@ -68,9 +68,13 @@ export default function MissionPillars({ pillar }: { pillar?: number }) {
             <p>{data.mission}</p>
           </Prose>
           <SpaceBetween direction="horizontal" size="l">
-            <StatusIndicator type="success">Safe &amp; reliable</StatusIndicator>
-            <StatusIndicator type="success">Efficient &amp; sustainable</StatusIndicator>
-            <StatusIndicator type="success">People &amp; outcomes</StatusIndicator>
+            {/* Mission values, not statuses: neutral check icons (Cloudscape reserves green for status). */}
+            {['Safe & reliable', 'Efficient & sustainable', 'People & outcomes'].map((value) => (
+              <SpaceBetween key={value} direction="horizontal" size="xxs" alignItems="center">
+                <Icon name="check" variant="subtle" />
+                <Box>{value}</Box>
+              </SpaceBetween>
+            ))}
           </SpaceBetween>
         </SpaceBetween>
       </Container>
