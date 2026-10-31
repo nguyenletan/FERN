@@ -15,7 +15,7 @@
 /* Consistent list markers and indent inside Cloudscape text content. */
 [class*='awsui_text-content_'] ul,
 [class*='awsui_text-content_'] ol {
-  padding-left: 1.4rem;
+  padding-left: awsui.$space-scaled-xl;
 }
 [class*='awsui_text-content_'] ul {
   list-style: disc;
@@ -34,7 +34,7 @@
   height: clamp(160px, 28vw, 420px);
   object-fit: cover;
   object-position: 35% 5%;
-  border-radius: 16px;
+  border-radius: awsui.$border-radius-container;
 }
 .fern-icon {
   flex-shrink: 0;
@@ -43,17 +43,17 @@
 .fern-icon-title {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: awsui.$space-scaled-xs;
 }
 .fern-guide-mascot img {
   object-fit: contain !important;
-  background: awsui.$color-background-item-selected;
+  background: awsui.$color-background-cell-shaded;
 }
 
 /* Secondary text placed after a section title (e.g. "Planned Maintenance — what it covers"). */
 .fern-section-description {
   display: block;
-  font-weight: 400;
+  font-weight: awsui.$font-weight-normal;
   color: awsui.$color-text-body-secondary;
 }
 
@@ -61,7 +61,7 @@
 .fern-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  gap: 16px;
+  gap: awsui.$space-scaled-m;
 }
 .fern-grid > * {
   min-width: 0;
@@ -79,7 +79,7 @@
 .fern-table-scroll th,
 .fern-table-scroll td {
   border: 1px solid awsui.$color-border-divider-default;
-  padding: 6px 8px;
+  padding: awsui.$space-scaled-xxs awsui.$space-scaled-xs;
   text-align: left;
   vertical-align: top;
 }

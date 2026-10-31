@@ -1,10 +1,12 @@
 @use '@cloudscape-design/design-tokens/index.scss' as awsui;
 
+/* Standards reader. Cloudscape components style themselves; these rules cover the reader's own markup only. */
 .fern-standards {
-  font-family: var(--fern-font);
+  font-family: awsui.$font-family-base;
+  font-size: awsui.$font-size-body-m;
+  line-height: awsui.$line-height-body-m;
   color: awsui.$color-text-body-default;
   min-width: 0;
-  line-height: 1.6;
 }
 .fern-standards * {
   box-sizing: border-box;
@@ -12,325 +14,34 @@
 .fern-standards [hidden] {
   display: none !important;
 }
-.fern-standards h3,
-.fern-standards h4,
-.fern-standards h5 {
-  color: awsui.$color-text-heading-default;
-  line-height: 1.35;
-}
-.fern-standards h3 {
-  font-size: 1.6rem;
-  margin: 1.2rem 0;
-}
-.fern-standards h4 {
-  font-size: 1.15rem;
-}
-.fern-standards h5 {
-  font-size: 1.1rem;
-  margin: 1.5rem 0 0.75rem;
-  padding: 12px 16px;
-  background: awsui.$color-background-item-selected;
-  border-radius: 6px;
-}
 .fern-standards p {
-  margin: 12px 0;
-}
-.fern-standards button {
-  border: 1px solid awsui.$color-border-button-normal-default;
-  border-radius: 8px;
-  padding: 10px 16px;
-  background: awsui.$color-background-button-normal-default;
-  color: awsui.$color-text-button-normal-default;
-  font: inherit;
-  cursor: pointer;
-  min-height: 44px;
-}
-.fern-standards button:hover {
-  background: awsui.$color-background-button-normal-hover;
-}
-.fern-standards :is(button, input, select, a, summary, .fs-table):focus-visible {
-  outline: 3px solid awsui.$color-border-item-focused;
-  outline-offset: 3px;
-}
-.fs-note {
-  background: awsui.$color-background-status-info;
-  border-left: 3px solid awsui.$color-border-status-info;
-  padding: 12px 16px;
-  font-size: 0.95rem;
-}
-.fs-search {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: end;
-  gap: 14px;
-  margin: 22px 0;
-}
-.fs-search label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-weight: 600;
-  flex: 1;
-  min-width: 220px;
-}
-.fs-search label:first-child {
-  flex: 3;
-}
-.fs-search input,
-.fs-search select {
-  padding: 12px;
-  background: white;
-  border: 1px solid awsui.$color-border-input-default;
-  border-radius: 8px;
-  color: awsui.$color-text-body-default;
-  font: inherit;
-  width: 100%;
-  min-height: 48px;
+  margin: awsui.$space-scaled-s 0;
 }
 .fs-results {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-bottom: 20px;
-}
-.fern-standards .fs-result {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 8px;
-  padding: 20px;
-  overflow-wrap: anywhere;
-}
-.fs-result strong {
-  font-size: 1.1rem;
-  color: awsui.$color-text-heading-default;
-}
-.fs-kind {
-  font-size: 0.8rem;
-  color: awsui.$color-text-body-secondary;
-}
-.fs-result small {
-  color: awsui.$color-text-body-secondary;
-}
-.fs-read {
-  color: awsui.$color-text-link-default;
-  margin-top: auto;
-  padding-top: 8px;
-}
-.fs-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin: 18px 0;
-}
-.fs-actions > div {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.fs-page {
-  padding: 24px;
-  border: 1px solid awsui.$color-border-divider-default;
-  border-radius: 12px;
-  background: awsui.$color-background-container-content;
-  margin: 20px 0;
-  scroll-margin-top: 90px;
-  min-width: 0;
-}
-.fs-table {
-  overflow: auto;
-  max-width: 100%;
-  border: 1px solid awsui.$color-border-divider-default;
-  border-radius: 6px;
-  margin: 14px 0;
-}
-.fs-table table {
-  width: 100%;
-  min-width: 1100px;
-  table-layout: fixed;
-  border-collapse: collapse;
-  font-size: 15px;
-  line-height: 1.55;
-}
-.fs-table td {
-  padding: 12px;
-  border: 1px solid awsui.$color-border-divider-default;
-  vertical-align: top;
-  white-space: pre-line;
-  overflow-wrap: anywhere;
-}
-.fs-table tr:nth-child(even) {
-  background: awsui.$color-background-cell-shaded;
-}
-.fs-table caption {
-  color: awsui.$color-text-body-secondary;
-  text-align: left;
-  padding: 10px;
-  background: awsui.$color-background-container-content;
-  font-size: 13px;
+  gap: awsui.$space-scaled-m;
+  margin-bottom: awsui.$space-scaled-l;
 }
 .fs-source-text {
   white-space: pre-line;
   overflow-wrap: anywhere;
 }
-.fs-guide,
-.fs-transcript {
-  padding: 16px 0;
-  border-top: 1px solid awsui.$color-border-divider-default;
-}
-.fern-standards summary {
-  cursor: pointer;
-  color: awsui.$color-text-link-default;
-  font-weight: bold;
-  padding: 8px;
-  min-height: 44px;
-}
-.fs-page-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0;
-}
-.fs-page-nav a {
-  padding: 8px 12px;
-  border: 1px solid awsui.$color-border-divider-default;
-  border-radius: 6px;
-  color: awsui.$color-text-link-default;
-}
 .fs-original object {
   width: 100%;
   height: 650px;
   display: block;
-  margin: 16px 0;
+  margin: awsui.$space-scaled-m 0;
 }
 .fs-original a {
   color: awsui.$color-text-link-default;
   text-decoration: underline;
 }
-.fs-reading h3 {
-  scroll-margin-top: 90px;
-}
 @media (max-width: 700px) {
   .fs-results {
     grid-template-columns: 1fr;
   }
-  .fs-search {
-    display: block;
-  }
-  .fs-search label {
-    min-width: 0;
-    margin-bottom: 14px;
-  }
-  .fs-search button {
-    width: 100%;
-  }
-  .fs-page {
-    padding: 14px;
-  }
-  .fs-actions {
-    flex-direction: column;
-  }
-  .fs-actions > div {
-    flex-direction: column;
-  }
-  .fs-actions button {
-    width: 100%;
-  }
   .fs-original object {
     height: 420px;
-  }
-}
-.fs-table th {
-  padding: 12px;
-  border: 1px solid awsui.$color-border-divider-default;
-  vertical-align: top;
-  white-space: pre-line;
-  overflow-wrap: anywhere;
-  background: awsui.$color-background-container-header;
-  color: awsui.$color-text-heading-default;
-  text-align: left;
-}
-.fs-page figure {
-  margin: 16px 0;
-}
-.fs-page figure img {
-  max-width: 100%;
-  height: auto;
-}
-.fs-page figcaption {
-  font-size: 0.85rem;
-  color: awsui.$color-text-body-secondary;
-}
-.fs-table table.fs-wide-tasks {
-  min-width: 1800px;
-}
-.fs-overview {
-  background: awsui.$color-background-container-header;
-  border: 1px solid awsui.$color-border-divider-default;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px 0;
-}
-.fs-overview dl {
-  margin: 0;
-}
-.fs-overview dl > div {
-  padding: 12px 0;
-  border-bottom: 1px solid awsui.$color-border-divider-default;
-}
-.fs-overview dt {
-  font-weight: bold;
-  color: awsui.$color-text-label;
-}
-.fs-overview dd {
-  margin: 6px 0 0;
-  white-space: pre-line;
-  overflow-wrap: anywhere;
-}
-.fs-overview ul {
-  padding-left: 20px;
-}
-.fs-overview li {
-  margin: 10px 0;
-}
-.fs-overview a {
-  color: awsui.$color-text-link-default;
-}
-.fs-match {
-  background: awsui.$color-background-item-selected;
-  border-radius: 4px;
-  padding: 3px 6px;
-}
-@media (max-width: 700px) {
-  .fs-overview {
-    padding: 14px;
-  }
-  .fs-overview button {
-    text-align: left;
-    width: 100%;
-    overflow-wrap: anywhere;
-  }
-}
-
-.fs-search,
-.fs-result-section {
-  scroll-margin-top: 24px;
-}
-.fs-result-section:focus-visible {
-  outline: 3px solid awsui.$color-border-item-focused;
-  outline-offset: 6px;
-}
-.fern-standards .fs-show-results {
-  background: awsui.$color-background-button-primary-default;
-  color: white;
-  font-weight: 600;
-}
-.fern-standards .fs-show-results:hover {
-  background: awsui.$color-background-button-primary-hover;
-}
-@media (max-width: 700px) {
-  .fs-search button + button {
-    margin-top: 10px;
   }
 }

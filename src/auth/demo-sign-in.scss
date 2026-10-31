@@ -1,5 +1,6 @@
 @use '@cloudscape-design/design-tokens/index.scss' as awsui;
 
+/* Demo sign-in page. Spacing, type and colours use Cloudscape design tokens; image sizes match the type they sit beside. */
 .fern-signin {
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
@@ -12,8 +13,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 36px 28px;
-  background: linear-gradient(150deg, awsui.$color-background-item-selected, awsui.$color-background-container-content 58%, awsui.$color-background-item-selected);
+  padding: awsui.$space-scaled-xxxl awsui.$space-scaled-xxl;
+  background: linear-gradient(150deg, awsui.$color-background-cell-shaded, awsui.$color-background-container-content 58%, awsui.$color-background-cell-shaded);
   text-align: center;
   min-width: 0;
 }
@@ -21,12 +22,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: awsui.$space-scaled-xs;
   color: awsui.$color-text-heading-default;
 }
+/* FERN wordmark: display-large size with the wordmark's own weight and tracking. */
 .fern-signin-brand strong {
-  font-size: 42px; /* Cloudscape display large 42/48 */
-  line-height: 48px;
+  font-size: awsui.$font-size-display-l;
+  line-height: awsui.$line-height-display-l;
   letter-spacing: -0.055em;
   font-weight: 800;
 }
@@ -36,14 +38,14 @@
   object-fit: contain;
 }
 .fern-signin-story h2 {
-  font-size: 24px; /* heading x-large 24/30 */
-  font-weight: 700;
-  line-height: 30px;
-  margin: 10px 0 14px;
+  font-size: awsui.$font-size-heading-xl;
+  font-weight: awsui.$font-weight-heading-xl;
+  line-height: awsui.$line-height-heading-xl;
+  margin: awsui.$space-scaled-s 0 awsui.$space-scaled-m;
 }
 .fern-signin-tagline {
-  font-size: 18px; /* heading medium size, normal weight 18/22 */
-  line-height: 22px;
+  font-size: awsui.$font-size-heading-m; /* heading size at normal weight */
+  line-height: awsui.$line-height-heading-m;
   margin: 0;
   color: awsui.$color-text-body-secondary;
 }
@@ -53,45 +55,45 @@
   max-width: 690px;
   height: auto;
   object-fit: contain;
-  margin: 4px 0;
+  margin: awsui.$space-scaled-xxs 0;
 }
 .fern-signin-story h3 {
-  font-size: 20px; /* heading large 20/24 */
-  line-height: 24px;
-  font-weight: 700;
-  margin: 0 0 18px;
+  font-size: awsui.$font-size-heading-l;
+  line-height: awsui.$line-height-heading-l;
+  font-weight: awsui.$font-weight-heading-l;
+  margin: 0 0 awsui.$space-scaled-l;
 }
 .fern-signin-benefits {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: awsui.$space-scaled-l;
   max-width: 640px;
   width: 100%;
   text-align: left;
   border-top: 1px solid awsui.$color-border-divider-default;
-  padding-top: 20px;
+  padding-top: awsui.$space-scaled-l;
 }
 .fern-signin-benefits svg {
   color: awsui.$color-text-accent;
-  margin-bottom: 8px;
+  margin-bottom: awsui.$space-scaled-xs;
 }
 .fern-signin-benefits h4 {
-  font-size: 14px; /* heading x-small 14/18 */
-  font-weight: 700;
-  line-height: 18px;
-  margin: 0 0 5px;
+  font-size: awsui.$font-size-heading-xs;
+  font-weight: awsui.$font-weight-heading-xs;
+  line-height: awsui.$line-height-heading-xs;
+  margin: 0 0 awsui.$space-scaled-xxs;
 }
 .fern-signin-benefits p {
-  font-size: 14px; /* body medium 14/20 */
-  line-height: 20px;
+  font-size: awsui.$font-size-body-m;
+  line-height: awsui.$line-height-body-m;
   color: awsui.$color-text-body-secondary;
   margin: 0;
 }
 .fern-signin-platform {
-  font-size: 12px; /* body small 12/16 */
-  line-height: 16px;
+  font-size: awsui.$font-size-body-s;
+  line-height: awsui.$line-height-body-s;
   color: awsui.$color-text-body-secondary;
-  margin: 26px 0 0;
+  margin: awsui.$space-scaled-xl 0 0;
 }
 .fern-signin-form-panel {
   display: flex;
@@ -102,14 +104,14 @@
 .fern-signin-language {
   display: flex;
   justify-content: flex-end;
-  padding: 22px 26px 0;
+  padding: awsui.$space-scaled-xl awsui.$space-scaled-xl 0;
 }
 .fern-signin-form-wrap {
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding: 36px 32px;
+  padding: awsui.$space-scaled-xxxl awsui.$space-scaled-xxl;
 }
 .fern-signin-form-content {
   width: 100%;
@@ -118,7 +120,7 @@
 .fern-signin-legal {
   display: flex;
   justify-content: center;
-  padding: 18px 20px;
+  padding: awsui.$space-scaled-l;
 }
 .fern-signin-mobile-brand {
   display: none;
@@ -136,27 +138,27 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    padding: 14px 24px;
-    background: awsui.$color-background-item-selected;
+    gap: awsui.$space-scaled-m;
+    padding: awsui.$space-scaled-m awsui.$space-scaled-xl;
+    background: awsui.$color-background-cell-shaded;
     border-bottom: 1px solid awsui.$color-border-divider-default;
   }
   .fern-signin-mobile-brand .fern-signin-brand {
     justify-content: flex-start;
   }
   .fern-signin-mobile-brand .fern-signin-brand strong {
-    font-size: 24px; /* heading x-large 24/30 */
-    line-height: 30px;
+    font-size: awsui.$font-size-heading-xl;
+    line-height: awsui.$line-height-heading-xl;
   }
   .fern-signin-mobile-brand .fern-signin-brand img {
     width: 24px;
     height: 30px;
   }
   .fern-signin-mobile-brand p {
-    font-size: 12px; /* body small 12/16 */
-    line-height: 16px;
+    font-size: awsui.$font-size-body-s;
+    line-height: awsui.$line-height-body-s;
     color: awsui.$color-text-body-secondary;
-    margin: 4px 0 0;
+    margin: awsui.$space-scaled-xxs 0 0;
   }
   .fern-signin-mobile-guide {
     width: 56px;
@@ -169,23 +171,23 @@
     flex: 1;
   }
   .fern-signin-language {
-    padding: 10px 20px 0;
+    padding: awsui.$space-scaled-s awsui.$space-scaled-l 0;
   }
   .fern-signin-form-wrap {
-    padding: 20px 24px 16px;
+    padding: awsui.$space-scaled-l awsui.$space-scaled-xl awsui.$space-scaled-m;
     align-items: flex-start;
   }
   .fern-signin-legal {
-    padding: 14px 16px;
+    padding: awsui.$space-scaled-m;
   }
 }
 @media (max-width: 360px) {
   .fern-signin-form-wrap {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: awsui.$space-scaled-m;
+    padding-right: awsui.$space-scaled-m;
   }
 }
 
 .fern-signin-info {
-  margin: 0 24px 12px;
+  margin: 0 awsui.$space-scaled-xl awsui.$space-scaled-s;
 }

@@ -1,5 +1,5 @@
 import { regionLabel } from './regionLabels';
-import './region-labels.css';
+import './region-labels.scss';
 export default function RegionLabel({ code }: { code: string }) {
   const { label, flag } = regionLabel(code);
   return (

@@ -1,7 +1,9 @@
+@use '@cloudscape-design/design-tokens/index.scss' as awsui;
+
 .fern-standards .fs-region-label {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: awsui.$space-scaled-xs;
   max-width: 100%;
   margin: 0;
   font: inherit;
@@ -14,9 +16,9 @@
   width: 1.5em;
   margin: 0;
   font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
-  font-size: 20px;
+  font-size: 20px; /* emoji flag size, not body type */
   line-height: 1.2;
-  font-weight: 400;
+  font-weight: awsui.$font-weight-normal;
   color: inherit;
 }
 .fern-standards .fs-region-label .fs-country-name {

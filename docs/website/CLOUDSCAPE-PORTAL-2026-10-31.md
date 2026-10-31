@@ -115,13 +115,25 @@ Checked against [Cloudscape colors](https://cloudscape.design/foundation/visual-
 
 Keep `@cloudscape-design/design-tokens` at the version released with `@cloudscape-design/components` when upgrading: token CSS variable names change between releases. Dark mode is not offered; the token-based styles would follow it if it is enabled later.
 
+### 7. Design tokens for spacing, type and shape
+
+Checked against [Cloudscape design tokens](https://cloudscape.design/foundation/visual-foundation/design-tokens/):
+
+| Guideline | Result |
+| --- | --- |
+| Spacing, type and radius from tokens | The portal `.scss` files use `awsui.$space-scaled-*`, `$font-size-*` / `$line-height-*` / `$font-weight-*`, `$font-family-base` and `$border-radius-container`. Values that were off the 2/4/8/12/16/20/24/32/40 px scale moved to the nearest step; the sign-in page and the reader moved by a few pixels |
+| Use each token for its purpose | `color-background-item-selected` (selected items) was used as a decorative tint on the sign-in panel, the mobile sign-in bar and the guide mascot; these now use the neutral `color-background-cell-shaded` |
+| Do not override Cloudscape components | The standards reader had rules for native buttons, headings and summaries left from the earlier design. The button rule still reached Cloudscape buttons inside the reader (44 px tall, own border and radius, and a stray line under expandable section headers); it was removed, so reader buttons now match the rest of the portal. About 290 lines of reader CSS for classes no longer rendered were removed |
+
+Not converted, on purpose: component dimensions (image sizes, `max-width`, the embedded PDF height, breakpoints), the 72 px anchor offset that matches the header, the FERN wordmark weight and tracking, and the emoji flag size. `src/styles/index.css` (global reset and disclosure arrows) is plain CSS and stays without tokens. `src/features/reference/region-labels.css` became `region-labels.scss` to use tokens.
+
 ## Developer notes
 
 | File | Purpose |
 | --- | --- |
 | `src/app/FernWorkspace.tsx` | Shell: header, navigation, breadcrumbs, routing, page switch |
 | `src/app/ui.tsx` | Shared blocks: Cloudscape theme, `Page`, `Card`, `Section`, `ExpandAllControls`, `Terms`, `NavLink` / `NavButton`, `revealSection` |
-| `src/app/cloudscape.scss` | Sticky header, list markers and indent in text content, grid and wide-table helpers, scroll offset for anchors |
+| `src/app/cloudscape.scss` | Sticky header, list markers and indent in text content, grid and wide-table helpers, scroll offset for anchors. New portal styles go in `.scss` and use design tokens (`@use '@cloudscape-design/design-tokens/index.scss' as awsui;`) |
 | `src/app/portalRoutes.ts` | URL ↔ page, plus `routeFor(label)`, which maps a page, resource, lesson or application name to its route |
 | `src/app/preferences.ts` | Header country preference |
 | `src/app/visuals.tsx` | Photographs (`PageBanner`), hero, mascot, icon sets and `IconTitle` / `FernIcon` |
