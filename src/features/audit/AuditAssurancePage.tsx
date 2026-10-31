@@ -1,5 +1,5 @@
 import Button from '@cloudscape-design/components/button';
-import { Card, Section, usePortalNavigation } from '../../app/ui';
+import { Card, Section, usePortalNavigation, TextGrid } from '../../app/ui';
 import GuidanceRoute from '../visual/GuidanceRoute';
 import { openStandardCollection } from '../reference/standardContext';
 
@@ -105,14 +105,14 @@ export default function AuditAssurancePage() {
           When reviewing assessment information, look for material findings, evidence gaps, overdue actions, repeat
           issues and actions requiring verification.
         </p>
-        <div className="fern-grid">
+        <TextGrid>
           {concepts.map(([title, text]) => (
             <div key={title}>
               <h3>{title}</h3>
               <p>{text}</p>
             </div>
           ))}
-        </div>
+        </TextGrid>
       </Card>
       <Card id="audit-prepare" title={<>Prepare an assessment</>}>
         <h3>Start with the requirement</h3>

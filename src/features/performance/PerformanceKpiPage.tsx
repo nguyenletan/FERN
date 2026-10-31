@@ -1,4 +1,4 @@
-import { Card, Section } from '../../app/ui';
+import { Card, Section, TextGrid } from '../../app/ui';
 import GuidanceRoute from '../visual/GuidanceRoute';
 
 const measures = [
@@ -135,14 +135,14 @@ export default function PerformanceKpiPage() {
           No performance records are available on this page. Use the guidance below to understand measures and the
           evidence needed to review a result.
         </p>
-        <div className="fern-grid">
+        <TextGrid>
           {checks.map(([title, text]) => (
             <div key={title}>
               <h3>{title}</h3>
               <p>{text}</p>
             </div>
           ))}
-        </div>
+        </TextGrid>
       </Card>
       <Card id="performance-context" title={<>Understand the context</>}>
         <p>

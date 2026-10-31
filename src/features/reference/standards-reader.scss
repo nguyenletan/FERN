@@ -17,12 +17,6 @@
 .fern-standards p {
   margin: awsui.$space-scaled-s 0;
 }
-.fs-results {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: awsui.$space-scaled-m;
-  margin-bottom: awsui.$space-scaled-l;
-}
 .fs-source-text {
   white-space: pre-line;
   overflow-wrap: anywhere;
@@ -38,9 +32,6 @@
   text-decoration: underline;
 }
 @media (max-width: 700px) {
-  .fs-results {
-    grid-template-columns: 1fr;
-  }
   .fs-original object {
     height: 420px;
   }

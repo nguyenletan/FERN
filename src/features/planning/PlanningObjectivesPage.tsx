@@ -1,5 +1,5 @@
 import Button from '@cloudscape-design/components/button';
-import { Card, Section, usePortalNavigation } from '../../app/ui';
+import { Card, Section, Terms, usePortalNavigation, TextGrid } from '../../app/ui';
 import GuidanceRoute, { openGuidanceSection } from '../visual/GuidanceRoute';
 import { openStandardCollection } from '../reference/standardContext';
 
@@ -140,14 +140,14 @@ export default function PlanningObjectivesPage() {
           Establish the requirement or problem before creating an activity list. The examples below illustrate planning
           needs; they are not live facility findings.
         </p>
-        <div className="fern-grid">
+        <TextGrid>
           {needs.map(([title, text]) => (
             <div key={title}>
               <h3>{title}</h3>
               <p>{text}</p>
             </div>
           ))}
-        </div>
+        </TextGrid>
         <p>
           Consider facility type, operating conditions, service scope, asset population and criticality. Compare
           facilities only where their context and evidence support a meaningful comparison.
@@ -158,14 +158,13 @@ export default function PlanningObjectivesPage() {
           A useful objective explains the outcome, its purpose and how it will be assessed. Use these prompts to prepare
           the information for your plan.
         </p>
-        <dl className="fern-grid">
-          {objectiveFields.map(([term, text]) => (
-            <div id={term === 'Evidence' ? 'planning-baseline' : undefined} key={term}>
-              <dt>{term}</dt>
-              <dd>{text}</dd>
-            </div>
-          ))}
-        </dl>
+        <Terms
+          columns={4}
+          items={objectiveFields.map(([term, text]) => [
+            term === 'Evidence' ? <span id="planning-baseline">{term}</span> : term,
+            text,
+          ])}
+        />
         <Section header={<>Example: make an objective specific</>}>
           <p>
             Instead of “Improve maintenance performance”, identify the maintenance outcome, the asset or service
@@ -239,7 +238,7 @@ export default function PlanningObjectivesPage() {
           When these tools are released, use the relevant one for detailed analysis, then use its results as evidence
           for the planning decision.
         </p>
-        <div className="fern-grid">
+        <TextGrid>
           {tools.map(([title, text]) => (
             <div key={title}>
               <h3>{title}</h3>
@@ -249,7 +248,7 @@ export default function PlanningObjectivesPage() {
               </p>
             </div>
           ))}
-        </div>
+        </TextGrid>
       </Card>
     </div>
   );

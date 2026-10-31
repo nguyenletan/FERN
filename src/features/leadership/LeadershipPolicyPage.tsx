@@ -1,5 +1,5 @@
 import Button from '@cloudscape-design/components/button';
-import { Card, Section, usePortalNavigation } from '../../app/ui';
+import { Card, Section, usePortalNavigation, TextGrid } from '../../app/ui';
 import { openStandardCollection } from '../reference/standardContext';
 import { categories, commitments, decisionSteps, leadershipBehaviours, topics } from './leadershipContent';
 
@@ -60,7 +60,7 @@ export default function LeadershipPolicyPage() {
           Support safe, reliable, efficient and sustainable facilities through clear evidence, accountable decisions and
           verified outcomes.
         </p>
-        <div className="fern-grid">
+        <TextGrid>
           <div>
             <h3>Purpose</h3>
             <p>
@@ -90,35 +90,35 @@ export default function LeadershipPolicyPage() {
               systems of record.
             </p>
           </div>
-        </div>
+        </TextGrid>
       </Card>
       <Card id="fm-principles" title={<>FM policy principles</>}>
         <p>
           Use these principles to frame an FM discussion. They explain the intended approach; they do not create a new
           mandatory policy, approve expenditure or replace an applicable Amazon requirement.
         </p>
-        <div className="fern-grid">
+        <TextGrid>
           {commitments.map(([title, text]) => (
             <div key={title}>
               <h3>{title}</h3>
               <p>{text}</p>
             </div>
           ))}
-        </div>
+        </TextGrid>
       </Card>
       <Card id="fm-leadership" title={<>Leadership in practice</>}>
         <p>
           Amazon’s Leadership Principles provide the behavioural reference. The examples below show how that thinking
           can inform FM work; they do not replace the official principles.
         </p>
-        <div className="fern-grid">
+        <TextGrid>
           {leadershipBehaviours.map(([title, text]) => (
             <div key={title}>
               <h3>{title}</h3>
               <p>{text}</p>
             </div>
           ))}
-        </div>
+        </TextGrid>
       </Card>
       <Card id="fm-decision-route" title={<>From need to verified outcome</>}>
         <p>
@@ -187,14 +187,14 @@ export default function LeadershipPolicyPage() {
           Understand the type of information you are using before applying it. The Reference Library provides guidance
           on source status, version and applicability; source access depends on the authorised catalogue.
         </p>
-        <div className="fern-grid">
+        <TextGrid>
           {categories.map(([title, text]) => (
             <div key={title}>
               <h3>{title}</h3>
               <p>{text}</p>
             </div>
           ))}
-        </div>
+        </TextGrid>
         <Section header={<>How BBM standards support FM direction</>}>
           <p>
             FM policy sets direction and expectations. BBM Standards support their practical application through

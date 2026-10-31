@@ -23,7 +23,7 @@ async function openStandard(page) {
   const search = page.getByRole('searchbox', { name: 'Search standards', exact: true });
   await search.fill('fire doors');
   await search.press('Enter');
-  await page.locator('#bbm-search-results li').first().getByRole('link').first().click();
+  await page.locator('#bbm-search-results [role="listitem"]').first().getByRole('link').first().click();
   await page.locator('#bbm-standard-title').waitFor();
   return (await page.locator('#fern-main').innerText()).match(/CT\.FIRE\.DOORS/) ? 'Compliance-CT.FIRE.DOORS' : null;
 }

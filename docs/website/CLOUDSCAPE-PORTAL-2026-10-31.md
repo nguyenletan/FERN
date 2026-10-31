@@ -141,13 +141,30 @@ Checked against [Cloudscape iconography](https://cloudscape.design/foundation/vi
 
 Lucide icons use a 24 px grid rather than Cloudscape's 16 px, so their strokes render at about 1.3 px (medium) and 2 px (big), within the guideline. Use `FernIcon` / `IconTitle` from `app/visuals.tsx` for any new symbol icon, and prefer a Cloudscape `iconName` when one fits.
 
+### 9. Layout follows the Cloudscape guidelines
+
+Checked against [Cloudscape layout](https://cloudscape.design/foundation/visual-foundation/layout/):
+
+| Guideline | Result |
+| --- | --- |
+| Standard app layout for browsing and documentation; one app layout type throughout | One `AppLayout` (standard, not the toolbar layout) in `FernWorkspace.tsx` for every page; the sign-in page sits outside it |
+| Regions: collapsible side navigation, breadcrumbs, notifications, main content, tools | All five are used. Notifications (Flashbar) and tools (help panel) were added in this change |
+| Content layout for page headers; consistent vertical spacing | `Page` wraps every page in `ContentLayout` with an h1 `Header`; content is spaced with `SpaceBetween` |
+| Column layout or grid to place content side by side | The custom `.fern-grid` CSS grid (12 places on the Workspace practice guides) became `TextGrid`, a `ColumnLayout` text grid (one column per block up to four, at least 240 px each). The two definition lists (Planning objective fields, Continual Improvement lesson prompts) became `KeyValuePairs` through `Terms`. Standards search results use a two-column `ColumnLayout` instead of the custom `.fs-results` grid, with list roles kept for screen readers |
+| Responsive, not designed for one screen size | No horizontal overflow at 1440 px or 390 px; columns stack on narrow screens |
+
+**Help panel.** The (i) button on the right of every page opens a help panel with a short "How to use this page" for the current kind of page (Home, Workspace, Workspace topic, Mission & Pillars, Applications, application page, Learn, Standards library, Help, Users & roles; other pages get general reading help). It stays open while you move between pages and follows the page. The text is in `src/app/pageHelp.tsx`, describes only controls that exist on the page, and is marked as draft: approved "How to use" guides (Benito or Richard) should replace it.
+
+**Notifications.** Page-level messages go to the app layout's Flashbar through `usePageNotifications(items)` from `ui.tsx`; they clear when the page closes. Users & roles uses it for the demonstration notice and for the confirmation after adding, changing or removing a user. Messages about part of a page stay as `Alert` (application availability, "No matching standards", the operational-issue warning on Help, Learn examples), as Cloudscape recommends.
+
 ## Developer notes
 
 | File | Purpose |
 | --- | --- |
-| `src/app/FernWorkspace.tsx` | Shell: header, navigation, breadcrumbs, routing, page switch |
-| `src/app/ui.tsx` | Shared blocks: Cloudscape theme, `Page`, `Card`, `Section`, `ExpandAllControls`, `Terms`, `NavLink` / `NavButton`, `revealSection` |
-| `src/app/cloudscape.scss` | Sticky header, list markers and indent in text content, grid and wide-table helpers, scroll offset for anchors. New portal styles go in `.scss` and use design tokens (`@use '@cloudscape-design/design-tokens/index.scss' as awsui;`) |
+| `src/app/FernWorkspace.tsx` | Shell: header, navigation, breadcrumbs, notifications, help panel, routing, page switch |
+| `src/app/ui.tsx` | Shared blocks: Cloudscape theme, `Page`, `Card`, `Section`, `ExpandAllControls`, `Terms`, `TextGrid`, `NavLink` / `NavButton`, `revealSection`, `usePageNotifications` |
+| `src/app/pageHelp.tsx` | Help panel text for each kind of page (draft until guides are approved) |
+| `src/app/cloudscape.scss` | Sticky header, list markers and indent in text content, wide-table helper, scroll offset for anchors. New portal styles go in `.scss` and use design tokens (`@use '@cloudscape-design/design-tokens/index.scss' as awsui;`) |
 | `src/app/portalRoutes.ts` | URL ↔ page, plus `routeFor(label)`, which maps a page, resource, lesson or application name to its route |
 | `src/app/preferences.ts` | Header country preference |
 | `src/app/visuals.tsx` | Photographs (`PageBanner`), hero, mascot, icon sets and `IconTitle` / `FernIcon` |
@@ -204,6 +221,7 @@ All results passed on 31 October 2026:
 | Translations for other languages | Content owner |
 | Home page changes from Kim's home-page BRD | BRD review |
 | Clearer library title/description | Kim, after review |
+| Approved "How to use" text for the help panel (draft text is in `src/app/pageHelp.tsx`) | Guide authors (HC, then internal); approval by Benito or Richard |
 
 ## Superseded documents
 

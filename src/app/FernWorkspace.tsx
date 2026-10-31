@@ -3,11 +3,14 @@ import AppLayout from '@cloudscape-design/components/app-layout';
 import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Badge from '@cloudscape-design/components/badge';
 import Button from '@cloudscape-design/components/button';
+import Flashbar, { type FlashbarProps } from '@cloudscape-design/components/flashbar';
+import HelpPanel from '@cloudscape-design/components/help-panel';
 import SideNavigation, { type SideNavigationProps } from '@cloudscape-design/components/side-navigation';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import TopNavigation from '@cloudscape-design/components/top-navigation';
 import { readPortalRoute, portalLocation, routeFor, type PortalRoute } from './portalRoutes';
-import { PortalNavigation, Page, revealSection } from './ui';
+import { NavLink, PageNotifications, PortalNavigation, Page, revealSection } from './ui';
+import { pageHelp } from './pageHelp';
 import { PortalPreferences, readPreferredCountry, writePreferredCountry } from './preferences';
 import { countryCodes } from '../features/reference/countrySearch';
 import { regionLabel } from '../features/reference/regionLabels';
@@ -62,6 +65,9 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
     route.lesson ? { title: route.lesson, request: 0 } : null,
   );
   const [navigationOpen, setNavigationOpen] = useState(() => window.innerWidth >= 900);
+  // Help panel (tools region): closed until asked for; it follows the page.
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const [notifications, setNotifications] = useState<FlashbarProps.MessageDefinition[]>([]);
   const [country, setCountryState] = useState(readPreferredCountry);
   const preferences = useMemo(
     () => ({
@@ -78,7 +84,10 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
   const applyRoute = (next: PortalRoute) => {
     setRoute(next);
     setLesson((previous) => (next.lesson ? { title: next.lesson, request: (previous?.request ?? 0) + 1 } : null));
-    if (window.innerWidth < 900) setNavigationOpen(false);
+    if (window.innerWidth < 900) {
+      setNavigationOpen(false);
+      setToolsOpen(false);
+    }
   };
   const urlFor = (next: PortalRoute) => window.location.pathname + portalLocation(window.location.search, next);
   const navigate = (next: PortalRoute) => {
@@ -202,10 +211,12 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
     navigate(readPortalRoute(href.slice(href.indexOf('?') >= 0 ? href.indexOf('?') : href.length)));
   };
   const practice = practiceGuides[route.page];
+  const help = pageHelp(route, { practice: Boolean(practice), application: Boolean(app) });
 
   return (
     <PortalPreferences.Provider value={preferences}>
       <PortalNavigation.Provider value={nav}>
+        <PageNotifications.Provider value={setNotifications}>
         <div id="fern-top-navigation" className="fern-top-navigation">
           <TopNavigation
             identity={{
@@ -278,10 +289,34 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
             navigation: 'FERN navigation',
             navigationClose: 'Close navigation',
             navigationToggle: 'Show navigation',
+            tools: 'Help panel',
+            toolsClose: 'Close help panel',
+            toolsToggle: 'Open help panel',
           }}
           navigationOpen={navigationOpen}
           onNavigationChange={({ detail }) => setNavigationOpen(detail.open)}
-          toolsHide
+          toolsOpen={toolsOpen}
+          onToolsChange={({ detail }) => setToolsOpen(detail.open)}
+          tools={
+            <HelpPanel
+              header={<h2>{help.title}</h2>}
+              footer={
+                <p>
+                  Draft help for review; approved “How to use” guides will replace it. More help:{' '}
+                  <NavLink to="Help & Guidance">Help &amp; Guidance</NavLink>
+                </p>
+              }
+            >
+              <p>{help.summary}</p>
+              <h3>How to use this page</h3>
+              <ul>
+                {help.steps.map((step, i) => (
+                  <li key={i}>{step}</li>
+                ))}
+              </ul>
+            </HelpPanel>
+          }
+          notifications={notifications.length ? <Flashbar items={notifications} /> : undefined}
           breadcrumbs={<BreadcrumbGroup items={crumbs} onFollow={follow} ariaLabel="Breadcrumbs" />}
           navigation={
             <SideNavigation
@@ -341,6 +376,7 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
             </div>
           }
         />
+        </PageNotifications.Provider>
       </PortalNavigation.Provider>
     </PortalPreferences.Provider>
   );

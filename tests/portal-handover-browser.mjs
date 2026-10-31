@@ -115,7 +115,7 @@ try {
   const search = page.getByRole('searchbox', { name: 'Search standards', exact: true });
   await search.fill('fire doors');
   await search.press('Enter');
-  const first = page.locator('#bbm-search-results li').first();
+  const first = page.locator('#bbm-search-results [role="listitem"]').first();
   assert.match(await first.innerText(), /CT.FIRE.DOORS/);
   await first.getByRole('link').first().click();
   await page.locator('#bbm-standard-title').waitFor();

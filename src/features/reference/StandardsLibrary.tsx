@@ -9,6 +9,7 @@ import Badge from '@cloudscape-design/components/badge';
 import Box from '@cloudscape-design/components/box';
 import Button from '@cloudscape-design/components/button';
 import Checkbox from '@cloudscape-design/components/checkbox';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
 import Container from '@cloudscape-design/components/container';
 import FormField from '@cloudscape-design/components/form-field';
 import Header from '@cloudscape-design/components/header';
@@ -397,9 +398,11 @@ export default function StandardsLibrary() {
                 {!filtered ? (
                   <Button onClick={() => setShowAll(true)}>Browse all {results.length} standards</Button>
                 ) : (
-                  <ul className="fs-results">
+                  // Cloudscape column layout; list roles keep the results announced as a list.
+                  <div role="list" aria-label="Matching standards">
+                  <ColumnLayout columns={2} minColumnWidth={320}>
                     {results.slice(0, limit).map(({ entry: e, reason }) => (
-                      <li key={e.id} id={'result-' + e.id} tabIndex={-1}>
+                      <div role="listitem" key={e.id} id={'result-' + e.id} tabIndex={-1}>
                         <SpaceBetween size="xxs">
                           <Link
                             fontSize="heading-s"
@@ -455,9 +458,10 @@ export default function StandardsLibrary() {
                             </>
                           )}
                         </SpaceBetween>
-                      </li>
+                      </div>
                     ))}
-                  </ul>
+                  </ColumnLayout>
+                  </div>
                 )}
                 {filtered && results.length > limit && (
                   <Button onClick={() => setLimit(limit + 20)}>Show 20 more standards</Button>

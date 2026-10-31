@@ -1,5 +1,5 @@
 import GuidanceRoute from '../visual/GuidanceRoute';
-import { Card, Section } from '../../app/ui';
+import { Card, Section, Terms, TextGrid } from '../../app/ui';
 
 const sources = [
   [
@@ -118,14 +118,14 @@ export default function ContinualImprovementPage() {
           Begin with what is being observed before selecting a solution. These examples describe possible sources of
           learning, not current facility findings.
         </p>
-        <div className="fern-grid">
+        <TextGrid>
           {sources.map(([title, text]) => (
             <div key={title}>
               <h3>{title}</h3>
               <p>{text}</p>
             </div>
           ))}
-        </div>
+        </TextGrid>
         <Section header={<>Corrective action or Continual Improvement?</>}>
           <p>
             A corrective action addresses a specific issue. Continual improvement examines the wider approach. For
@@ -198,14 +198,7 @@ export default function ContinualImprovementPage() {
         <p>
           Explain what the experience teaches, not simply what happened. Use these prompts to prepare a useful lesson.
         </p>
-        <dl className="fern-grid">
-          {lessonFields.map(([term, text]) => (
-            <div key={term}>
-              <dt>{term}</dt>
-              <dd>{text}</dd>
-            </div>
-          ))}
-        </dl>
+        <Terms items={lessonFields} columns={3} />
         <Section header={<>Review before wider use</>}>
           <p>
             A local success is a candidate for wider review, not automatically a new standard. Compare facility type,

@@ -59,16 +59,6 @@
   color: awsui.$color-text-body-secondary;
 }
 
-/* Responsive grid of small blocks inside a container. */
-.fern-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  gap: awsui.$space-scaled-m;
-}
-.fern-grid > * {
-  min-width: 0;
-}
-
 /* Wide source tables scroll sideways instead of widening the page. */
 .fern-table-scroll {
   overflow-x: auto;

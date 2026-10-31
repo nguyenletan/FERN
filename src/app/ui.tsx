@@ -1,10 +1,12 @@
 // Shared Cloudscape building blocks for the FERN portal: theme, in-portal links, expandable reading sections and pages.
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { Children, createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { applyTheme } from '@cloudscape-design/components/theming';
 import Button, { type ButtonProps } from '@cloudscape-design/components/button';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
 import ContentLayout from '@cloudscape-design/components/content-layout';
 import Container from '@cloudscape-design/components/container';
 import ExpandableSection, { type ExpandableSectionProps } from '@cloudscape-design/components/expandable-section';
+import type { FlashbarProps } from '@cloudscape-design/components/flashbar';
 import Header from '@cloudscape-design/components/header';
 import KeyValuePairs from '@cloudscape-design/components/key-value-pairs';
 import Link, { type LinkProps } from '@cloudscape-design/components/link';
@@ -36,6 +38,15 @@ export const PortalNavigation = createContext<{ go: Navigate; href: (page: strin
   href: () => '#',
 });
 export const usePortalNavigation = () => useContext(PortalNavigation);
+
+/** Page-level messages for the app layout's notifications area (Cloudscape Flashbar). */
+export const PageNotifications = createContext<(items: FlashbarProps.MessageDefinition[]) => void>(() => {});
+/** Shows `items` in the flashbar while the calling page is open. Memoise `items`, or the effect runs on every render. */
+export function usePageNotifications(items: FlashbarProps.MessageDefinition[]) {
+  const show = useContext(PageNotifications);
+  useEffect(() => show(items), [show, items]);
+  useEffect(() => () => show([]), [show]);
+}
 // Cloudscape fires onFollow only for clicks without modifier keys, so ctrl/cmd-click still opens a new tab.
 export function NavLink({
   to,
@@ -234,6 +245,16 @@ export function Card({
 export function Prose({ children }: { children: ReactNode }) {
   return <TextContent>{children}</TextContent>;
 }
-export function Terms({ items, columns = 2 }: { items: string[][]; columns?: number }) {
+export function Terms({ items, columns = 2 }: { items: ReactNode[][]; columns?: number }) {
   return <KeyValuePairs columns={columns as 1 | 2 | 3 | 4} items={items.map(([label, value]) => ({ label, value }))} />;
+}
+/** Short text blocks side by side (Cloudscape column layout): one column per block up to four, each at least 240 px,
+ *  so the blocks stack on narrow screens. */
+export function TextGrid({ children }: { children: ReactNode }) {
+  const columns = Math.min(Math.max(Children.toArray(children).length, 1), 4);
+  return (
+    <ColumnLayout columns={columns} minColumnWidth={240} variant="text-grid">
+      {children}
+    </ColumnLayout>
+  );
 }
