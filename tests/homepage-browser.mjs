@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 fs.mkdirSync('test-results/homepage', { recursive: true });
 const browser = await chromium.launch({ headless: true, channel: process.env.FERN_BROWSER_CHANNEL || 'chrome' });
-const page = await browser.newPage({ viewport: { width: 1536, height: 1024 } });
+// Motion off in automated tests (Cloudscape motion guideline): Cloudscape honours prefers-reduced-motion.
+const page = await browser.newPage({ viewport: { width: 1536, height: 1024 }, reducedMotion: 'reduce' });
 const errors = [];
 page.on('pageerror', (e) => errors.push(e.message));
 const welcome = page.locator('#fern-main').getByRole('heading', { level: 1, name: 'Welcome to FERN', exact: true });

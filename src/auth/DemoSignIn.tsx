@@ -50,23 +50,19 @@ export default function DemoSignIn({ renderApp }: { renderApp: (onSignOut: () =>
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [info, setInfo] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [loggedIn, setLoggedIn] = useState(readSession);
 
   function handleSignIn(e: React.FormEvent) {
     e.preventDefault();
     setError('');
-    setLoading(true);
-    setTimeout(() => {
-      if (email.trim().toLowerCase() === DEMO_EMAIL && password === DEMO_PASSWORD) {
-        setLoggedIn(true);
-        writeSession(true);
-      } else {
-        setError('Use demo for both the username and password to enter this preview.');
-      }
-      setLoading(false);
-    }, 900);
+    // Demo check runs at once: no artificial wait or loading spinner, as nothing is being processed.
+    if (email.trim().toLowerCase() === DEMO_EMAIL && password === DEMO_PASSWORD) {
+      setLoggedIn(true);
+      writeSession(true);
+    } else {
+      setError('Use demo for both the username and password to enter this preview.');
+    }
   }
 
   if (loggedIn) {
@@ -146,7 +142,7 @@ export default function DemoSignIn({ renderApp }: { renderApp: (onSignOut: () =>
               >
                 <Form
                   actions={
-                    <Button variant="primary" formAction="submit" loading={loading} loadingText="Signing in">
+                    <Button variant="primary" formAction="submit">
                       Sign in
                     </Button>
                   }

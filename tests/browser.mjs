@@ -28,7 +28,8 @@ try {
   );
   throw error;
 }
-const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+// Motion off in automated tests (Cloudscape motion guideline): Cloudscape honours prefers-reduced-motion.
+const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
 const errors = [];
 page.on('pageerror', (e) => errors.push(e.message));
 const h1 = (name) => page.locator('#fern-main').getByRole('heading', { level: 1, name, exact: true });

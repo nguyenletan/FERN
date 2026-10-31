@@ -157,6 +157,17 @@ Checked against [Cloudscape layout](https://cloudscape.design/foundation/visual-
 
 **Notifications.** Page-level messages go to the app layout's Flashbar through `usePageNotifications(items)` from `ui.tsx`; they clear when the page closes. Users & roles uses it for the demonstration notice and for the confirmation after adding, changing or removing a user. Messages about part of a page stay as `Alert` (application availability, "No matching standards", the operational-issue warning on Help, Learn examples), as Cloudscape recommends.
 
+### 10. Motion follows the Cloudscape guidelines
+
+Checked against [Cloudscape motion](https://cloudscape.design/foundation/visual-foundation/motion/):
+
+| Guideline | Result |
+| --- | --- |
+| Motion from the design system, with its duration and easing tokens | All motion comes from Cloudscape components (dropdowns, modals, side navigation, help panel, flashbar). The portal has no custom `transition`, `animation` or `@keyframes`; page changes and section links scroll instantly |
+| Respect reduced motion | Cloudscape turns off non-essential motion under `prefers-reduced-motion`; the portal adds none of its own |
+| Loading motion only for real work | The demo sign-in no longer waits 900 ms behind a “Signing in” spinner; the demo check is instant |
+| Turn motion off in automated tests | All four browser suites run with `reducedMotion: 'reduce'` |
+
 ## Developer notes
 
 | File | Purpose |
