@@ -194,6 +194,8 @@ Checked against [Cloudscape theming](https://cloudscape.design/foundation/visual
 
 The logo, mascot and photographs keep FERN blue. Side-by-side screenshots of both options are produced in `test-results/theme-compare/` (not committed). To bring the brand colour back, restore the `applyTheme` block from git history, preferably as build-time theming if the hosting uses a strict Content Security Policy.
 
+**Header logo.** The top navigation keeps the Cloudscape dark background (its "top navigation" visual context, as in the AWS Console). The header background is `#161d26`. The original fern (`home-fern.png`, about `#0060ff`) had 2.6–3.3:1 contrast there, so the header uses `src/assets/fern-logo-on-dark.png`: the same fern lightened 45% towards white (`#73a8ff`, 7.1:1), 128 px and 12 KB instead of 1254 px and 470 KB. It is generated from the original, not a designed asset; replace it if the design team supplies an official light logo. The sign-in page keeps the original logo on white.
+
 ## Developer notes
 
 | File | Purpose |

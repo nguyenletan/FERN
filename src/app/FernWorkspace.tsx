@@ -38,7 +38,8 @@ import PerformanceKpiPage from '../features/performance/PerformanceKpiPage.tsx';
 import RiskCompliancePage from '../features/risk/RiskCompliancePage.tsx';
 import AuditAssurancePage from '../features/audit/AuditAssurancePage.tsx';
 import ContinualImprovementPage from '../features/improvement/ContinualImprovementPage.tsx';
-import fernLogo from '../assets/home-fern.png';
+// Lighter fern for the dark Cloudscape top navigation (7.1:1 on its #161d26 background); the sign-in page keeps home-fern.png.
+import fernLogo from '../assets/fern-logo-on-dark.png';
 
 // Detailed practice guidance shown inside each Workspace topic.
 const practiceGuides: Record<string, () => React.ReactNode> = {
