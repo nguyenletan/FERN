@@ -573,11 +573,11 @@ export default function StandardsLibrary() {
                 {entry.code !== 'INTRODUCTION' && (
                   <nav aria-label="Read this standard">
                     <SpaceBetween direction="horizontal" size="l">
-                      <a href="#bbm-standard-overview">Scope and source links</a>
-                      <a href="#bbm-readable-tasks" onClick={() => setReadingView('tasks')}>
+                      <Link href="#bbm-standard-overview">Scope and source links</Link>
+                      <Link href="#bbm-readable-tasks" onClick={() => setReadingView('tasks')}>
                         Tasks and conditions
-                      </a>
-                      <a href={`#bbm-${entry.kind}-${entry.page}`}>Original source pages</a>
+                      </Link>
+                      <Link href={`#bbm-${entry.kind}-${entry.page}`}>Original source pages</Link>
                     </SpaceBetween>
                   </nav>
                 )}
@@ -595,12 +595,12 @@ export default function StandardsLibrary() {
                     <Prose>
                       {pages.map((page) => (
                         <div key={page.number}>
-                          <a href={`#bbm-${entry.kind}-${page.number}`}>Original PDF page {page.number}</a>
+                          <Link href={`#bbm-${entry.kind}-${page.number}`}>Original PDF page {page.number}</Link>
                           <ul>
                             {page.blocks.map((block, index) =>
                               block.type === 'heading' ? (
                                 <li key={index}>
-                                  <a href={`#bbm-${entry.kind}-${page.number}-heading-${index}`}>{block.text}</a>
+                                  <Link href={`#bbm-${entry.kind}-${page.number}-heading-${index}`}>{block.text}</Link>
                                 </li>
                               ) : null,
                             )}
@@ -631,9 +631,9 @@ export default function StandardsLibrary() {
                         (field) => ({ label: field.label, value: field.text }),
                       )}
                     />
-                    <a href={`#bbm-${entry.kind}-${entry.page}`}>
+                    <Link href={`#bbm-${entry.kind}-${entry.page}`}>
                       Read the original fields and full conditions on page {entry.page}
-                    </a>
+                    </Link>
                     <Section variant="default" header="Related standards" defaultExpanded>
                       <Prose>
                         {related.length ? (
@@ -737,9 +737,9 @@ export default function StandardsLibrary() {
                 <nav aria-label="Pages in this standard">
                   <SpaceBetween direction="horizontal" size="s">
                     {Array.from({ length: entry.endPage - entry.page + 1 }, (_, i) => entry.page + i).map((n) => (
-                      <a key={n} href={`#bbm-${entry.kind}-${n}`}>
+                      <Link key={n} href={`#bbm-${entry.kind}-${n}`}>
                         Page {n}
-                      </a>
+                      </Link>
                     ))}
                   </SpaceBetween>
                 </nav>

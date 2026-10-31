@@ -1,3 +1,5 @@
+import Link from '@cloudscape-design/components/link';
+import SpaceBetween from '@cloudscape-design/components/space-between';
 import Button from '@cloudscape-design/components/button';
 import { Card, Section, Terms, usePortalNavigation, TextGrid } from '../../app/ui';
 import GuidanceRoute, { openGuidanceSection } from '../visual/GuidanceRoute';
@@ -112,26 +114,28 @@ export default function PlanningObjectivesPage() {
             ],
           ]}
         />
-        <nav aria-label="More planning guidance" className="fern-inline-links">
+        <nav aria-label="More planning guidance">
+          <SpaceBetween direction="horizontal" size="l">
           <span>Also explore:</span>
-          <a
+          <Link
             href="#planning-horizons"
-            onClick={(event) => {
+            onFollow={(event) => {
               event.preventDefault();
               openGuidanceSection('planning-horizons');
             }}
           >
             Planning horizons
-          </a>
-          <a
+          </Link>
+          <Link
             href="#planning-tools"
-            onClick={(event) => {
+            onFollow={(event) => {
               event.preventDefault();
               openGuidanceSection('planning-tools');
             }}
           >
             Supporting tools
-          </a>
+          </Link>
+          </SpaceBetween>
         </nav>
       </Card>
 

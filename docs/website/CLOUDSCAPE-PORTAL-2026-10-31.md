@@ -209,6 +209,18 @@ Checked against [Cloudscape visual modes](https://cloudscape.design/foundation/v
 
 When dark mode is added: a mode switch in the user menu using `applyMode` from `@cloudscape-design/global-styles`; a dark-mode version of the home hero photograph (its edge blends to white); the light logo (`fern-logo-on-dark.png`) on the sign-in page; the content administration walkthrough keeps its own light colours; embedded PDFs stay white (iframes do not inherit the mode).
 
+### 14. Visual style
+
+Checked against [Cloudscape visual style](https://cloudscape.design/foundation/visual-foundation/visual-style/):
+
+| Guideline | Result |
+| --- | --- |
+| Shadows only for overlapping elements | No custom shadows; modals, dropdowns and popovers come from Cloudscape |
+| 1 px borders and dividers, used sparingly | The six custom dividers are 1 px with `color-border-divider-default` |
+| Border radius from the system | The only custom radius (page photographs) uses `$border-radius-container` |
+| Solid fill only for the most important action | One primary button per page or modal |
+| States applied consistently | About 37 in-page links were plain `<a>` outside Cloudscape text content, so they showed the browser's default link blue (`#0000ee`) and its own hover and focus. They are now Cloudscape `Link`s: the "On this page" rows on Leadership & Policy and Risk & Compliance, "Also explore" on Planning (each now spaced with `SpaceBetween`; the unused `fern-inline-links` class was dropped), and the source and page links in the standards reader. Clicking them still opens and scrolls to the section |
+
 ## Developer notes
 
 | File | Purpose |

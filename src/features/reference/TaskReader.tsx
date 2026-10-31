@@ -1,3 +1,4 @@
+import Link from '@cloudscape-design/components/link';
 import { visibleCountryRow } from './countrySearch';
 import { regionLabel } from './regionLabels';
 import RegionLabel from './RegionLabel';
@@ -126,7 +127,7 @@ export default function TaskReader({
             >
               <SpaceBetween size="s">
                 <Fields row={row} />
-                <a href={`#bbm-${kind}-${row.page}`}>Check original page {row.page}</a>
+                <Link href={`#bbm-${kind}-${row.page}`}>Check original page {row.page}</Link>
               </SpaceBetween>
             </Section>
           );
@@ -154,7 +155,7 @@ export default function TaskReader({
                 >
                   <SpaceBetween size="s">
                     <Fields row={row} />
-                    <a href={`#bbm-${kind}-${row.page}`}>Check original page {row.page}</a>
+                    <Link href={`#bbm-${kind}-${row.page}`}>Check original page {row.page}</Link>
                   </SpaceBetween>
                 </Section>
               ))}
