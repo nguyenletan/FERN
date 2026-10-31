@@ -97,6 +97,7 @@ Checked against [Cloudscape typography](https://cloudscape.design/foundation/vis
 | Open Sans | All rendered text |
 | Type scale only (12/16, 14/20, 16/20, 18/22, 20/24, 24/30, 42/48) | All text, including the sign-in brand panel, which now uses display large (42/48), heading x-large (24/30), heading large (20/24), heading x-small (14/18), body medium (14/20) and body small (12/16) |
 | One `h1` per page, no skipped heading levels, nothing below 12px | Yes |
+| Monospace only for ID strings | BBM object codes (results, reader header, related standards) and Amazon aliases (Users & roles) use the code style (`Box variant="code"`, 12/16 monospace). Nothing else is monospace |
 | Sentence case | About 300 headings, section titles, buttons and link labels changed from Title Case to sentence case (for example "Turn direction into a plan"). Only capitalisation changed, not wording |
 
 Sentence case keeps capitals for names: page and application names (for example "Leadership & Policy", "Pricing Template Generator"), the pillars, FERN, Workspace, Learn, Amazon and BBM terms (Blue Badge, IFM Hybrid, Prime / Plus / Core), demo role names, and acronyms (FM, KPIs, SLAs, AI, PDF). Lesson titles changed too (for example "Service models explained"); their URLs are unchanged because lesson slugs are lower case. New content should be written in sentence case.
