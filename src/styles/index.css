@@ -1,20 +1,6 @@
-/* Open Sans, the Cloudscape default font, bundled with the site (no external font request).
-   Latin and Latin Extended cover the BBM country content; weights match Cloudscape (300/400/700, italic placeholders)
-   and the portal's own headings (600/800). */
-@import '@fontsource/open-sans/latin-300.css';
-@import '@fontsource/open-sans/latin-ext-300.css';
-@import '@fontsource/open-sans/latin-400.css';
-@import '@fontsource/open-sans/latin-ext-400.css';
-@import '@fontsource/open-sans/latin-400-italic.css';
-@import '@fontsource/open-sans/latin-ext-400-italic.css';
-@import '@fontsource/open-sans/latin-600.css';
-@import '@fontsource/open-sans/latin-ext-600.css';
-@import '@fontsource/open-sans/latin-700.css';
-@import '@fontsource/open-sans/latin-ext-700.css';
-@import '@fontsource/open-sans/latin-800.css';
-@import '@fontsource/open-sans/latin-ext-800.css';
-@import 'tailwindcss';
-@source "../";
+/* Cloudscape global styles: normalize.css plus the Open Sans font (embedded, no external request).
+   Its Open Sans covers Basic Latin and Latin-1 only, so a few BBM characters such as "Č" in ČSN codes use the fallback font. */
+@import '@cloudscape-design/global-styles/index.css';
 
 /* Same stack as the Cloudscape fontFamilyBase token, so non-Cloudscape elements match the components. */
 :root {
@@ -34,8 +20,21 @@ body,
   box-sizing: border-box;
 }
 
-/* Tailwind v4 gives buttons the default arrow cursor; show a pointer on everything clickable. Disabled controls keep the arrow. */
+/* Portal base rules in the lowest-priority layer, so Cloudscape and page styles always win.
+   Images and inline SVGs are blocks (no baseline gap under them), and everything clickable shows a pointer;
+   disabled controls keep the arrow. */
 @layer base {
+  img,
+  svg,
+  video {
+    display: block;
+    vertical-align: middle;
+  }
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
   button:not(:disabled),
   [role='button']:not([aria-disabled='true']) {
     cursor: pointer;
