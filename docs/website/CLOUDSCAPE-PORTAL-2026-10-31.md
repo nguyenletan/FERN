@@ -29,7 +29,7 @@ Every page now uses Cloudscape components (`@cloudscape-design/components`). The
 | Area | Before | Now |
 | --- | --- | --- |
 | Shell | Custom header, two sidebars, footer | `TopNavigation` (logo, search, language, country, user menu) + `AppLayout` + `SideNavigation` + breadcrumbs |
-| Home | Hero image, illustrated panels | Hero `Container` (photo beside the welcome text and the Get started / What is FERN? buttons), three starting points, mission summary, application cards, popular learning topics |
+| Home | Hero image, illustrated panels | Hero `Container` (photo beside the welcome text and the Get started / What is FERN? buttons), three starting points, mission summary and application cards (each card has one link: its title) |
 | Workspace topics (7) and Mission & Pillars | Custom cards and `<details>` | `Container`, `ExpandableSection`, "Expand all / Collapse all" |
 | Detailed practice guides (7) | Page-specific CSS cards | `Card` (Container) and `Section` (ExpandableSection); converted with an AST codemod so the text is verbatim |
 | Applications | Cards on Home only | Cards on Home plus an **Applications** page with a filter (`?page=applications`) and an introduction page per application |
@@ -61,7 +61,7 @@ Icons are the Phosphor duotone icons used before, in FERN blue and hidden from s
 | Eight pillar links all led to the same page | One "Explore our mission & pillars" button; pillar names are plain text |
 | Mission & Pillars repeated on the Workspace page and in the footer | Footer removed |
 | One consistent name for the library | "Standards & Reference Library" everywhere (menu, search, pages, links) |
-| "Learn" reached from several places that open the same page | Home has one way in to each destination: About and Get started are the header buttons; Workspace, the library and Learn are the three starting points; the lesson links open specific lessons. Help is in the menu only |
+| "Learn" reached from several places that open the same page | Home has one way in to each destination: About and Get started are the header buttons; Workspace, the library and Learn are the three starting points. Following Kim's comment that the purpose of "Learn at your own pace" was unclear, the Popular learning topics block was removed from Home (lessons are chosen inside Learn, which will link to Amazon's LMS), and each application card links only from its title. Help is in the menu only |
 | Language and country on the main menu, chosen independently | Two header dropdowns (see below) |
 | Administration tab for users and roles | Demonstration page (see below) |
 | Applications must not launch (WEB-SCOPE-01) | Application pages describe the tool only; every card shows "Coming soon" |

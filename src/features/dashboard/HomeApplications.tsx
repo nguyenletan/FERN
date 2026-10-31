@@ -33,7 +33,8 @@ export function ApplicationCards({
       cardDefinition={{
         header: (item) => (
           <IconTitle icon={applicationIcons[homeApplications.indexOf(item)]} size={28}>
-            <NavLink to={item.name} fontSize="heading-m">
+            {/* The title is the card's only link (one way in per destination, per Amazon review 30 Oct 2026). */}
+            <NavLink to={item.name} fontSize="heading-m" ariaLabel={'About ' + item.title}>
               {item.title}
             </NavLink>
           </IconTitle>
@@ -48,14 +49,6 @@ export function ApplicationCards({
                 <Badge color="blue">Coming soon</Badge>
                 {item.note && <Badge>{item.note}</Badge>}
               </SpaceBetween>
-            ),
-          },
-          {
-            id: 'action',
-            content: (item) => (
-              <NavLink to={item.name} ariaLabel={'About ' + item.title}>
-                {item.action}: read how it will work
-              </NavLink>
             ),
           },
         ],
