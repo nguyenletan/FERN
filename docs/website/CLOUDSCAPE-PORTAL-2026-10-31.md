@@ -221,6 +221,23 @@ Checked against [Cloudscape visual style](https://cloudscape.design/foundation/v
 | Solid fill only for the most important action | One primary button per page or modal |
 | States applied consistently | About 37 in-page links were plain `<a>` outside Cloudscape text content, so they showed the browser's default link blue (`#0000ee`) and its own hover and focus. They are now Cloudscape `Link`s: the "On this page" rows on Leadership & Policy and Risk & Compliance, "Also explore" on Planning (each now spaced with `SpaceBetween`; the unused `fern-inline-links` class was dropped), and the source and page links in the standards reader. Clicking them still opens and scrolls to the section |
 
+### 15. Focus management
+
+Checked with the keyboard against [Cloudscape focus management principles](https://cloudscape.design/foundation/core-principles/accessibility/focus-management-principles/):
+
+| After | Focus goes to |
+| --- | --- |
+| Signing in, or any page change | The new page's h1 |
+| Opening / closing a modal | Its close button / back to the button that opened it (Cloudscape) |
+| Submitting a standards search; opening a standard; returning to results | The results; the standard's title; the result you came from |
+| Saving the add/edit user form with errors | The first field in error (Name, then Amazon alias, then Roles) |
+| Adding, changing or removing a user | The confirmation message (flash with `ariaRole: 'alert'` and a new `id`). Before, removing a user left focus on the page body, because the Remove button it returned to was disabled |
+| Dismissing that message | The next message (Cloudscape) |
+| Opening privacy, terms or help on the sign-in page | That information; closing it returns focus to the link (previously focus stayed on the link and the text relied on `aria-live`) |
+| Tabbing to a wide source table | The table region, with the Cloudscape 2 px focus ring (`$color-border-item-focused`) instead of the browser's 1 px outline |
+
+Expanding sections, opening the help panel and switching tabs do not move focus.
+
 ## Developer notes
 
 | File | Purpose |

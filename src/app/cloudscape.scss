@@ -70,6 +70,12 @@ input:-webkit-autofill {
   overflow-x: auto;
   max-width: 100%;
 }
+/* The table region is focusable (keyboard scrolling); show the Cloudscape focus ring when tabbed to. */
+.fern-table-scroll:focus-visible {
+  outline: 2px solid awsui.$color-border-item-focused;
+  outline-offset: 2px;
+  border-radius: awsui.$border-radius-control-default-focus-ring;
+}
 .fern-table-scroll table {
   border-collapse: collapse;
   min-width: 100%;

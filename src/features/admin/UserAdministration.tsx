@@ -1,6 +1,6 @@
 // DEMONSTRATION of the FERN Administration area requested by Amazon: add people, assign roles and choose what each
 // role can see. Sample data only (adminSample.ts); nothing is sent to Midway, APM or any Amazon system.
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Badge from '@cloudscape-design/components/badge';
 import Box from '@cloudscape-design/components/box';
 import Button from '@cloudscape-design/components/button';
@@ -12,9 +12,9 @@ import type { FlashbarProps } from '@cloudscape-design/components/flashbar';
 import Form from '@cloudscape-design/components/form';
 import FormField from '@cloudscape-design/components/form-field';
 import Header from '@cloudscape-design/components/header';
-import Input from '@cloudscape-design/components/input';
+import Input, { type InputProps } from '@cloudscape-design/components/input';
 import Modal from '@cloudscape-design/components/modal';
-import Multiselect from '@cloudscape-design/components/multiselect';
+import Multiselect, { type MultiselectProps } from '@cloudscape-design/components/multiselect';
 import Select from '@cloudscape-design/components/select';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import StatusIndicator from '@cloudscape-design/components/status-indicator';
@@ -50,8 +50,11 @@ export default function UserAdministration({ onContentWalkthrough }: { onContent
       ...(notice
         ? [
             {
-              id: 'change',
+              // A new id per message and ariaRole 'alert': Cloudscape then announces each confirmation and moves focus to it
+              // (focus management for success messages; also keeps focus after the removed user's row disappears).
+              id: 'change-' + notice,
               type: 'success' as const,
+              ariaRole: 'alert' as const,
               content: notice,
               dismissible: true,
               dismissLabel: 'Dismiss message',
@@ -79,6 +82,10 @@ export default function UserAdministration({ onContentWalkthrough }: { onContent
   const [editing, setEditing] = useState<Editing | null>(null);
   const [removing, setRemoving] = useState<AdminUser | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  // Fields of the add/edit form, so a failed save can focus the first field in error.
+  const nameRef = useRef<InputProps.Ref>(null);
+  const aliasRef = useRef<InputProps.Ref>(null);
+  const rolesRef = useRef<MultiselectProps.Ref>(null);
   const users = useMemo(() => {
     const q = filter.toLowerCase().trim();
     return q
@@ -103,7 +110,12 @@ export default function UserAdministration({ onContentWalkthrough }: { onContent
     if (!editing) return;
     const alias = editing.alias.trim(),
       name = editing.name.trim();
-    if (!name || !validAlias(alias) || aliasTaken || !editing.roles.length) return;
+    if (!name || !validAlias(alias) || aliasTaken || !editing.roles.length) {
+      // Focus the first field in error once its message has rendered.
+      const first = !name ? nameRef : !validAlias(alias) || aliasTaken ? aliasRef : rolesRef;
+      requestAnimationFrame(() => first.current?.focus());
+      return;
+    }
     setState((previous) => ({
       ...previous,
       users:
@@ -414,6 +426,7 @@ export default function UserAdministration({ onContentWalkthrough }: { onContent
               <SpaceBetween size="l">
                 <FormField label="Name" errorText={nameError}>
                   <Input
+                    ref={nameRef}
                     value={editing.name}
                     onChange={({ detail }) => setEditing({ ...editing, name: detail.value })}
                   />
@@ -424,6 +437,7 @@ export default function UserAdministration({ onContentWalkthrough }: { onContent
                   errorText={aliasError}
                 >
                   <Input
+                    ref={aliasRef}
                     value={editing.alias}
                     disabled={editing.mode === 'edit'}
                     onChange={({ detail }) => setEditing({ ...editing, alias: detail.value.toLowerCase() })}
@@ -431,6 +445,7 @@ export default function UserAdministration({ onContentWalkthrough }: { onContent
                 </FormField>
                 <FormField label="Roles" errorText={rolesError}>
                   <Multiselect
+                    ref={rolesRef}
                     selectedOptions={roleOptions.filter((option) => editing.roles.includes(option.value))}
                     options={roleOptions}
                     placeholder="Choose roles"

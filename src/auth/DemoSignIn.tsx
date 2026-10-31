@@ -3,7 +3,7 @@ import guideImage from '../assets/fern-guide-transparent.png';
 import fernMark from '../assets/home-fern.png';
 import { Building2, ChartColumn, ShieldCheck } from 'lucide-react';
 import { FernIcon } from '../app/visuals';
-import Alert from '@cloudscape-design/components/alert';
+import Alert, { type AlertProps } from '@cloudscape-design/components/alert';
 import Box from '@cloudscape-design/components/box';
 import Button from '@cloudscape-design/components/button';
 import Checkbox from '@cloudscape-design/components/checkbox';
@@ -15,7 +15,7 @@ import Input from '@cloudscape-design/components/input';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import './demo-sign-in.scss';
 import { DEMO_EMAIL, DEMO_PASSWORD } from './demoCredentials.ts';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 // Demonstration sign-in only; production sign-in will be Midway. The form uses Cloudscape like the rest of the portal.
 // Keep the demo session for this browser tab so a refresh does not sign the viewer out.
@@ -50,6 +50,12 @@ export default function DemoSignIn({ renderApp }: { renderApp: (onSignOut: () =>
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [info, setInfo] = useState<string | null>(null);
+  // Opening privacy, terms or help moves focus to that information; closing it returns focus to the link that opened it.
+  const infoRef = useRef<AlertProps.Ref>(null);
+  const infoOpener = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (info) infoRef.current?.focus();
+  }, [info]);
   const [error, setError] = useState('');
   const [loggedIn, setLoggedIn] = useState(readSession);
 
@@ -198,13 +204,17 @@ export default function DemoSignIn({ renderApp }: { renderApp: (onSignOut: () =>
         </div>
 
         {info && (
-          <section className="fern-signin-info" aria-label={info} role="region" aria-live="polite">
+          <section className="fern-signin-info" aria-label={info} role="region">
             <Alert
+              ref={infoRef}
               type="info"
               header={info}
               dismissible
               dismissAriaLabel="Close information"
-              onDismiss={() => setInfo(null)}
+              onDismiss={() => {
+                setInfo(null);
+                infoOpener.current?.focus();
+              }}
             >
               {infoText[info]}
             </Alert>
@@ -213,7 +223,14 @@ export default function DemoSignIn({ renderApp }: { renderApp: (onSignOut: () =>
         <div className="fern-signin-legal">
           <SpaceBetween direction="horizontal" size="m" alignItems="center">
             {Object.keys(infoText).map((label) => (
-              <Button key={label} variant="inline-link" onClick={() => setInfo(label)}>
+              <Button
+                key={label}
+                variant="inline-link"
+                onClick={() => {
+                  infoOpener.current = document.activeElement as HTMLElement | null;
+                  setInfo(label);
+                }}
+              >
                 {label}
               </Button>
             ))}
