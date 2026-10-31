@@ -13,11 +13,7 @@ export default function ApplicationPage({ app }: { app: FernApplication }) {
     .filter((item): item is FernApplication => Boolean(item));
   return (
     <Page
-      title={
-        <IconTitle icon={applicationIcons[homeApplications.indexOf(app)]} size={34}>
-          {app.title}
-        </IconTitle>
-      }
+      title={app.title}
       description={app.summary}
       info={
         <SpaceBetween direction="horizontal" size="xs">
@@ -41,7 +37,7 @@ export default function ApplicationPage({ app }: { app: FernApplication }) {
         <Card title="Works with">
           <SpaceBetween size="xs">
             {related.map((item) => (
-              <IconTitle key={item.slug} icon={applicationIcons[homeApplications.indexOf(item)]} size={20}>
+              <IconTitle key={item.slug} icon={applicationIcons[homeApplications.indexOf(item)]}>
                 <NavLink to={item.name}>{item.title}</NavLink>
               </IconTitle>
             ))}

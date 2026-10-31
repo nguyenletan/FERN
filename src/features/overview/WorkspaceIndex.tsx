@@ -30,7 +30,7 @@ export default function WorkspaceIndex() {
         cardsPerRow={[{ cards: 1 }, { minWidth: 640, cards: 2 }, { minWidth: 1100, cards: 3 }]}
         cardDefinition={{
           header: (item) => (
-            <IconTitle icon={topicIcons[item.title]} size={28}>
+            <IconTitle icon={topicIcons[item.title]}>
               <NavLink to={item.title} fontSize="heading-m">
                 {item.title}
               </NavLink>

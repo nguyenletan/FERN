@@ -48,11 +48,11 @@ The look follows Cloudscape defaults, with FERN blue for primary buttons and lin
 | Home hero photograph | Home, in a `Container` with side media (the image moves above the text on phones) |
 | Photograph banners | Top of each Workspace topic, Mission & Pillars and Learn (original alt text kept) |
 | FERN guide mascot | Help & Guidance, "Need a hand?" |
-| Application icons | Application cards, introduction pages and "Works with" links |
-| Pillar icons | Home mission summary, Mission & Pillars sections, "Guided by" on Workspace topics |
-| Topic, lesson and help icons | Home starting points, Workspace cards, Learn topics, Help topics |
+| Application icons | Application cards and "Works with" links |
+| Pillar icons | Home mission summary |
+| Topic icons | Home starting points, Workspace cards |
 
-Icons are the Phosphor duotone icons used before, in FERN blue and hidden from screen readers. The cartoon teaser illustrations are not used, because they clash with the Cloudscape style.
+Icons are Lucide stroke icons inside the Cloudscape `Icon` component, in FERN blue and hidden from screen readers (see section 8). The cartoon teaser illustrations are not used, because they clash with the Cloudscape style.
 
 ### 2. Amazon review fixes
 
@@ -126,6 +126,20 @@ Checked against [Cloudscape design tokens](https://cloudscape.design/foundation/
 | Do not override Cloudscape components | The standards reader had rules for native buttons, headings and summaries left from the earlier design. The button rule still reached Cloudscape buttons inside the reader (44 px tall, own border and radius, and a stray line under expandable section headers); it was removed, so reader buttons now match the rest of the portal. About 290 lines of reader CSS for classes no longer rendered were removed |
 
 Not converted, on purpose: component dimensions (image sizes, `max-width`, the embedded PDF height, breakpoints), the 72 px anchor offset that matches the header, the FERN wordmark weight and tracking, and the emoji flag size. `src/styles/index.css` (global reset and disclosure arrows) is plain CSS and stays without tokens. `src/features/reference/region-labels.css` became `region-labels.scss` to use tokens.
+
+### 8. Icons follow the Cloudscape iconography
+
+Checked against [Cloudscape iconography](https://cloudscape.design/foundation/visual-foundation/iconography/):
+
+| Guideline | Result |
+| --- | --- |
+| Action icons from the Cloudscape set, with a text label | Already the case: download, back, expand/collapse all, refresh and profile use `iconName` on labelled buttons |
+| No icons with page, section or sub-section headings | Icons were removed from the page titles (Workspace topics, Mission & Pillars, Learn, application pages) and from the Learn lesson, Help topic and pillar section headers |
+| Symbol icons sparingly, to the left of a labelled resource | Kept only on navigation items: home starting points, Workspace cards, application cards, "Works with" links, the home pillar summary and the three sign-in benefits. The icons beside the "Guided by" pillar badges were removed; the badges already carry the names |
+| Icon sizes 16 / 20 / 32 / 48 px, matched to the text | `FernIcon` takes `normal`, `medium` (default) or `big` and renders the Cloudscape `Icon` with the `svg` slot, so Cloudscape sets the size and stroke width. Card and link icons are 20 px; the pillar summary and sign-in benefits are 32 px. Previously 18–34 px |
+| Custom icons: 2 px strokes, not filled shapes | Phosphor duotone (filled tints, shapes drawn as fills) was replaced by `lucide-react`, which draws with strokes and rounded joins like the Cloudscape set. Phosphor's filled paths do not render in the Cloudscape `svg` slot, which forces `fill: none` |
+
+Lucide icons use a 24 px grid rather than Cloudscape's 16 px, so their strokes render at about 1.3 px (medium) and 2 px (big), within the guideline. Use `FernIcon` / `IconTitle` from `app/visuals.tsx` for any new symbol icon, and prefer a Cloudscape `iconName` when one fits.
 
 ## Developer notes
 

@@ -22,7 +22,7 @@
     "@cloudscape-design/components": "^3.0.1407",
     "@cloudscape-design/design-tokens": "^3.0.117",
     "@cloudscape-design/global-styles": "^1.0.71",
-    "@phosphor-icons/react": "^2.1.10",
+    "lucide-react": "^1.64.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },

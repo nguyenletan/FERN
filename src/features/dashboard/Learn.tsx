@@ -3,7 +3,7 @@ import SpaceBetween from '@cloudscape-design/components/space-between';
 import { homeApplications } from './homeApplications.ts';
 import IntroductoryLearning from './IntroductoryLearning.tsx';
 import { Card, ExpandAllControls, NavButton, NavLink, Page, Prose, Section, revealSection } from '../../app/ui';
-import { IconTitle, PageBanner, lessonIcons, topicIcons } from '../../app/visuals';
+import { PageBanner } from '../../app/visuals';
 
 const topics = [
   {
@@ -98,11 +98,7 @@ export default function Learn({ requestedLesson }: { requestedLesson?: { title: 
   }, [requestedLesson]);
   return (
     <Page
-      title={
-        <IconTitle icon={topicIcons.Learn} size={34}>
-          Learn
-        </IconTitle>
-      }
+      title="Learn"
       description="Understand FERN, explore FM concepts and find guidance for your next decision. You can read these introductory topics without choosing a facility."
     >
       <PageBanner scene="Learn" />
@@ -117,7 +113,7 @@ export default function Learn({ requestedLesson }: { requestedLesson?: { title: 
               id={lessonId(topic.title)}
               key={topic.title}
               variant="default"
-              header={<IconTitle icon={lessonIcons[topic.title]}>{topic.title}</IconTitle>}
+              header={topic.title}
             >
               <Prose>
                 <h3>What is it?</h3>

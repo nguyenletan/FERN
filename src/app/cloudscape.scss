@@ -36,7 +36,9 @@
   object-position: 35% 5%;
   border-radius: awsui.$border-radius-container;
 }
+/* Symbol icons: Cloudscape Icon (sized and stroked by Cloudscape) in the FERN accent colour. */
 .fern-icon {
+  display: inline-flex;
   flex-shrink: 0;
   color: awsui.$color-text-accent;
 }

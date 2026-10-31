@@ -73,7 +73,8 @@
   border-top: 1px solid awsui.$color-border-divider-default;
   padding-top: awsui.$space-scaled-l;
 }
-.fern-signin-benefits svg {
+.fern-signin-benefits .fern-icon {
+  display: block;
   color: awsui.$color-text-accent;
   margin-bottom: awsui.$space-scaled-xs;
 }

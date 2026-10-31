@@ -8,7 +8,7 @@ import Icon from '@cloudscape-design/components/icon';
 import data from './frameworkContent.json';
 import FrameworkContent from './FrameworkContent';
 import { Card, ExpandAllControls, NavButton, NavLink, Page, Prose, Section, revealSection } from '../../app/ui';
-import { IconTitle, PageBanner, pillarIcons, topicIcons } from '../../app/visuals';
+import { IconTitle, PageBanner, pillarIcons } from '../../app/visuals';
 
 /** Home page summary: the mission and the eight pillar names, with one link to the full page. */
 export function HomeMission() {
@@ -30,7 +30,7 @@ export function HomeMission() {
         </Prose>
         <ColumnLayout columns={4} variant="text-grid" minColumnWidth={160}>
           {data.pillars.map((p, i) => (
-            <IconTitle key={p.number} icon={pillarIcons[i]} size={28}>
+            <IconTitle key={p.number} icon={pillarIcons[i]} size="big">
               <Box variant="small">
                 <Box variant="awsui-key-label">Pillar {p.number}</Box>
                 {p.name}
@@ -48,11 +48,7 @@ export default function MissionPillars({ pillar }: { pillar?: number }) {
   }, [pillar]);
   return (
     <Page
-      title={
-        <IconTitle icon={topicIcons['Mission & Pillars']} size={34}>
-          Mission &amp; Pillars
-        </IconTitle>
-      }
+      title="Mission & Pillars"
       description="Better facilities begin with clear direction."
     >
       <PageBanner scene="Mission & Pillars" />
@@ -114,7 +110,7 @@ export default function MissionPillars({ pillar }: { pillar?: number }) {
                 id={`fw-pillar-${p.number}`}
                 key={p.number}
                 variant="default"
-                header={<IconTitle icon={pillarIcons[i]}>{`Pillar ${p.number} · ${p.name}`}</IconTitle>}
+                header={`Pillar ${p.number} · ${p.name}`}
                 description={intro.replace(/\*\*/g, '')}
               >
                 <SpaceBetween size="s">

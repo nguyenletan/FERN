@@ -4,11 +4,11 @@ import Container from '@cloudscape-design/components/container';
 import Header from '@cloudscape-design/components/header';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import { ExpandAllControls, NavLink, Page, Prose, Section, Terms } from '../../app/ui';
-import { IconTitle, fernGuide, helpIcons, useMediaPosition } from '../../app/visuals';
+import { fernGuide, useMediaPosition } from '../../app/visuals';
 
 function Topic({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <Section variant="default" header={<IconTitle icon={helpIcons[label]}>{label}</IconTitle>}>
+    <Section variant="default" header={label}>
       <SpaceBetween size="s">{children}</SpaceBetween>
     </Section>
   );
