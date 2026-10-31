@@ -13,28 +13,28 @@ const concepts = [
 ];
 const evidenceChecks = [
   [
-    'Source & Traceability',
+    'Source & traceability',
     'Keep the source system, record identifier, date, version and facility or service relationship available. Review the originating record without overwriting it through the assessment.',
   ],
   [
-    'Completeness & Relevance',
+    'Completeness & relevance',
     'Check that the evidence covers the correct requirement, activity, asset and assessment period. Where required, check the competence of the person carrying out the work, the inspection or test record and any certificate. A closed work order alone may not contain everything needed to reach a conclusion. Distinguish incomplete, conflicting, out-of-date and unverified records.',
   ],
   [
-    'Missing Evidence',
+    'Missing evidence',
     'Record what is unavailable. Missing evidence cannot support a positive conclusion; whether it constitutes a requirement failure depends on the applicable assessment methodology.',
   ],
   [
-    'Sampling & Limitations',
+    'Sampling & limitations',
     'Where sampling is used, retain the population, sample size, selection method, period and exclusions. Apply the relevant sampling methodology and describe the limits of the conclusion.',
   ],
 ];
 const findings = [
-  ['Requirement Gap', 'Evidence indicates that an applicable requirement has not been achieved.'],
-  ['Evidence Gap', 'There is insufficient acceptable evidence to reach a conclusion.'],
-  ['Information Conflict', 'Relevant sources provide materially different information.'],
-  ['Performance Issue', 'Evidence does not support the expected performance result.'],
-  ['Improvement Observation', 'An opportunity is identified without necessarily representing a requirement failure.'],
+  ['Requirement gap', 'Evidence indicates that an applicable requirement has not been achieved.'],
+  ['Evidence gap', 'There is insufficient acceptable evidence to reach a conclusion.'],
+  ['Information conflict', 'Relevant sources provide materially different information.'],
+  ['Performance issue', 'Evidence does not support the expected performance result.'],
+  ['Improvement observation', 'An opportunity is identified without necessarily representing a requirement failure.'],
 ];
 export default function AuditAssurancePage() {
   const { go: onNavigate } = usePortalNavigation();
@@ -47,7 +47,7 @@ export default function AuditAssurancePage() {
           connected to its requirement and the information used to reach it.
         </p>
         <GuidanceRoute
-          title="How to Work Through an Assessment"
+          title="How to work through an assessment"
           id="audit-route"
           steps={[
             [
@@ -96,7 +96,7 @@ export default function AuditAssurancePage() {
         />
       </Card>
 
-      <Card id="audit-overview" title={<>Review Priorities</>}>
+      <Card id="audit-overview" title={<>Review priorities</>}>
         <p className="audit-empty">
           No assessment or finding records are available on this page. Use the guidance below to understand the
           assessment process and evidence needed.
@@ -114,8 +114,8 @@ export default function AuditAssurancePage() {
           ))}
         </div>
       </Card>
-      <Card id="audit-prepare" title={<>Prepare an Assessment</>}>
-        <h3>Start With the Requirement</h3>
+      <Card id="audit-prepare" title={<>Prepare an assessment</>}>
+        <h3>Start with the requirement</h3>
         {onNavigate && (
           <p>
             <Button
@@ -124,7 +124,7 @@ export default function AuditAssurancePage() {
                 onNavigate('Reference Library');
               }}
             >
-              Read a Supporting BBM Standard →
+              Read a supporting BBM standard →
             </Button>
           </p>
         )}
@@ -132,21 +132,21 @@ export default function AuditAssurancePage() {
           Identify the applicable FM Policy, BBM Standard, service or contractual requirement, KPI/SLA definition or
           other authorised source before deciding what to assess.
         </p>
-        <Section id="audit-scope" header={<>Define the Scope</>}>
+        <Section id="audit-scope" header={<>Define the scope</>}>
           <p>
             Establish the facility, region, service, asset or system, delivery model, assessment period and methodology
             version. Identify the assessment type and relevant source material. Self-assessment and formal or
             independent audit should remain distinguishable.
           </p>
         </Section>
-        <Section header={<>Use Clear, Traceable Questions</>}>
+        <Section header={<>Use clear, traceable questions</>}>
           <p>
             Connect each question to its requirement, applicability, version, assessment method and expected evidence.
             For example: “Is there sufficient evidence that the required service was delivered for the assessment
             period?” Retain the specific source behind that question.
           </p>
         </Section>
-        <Section header={<>Apply the Relevant FM Methodology</>}>
+        <Section header={<>Apply the relevant FM methodology</>}>
           <p>
             BXM develops FM audit and assessment methodologies within its remit and provides specialist guidance on
             their application. Use criteria suited to the service and delivery arrangement; do not assume one question
@@ -154,7 +154,7 @@ export default function AuditAssurancePage() {
           </p>
         </Section>
       </Card>
-      <Card id="audit-evidence" title={<>Review Evidence</>}>
+      <Card id="audit-evidence" title={<>Review evidence</>}>
         <p>
           Evidence may include work orders, inspection records, certificates, test results, service reports, photographs
           and site observations. Select the evidence required by the assessment, rather than treating every available
@@ -166,12 +166,12 @@ export default function AuditAssurancePage() {
           </Section>
         ))}
       </Card>
-      <Card id="audit-findings" title={<>Understand Findings</>}>
+      <Card id="audit-findings" title={<>Understand findings</>}>
         <p>
           A finding explains what was identified, against which requirement and using which evidence. Keep its
           assessment reference and affected context traceable.
         </p>
-        <Section header={<>Distinguish the Type of Finding</>}>
+        <Section header={<>Distinguish the type of finding</>}>
           <p>
             These descriptions help distinguish issues. Use the categories defined by the applicable assessment
             methodology when recording a finding.
@@ -185,21 +185,21 @@ export default function AuditAssurancePage() {
             ))}
           </dl>
         </Section>
-        <Section header={<>Interpret Scores and Severity Carefully</>}>
+        <Section header={<>Interpret scores and severity carefully</>}>
           <p>
             Use scores, severity and confidence classifications only where the applicable methodology defines them and
             the evidence supports them. An overall result must not hide a material mandatory exception. Finding severity
             and risk assessment are separate measures.
           </p>
         </Section>
-        <Section header={<>Compare Like With Like</>}>
+        <Section header={<>Compare like with like</>}>
           <p>
             Before comparing facilities, services or providers, check criteria, methodology versions, populations and
             evidence quality. A result obtained from different criteria or limited evidence may not support a direct
             comparison.
           </p>
         </Section>
-        <Section header={<>Establish Responsibility</>}>
+        <Section header={<>Establish responsibility</>}>
           <p>
             A finding at a facility does not automatically establish supplier responsibility. Review service scope,
             contractual boundaries, retained responsibilities, shared interfaces and evidence before attributing an
@@ -207,36 +207,36 @@ export default function AuditAssurancePage() {
           </p>
         </Section>
       </Card>
-      <Card id="audit-actions" title={<>Action &amp; Verification</>}>
-        <h3>Connect Findings to Follow-Up</h3>
+      <Card id="audit-actions" title={<>Action &amp; verification</>}>
+        <h3>Connect findings to follow-up</h3>
         <p>
           Identify the required action, its finding reference, the responsible party established by the applicable
           arrangement, due date and evidence needed for closure. Where work identifies a defect, keep the follow-up
           action connected to the original asset and finding. The assessment team and the party addressing the issue may
           be different.
         </p>
-        <Section id="audit-verification" header={<>Verify Completion and Effectiveness</>}>
+        <Section id="audit-verification" header={<>Verify completion and effectiveness</>}>
           <p>
             Review completion evidence, its date and the verification result where the methodology requires it. An
             action marked complete does not by itself establish verified closure or prove that the underlying issue has
             been resolved.
           </p>
         </Section>
-        <Section id="audit-learning" header={<>Learn From Repeat Findings</>}>
+        <Section id="audit-learning" header={<>Learn from repeat findings</>}>
           <p>
             Review recurrence at the same facility, asset or service, including after previous action. Repetition can
             signal a need for further investigation; it does not establish a root cause on its own. Use supported
             learning to inform future FM decisions.
           </p>
         </Section>
-        <Section header={<>Preserve Assessment History</>}>
+        <Section header={<>Preserve assessment history</>}>
           <p>
             Keep previous findings, actions, evidence and the methodology version used at the time. When requirements
             change, identify affected questions and assessments without silently recalculating historical results
             against the new requirement.
           </p>
         </Section>
-        <h3>Support Wider Review</h3>
+        <h3>Support wider review</h3>
         <p>
           Bring together significant findings, unresolved actions and material evidence gaps for the relevant review
           process. Keep decisions and supporting evidence linked to their source assessment.

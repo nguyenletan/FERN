@@ -48,21 +48,21 @@
       "intro": "**Turn the FM mission into clear direction, responsibility and everyday practice.**\n\nStart with the needs of Operations, Associates and other facility users. Establish the requirements that apply, make responsibilities clear and consider the effect of each decision on safety, reliability, people, cost and long-term asset value.\n\nFoundation, Own It and Grow the Talent connect leadership to action. Never Done keeps policy responsive to verified experience. Amazon\u2019s leadership behaviours give these pillars practical meaning: understand the user, follow the whole outcome, question the evidence and simplify unnecessary work.",
       "sections": [
         {
-          "title": "FM Policy Commitments",
+          "title": "FM policy commitments",
           "body": "- **Start With Service Users:** define the outcome the service needs to achieve before choosing the solution.\n- **Protect Applicable Requirements:** establish the relevant legal, statutory, life-safety, Amazon, OEM and warranty obligations before comparing options.\n- **Make Accountability Clear:** identify decision, delivery, advice and verification responsibilities and use the applicable authority.\n- **Use Traceable Evidence:** retain source, scope, date, assumptions, limitations and reasoning.\n- **Consider Whole-Life Value:** examine service, cost, condition, reliability, resilience, resource use and lifecycle consequences together.\n- **Keep Controls Useful:** reuse authoritative systems and apply validated regional or country differences without duplicating records.\n- **Develop Competence:** match responsibilities with skills, information and specialist support.\n- **Verify and Improve:** check that actions work and reconsider decisions when controlled evidence changes."
         },
         {
-          "title": "Leadership in Practice",
+          "title": "Leadership in practice",
           "body": "Leadership provides direction, resources and support. The accountable owner follows the result across team boundaries; the authorised approver decides within the applicable delegation. BXM contributes specialist FM methods and guidance within its remit. Finance, Procurement, Sustainability, Legal and other functions retain authority for the matters they own.\n\nPolicy is communicated to the people who use and deliver the service. Explain what it means for their work, identify the relevant learning and give them a confirmed route for questions. Changes to scope, requirements or policy are communicated to the affected groups through the controlled publication process."
         },
         {
-          "title": "Management Review",
+          "title": "Management review",
           "body": "Management review evaluates whether the FM system remains suitable, adequately supported and effective. At the agreed review points, examine previous actions, changes in business needs, performance, risks, audit findings and improvement opportunities. Decide whether scope, priorities, resources or controls need to change. Record the decisions, owners and follow-up, and communicate the results."
         }
       ],
       "evidence": "controlled policy, role and delegation records, communication, competence requirements and management-review decisions.",
       "iso": "5.1\u20135.3, 7.3\u20137.4 and 9.3. Policy design is also informed by the supplied 41018 draft; its stage and detailed references are recorded in the controlled appendix.",
-      "next": "[Understand the FM System](#6-fm-overview) or [Turn Direction Into a Plan](#7-planning-objectives).",
+      "next": "[Understand the FM system](#6-fm-overview) or [Turn direction into a plan](#7-planning-objectives).",
       "art": "people",
       "pillars": [1, 3, 5, 8]
     },
@@ -71,17 +71,17 @@
       "intro": "**Understand how people, services and evidence work together to support operations.**\n\nFM integrates the services and facilities on which Amazon\u2019s operations depend. Identify who uses each service, what they need, the requirements that apply and the interfaces between the teams involved. Use that context to plan delivery, examine results and decide what needs attention.\n\nFoundation establishes the system boundaries. Know Your Customer connects the service to its users. Deliver Every Day connects the contributing teams, and Trust the Data keeps the overview connected to evidence.",
       "sections": [
         {
-          "title": "Understand the FM System",
+          "title": "Understand the FM system",
           "body": "1. **Identify the Context:** business needs, relevant users, facilities, services and external conditions.\n2. **Establish the Scope:** boundaries, applicability and interaction with other management systems.\n3. **Connect the Services:** retained and outsourced responsibilities, operational dependencies and communication.\n4. **Read the Evidence:** sources, reporting periods, definitions and limitations.\n5. **Prepare the Decision:** the issue, responsible authority, available options and follow-up needed.\n\nService coordination protects the primary activities of the business. A change in one service can affect another: maintenance access, operating hours, cleaning, specialist inspections and contractor activity need compatible arrangements. Review these interfaces during planning and when conditions change."
         },
         {
-          "title": "Prepare for Management Review",
+          "title": "Prepare for management review",
           "body": "Bring together changes in context, prior decisions, service results, material risks, audit findings and improvement outcomes. Examine what the combined evidence means for service scope, resources and controls. Management review concludes with decisions and follow-up; it is broader than a dashboard or a supplier performance meeting.\n\nRead summaries alongside their sources. Compare trends only when the periods, definitions, populations and evidence are comparable. Keep mandatory exceptions visible separately from general performance. An unavailable summary does not mean that no issues exist."
         }
       ],
       "evidence": "documented context, scope, stakeholder needs, service interfaces, source references and management-review inputs and outputs.",
       "iso": "4.1\u20134.4, 8.2\u20138.3 and 9.3. The 2024 climate amendment informs context review. ISO 41014 supports strategic alignment; the supplied 41013 draft provides conceptual background.",
-      "next": "[Plan an Outcome](#7-planning-objectives), [Review Results](#8-performance-kpis) or [Check Findings](#10-audit-assurance).",
+      "next": "[Plan an outcome](#7-planning-objectives), [Review results](#8-performance-kpis) or [Check findings](#10-audit-assurance).",
       "art": "people",
       "pillars": [1, 2, 6, 7]
     },
@@ -90,22 +90,22 @@
       "intro": "**Turn FM priorities into achievable plans and measurable outcomes.**\n\nBegin with the business or service-user need and the FM policy commitment it supports. Identify what must be achieved, the requirements that apply and the evidence that establishes the starting point. Match the plan to the decision: immediate response, operating period, contract transition, asset lifecycle or portfolio strategy.\n\nKnow Your Customer defines the outcome. Think Big Act Fast connects long-term value with proportionate action. Own It and Grow the Talent make the delivery responsibilities and capability explicit.",
       "sections": [
         {
-          "title": "Build the Plan",
+          "title": "Build the plan",
           "summary": "Review the planning elements and the information to establish for each.",
           "body": "| Planning element | Information to establish |\n|---|---|\n| Need and purpose | The problem or opportunity, affected users and policy connection |\n| Outcome and scope | The intended result and affected facilities, services or assets |\n| Requirements | Applicable obligations and the sources supporting them |\n| Evidence baseline | Relevant starting data, period, method and limitations |\n| Success measure | How results will be evaluated, with the applicable target or agreed acceptance basis |\n| Accountability | The decision owner, delivery responsibilities and approval boundary |\n| Resources and capability | People, competence, budget, access, information and specialist support |\n| Risks and dependencies | Constraints, consequences and connected services or teams |\n| Timing and review | Delivery timing, review responsibilities and change triggers |"
         },
         {
-          "title": "Prepare for Delivery",
+          "title": "Prepare for delivery",
           "body": "Compare feasible alternatives using service needs, mandatory requirements, risk, asset condition, resources and whole-life consequences. Keep the delivery model distinct from the service tier. A model describes how a service is delivered; a tier describes the level of service under the applicable framework. Neither removes a mandatory requirement.\n\nSeparate the cost of closing a requirement gap from costs that can legitimately be optimised. Examine unclear scope, duplicate charges or weak cost records as distinct cost-governance issues. These problems can require different actions; a lower total alone does not explain whether the service is adequate or the saving is supportable.\n\nEstablish operating criteria and coordinate handovers before delivery. Identify what information the receiving team needs and who confirms readiness. Where specialist competence is necessary, include its evidence and availability in the plan."
         },
         {
-          "title": "Review Progress and Change",
+          "title": "Review progress and change",
           "body": "Check progress against the intended outcome, not only activity completion. Reconsider the plan when needs, requirements, evidence or resources change. Record the reason for the change, affected interfaces, decision authority and revised evaluation basis. Review unintended effects on people, services and future costs."
         }
       ],
       "evidence": "objective and policy link, owner, plan, resource and competence needs, baseline, risk response, delivery criteria and change history.",
       "iso": "6.1\u20136.2, 7.1\u20137.2 and 8.1; ISO 41014, particularly strategy, implementation and feedback.",
-      "next": "[Check Requirements and Risks](#9-risk-compliance), [Define the Measures](#8-performance-kpis) or [Find Learning Support](#12-learn-reference-library-and-assistance).",
+      "next": "[Check requirements and risks](#9-risk-compliance), [Define the measures](#8-performance-kpis) or [Find learning support](#12-learn-reference-library-and-assistance).",
       "art": "guides",
       "pillars": [2, 3, 4, 5]
     },
@@ -114,17 +114,17 @@
       "intro": "**Understand whether FM services achieve the intended outcomes and what needs attention.**\n\nConnect each measure to a service-user outcome, policy objective or applicable service expectation. Understand its purpose, owner, calculation, source, reporting period and limitations before judging the result.\n\nKnow Your Customer keeps measures relevant. Deliver Every Day connects them to service outcomes. Trust the Data makes the assessment reproducible, and Never Done turns exceptions into learning.",
       "sections": [
         {
-          "title": "Define and Interpret a Measure",
+          "title": "Define and interpret a measure",
           "body": "A KPI measures an important aspect of FM performance. An SLA establishes an applicable service expectation. The source defines the target, clock rules, population and contractual significance; a familiar measure name is not sufficient.\n\nCheck the unit, calculation, exclusions, baseline, source version and assessment period. For time measures, distinguish acknowledgement, attendance, restoration and permanent repair. Use tier-specific targets only where the applicable methodology defines them.\n\nRead reliability and quality alongside user experience, risk, resources and whole-life value where relevant. A positive overall result does not cancel a mandatory exception. Do not assign red, amber or green without an applicable threshold and adequate evidence."
         },
         {
-          "title": "From Result to Decision",
+          "title": "From result to decision",
           "body": "1. Confirm the definition and context.\n2. Check the records and calculation.\n3. Identify significant exceptions and supported trends.\n4. Investigate limitations, conflicting information and potential causes.\n5. Connect the finding to an owner, response and review.\n\nService reviews examine delivery. Management review considers whether the wider FM approach, priorities and resources remain effective. Carry relevant evidence and decisions into the appropriate review.\n\nFinance controls the baseline and attribution method for financial benefit claims. Potential exposure, avoided-cost scenarios and realised savings remain distinguishable. Commercial consequences depend on the applicable contract and authorised interpretation; a KPI result alone does not establish a payment or service credit."
         }
       ],
       "evidence": "purpose and objective link, definition/version, population, source records, calculation, limitations, results and resulting decisions.",
       "iso": "6.2, 7.5.4 and 9.1\u20139.3; ISO 41014 performance and feedback guidance.",
-      "next": "[Examine the Evidence](#10-audit-assurance) or [Investigate an Improvement](#11-continual-improvement).",
+      "next": "[Examine the evidence](#10-audit-assurance) or [Investigate an improvement](#11-continual-improvement).",
       "art": "analysis",
       "pillars": [2, 6, 7, 8]
     },
@@ -133,21 +133,21 @@
       "intro": "**Understand what could affect the outcome and which requirements must be met.**\n\nRisk concerns uncertainty and its consequences. Compliance concerns an applicable requirement and the evidence supporting its fulfilment. A high-risk issue is not automatically a compliance failure; a low risk score does not make a mandatory obligation optional.\n\nFoundation establishes applicability. Think Big Act Fast supports proportionate responses. Own It establishes decision authority. Trust the Data separates source, evidence and conclusion.",
       "sections": [
         {
-          "title": "Establish What Applies",
+          "title": "Establish what applies",
           "body": "Identify the exact source, version, effective date and relevant jurisdiction, facility, service, asset and activity. Read the conditions and competence requirements. Amazon and BBM material, legal sources, contracts and OEM requirements remain identifiable rather than being merged into an unexplained statement.\n\nMaintenance can provide evidence for a compliance requirement without covering every element of it. Some requirements need additional inspection, testing, assessment or specialist records. An evidence-upload interval is not necessarily the interval for physical work."
         },
         {
-          "title": "Assess the Response",
+          "title": "Assess the response",
           "body": "Consider the function at risk, asset condition, criticality, safeguards, redundancy, failure history and operational dependencies. Identify opportunities as well as threats. Establish the response, responsible owner, authority and evidence needed to evaluate effectiveness. Use an appropriate method with defined scales where scoring is involved.\n\nConsider whether climate-related change affects intended FM outcomes and whether relevant parties have climate-related requirements. Connect relevant findings to objectives, preparedness and review. This context assessment does not itself prescribe a universal emissions target or maintenance interval. [ISO/IAF climate-context explanation](https://www.iso.org/files/live/sites/isoorg/files/standards/popular_standards/management_systems/ISO-IAF%20Joint%20Communique%20Feb%202024.pdf).\n\nWhere epidemic-related disruption is relevant, use the applicable preparedness, response and recovery arrangements with the responsible specialists. The supplied 41017 draft informs that specific topic; it does not replace the organisation\u2019s wider emergency arrangements."
         },
         {
-          "title": "Reach a Traceable Conclusion",
+          "title": "Reach a traceable conclusion",
           "body": "Applicability, evidence sufficiency and the assessment result are separate decisions. A certificate or closed work order needs to match the requirement, asset, activity and period. Retain conflicts and seek the appropriate specialist decision where necessary. Risk acceptance does not waive a legal or other mandatory obligation."
         }
       ],
       "evidence": "requirement, applicability basis, risk or opportunity, method, treatment, owner, authorised decisions and review triggers.",
       "iso": "4.1\u20134.3, 6.1, 8.1 and 10.3; 2024 amendment; ISO 41014 risk guidance and the supplied 41017 draft for epidemic context.",
-      "next": "[Find Source Material](#12-learn-reference-library-and-assistance), [Review Evidence](#10-audit-assurance) or [Plan a Response](#7-planning-objectives).",
+      "next": "[Find source material](#12-learn-reference-library-and-assistance), [Review evidence](#10-audit-assurance) or [Plan a response](#7-planning-objectives).",
       "art": "guides",
       "pillars": [1, 3, 4, 7]
     },
@@ -156,21 +156,21 @@
       "intro": "**Check whether requirements and expected outcomes are supported by suitable evidence.**\n\nAn assessment examines a requirement, service or activity using a defined method. An audit applies a systematic, objective process against established criteria. Assurance depends on the scope, method, competence and evidence behind the conclusion.\n\nTrust the Data connects conclusions to sources. Grow the Talent supports competent assessment. Own It connects findings to responsible action, while Never Done closes the learning loop.",
       "sections": [
         {
-          "title": "Prepare the Assessment",
+          "title": "Prepare the assessment",
           "body": "Start with the requirement and define the purpose, scope, period and criteria. Keep self-assessment distinct from formal or independent audit. The internal-audit programme establishes methods, responsibilities, timing and reporting, taking account of process importance and previous findings. Select competent auditors and preserve objectivity and impartiality.\n\nUse clear questions linked to the requirement, applicability, methodology version and expected evidence. BXM contributes FM methods within its remit; the relevant arrangement establishes authority and assessment responsibilities."
         },
         {
-          "title": "Evaluate Evidence and Findings",
+          "title": "Evaluate evidence and findings",
           "body": "Review records for relevance, completeness, period, source and required competence. Evidence can include work orders, inspection and test records, certificates, photographs, service reports and observations. Select what the criteria require; the existence of a record alone is insufficient.\n\nA finding explains what was identified, against which criteria and using which evidence. Use severity or confidence categories only where the applicable methodology defines them. Do not compare scores derived from different scopes or methods as if they were equivalent. An aggregate result must not hide a material mandatory exception."
         },
         {
-          "title": "Follow Through to Verification",
+          "title": "Follow through to verification",
           "body": "Connect the finding to the responsible action, due date and evidence required for closure. Establish responsibility from the service arrangement before attributing an issue to a supplier. The assessor and the person addressing the issue can be different.\n\nVerify completion and effectiveness as required by the criteria. Report findings to relevant management and retain the record for management review. Repeated findings can identify a need for investigation, but recurrence alone does not establish a proven cause."
         }
       ],
       "evidence": "audit programme, scope, criteria, competence and impartiality, evidence sample, findings, reporting, actions and verification.",
       "iso": "7.2, 7.5, 9.2\u20139.3 and 10.1.",
-      "next": "[Check Applicability](#9-risk-compliance) or [Address Causes and Capture Learning](#11-continual-improvement).",
+      "next": "[Check applicability](#9-risk-compliance) or [Address causes and capture learning](#11-continual-improvement).",
       "art": "guides",
       "pillars": [3, 5, 7, 8]
     },
@@ -179,22 +179,22 @@
       "intro": "**Turn FM evidence and experience into better future decisions.**\n\nUse performance, asset history, findings and service-user experience to identify what can improve. Begin with what has been observed before selecting a solution. Describe the affected context and the evidence that supports investigation.\n\nNever Done sustains the improvement cycle. Trust the Data tests the result. Think Big Act Fast supports proportionate experimentation and Own It carries action through to verification.",
       "sections": [
         {
-          "title": "Distinguish the Type of Action",
+          "title": "Distinguish the type of action",
           "summary": "Tell a correction, corrective action, preventive action and improvement apart.",
           "body": "| Action | Purpose | Practical test |\n|---|---|---|\n| Correction | Address the immediate issue and its consequences | Has the immediate problem been controlled or corrected? |\n| Corrective action | Address the cause of a nonconformity and prevent recurrence | Is there evidence that the cause has been addressed and the action is effective? |\n| Preventive action | Address a potential service or performance gap before failure | Has the potential gap been evaluated and the response tested? |\n| Improvement | Enhance the FM system or its outcomes | Is there a supported, sustained benefit without unacceptable consequences elsewhere? |"
         },
         {
-          "title": "Develop and Verify the Change",
+          "title": "Develop and verify the change",
           "body": "Investigate why the issue occurred and whether similar conditions exist elsewhere. Establish the action, responsible person, authority, dependencies and expected result. Consider mandatory requirements, consequences, evidence strength and potential unintended effects alongside effort and cost.\n\nImplementation and success are separate. Compare the outcome against a suitable baseline, using comparable conditions, periods and populations. Check whether the result is sustained. Retain limitations where the evidence cannot support a conclusion.\n\nBenefits can include safer work, reliability, resilience, service quality, reduced repeat failure, better information or less administration. Financial claims use the authorised Finance baseline and attribution method. An estimate is not automatically a realised benefit."
         },
         {
-          "title": "Make Learning Useful",
+          "title": "Make learning useful",
           "body": "Explain what the experience teaches and where it applies. Review a local success before extending it to other facilities, services or regions. Update plans, methods, learning or controls through the authorised process. Policy or strategy changes follow the relevant authority; not every process improvement requires a new policy.\n\nUse verified outcomes to inform future objectives, risk assessments and management review. Continue to examine whether the change remains effective as operating conditions evolve."
         }
       ],
       "evidence": "issue, response, cause analysis, corrective/preventive action, baseline, verification, lessons and authorised changes.",
       "iso": "7.6, 9.3 and 10.1\u201310.3; ISO 41014 feedback and improvement; supplied 41018 draft for policy learning and revision.",
-      "next": "[Update the Plan](#7-planning-objectives), [Review the Wider Outcome](#6-fm-overview) or [Connect Learning](#12-learn-reference-library-and-assistance).",
+      "next": "[Update the plan](#7-planning-objectives), [Review the wider outcome](#6-fm-overview) or [Connect learning](#12-learn-reference-library-and-assistance).",
       "art": "learning",
       "pillars": [3, 4, 7, 8]
     }

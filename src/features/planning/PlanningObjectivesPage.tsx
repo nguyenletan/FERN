@@ -5,19 +5,19 @@ import { openStandardCollection } from '../reference/standardContext';
 
 const needs = [
   [
-    'Facility & Business',
+    'Facility & business',
     'Changes in operating hours, facility use or business needs can change the FM service required.',
   ],
   [
-    'Assets & Maintenance',
+    'Assets & maintenance',
     'Condition, repeat failures and future renewal needs can identify where maintenance or lifecycle review is needed.',
   ],
   [
-    'Service & Contract',
+    'Service & contract',
     'An approaching renewal or a change in service scope can trigger a review of delivery options.',
   ],
   [
-    'Requirements & Evidence',
+    'Requirements & evidence',
     'Changed requirements, incomplete records or unclear applicability can create a need for further assessment.',
   ],
 ];
@@ -26,27 +26,27 @@ const objectiveFields = [
   ['Scope', 'Identify the facility, portfolio, service or asset population affected.'],
   ['Evidence', 'Record the source, baseline, date and limitations supporting the objective.'],
   [
-    'Success Measure',
+    'Success measure',
     'Define the measure, reporting period and target from the applicable requirement or agreed plan.',
   ],
   ['Timeframe', 'Establish when the outcome is needed and the basis for that timing.'],
-  ['Resources & Dependencies', 'Identify people, capability, information, funding, access and other requirements.'],
-  ['Risks & Constraints', 'Explain what could prevent delivery and which mandatory requirements apply.'],
+  ['Resources & dependencies', 'Identify people, capability, information, funding, access and other requirements.'],
+  ['Risks & constraints', 'Explain what could prevent delivery and which mandatory requirements apply.'],
   ['Review', 'Record progress, changed assumptions and the evidence needed to assess the outcome.'],
 ];
 const horizons = [
-  ['Immediate & Near Term', 'Address service failures, overdue actions, evidence gaps and emerging asset risks.'],
+  ['Immediate & near term', 'Address service failures, overdue actions, evidence gaps and emerging asset risks.'],
   [
-    'Annual & Operating Plans',
+    'Annual & operating plans',
     'Connect service performance, maintenance, data quality and capability needs to operating priorities.',
   ],
-  ['Contract & Service Planning', 'Consider renewal, tendering, delivery-model review, mobilisation and transition.'],
+  ['Contract & service planning', 'Consider renewal, tendering, delivery-model review, mobilisation and transition.'],
   [
-    'Asset & Lifecycle Planning',
+    'Asset & lifecycle planning',
     'Consider maintenance, repair, refurbishment and replacement alongside future cost and resilience.',
   ],
   [
-    'Portfolio & Strategic Planning',
+    'Portfolio & strategic planning',
     'Review recurring issues and shared needs across comparable facilities, services and regions.',
   ],
 ];
@@ -71,17 +71,17 @@ export default function PlanningObjectivesPage() {
           review progress and understand when the plan needs to change.
         </p>
         <GuidanceRoute
-          title="How to Build an FM Plan"
+          title="How to build an FM plan"
           id="planning-route"
           steps={[
             [
-              'Business Need',
+              'Business need',
               'Explain what is needed',
               'Identify the problem or change and the people, assets or services affected.',
               'planning-need',
             ],
             [
-              'FM Requirement',
+              'FM requirement',
               'Check what must be met',
               'Identify applicable requirements, resources and dependencies.',
               'planning-requirements',
@@ -121,7 +121,7 @@ export default function PlanningObjectivesPage() {
               openGuidanceSection('planning-horizons');
             }}
           >
-            Planning Horizons
+            Planning horizons
           </a>
           <a
             href="#planning-tools"
@@ -130,12 +130,12 @@ export default function PlanningObjectivesPage() {
               openGuidanceSection('planning-tools');
             }}
           >
-            Supporting Tools
+            Supporting tools
           </a>
         </nav>
       </Card>
 
-      <Card id="planning-need" title={<>Start With the Need</>}>
+      <Card id="planning-need" title={<>Start with the need</>}>
         <p>
           Establish the requirement or problem before creating an activity list. The examples below illustrate planning
           needs; they are not live facility findings.
@@ -153,7 +153,7 @@ export default function PlanningObjectivesPage() {
           facilities only where their context and evidence support a meaningful comparison.
         </p>
       </Card>
-      <Card id="planning-objective" title={<>Define the Objective</>}>
+      <Card id="planning-objective" title={<>Define the objective</>}>
         <p>
           A useful objective explains the outcome, its purpose and how it will be assessed. Use these prompts to prepare
           the information for your plan.
@@ -166,7 +166,7 @@ export default function PlanningObjectivesPage() {
             </div>
           ))}
         </dl>
-        <Section header={<>Example: Make an Objective Specific</>}>
+        <Section header={<>Example: make an objective specific</>}>
           <p>
             Instead of “Improve maintenance performance”, identify the maintenance outcome, the asset or service
             population, the evidence baseline and the measure that will demonstrate improvement. Add the target and
@@ -174,7 +174,7 @@ export default function PlanningObjectivesPage() {
           </p>
         </Section>
       </Card>
-      <Card id="planning-horizons" title={<>Planning Horizons</>}>
+      <Card id="planning-horizons" title={<>Planning horizons</>}>
         <p>
           Match the planning period to the decision. Short-term activity should take account of longer-term asset and
           service consequences.
@@ -185,14 +185,14 @@ export default function PlanningObjectivesPage() {
           </Section>
         ))}
       </Card>
-      <Card id="planning-delivery" title={<>Prepare for Delivery</>}>
-        <h3 id="planning-requirements">Requirements, Resources &amp; Dependencies</h3>
+      <Card id="planning-delivery" title={<>Prepare for delivery</>}>
+        <h3 id="planning-requirements">Requirements, resources &amp; dependencies</h3>
         <p>
           Identify applicable requirements before considering optimisation options. Check the information, people,
           competence, budget, access and specialist support the plan needs. Record availability and unresolved
           dependencies rather than assuming they are in place.
         </p>
-        <h3>FM Expertise &amp; Responsibilities</h3>
+        <h3>FM expertise &amp; responsibilities</h3>
         {onNavigate && (
           <p>
             <Button
@@ -201,7 +201,7 @@ export default function PlanningObjectivesPage() {
                 onNavigate('Reference Library');
               }}
             >
-              Review Maintenance Standards →
+              Review maintenance standards →
             </Button>
           </p>
         )}
@@ -209,18 +209,18 @@ export default function PlanningObjectivesPage() {
           BXM-developed FM Policies, BBM Standards, practices and methodologies can inform planning. Establish delivery
           responsibilities and decision authority through the relevant policy, requirement or contractual arrangement.
         </p>
-        <h3>Options &amp; Financial Context</h3>
+        <h3>Options &amp; financial context</h3>
         <p>
           Where alternatives are needed, compare their assumptions, evidence, cost, risk, constraints and confidence. A
           cost estimate informs a decision; funding and financial approval follow the applicable decision process.
         </p>
       </Card>
-      <Card id="planning-review" title={<>Review Progress &amp; Changes</>}>
+      <Card id="planning-review" title={<>Review progress &amp; changes</>}>
         <p>
           Assess progress against the defined measure and supporting evidence. Keep the baseline population, period,
           method and exclusions visible so that comparisons remain meaningful.
         </p>
-        <Section header={<>Questions for a Planning Review</>}>
+        <Section header={<>Questions for a planning review</>}>
           <ul>
             <li>Is the original need still valid?</li>
             <li>Have requirements, operations, asset condition or service arrangements changed?</li>
@@ -234,7 +234,7 @@ export default function PlanningObjectivesPage() {
           activity and demonstrating the intended outcome are separate steps.
         </p>
       </Card>
-      <Card id="planning-tools" title={<>Supporting Tools</>}>
+      <Card id="planning-tools" title={<>Supporting tools</>}>
         <p>
           When these tools are released, use the relevant one for detailed analysis, then use its results as evidence
           for the planning decision.

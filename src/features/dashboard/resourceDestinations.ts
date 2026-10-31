@@ -1,10 +1,10 @@
 import type { HomePanel } from '../../app/portalRoutes.ts';
 export const resourceDestinations: { label: string; panel: HomePanel }[] = [
-  { label: 'Get Started', panel: 'guide' },
+  { label: 'Get started', panel: 'guide' },
   { label: 'Learn', panel: 'learn' },
   { label: 'Standards & Reference Library', panel: 'reference' },
   { label: 'Help & Guidance', panel: 'help' },
-  { label: 'What’s New in FERN', panel: 'updates' },
+  { label: 'What’s new in FERN', panel: 'updates' },
   { label: 'About FERN', panel: 'about' },
 ];
 export const legacyResourcePanels: Record<string, HomePanel> = {

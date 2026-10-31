@@ -110,9 +110,9 @@ try {
   // Review-fix acceptance: history, lessons and deep links survive demo sign-in.
   // Home has no lesson links (one way in to Learn); Get started links straight to a lesson.
   await nav('Get started');
-  await page.locator('#fern-main').getByRole('link', { name: 'Read About Service Models', exact: true }).click();
+  await page.locator('#fern-main').getByRole('link', { name: 'Read about service models', exact: true }).click();
   await page.waitForURL('**page=learn&lesson=service-models-explained');
-  await expanded('Service Models Explained').waitFor();
+  await expanded('Service models explained').waitFor();
   await nav('Help & Guidance');
   await page.waitForURL('**page=help');
   await page.goBack();
@@ -121,7 +121,7 @@ try {
   await page.reload();
   await h1('Learn').waitFor();
   assert.equal(await page.getByPlaceholder('Enter demo').count(), 0);
-  await expanded('Service Models Explained').waitFor();
+  await expanded('Service models explained').waitFor();
   // Signing out ends the session: reopening the deep link asks for sign-in again.
   const lessonUrl = page.url();
   await page.setViewportSize({ width: 1440, height: 1000 });
@@ -134,7 +134,7 @@ try {
   await page.getByPlaceholder('Enter your password').fill('demo');
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
   await h1('Learn').waitFor();
-  await expanded('Service Models Explained').waitFor();
+  await expanded('Service models explained').waitFor();
   assert.deepEqual(errors, []);
   fs.writeFileSync(
     'test-results/website-review.json',

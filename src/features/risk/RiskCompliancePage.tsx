@@ -4,45 +4,45 @@ import { openStandardCollection } from '../reference/standardContext';
 
 const sources = [
   [
-    'Amazon Requirements & BBM Standards',
+    'Amazon requirements & BBM standards',
     'Identify the controlled source, version, effective date and relevant facility, service or activity.',
   ],
   [
-    'Legal & Regulatory Sources',
+    'Legal & regulatory sources',
     'Identify the originating jurisdiction and requirement. Keep country, regional and local applicability distinct.',
   ],
   [
-    'OEM & Warranty Requirements',
+    'OEM & warranty requirements',
     'Check the equipment, operating conditions and applicable manufacturer or warranty documentation.',
   ],
   [
-    'External References',
+    'External references',
     'Use professional and technical guidance as supporting material. A reference alone does not establish an Amazon requirement or certification.',
   ],
 ];
 const riskTopics = [
   [
-    'Condition & Criticality',
+    'Condition & criticality',
     'Condition describes the state of an asset. Criticality considers the consequence of losing its function. An asset can be in good condition and still be highly critical. Consider operational dependencies, safety, business interruption, redundancy and recovery capability together.',
   ],
   [
-    'Failure & Operational Context',
+    'Failure & operational context',
     'Review failure history, likely consequences, safeguards, operating conditions and effects on connected systems. Distinguish known causes from suspected contributing factors.',
   ],
   [
-    'Assessment Method & Evidence',
+    'Assessment method & evidence',
     'Use a method suited to the question, such as criticality assessment or an appropriate engineering failure analysis. Record the methodology, version, assumptions and evidence. A numerical score requires defined scales and sufficient inputs.',
   ],
   [
-    'Treatment & Lifecycle Options',
+    'Treatment & lifecycle options',
     'Consider investigation, monitoring, maintenance, repair, refurbishment, replacement or resilience improvements as appropriate. Compare evidence, requirements, service needs and consequences alongside cost.',
   ],
   [
-    'Service Tier & Delivery Model',
+    'Service tier & delivery model',
     'Risk may inform capability, service requirements and assurance intensity. It does not automatically determine Prime, Plus, Core or a delivery model. Apply the relevant decision methodology and retain mandatory requirements.',
   ],
   [
-    'Run-to-Failure Decisions',
+    'Run-to-failure decisions',
     'Consider run-to-failure only where the applicable requirements and maintenance methodology permit it and the technical and risk assessment support it. Record the justification and review basis.',
   ],
 ];
@@ -68,13 +68,13 @@ export default function RiskCompliancePage() {
         </p>
       </Card>
       <nav aria-label="On this page" className="fern-inline-links">
-        <a href="#risk-attention">Review Priorities</a>
-        <a href="#risk-requirements">Requirements &amp; Applicability</a>
-        <a href="#risk-assessment">Assess Risk</a>
-        <a href="#risk-evidence">Review Evidence</a>
-        <a href="#risk-follow-up">Action &amp; Review</a>
+        <a href="#risk-attention">Review priorities</a>
+        <a href="#risk-requirements">Requirements &amp; applicability</a>
+        <a href="#risk-assessment">Assess risk</a>
+        <a href="#risk-evidence">Review evidence</a>
+        <a href="#risk-follow-up">Action &amp; review</a>
       </nav>
-      <Card id="risk-attention" title={<>Review Priorities</>}>
+      <Card id="risk-attention" title={<>Review priorities</>}>
         <p className="risk-empty">
           No risk or compliance records are available on this page. The guidance below explains what to examine when
           reviewing an issue or requirement.
@@ -86,7 +86,7 @@ export default function RiskCompliancePage() {
           <li>Issues that need technical or other specialist input.</li>
         </ul>
       </Card>
-      <Card id="risk-requirements" title={<>Requirements &amp; Applicability</>}>
+      <Card id="risk-requirements" title={<>Requirements &amp; applicability</>}>
         {onNavigate && (
           <p>
             <Button
@@ -95,18 +95,18 @@ export default function RiskCompliancePage() {
                 onNavigate('Reference Library');
               }}
             >
-              Find a Compliance Standard →
+              Find a compliance standard →
             </Button>
           </p>
         )}
-        <h3>Establish the Mandatory Requirement Floor</h3>
+        <h3>Establish the mandatory requirement floor</h3>
         <p>
           Identify the requirement, confirm where it applies and establish the evidence needed before considering
           maintenance, lifecycle or service options. Cost, condition, delivery model and service tier must not remove an
           applicable mandatory requirement.
         </p>
         <ol className="risk-journey" aria-label="Requirement review steps">
-          {['Identify the Source', 'Check Applicability', 'Establish Evidence', 'Review Options'].map((step) => (
+          {['Identify the source', 'Check applicability', 'Establish Evidence', 'Review Options'].map((step) => (
             <li key={step}>{step}</li>
           ))}
         </ol>
@@ -118,7 +118,7 @@ export default function RiskCompliancePage() {
             </div>
           ))}
         </div>
-        <Section header={<>Maintenance and Compliance Work Together</>}>
+        <Section header={<>Maintenance and compliance work together</>}>
           <p>
             Some compliance requirements can be demonstrated through appropriate maintenance and its supporting records.
             Others need additional inspection, testing, assessment or specialist evidence.
@@ -132,14 +132,14 @@ export default function RiskCompliancePage() {
             the physical work must be carried out.
           </p>
         </Section>
-        <Section header={<>Check Where and When a Requirement Applies</>}>
+        <Section header={<>Check where and when a requirement applies</>}>
           <p>
             Check country and jurisdiction, facility type, asset or system, service, activity and operating conditions.
             Record the effective date and version. Do not extend a requirement to another location or contract period
             without establishing its applicability.
           </p>
         </Section>
-        <Section header={<>FM Areas to Consider</>}>
+        <Section header={<>FM areas to consider</>}>
           <p>
             Requirements mapping may cover fire and life safety, HVAC, electrical and water systems, lifts, pressure
             systems, building fabric, maintenance, inspection, competence, accessibility and FM-related environmental
@@ -147,7 +147,7 @@ export default function RiskCompliancePage() {
           </p>
         </Section>
       </Card>
-      <Card id="risk-assessment" title={<>Assess Risk in Context</>}>
+      <Card id="risk-assessment" title={<>Assess risk in context</>}>
         <p>
           Describe the issue, the affected facility, service or asset, and the potential consequence. Keep the
           assessment method and supporting evidence visible.
@@ -158,12 +158,12 @@ export default function RiskCompliancePage() {
           </Section>
         ))}
       </Card>
-      <Card id="risk-evidence" title={<>Review the Evidence</>}>
+      <Card id="risk-evidence" title={<>Review the evidence</>}>
         <p>
           A certificate or work order is evidence to review, not an automatic compliance conclusion. Check that it
           relates to the correct requirement, asset, activity and period.
         </p>
-        <Section header={<>Questions to Ask About Evidence</>}>
+        <Section header={<>Questions to ask about evidence</>}>
           <ul>
             <li>Is the source identifiable and the record current for the relevant period?</li>
             <li>Does the evidence cover the activity and asset being assessed?</li>
@@ -172,39 +172,39 @@ export default function RiskCompliancePage() {
             <li>Are there conflicting records or limitations needing review?</li>
           </ul>
         </Section>
-        <Section header={<>Separate Applicability, Evidence and Conclusion</>}>
+        <Section header={<>Separate applicability, evidence and conclusion</>}>
           <p>
             Locating a requirement, establishing applicability, finding evidence and reaching a conclusion are separate
             steps. Keep uncertainty visible at the step it affects. Missing evidence must not be interpreted as a
             positive compliance result.
           </p>
         </Section>
-        <Section header={<>Keep Changes Traceable</>}>
+        <Section header={<>Keep changes traceable</>}>
           <p>
             Retain the previous and current source versions, effective date and affected context when a requirement
             changes. Review whether existing evidence, assessments or planned actions are still appropriate.
           </p>
         </Section>
       </Card>
-      <Card id="risk-follow-up" title={<>Action &amp; Review</>}>
-        <h3>Record the Response</h3>
+      <Card id="risk-follow-up" title={<>Action &amp; review</>}>
+        <h3>Record the response</h3>
         <p>
           Connect the issue, requirement and evidence to the selected action. Record the decision basis,
           responsibilities established by the applicable arrangement, and the evidence needed to review completion and
           effectiveness.
         </p>
-        <h3>Use the Relevant Expertise</h3>
+        <h3>Use the relevant expertise</h3>
         <p>
           BXM provides specialist FM guidance on the application of FM requirements within its remit. Use the relevant
           technical, compliance or other specialist input where the issue requires interpretation or sign-off.
         </p>
-        <h3>Maintain Responsibility Boundaries</h3>
+        <h3>Maintain responsibility boundaries</h3>
         <p>
           Establish responsibilities from the applicable requirement and service arrangement before attributing an issue
           to a supplier or another team. Keep wider Sustainability and environmental responsibilities distinct from
           their FM application.
         </p>
-        <h3>Review the Outcome</h3>
+        <h3>Review the outcome</h3>
         <p>
           Reassess when operating conditions, asset condition, requirements or evidence change. Keep estimated financial
           exposure separate from confirmed financial impact, with the source and assumptions available for review.

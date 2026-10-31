@@ -247,7 +247,7 @@ export default function StandardsLibrary() {
   const filtered = !!(query || kind !== 'all' || country || showAll);
 
   return (
-    <section className="fern-standards" aria-label="BBM Standards Reader">
+    <section className="fern-standards" aria-label="BBM standards reader">
       <div hidden={!!entry}>
         <SpaceBetween size="l">
           <form
@@ -458,7 +458,7 @@ export default function StandardsLibrary() {
           </div>
           <Container>
             <SpaceBetween size="s">
-              <Section variant="default" header="How to Read and Check a Standard">
+              <Section variant="default" header="How to read and check a standard">
                 <Prose>
                   <ol>
                     {readingSteps.map(([step, text]) => (
@@ -469,7 +469,7 @@ export default function StandardsLibrary() {
                   </ol>
                 </Prose>
               </Section>
-              <Section variant="default" header="Document Introductions and Full Downloads">
+              <Section variant="default" header="Document introductions and full downloads">
                 <SpaceBetween size="s">
                   <Prose>
                     <p>Read the document guidance, contents and abbreviations alongside the selected standard.</p>
@@ -500,13 +500,13 @@ export default function StandardsLibrary() {
                       <strong>Read the compliance requirement.</strong> Open CT.ELEC.EMERGENCYAC and check its scope,
                       tasks and regional conditions.{' '}
                       <Link onFollow={() => choose('Compliance-CT.ELEC.EMERGENCYAC')}>
-                        Read Emergency Lighting systems
+                        Read emergency lighting systems
                       </Link>
                     </li>
                     <li>
                       <strong>Follow the maintenance reference.</strong> The supplied compliance standard references
                       LIGHT.SAFETY. Read that standard’s tasks, intervals and conditions.{' '}
-                      <Link onFollow={() => choose('PM-LIGHT.SAFETY')}>Read Safety Lighting and Signage</Link>
+                      <Link onFollow={() => choose('PM-LIGHT.SAFETY')}>Read safety lighting and signage</Link>
                     </li>
                     <li>
                       <strong>Check the evidence needed.</strong> Keep the physical task frequency separate from the
@@ -534,13 +534,13 @@ export default function StandardsLibrary() {
                   actions={
                     <SpaceBetween direction="horizontal" size="xs">
                       <Button iconName="arrow-left" onClick={back}>
-                        Back to Results
+                        Back to results
                       </Button>
                       <Button iconName="download" onClick={() => download(entry.id)}>
-                        Download Selected Standard
+                        Download selected standard
                       </Button>
                       <Button iconName="download" onClick={() => download(entry.kind)}>
-                        Download Full Document
+                        Download full document
                       </Button>
                     </SpaceBetween>
                   }
@@ -602,7 +602,7 @@ export default function StandardsLibrary() {
                       variant="h2"
                       description="These fields repeat the source. The document edition and the standard's own revision may differ; neither confirms current publication approval."
                     >
-                      Standard Overview
+                      Standard overview
                     </Header>
                   }
                 >
@@ -616,7 +616,7 @@ export default function StandardsLibrary() {
                     <a href={`#bbm-${entry.kind}-${entry.page}`}>
                       Read the original fields and full conditions on page {entry.page}
                     </a>
-                    <Section variant="default" header="Related Standards" defaultExpanded>
+                    <Section variant="default" header="Related standards" defaultExpanded>
                       <Prose>
                         {related.length ? (
                           <ul>
@@ -656,7 +656,7 @@ export default function StandardsLibrary() {
                   variant="h2"
                   actions={
                     <SpaceBetween direction="horizontal" size="xs">
-                      <Button onClick={showOriginal}>Compare With Original PDF</Button>
+                      <Button onClick={showOriginal}>Compare with original PDF</Button>
                       <Button iconName="download" onClick={() => download(entry.kind)}>
                         Download full source PDF
                       </Button>
@@ -699,7 +699,7 @@ export default function StandardsLibrary() {
                       >
                         <p>Use the original PDF link above if an embedded reader is unavailable.</p>
                       </object>
-                      <Button onClick={() => setOriginal('')}>Close Original PDF</Button>
+                      <Button onClick={() => setOriginal('')}>Close original PDF</Button>
                     </SpaceBetween>
                   </div>
                 )}
@@ -797,7 +797,7 @@ export default function StandardsLibrary() {
                           </Box>
                         ),
                       )}
-                      <Section variant="footer" header="View Source Page Text">
+                      <Section variant="footer" header="View source page text">
                         <Box variant="p">
                           <span className="fs-source-text">{page.text}</span>
                         </Box>
@@ -808,7 +808,7 @@ export default function StandardsLibrary() {
               </SpaceBetween>
             </Container>
             <Button iconName="arrow-left" onClick={back}>
-              Back to Standards
+              Back to standards
             </Button>
           </SpaceBetween>
         </article>

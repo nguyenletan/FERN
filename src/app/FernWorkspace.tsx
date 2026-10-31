@@ -136,7 +136,7 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
     { text: 'FERN', href: nav.href('Home') },
     ...(route.panel
       ? [
-          { text: 'Resources', href: nav.href('Get Started') },
+          { text: 'Resources', href: nav.href('Get started') },
           { text: pageTitle, href: urlFor(route) },
         ]
       : []),

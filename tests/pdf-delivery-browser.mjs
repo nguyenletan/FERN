@@ -53,13 +53,13 @@ try {
     requested.some((p) => p.includes('StandardsLibrary')),
     'reader loads on demand',
   );
-  const task = await downloadBytes(page, 'Download Selected Standard');
+  const task = await downloadBytes(page, 'Download selected standard');
   assert.equal(task.name, files[key]);
   assert.equal(sha(task.bytes), expected(key));
-  const full = await downloadBytes(page, 'Download Full Document');
+  const full = await downloadBytes(page, 'Download full document');
   assert.equal(full.name, files.Compliance);
   assert.equal(sha(full.bytes), expected('Compliance'));
-  await button(page, 'Compare With Original PDF').click();
+  await button(page, 'Compare with original PDF').click();
   const href = await page.locator('.fs-original a').getAttribute('href');
   assert.match(href, /^\/bbm\/BBM%20Compliance%20Standards_25\.04\.2024\.pdf#page=\d+$/);
   const response = await page.request.get(new URL(href.split('#')[0], url).href);
@@ -75,10 +75,10 @@ try {
   filePage.on('pageerror', (e) => errors.push(e.message));
   await filePage.goto(pathToFileURL('dist-share/FERN-Internal-Portal.html').href);
   assert.equal(await openStandard(filePage), key);
-  const offlineTask = await downloadBytes(filePage, 'Download Selected Standard');
+  const offlineTask = await downloadBytes(filePage, 'Download selected standard');
   assert.equal(offlineTask.name, files[key]);
   assert.equal(sha(offlineTask.bytes), expected(key));
-  const offlineFull = await downloadBytes(filePage, 'Download Full Document');
+  const offlineFull = await downloadBytes(filePage, 'Download full document');
   assert.equal(sha(offlineFull.bytes), expected('Compliance'));
   assert.deepEqual(errors, []);
   console.log('Single-file export (offline): task and full PDFs download from embedded data with verified hashes.');

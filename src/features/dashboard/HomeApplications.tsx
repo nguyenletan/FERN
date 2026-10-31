@@ -66,7 +66,7 @@ export default function HomeApplications() {
           description="Specialist FERN tools are in development. Read what each one will do; they will open from here once they are released."
           actions={<NavButton to="Applications">View all applications</NavButton>}
         >
-          FERN Applications
+          FERN applications
         </Header>
       }
     />

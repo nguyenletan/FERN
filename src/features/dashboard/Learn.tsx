@@ -10,21 +10,21 @@ const topics = [
     title: 'Understanding FERN',
     what: 'FERN brings facilities guidance and decision-support tools into one workspace.',
     why: 'Start from your question and find the information or tool that helps you answer it.',
-    use: 'Use Get Started to find Workspace guidance, introductory learning and reference information. No facility selection is needed.',
+    use: 'Use Get started to find Workspace guidance, introductory learning and reference information. No facility selection is needed.',
     limit: 'A tool output is not formal approval. Check the supporting evidence and required review.',
     page: 'FM Overview',
   },
   {
-    title: 'Service Models Explained',
+    title: 'Service models explained',
     what: 'A delivery model describes how services are delivered; a service tier describes the required level of service.',
     why: 'Keeping them separate makes comparisons clearer.',
-    use: 'Compare internal Blue Badge, external IFM, mixed IFM Hybrid and output-based Fully Contained arrangements alongside Prime, Plus and Core tiers.',
+    use: 'Compare internal Blue Badge, external IFM, mixed IFM Hybrid and output-based Fully contained arrangements alongside Prime, Plus and Core tiers.',
     limit:
       'Actual responsibilities follow the applicable arrangement and contract. Mandatory requirements apply at every tier.',
     page: 'Leadership & Policy',
   },
   {
-    title: 'From Tender to Transition',
+    title: 'From tender to transition',
     what: 'A connected journey from defining an FM requirement to preparing a change in service delivery.',
     why: 'Decisions made before a contract affect resources, pricing, assets and mobilisation.',
     use: 'Start with pre-contract assessment, review service options and pricing, consider lifecycle implications, then plan the transition.',
@@ -32,7 +32,7 @@ const topics = [
     page: 'FM Pre-Contract / Pre-Tender Assessment',
   },
   {
-    title: 'Assets, Condition and Lifecycle',
+    title: 'Assets, condition and lifecycle',
     what: 'Lifecycle assessment considers an asset’s condition, service needs and future options over time.',
     why: 'Age alone does not establish when replacement is needed.',
     use: 'Review quantities, condition, maintenance history and supported service-life assumptions in Lifecycle & Asset Analysis.',
@@ -41,7 +41,7 @@ const topics = [
     page: 'Lifecycle & Asset Analysis',
   },
   {
-    title: 'Risk, Criticality and Maintenance',
+    title: 'Risk, criticality and maintenance',
     what: 'Criticality describes the importance of an asset or service; risk considers what could happen and its consequences.',
     why: 'Operating conditions, redundancy and recovery capability influence maintenance decisions.',
     use: 'Explore risk and compliance guidance alongside the relevant asset and maintenance evidence.',
@@ -59,7 +59,7 @@ const topics = [
     page: 'Performance & KPIs',
   },
   {
-    title: 'Sources and Evidence',
+    title: 'Sources and evidence',
     what: 'Sources explain where information came from; evidence supports the interpretation or result.',
     why: 'Version, date, status and applicability affect whether information can support your decision.',
     use: 'Review source records and distinguish confirmed information, assumptions and gaps.',
@@ -68,7 +68,7 @@ const topics = [
     page: 'Audit & Assurance',
   },
   {
-    title: 'Policies, BBM Standards and Requirements',
+    title: 'Policies, BBM standards and requirements',
     what: 'Policies provide direction; BBM Standards and applicable requirements inform the expected FM outcomes.',
     why: 'Guidance and supporting references have different authority from applicable requirements.',
     use: 'Start with Leadership & Policy and check the original source, version and applicability.',
@@ -120,16 +120,16 @@ export default function Learn({ requestedLesson }: { requestedLesson?: { title: 
               header={<IconTitle icon={lessonIcons[topic.title]}>{topic.title}</IconTitle>}
             >
               <Prose>
-                <h3>What Is It?</h3>
+                <h3>What is it?</h3>
                 <p>{topic.what}</p>
-                <h3>Why Does It Matter?</h3>
+                <h3>Why does it matter?</h3>
                 <p>{topic.why}</p>
-                <h3>How Does FERN Use It?</h3>
+                <h3>How does FERN use it?</h3>
                 <p>{topic.use}</p>
-                <h3>What Should I Check?</h3>
+                <h3>What should I check?</h3>
                 <p>{topic.limit}</p>
                 <IntroductoryLearning topic={topic.title} />
-                <h3>Related Guidance and Sources</h3>
+                <h3>Related guidance and sources</h3>
                 <p>
                   This is an introductory FERN explanation. Check the applicable source and its status before using it
                   for a facility decision.
@@ -147,7 +147,7 @@ export default function Learn({ requestedLesson }: { requestedLesson?: { title: 
           ))}
         </SpaceBetween>
       </Card>
-      <Card title="Need Help Finding a Starting Point?" actions={<NavButton to="Get Started">Get Started</NavButton>} />
+      <Card title="Need help finding a starting point?" actions={<NavButton to="Get started">Get started</NavButton>} />
     </Page>
   );
 }

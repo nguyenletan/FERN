@@ -44,7 +44,7 @@ export default function DashboardPage() {
             Find the tools, guidance and knowledge to plan your next step.
           </Box>
           <SpaceBetween direction="horizontal" size="xs">
-            <NavButton to="Get Started" variant="primary">
+            <NavButton to="Get started" variant="primary">
               Get started
             </NavButton>
             <NavButton to="About FERN">What is FERN?</NavButton>

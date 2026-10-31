@@ -36,7 +36,7 @@ export default function HelpGuidance() {
               below. If you are new, start with Get started.
             </Box>
             <SpaceBetween direction="horizontal" size="l">
-              <NavLink to="Get Started">Get started</NavLink>
+              <NavLink to="Get started">Get started</NavLink>
               <NavLink to="Learn">Explore Learn</NavLink>
             </SpaceBetween>
           </SpaceBetween>
@@ -58,11 +58,11 @@ export default function HelpGuidance() {
               </p>
             </Prose>
             <SpaceBetween direction="horizontal" size="l">
-              <NavLink to="Get Started">Get Started</NavLink>
+              <NavLink to="Get started">Get started</NavLink>
               <NavLink to="FM Overview">Open FM Overview</NavLink>
             </SpaceBetween>
           </Topic>
-          <Topic label="FM Guidance">
+          <Topic label="FM guidance">
             <Prose>
               <p>
                 For service models, tiers, assets, performance or assurance, start with Learn. Use Standards &amp;
@@ -79,7 +79,7 @@ export default function HelpGuidance() {
               <NavLink to="Leadership & Policy">Leadership &amp; Policy</NavLink>
             </SpaceBetween>
           </Topic>
-          <Topic label="Data & Evidence Problem">
+          <Topic label="Data & evidence problem">
             <Prose>
               <p>
                 If information is missing, incomplete, outdated or inconsistent, check the facility, asset or record and
@@ -96,9 +96,9 @@ export default function HelpGuidance() {
                 with an assumption.
               </p>
             </Prose>
-            <NavLink to="Audit & Assurance">Read Evidence Guidance</NavLink>
+            <NavLink to="Audit & Assurance">Read evidence guidance</NavLink>
           </Topic>
-          <Topic label="Access Problem">
+          <Topic label="Access problem">
             <Prose>
               <p>
                 Check the page you intended to open and any message shown. Do not include restricted document or
@@ -107,18 +107,18 @@ export default function HelpGuidance() {
             </Prose>
             <Terms
               items={[
-                ['Not Authorised', 'Your current access does not permit the destination.'],
-                ['Not Available', 'The destination or information is unavailable.'],
-                ['Temporarily Unavailable', 'A normally available capability cannot currently be accessed.'],
-                ['Not Found', 'The requested destination cannot be found.'],
+                ['Not authorised', 'Your current access does not permit the destination.'],
+                ['Not available', 'The destination or information is unavailable.'],
+                ['Temporarily unavailable', 'A normally available capability cannot currently be accessed.'],
+                ['Not found', 'The requested destination cannot be found.'],
               ]}
             />
             <Prose>
               <p>An access-request route is not available here. No access request has been submitted.</p>
             </Prose>
-            <NavLink to="Get Started">Find Another Starting Point</NavLink>
+            <NavLink to="Get started">Find another starting point</NavLink>
           </Topic>
-          <Topic label="Technical Problem">
+          <Topic label="Technical problem">
             <Prose>
               <p>
                 Note the page or application, what you were trying to do, what happened instead and when it happened.
@@ -135,7 +135,7 @@ export default function HelpGuidance() {
             </Prose>
             <NavLink to="FM Overview">Return to FM Overview</NavLink>
           </Topic>
-          <Topic label="Content Question">
+          <Topic label="Content question">
             <Prose>
               <p>
                 Identify the title, document ID, version and section you are asking about. Describe whether your
@@ -150,9 +150,9 @@ export default function HelpGuidance() {
                 retained historically. Reference material is supporting information.
               </p>
             </Prose>
-            <NavLink to="Standards & Reference Library">Review Reference Guidance</NavLink>
+            <NavLink to="Standards & Reference Library">Review reference guidance</NavLink>
           </Topic>
-          <Topic label="Improvement Suggestion">
+          <Topic label="Improvement suggestion">
             <Prose>
               <p>
                 Describe what you would improve, the problem it would solve, where it applies and who would benefit.
@@ -163,20 +163,20 @@ export default function HelpGuidance() {
                 change a policy, methodology or application.
               </p>
             </Prose>
-            <NavLink to="Continual Improvement">Read Continual Improvement Guidance</NavLink>
+            <NavLink to="Continual Improvement">Read Continual Improvement guidance</NavLink>
           </Topic>
-          <Topic label="What’s New in FERN">
+          <Topic label="What’s new in FERN">
             <Prose>
               <p>
                 Explore available update information and selected future capabilities. Build in FERN remains a future
                 capability, not an available tool.
               </p>
             </Prose>
-            <NavLink to="What’s New in FERN">Explore Updates and Future Capabilities</NavLink>
+            <NavLink to="What’s new in FERN">Explore updates and future capabilities</NavLink>
           </Topic>
         </SpaceBetween>
       </Container>
-      <Alert type="warning" header="For an Immediate Operational Issue">
+      <Alert type="warning" header="For an immediate operational issue">
         FERN Help is not an emergency response service. Follow your established facility emergency or
         operational-response process for immediate life-safety or critical operational incidents.
       </Alert>
