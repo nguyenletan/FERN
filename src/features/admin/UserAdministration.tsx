@@ -227,7 +227,8 @@ export default function UserAdministration({ onContentWalkthrough }: { onContent
                 }
                 columnDefinitions={[
                   { id: 'name', header: 'Name', cell: (user) => user.name },
-                  { id: 'alias', header: 'Amazon alias', cell: (user) => user.alias },
+                  // Aliases are ID strings: Cloudscape monospace code style.
+                  { id: 'alias', header: 'Amazon alias', cell: (user) => <Box variant="code">{user.alias}</Box> },
                   {
                     id: 'roles',
                     header: 'Roles',
