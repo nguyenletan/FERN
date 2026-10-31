@@ -35,7 +35,7 @@ Every page now uses Cloudscape components (`@cloudscape-design/components`). The
 | Applications | Cards on Home only | Cards on Home plus an **Applications** page with a filter (`?page=applications`) and an introduction page per application |
 | Learn, Get started, Help, About, What's new | Panels inside Home | Their own pages under **Resources** |
 | Standards & Reference Library | Custom search form and result rows | `Input`, `Select` (country), `SegmentedControl` (collection), result list, `KeyValuePairs` reader, expandable source pages |
-| Search | A search box on every page | One header search (`Autosuggest`) suggesting topics, lessons and applications |
+| Search | A search box on every page, listing matches below it | One header search (`Autosuggest`) suggesting topics, lessons and applications; Enter (or “Search FERN for …”) opens a search results page with every match |
 | Demo sign-in | Custom form | The FERN brand panel is kept; the form uses Cloudscape `Container`, `Form` (with `errorText`), `FormField`, `Input`, a "Show password" `Checkbox` and a primary `Button`. Privacy, terms and help open a dismissible `Alert`. It is still a demonstration and will be replaced by Midway |
 | Content-administration walkthrough | — | Unchanged. The CMS keeps its own editing screens (agreed: Cloudscape for the portal, not the CMS) |
 
@@ -173,7 +173,7 @@ Checked against [Cloudscape layout](https://cloudscape.design/foundation/visual-
 - **Links inside the portal** use `NavLink` or `NavButton` with a page label (e.g. `<NavLink to="Performance & KPIs">`). They render a real `href`, so ctrl/cmd-click opens a new tab, and a plain click navigates in place.
 - **Reading sections** use `Section`. "Expand all" opens every section inside the nearest `[data-reading-scope]`. A `#id` link, or `revealSection(id)`, opens the section that contains the target and scrolls to it.
 - **Cloudscape global styles are imported** in `src/styles/index.css` (`@cloudscape-design/global-styles/index.css`). Portal base rules (block images, pointer cursor) sit in `@layer base`, so Cloudscape and page styles always take precedence. Switching from the Tailwind reset changed only the Users & roles table, whose rows are now slightly taller (Cloudscape's intended spacing); a 48-screenshot comparison found the other pages pixel-identical.
-- **Search** is `features/search/FernAISearch.tsx`. It returns keyword matches, not AI answers. Quick Suite integration is still outstanding.
+- **Search** is `features/search/FernAISearch.tsx` (header box and `searchFern`) and `features/search/SearchResults.tsx` (results page). Choosing a suggestion opens that page; pressing Enter opens `?page=search&q=…`, which lists matches grouped as guidance, learning topics and applications (coming soon), ranked by how many words match, with a box to refine the search and a link that runs the same words in the Standards & Reference Library search. It returns keyword matches, not AI answers. Quick Suite integration is still outstanding.
 
 ### Routes
 
@@ -183,6 +183,7 @@ Checked against [Cloudscape layout](https://cloudscape.design/foundation/visual-
 | `?page=workspace`, `mission[&pillar=1-8]`, `leadership`, `overview`, `planning`, `performance`, `risk`, `assurance`, `improvement` | Workspace |
 | `?page=applications`, `?page=pre-contract` (and other application slugs) | Applications |
 | `?page=about`, `getting-started`, `learn[&lesson=…]`, `reference[&bbm=…]`, `help`, `updates`, `facility` | Resources |
+| `?page=search&q=…` | Search results |
 | `?page=admin` | Users & roles (demo) |
 
 ### Removed

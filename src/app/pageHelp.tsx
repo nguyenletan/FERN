@@ -14,6 +14,7 @@ export type PageHelpKind =
   | 'reference'
   | 'help'
   | 'admin'
+  | 'search'
   | 'reading';
 
 export type PageHelp = { title: string; summary: ReactNode; steps: ReactNode[] };
@@ -103,6 +104,15 @@ const help: Record<PageHelpKind, PageHelp> = {
       '“Reset sample data” restores the starting list.',
     ],
   },
+  search: {
+    title: 'Search results',
+    summary: 'Keyword matches across FERN guidance, learning topics and applications. These are not AI-generated answers.',
+    steps: [
+      'Open a result to go to that page. Results that match more of your words come first.',
+      'Change the words and choose Search to try again.',
+      'To search inside the standards themselves, use “Search the Standards & Reference Library”.',
+    ],
+  },
   reading: {
     title: 'Reading this page',
     summary: 'Guidance and information about FERN.',
@@ -115,7 +125,8 @@ const help: Record<PageHelpKind, PageHelp> = {
 
 /** The help entry for a route. `practice` and `application` say whether the page is a Workspace topic or an application page. */
 export function pageHelp(route: PortalRoute, kind: { practice: boolean; application: boolean }): PageHelp {
-  if (route.panel === 'learn' || route.panel === 'reference' || route.panel === 'help') return help[route.panel];
+  if (route.panel === 'learn' || route.panel === 'reference' || route.panel === 'help' || route.panel === 'search')
+    return help[route.panel];
   if (route.panel) return help.reading;
   if (route.page === 'Home') return help.home;
   if (route.page === 'Workspace') return help.workspace;

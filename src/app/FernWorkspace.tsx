@@ -18,6 +18,7 @@ import UserAdministration from '../features/admin/UserAdministration';
 import { homeApplications, applicationByName } from '../features/dashboard/homeApplications.ts';
 import { resourceDestinations } from '../features/dashboard/resourceDestinations.ts';
 import FernSearch from '../features/search/FernAISearch';
+import SearchResults from '../features/search/SearchResults';
 import DashboardPage from '../features/dashboard/DashboardPage.tsx';
 import AboutFern from '../features/dashboard/AboutFern.tsx';
 import GetStarted from '../features/dashboard/GetStarted.tsx';
@@ -57,6 +58,7 @@ const resourceTitles: Record<string, string> = {
   help: 'Help & Guidance',
   updates: 'What’s new in FERN',
   facility: 'Facility information',
+  search: 'Search results',
 };
 
 export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () => void; onAdmin?: () => void }) {
@@ -100,6 +102,7 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
     () => ({
       go: (page: string, pillar?: number) => navigate(routeFor(page, pillar)),
       href: (page: string, pillar?: number) => urlFor(routeFor(page, pillar)),
+      search: (query: string) => navigate({ page: 'Home', panel: 'search', query }),
     }),
     [],
   );
@@ -109,7 +112,7 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
     return () => window.removeEventListener('popstate', restore);
   }, []);
   // After each page change: start at the top and move focus to the page heading.
-  const key = route.page + '|' + route.panel;
+  const key = route.page + '|' + route.panel + '|' + (route.query ?? '');
   useEffect(() => {
     if (route.lesson || (route.page === 'Mission & Pillars' && route.pillar)) return;
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
@@ -143,7 +146,9 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
   const pageTitle = route.panel ? resourceTitles[route.panel] : app ? app.title : route.page;
   const crumbs = [
     { text: 'FERN', href: nav.href('Home') },
-    ...(route.panel
+    ...(route.panel === 'search'
+      ? [{ text: pageTitle, href: urlFor(route) }]
+      : route.panel
       ? [
           { text: 'Resources', href: nav.href('Get started') },
           { text: pageTitle, href: urlFor(route) },
@@ -328,7 +333,9 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
           }
           content={
             <div id="fern-main">
-              {route.panel === 'about' ? (
+              {route.panel === 'search' ? (
+                <SearchResults query={route.query ?? ''} />
+              ) : route.panel === 'about' ? (
                 <AboutFern />
               ) : route.panel === 'guide' ? (
                 <GetStarted />

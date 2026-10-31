@@ -33,9 +33,15 @@ applyTheme({
 
 /** Navigation by page label (e.g. "Performance & KPIs", "Learn"); href gives the shareable URL for the same target. */
 export type Navigate = (page: string, pillar?: number) => void;
-export const PortalNavigation = createContext<{ go: Navigate; href: (page: string, pillar?: number) => string }>({
+export const PortalNavigation = createContext<{
+  go: Navigate;
+  href: (page: string, pillar?: number) => string;
+  /** Opens the search results page for a query. */
+  search: (query: string) => void;
+}>({
   go: () => {},
   href: () => '#',
+  search: () => {},
 });
 export const usePortalNavigation = () => useContext(PortalNavigation);
 
