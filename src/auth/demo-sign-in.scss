@@ -69,7 +69,7 @@
   gap: awsui.$space-scaled-l;
   max-width: 640px;
   width: 100%;
-  text-align: left;
+  text-align: start;
   border-top: 1px solid awsui.$color-border-divider-default;
   padding-top: awsui.$space-scaled-l;
 }
@@ -100,7 +100,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  border-left: 1px solid awsui.$color-border-divider-default;
+  border-inline-start: 1px solid awsui.$color-border-divider-default;
 }
 .fern-signin-language {
   display: flex;
@@ -126,14 +126,26 @@
 .fern-signin-mobile-brand {
   display: none;
 }
-@media (max-width: 767px) {
+/* Phones: Cloudscape xs (mobile) breakpoint, as in the app layout. */
+@media (max-width: 688px) {
   .fern-signin {
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
   }
+  /* The introduction moves below the form instead of disappearing (same content on every screen size).
+     Its brand row and title are already in the mobile header above the form. */
   .fern-signin-story {
+    order: 1;
+    padding: awsui.$space-scaled-xl awsui.$space-scaled-l;
+    border-top: 1px solid awsui.$color-border-divider-default;
+  }
+  .fern-signin-story > .fern-signin-brand,
+  .fern-signin-story > h2 {
     display: none;
+  }
+  .fern-signin-benefits {
+    grid-template-columns: 1fr;
   }
   .fern-signin-mobile-brand {
     display: flex;
@@ -182,10 +194,10 @@
     padding: awsui.$space-scaled-m;
   }
 }
-@media (max-width: 360px) {
+/* Narrow phones: Cloudscape xxs breakpoint. */
+@media (max-width: 465px) {
   .fern-signin-form-wrap {
-    padding-left: awsui.$space-scaled-m;
-    padding-right: awsui.$space-scaled-m;
+    padding-inline: awsui.$space-scaled-m;
   }
 }
 

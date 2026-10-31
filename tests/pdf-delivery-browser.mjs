@@ -38,7 +38,8 @@ const server = await preview({ logLevel: 'warn', preview: { port: 0, strictPort:
 try {
   // Server build
   const url = server.resolvedUrls.local[0];
-  const context = await browser.newContext({ acceptDownloads: true });
+  // Motion off in automated tests (Cloudscape motion guideline): Cloudscape honours prefers-reduced-motion.
+  const context = await browser.newContext({ acceptDownloads: true, reducedMotion: 'reduce' });
   const page = await context.newPage();
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
@@ -70,7 +71,7 @@ try {
   console.log('Server build: reader on demand; task, full and original PDFs served from bbm/ with verified hashes.');
 
   // Single-file export, offline
-  const offline = await browser.newContext({ acceptDownloads: true, offline: true });
+  const offline = await browser.newContext({ acceptDownloads: true, offline: true, reducedMotion: 'reduce' });
   const filePage = await offline.newPage();
   filePage.on('pageerror', (e) => errors.push(e.message));
   await filePage.goto(pathToFileURL('dist-share/FERN-Internal-Portal.html').href);

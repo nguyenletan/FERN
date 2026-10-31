@@ -119,12 +119,14 @@ export default function AuditAssurancePage() {
         {onNavigate && (
           <p>
             <Button
+              iconName="arrow-right"
+              iconAlign="right"
               onClick={() => {
                 openStandardCollection('all');
                 onNavigate('Reference Library');
               }}
             >
-              Read a supporting BBM standard →
+              Read a supporting BBM standard
             </Button>
           </p>
         )}

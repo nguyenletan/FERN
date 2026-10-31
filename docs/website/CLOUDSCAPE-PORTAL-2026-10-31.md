@@ -39,7 +39,7 @@ Every page now uses Cloudscape components (`@cloudscape-design/components`). The
 | Demo sign-in | Custom form | The FERN brand panel is kept; the form uses Cloudscape `Container`, `Form` (with `errorText`), `FormField`, `Input`, a "Show password" `Checkbox` and a primary `Button`. Privacy, terms and help open a dismissible `Alert`. It is still a demonstration and will be replaced by Midway |
 | Content-administration walkthrough | — | Unchanged. The CMS keeps its own editing screens (agreed: Cloudscape for the portal, not the CMS) |
 
-The look follows Cloudscape defaults, with FERN blue for primary buttons and links. The portal uses the standard Cloudscape integration: `@cloudscape-design/global-styles` provides normalize.css and **Open Sans** (300, 400, 700 and 800, normal and italic, embedded WOFF2, about 184 KB of CSS), so there is no Google Fonts or other external font request. Tailwind is no longer used. That Open Sans covers Basic Latin and Latin-1 only: the Czech letter "Č" in ČSN standard codes (about 420 occurrences in the BBM data) and a few other Latin Extended characters display in the fallback font (Helvetica Neue / Arial), and weight 600 renders as the nearest available weight. Whether Amazon internal tools should use Amazon Ember instead is to be confirmed with Guzman.
+The look follows Cloudscape defaults, including its colours: primary buttons, links and accents use the Cloudscape blue (`#006ce0`); FERN blue remains in the logo, mascot and photographs. No theme is applied (see section 12). The portal uses the standard Cloudscape integration: `@cloudscape-design/global-styles` provides normalize.css and **Open Sans** (300, 400, 700 and 800, normal and italic, embedded WOFF2, about 184 KB of CSS), so there is no Google Fonts or other external font request. Tailwind is no longer used. That Open Sans covers Basic Latin and Latin-1 only: the Czech letter "Č" in ČSN standard codes (about 420 occurrences in the BBM data) and a few other Latin Extended characters display in the fallback font (Helvetica Neue / Arial), and weight 600 renders as the nearest available weight. Whether Amazon internal tools should use Amazon Ember instead is to be confirmed with Guzman.
 
 **FERN imagery is kept inside the Cloudscape layout** (`app/visuals.tsx`):
 
@@ -52,7 +52,7 @@ The look follows Cloudscape defaults, with FERN blue for primary buttons and lin
 | Pillar icons | Home mission summary |
 | Topic icons | Home starting points, Workspace cards |
 
-Icons are Lucide stroke icons inside the Cloudscape `Icon` component, in FERN blue and hidden from screen readers (see section 8). The cartoon teaser illustrations are not used, because they clash with the Cloudscape style.
+Icons are Lucide stroke icons inside the Cloudscape `Icon` component, in the accent colour and hidden from screen readers (see section 8). The cartoon teaser illustrations are not used, because they clash with the Cloudscape style.
 
 ### 2. Amazon review fixes
 
@@ -108,8 +108,8 @@ Checked against [Cloudscape colors](https://cloudscape.design/foundation/visual-
 
 | Guideline | Result |
 | --- | --- |
-| Use design tokens, not hard-coded colours | Portal styles that are not Cloudscape components (`src/app/cloudscape.scss`, `src/auth/demo-sign-in.scss`, `src/features/reference/standards-reader.scss`) use `@cloudscape-design/design-tokens` through Sass, for example `awsui.$color-text-body-secondary`; 59 hard-coded colours were replaced. The only remaining colour values are the FERN blue theme tokens in `src/app/ui.tsx` (`applyTheme`) and the content-administration walkthrough, which keeps its own screens |
-| Blue for primary actions, links and interactive accents | Yes; FERN blue is applied as theme tokens, so token-based styles (links, accents, primary buttons) follow it |
+| Use design tokens, not hard-coded colours | Portal styles that are not Cloudscape components (`src/app/cloudscape.scss`, `src/auth/demo-sign-in.scss`, `src/features/reference/standards-reader.scss`) use `@cloudscape-design/design-tokens` through Sass, for example `awsui.$color-text-body-secondary`; 59 hard-coded colours were replaced. The only remaining colour values are in the content-administration walkthrough, which keeps its own screens |
+| Blue for primary actions, links and interactive accents | Yes; the Cloudscape default blue (`#006ce0`), with no theme applied (section 12). Token-based styles (icons, accents) follow it |
 | Red and green only for status | Yes; the three mission values on Mission & Pillars now use a neutral check icon instead of the green success indicator |
 | Do not rely on colour alone; sufficient contrast | All badges and statuses carry text or icons; 0 contrast failures across 1,403 text elements on 20 routes (WCAG AA) |
 
@@ -125,7 +125,7 @@ Checked against [Cloudscape design tokens](https://cloudscape.design/foundation/
 | Use each token for its purpose | `color-background-item-selected` (selected items) was used as a decorative tint on the sign-in panel, the mobile sign-in bar and the guide mascot; these now use the neutral `color-background-cell-shaded` |
 | Do not override Cloudscape components | The standards reader had rules for native buttons, headings and summaries left from the earlier design. The button rule still reached Cloudscape buttons inside the reader (44 px tall, own border and radius, and a stray line under expandable section headers); it was removed, so reader buttons now match the rest of the portal. About 290 lines of reader CSS for classes no longer rendered were removed |
 
-Not converted, on purpose: component dimensions (image sizes, `max-width`, the embedded PDF height, breakpoints), the 72 px anchor offset that matches the header, the FERN wordmark weight and tracking, and the emoji flag size. `src/styles/index.css` (global reset and disclosure arrows) is plain CSS and stays without tokens. `src/features/reference/region-labels.css` became `region-labels.scss` to use tokens.
+Not converted, on purpose: component dimensions (image sizes, `max-width`, the embedded PDF height, breakpoints), the 72 px anchor offset that matches the header, the FERN wordmark weight and tracking, and the emoji flag size. `src/styles/index.css` (global reset) is plain CSS and stays without tokens; its disclosure-arrow rules moved to `admin-demo.css`, the only place that still uses native `<details>` (see section 11). `src/features/reference/region-labels.css` became `region-labels.scss` to use tokens.
 
 ### 8. Icons follow the Cloudscape iconography
 
@@ -157,12 +157,135 @@ Checked against [Cloudscape layout](https://cloudscape.design/foundation/visual-
 
 **Notifications.** Page-level messages go to the app layout's Flashbar through `usePageNotifications(items)` from `ui.tsx`; they clear when the page closes. Users & roles uses it for the demonstration notice and for the confirmation after adding, changing or removing a user. Messages about part of a page stay as `Alert` (application availability, "No matching standards", the operational-issue warning on Help, Learn examples), as Cloudscape recommends.
 
+### 10. Motion follows the Cloudscape guidelines
+
+Checked against [Cloudscape motion](https://cloudscape.design/foundation/visual-foundation/motion/):
+
+| Guideline | Result |
+| --- | --- |
+| Motion from the design system, with its duration and easing tokens | All motion comes from Cloudscape components (dropdowns, modals, side navigation, help panel, flashbar). The portal has no custom `transition`, `animation` or `@keyframes`; page changes and section links scroll instantly |
+| Respect reduced motion | Cloudscape turns off non-essential motion under `prefers-reduced-motion`; the portal adds none of its own |
+| Loading motion only for real work | The demo sign-in no longer waits 900 ms behind a “Signing in” spinner; the demo check is instant |
+| Turn motion off in automated tests | All four browser suites run with `reducedMotion: 'reduce'` |
+
+### 11. Spacing follows the Cloudscape guidelines
+
+Checked against [Cloudscape spacing](https://cloudscape.design/foundation/visual-foundation/spacing/):
+
+| Guideline | Result |
+| --- | --- |
+| 4 px grid; spacing from the scale and tokens, not hard-coded pixels | Portal `.scss` uses `$space-scaled-*` (section 7); no inline margin or padding in components; spacing between components uses `SpaceBetween` (sizes xxxs–l only) |
+| Page header to content 16, container padding 20, header to description 2, label to control 4 | Provided by `ContentLayout`, `Container`, `Header` and `FormField` |
+| Buttons in an action stripe 8 apart | All horizontal button groups use `xs` |
+| Form fields 20 apart | All forms now use `SpaceBetween size="l"` between fields: the add/edit user form and the standards search form changed from `m` (16 px) |
+
+The native `<details>` disclosure rules (10 px padding, rem units) left `src/styles/index.css`: the portal uses Cloudscape expandable sections, and only the content administration walkthrough still uses `<details>`, so the rules now live in `admin-demo.css`, scoped to `.admin-demo`, unchanged.
+
+### 12. Theming: Cloudscape default colours
+
+Checked against [Cloudscape theming](https://cloudscape.design/foundation/visual-foundation/theming/), which says to theme only when the product needs it. The FERN blue theme (`applyTheme` with nine brand tokens in `src/app/ui.tsx`) was removed, so buttons, links and accents use the Cloudscape default blue.
+
+| | FERN blue theme (before) | Cloudscape default (now) |
+| --- | --- | --- |
+| Primary button, link, accent | `#1a3fb5`, hover `#0d2464` | `#006ce0`, hover `#002b66` |
+| Contrast on white / on light grey | 8.67:1 | 4.97:1 / 4.61:1 (WCAG AA) |
+| Inline `<style>` at runtime | Yes: needs a Content Security Policy that allows inline styles | None |
+| Dark mode values | Not defined | Provided by Cloudscape |
+
+The logo, mascot and photographs keep FERN blue. Side-by-side screenshots of both options are produced in `test-results/theme-compare/` (not committed). To bring the brand colour back, restore the `applyTheme` block from git history, preferably as build-time theming if the hosting uses a strict Content Security Policy.
+
+**Header logo.** The top navigation keeps the Cloudscape dark background (its "top navigation" visual context, as in the AWS Console). The header background is `#161d26`. The original fern (`home-fern.png`, about `#0060ff`) had 2.6–3.3:1 contrast there, so the header uses `src/assets/fern-logo-on-dark.png`: the same fern lightened 45% towards white (`#73a8ff`, 7.1:1), 128 px and 12 KB instead of 1254 px and 470 KB. It is generated from the original, not a designed asset; replace it if the design team supplies an official light logo. The sign-in page keeps the original logo on white.
+
+### 13. Visual modes: light first, ready for dark
+
+Checked against [Cloudscape visual modes](https://cloudscape.design/foundation/visual-foundation/visual-modes/):
+
+| Guideline | Result |
+| --- | --- |
+| Light mode is the default; build light first, then dark | The portal runs in light mode only |
+| Don't mix modes in one application | All light; the dark header is Cloudscape's top-navigation visual context, not dark mode |
+| Custom styles use design tokens, not hard-coded colours | Yes. The last hard-coded colour (autofilled inputs painted `white` in `src/styles/index.css`) moved to `cloudscape.scss` with `$color-background-input-default` and `$color-text-body-default`; light mode looks the same |
+| Give users the choice of light or dark | Not yet (recommended, not required). Deferred until after the AMZL demo, ideally saved per Midway account |
+
+When dark mode is added: a mode switch in the user menu using `applyMode` from `@cloudscape-design/global-styles`; a dark-mode version of the home hero photograph (its edge blends to white); the light logo (`fern-logo-on-dark.png`) on the sign-in page; the content administration walkthrough keeps its own light colours; embedded PDFs stay white (iframes do not inherit the mode).
+
+### 14. Visual style
+
+Checked against [Cloudscape visual style](https://cloudscape.design/foundation/visual-foundation/visual-style/):
+
+| Guideline | Result |
+| --- | --- |
+| Shadows only for overlapping elements | No custom shadows; modals, dropdowns and popovers come from Cloudscape |
+| 1 px borders and dividers, used sparingly | The six custom dividers are 1 px with `color-border-divider-default` |
+| Border radius from the system | The only custom radius (page photographs) uses `$border-radius-container` |
+| Solid fill only for the most important action | One primary button per page or modal |
+| States applied consistently | About 37 in-page links were plain `<a>` outside Cloudscape text content, so they showed the browser's default link blue (`#0000ee`) and its own hover and focus. They are now Cloudscape `Link`s: the "On this page" rows on Leadership & Policy and Risk & Compliance, "Also explore" on Planning (each now spaced with `SpaceBetween`; the unused `fern-inline-links` class was dropped), and the source and page links in the standards reader. Clicking them still opens and scrolls to the section |
+
+### 15. Focus management
+
+Checked with the keyboard against [Cloudscape focus management principles](https://cloudscape.design/foundation/core-principles/accessibility/focus-management-principles/):
+
+| After | Focus goes to |
+| --- | --- |
+| Signing in, or any page change | The new page's h1 |
+| Opening / closing a modal | Its close button / back to the button that opened it (Cloudscape) |
+| Submitting a standards search; opening a standard; returning to results | The results; the standard's title; the result you came from |
+| Saving the add/edit user form with errors | The first field in error (Name, then Amazon alias, then Roles) |
+| Adding, changing or removing a user | The confirmation message (flash with `ariaRole: 'alert'` and a new `id`). Before, removing a user left focus on the page body, because the Remove button it returned to was disabled |
+| Dismissing that message | The next message (Cloudscape) |
+| Opening privacy, terms or help on the sign-in page | That information; closing it returns focus to the link (previously focus stayed on the link and the text relied on `aria-live`) |
+| Tabbing to a wide source table | The table region, with the Cloudscape 2 px focus ring (`$color-border-item-focused`) instead of the browser's 1 px outline |
+
+Expanding sections, opening the help panel and switching tabs do not move focus.
+
+### 16. Building accessible experiences
+
+Checked against [Cloudscape: building accessible experiences](https://cloudscape.design/foundation/core-principles/accessibility/Building-accessible-experiences/) with axe-core 4.10 (WCAG 2.2 A and AA rules) on 25 screens (sign-in, all routes, search results, the standards reader in both views, Learn with the help panel open), plus heading, title, landmark and 320 px reflow checks. Result: **0 axe violations**.
+
+| Guideline | Result |
+| --- | --- |
+| Clear, unique page title | Fixed: every page had "FERN — Facility Management". The browser tab now names the page ("Performance & KPIs – FERN", "Search results for “kpi” – FERN", "Sign in – FERN"); Home keeps "FERN — Facility Management" |
+| Heading hierarchy | Fixed: one h1 per page and no skipped levels. In the standards reader, "Source interval / evidence columns" was h5 and the original document headings h4 directly under h2; both are now h3 (same visual size) |
+| Landmarks | App layout provides navigation, main and tools on every portal page. Fixed: the sign-in page now uses `<main>` |
+| Accessible names for all components | Fixed: the clear (×) button of the two search inputs had no name (axe: critical); both now have `clearAriaLabel="Clear search"`. All other buttons, links, form fields and images pass |
+| Contrast; not colour alone | Passes axe colour-contrast on every screen; statuses and badges carry text or icons (section 6) |
+| Keyboard access and focus | Section 15 |
+| Reflow (no horizontal page scroll) | No horizontal scroll at 320 px on any route; wide source tables scroll inside their own region |
+| Motion | Section 10 |
+| Table headers | Data tables use Cloudscape `Table`. The original source tables in the reader reproduce the PDF tables and have no marked header cells, because the extracted data does not say which row is the header; the task reading view is the structured, accessible version of the same content |
+
+### 17. Responsive design
+
+Checked against [Cloudscape responsive design](https://cloudscape.design/foundation/core-principles/responsive-design/):
+
+| Guideline | Result |
+| --- | --- |
+| Review at 320 px | No horizontal page scroll on any route (section 16) |
+| Review at 400% zoom (1280 × 1024 screen = 320 × 256 px) | Sign-in, home, navigation drawer, help panel, the add-user modal, standards search, the reader and search results all work; every main action can be reached and clicked; the sticky header takes 41 of 256 px |
+| Modals, panels and drawers do not hide calls to action | Close buttons and modal footers (Cancel / Add user) stay visible; long modal content scrolls above the footer |
+| Fluid layouts from the system tools | `ColumnLayout`, `Grid`, `KeyValuePairs` and `Cards` (section 9) |
+| Don't remove content on small screens | Fixed: on phones the sign-in page hid its whole introduction (tagline, team illustration, "One platform. Complete visibility.", the three benefits and "FERN is an Amazon internal platform"). It now appears below the form, benefits in one column; only the logo and title it repeats from the mobile header are hidden |
+| Use the system breakpoints | Fixed: custom breakpoints now use Cloudscape's (xxs 465, xs 688 = mobile, s 912): sign-in 767 → 688 and 360 → 465, reader PDF height 700 → 688, navigation open by default and closed on page change 900 → 912. The home and help media position already used 688. Sign-in, reader and app layout now switch to their phone layouts together |
+
+### 18. Bidirectionality (right-to-left)
+
+Checked against [Cloudscape bidirectionality](https://cloudscape.design/foundation/core-principles/bidirectionality/). No right-to-left language is planned (the header offers English only), but the portal is ready for one: with `dir="rtl"` on the page, the layout mirrors with no horizontal scroll.
+
+| Guideline | Result |
+| --- | --- |
+| Cloudscape components are bidirectional | Used throughout; `Box float="right"` compiles to `float: inline-end`, and the Cloudscape `arrow-left` / `arrow-right` icons mirror |
+| Logical, not physical, CSS properties | Fixed: the six physical properties in portal styles are now logical (`padding-inline-start` for list indents, `text-align: start` in source tables and sign-in benefits, `border-inline-start` between the sign-in introduction and form, `padding-inline` on narrow phones). No `left` / `right` remains outside the content-administration walkthrough |
+| Mirror elements that show direction | Fixed: five buttons ended with a typed "→" (four of them read aloud as "right arrow"): "Read a supporting BBM standard", "Explore BBM standards", "Review maintenance standards", "Find a compliance standard" and the FM Overview area buttons. They now use the Cloudscape `arrow-right` icon, which mirrors and is not announced. The rising-trend icon (Performance & KPIs, Lifecycle & Asset Analysis) mirrors on right-to-left pages (`.fern-icon-directional`) |
+| Don't mirror physical objects, numbers, code | Other icons (book, buildings, magnifier…) and photographs are not mirrored |
+
+If a right-to-left language is added: set `dir` on `<html>` from the selected language, mark untranslated English fragments with `dir="ltr"`, and have a native speaker review the pages.
+
 ## Developer notes
 
 | File | Purpose |
 | --- | --- |
 | `src/app/FernWorkspace.tsx` | Shell: header, navigation, breadcrumbs, notifications, help panel, routing, page switch |
-| `src/app/ui.tsx` | Shared blocks: Cloudscape theme, `Page`, `Card`, `Section`, `ExpandAllControls`, `Terms`, `TextGrid`, `NavLink` / `NavButton`, `revealSection`, `usePageNotifications` |
+| `src/app/ui.tsx` | Shared blocks: `Page`, `Card`, `Section`, `ExpandAllControls`, `Terms`, `TextGrid`, `NavLink` / `NavButton`, `revealSection`, `usePageNotifications` |
 | `src/app/pageHelp.tsx` | Help panel text for each kind of page (draft until guides are approved) |
 | `src/app/cloudscape.scss` | Sticky header, list markers and indent in text content, wide-table helper, scroll offset for anchors. New portal styles go in `.scss` and use design tokens (`@use '@cloudscape-design/design-tokens/index.scss' as awsui;`) |
 | `src/app/portalRoutes.ts` | URL ↔ page, plus `routeFor(label)`, which maps a page, resource, lesson or application name to its route |

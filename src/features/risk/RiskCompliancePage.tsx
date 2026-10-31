@@ -1,3 +1,5 @@
+import Link from '@cloudscape-design/components/link';
+import SpaceBetween from '@cloudscape-design/components/space-between';
 import Button from '@cloudscape-design/components/button';
 import { Card, Section, usePortalNavigation, TextGrid } from '../../app/ui';
 import { openStandardCollection } from '../reference/standardContext';
@@ -67,12 +69,14 @@ export default function RiskCompliancePage() {
           mandatory requirement optional.
         </p>
       </Card>
-      <nav aria-label="On this page" className="fern-inline-links">
-        <a href="#risk-attention">Review priorities</a>
-        <a href="#risk-requirements">Requirements &amp; applicability</a>
-        <a href="#risk-assessment">Assess risk</a>
-        <a href="#risk-evidence">Review evidence</a>
-        <a href="#risk-follow-up">Action &amp; review</a>
+      <nav aria-label="On this page">
+        <SpaceBetween direction="horizontal" size="l">
+          <Link href="#risk-attention">Review priorities</Link>
+          <Link href="#risk-requirements">Requirements &amp; applicability</Link>
+          <Link href="#risk-assessment">Assess risk</Link>
+          <Link href="#risk-evidence">Review evidence</Link>
+          <Link href="#risk-follow-up">Action &amp; review</Link>
+        </SpaceBetween>
       </nav>
       <Card id="risk-attention" title={<>Review priorities</>}>
         <p className="risk-empty">
@@ -90,12 +94,14 @@ export default function RiskCompliancePage() {
         {onNavigate && (
           <p>
             <Button
+              iconName="arrow-right"
+              iconAlign="right"
               onClick={() => {
                 openStandardCollection('Compliance');
                 onNavigate('Reference Library');
               }}
             >
-              Find a compliance standard →
+              Find a compliance standard
             </Button>
           </p>
         )}

@@ -44,6 +44,7 @@ export default function SearchResults({ query }: { query: string }) {
           <Grid gridDefinition={[{ colspan: { default: 12, xs: 9 } }, { colspan: { default: 12, xs: 3 } }]}>
             <Input
               type="search"
+              clearAriaLabel="Clear search"
               value={text}
               onChange={({ detail }) => setText(detail.value)}
               ariaLabel="Search terms"

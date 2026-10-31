@@ -1,3 +1,4 @@
+import Link from '@cloudscape-design/components/link';
 import { visibleCountryRow } from './countrySearch';
 import { regionLabel } from './regionLabels';
 import RegionLabel from './RegionLabel';
@@ -39,7 +40,9 @@ function Fields({ row }: { row: ReadingRow }) {
       <FieldList fields={primary} />
       {filled.length + blank.length > 0 && (
         <section>
-          <Box variant="h5">Source interval / evidence columns</Box>
+          <Box variant="h3" fontSize="heading-xs">
+            Source interval / evidence columns
+          </Box>
           <Box variant="small">
             Read these markers with the original source key; they do not replace the task frequency and conditions.
           </Box>
@@ -126,7 +129,7 @@ export default function TaskReader({
             >
               <SpaceBetween size="s">
                 <Fields row={row} />
-                <a href={`#bbm-${kind}-${row.page}`}>Check original page {row.page}</a>
+                <Link href={`#bbm-${kind}-${row.page}`}>Check original page {row.page}</Link>
               </SpaceBetween>
             </Section>
           );
@@ -154,7 +157,7 @@ export default function TaskReader({
                 >
                   <SpaceBetween size="s">
                     <Fields row={row} />
-                    <a href={`#bbm-${kind}-${row.page}`}>Check original page {row.page}</a>
+                    <Link href={`#bbm-${kind}-${row.page}`}>Check original page {row.page}</Link>
                   </SpaceBetween>
                 </Section>
               ))}

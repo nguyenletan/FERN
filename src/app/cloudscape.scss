@@ -7,6 +7,12 @@
   z-index: 1002;
 }
 
+/* Browser autofill keeps the Cloudscape input colours instead of its own yellow (and follows dark mode if it is enabled). */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px awsui.$color-background-input-default inset;
+  -webkit-text-fill-color: awsui.$color-text-body-default;
+}
+
 /* Sections opened from links scroll clear of the sticky top navigation. */
 #fern-main [id] {
   scroll-margin-top: 72px;
@@ -15,7 +21,7 @@
 /* Consistent list markers and indent inside Cloudscape text content. */
 [class*='awsui_text-content_'] ul,
 [class*='awsui_text-content_'] ol {
-  padding-left: awsui.$space-scaled-xl;
+  padding-inline-start: awsui.$space-scaled-xl;
 }
 [class*='awsui_text-content_'] ul {
   list-style: disc;
@@ -42,6 +48,9 @@
   flex-shrink: 0;
   color: awsui.$color-text-accent;
 }
+.fern-icon-directional:dir(rtl) svg {
+  transform: scaleX(-1);
+}
 .fern-icon-title {
   display: inline-flex;
   align-items: center;
@@ -64,6 +73,12 @@
   overflow-x: auto;
   max-width: 100%;
 }
+/* The table region is focusable (keyboard scrolling); show the Cloudscape focus ring when tabbed to. */
+.fern-table-scroll:focus-visible {
+  outline: 2px solid awsui.$color-border-item-focused;
+  outline-offset: 2px;
+  border-radius: awsui.$border-radius-control-default-focus-ring;
+}
 .fern-table-scroll table {
   border-collapse: collapse;
   min-width: 100%;
@@ -72,7 +87,7 @@
 .fern-table-scroll td {
   border: 1px solid awsui.$color-border-divider-default;
   padding: awsui.$space-scaled-xxs awsui.$space-scaled-xs;
-  text-align: left;
+  text-align: start;
   vertical-align: top;
 }
 .fern-table-scroll th {

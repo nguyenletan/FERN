@@ -113,11 +113,13 @@ export const topicIcons: Record<string, LucideIcon> = {
 };
 
 export type FernIconSize = 'normal' | 'medium' | 'big';
+/** Icons that show direction or progress; they are mirrored on right-to-left pages (Cloudscape bidirectionality). */
+const directionalIcons = new Set<LucideIcon>([TrendingUp]);
 /** A decorative FERN-blue icon (hidden from screen readers; the text beside it carries the meaning).
  *  Cloudscape sizes it (normal 16, medium 20, big 32 px) and sets the stroke width; match the size to the text beside it. */
 export function FernIcon({ icon: Glyph, size = 'medium' }: { icon?: LucideIcon; size?: FernIconSize }) {
   return Glyph ? (
-    <span className="fern-icon">
+    <span className={directionalIcons.has(Glyph) ? 'fern-icon fern-icon-directional' : 'fern-icon'}>
       <Icon svg={<Glyph focusable="false" />} size={size} />
     </span>
   ) : null;

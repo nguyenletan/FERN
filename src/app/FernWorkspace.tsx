@@ -38,7 +38,8 @@ import PerformanceKpiPage from '../features/performance/PerformanceKpiPage.tsx';
 import RiskCompliancePage from '../features/risk/RiskCompliancePage.tsx';
 import AuditAssurancePage from '../features/audit/AuditAssurancePage.tsx';
 import ContinualImprovementPage from '../features/improvement/ContinualImprovementPage.tsx';
-import fernLogo from '../assets/home-fern.png';
+// Lighter fern for the dark Cloudscape top navigation (7.1:1 on its #161d26 background); the sign-in page keeps home-fern.png.
+import fernLogo from '../assets/fern-logo-on-dark.png';
 
 // Detailed practice guidance shown inside each Workspace topic.
 const practiceGuides: Record<string, () => React.ReactNode> = {
@@ -66,7 +67,8 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
   const [lesson, setLesson] = useState<{ title: string; request: number } | null>(() =>
     route.lesson ? { title: route.lesson, request: 0 } : null,
   );
-  const [navigationOpen, setNavigationOpen] = useState(() => window.innerWidth >= 900);
+  // Navigation starts open from the Cloudscape s breakpoint (912 px) up; below it, it opens on demand.
+  const [navigationOpen, setNavigationOpen] = useState(() => window.innerWidth >= 912);
   // Help panel (tools region): closed until asked for; it follows the page.
   const [toolsOpen, setToolsOpen] = useState(false);
   const [notifications, setNotifications] = useState<FlashbarProps.MessageDefinition[]>([]);
@@ -86,7 +88,7 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
   const applyRoute = (next: PortalRoute) => {
     setRoute(next);
     setLesson((previous) => (next.lesson ? { title: next.lesson, request: (previous?.request ?? 0) + 1 } : null));
-    if (window.innerWidth < 900) {
+    if (window.innerWidth < 912) {
       setNavigationOpen(false);
       setToolsOpen(false);
     }
@@ -144,6 +146,12 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
   const app = applicationByName(route.page);
   const inWorkspace = route.page === 'Workspace' || workspacePages.some(([title]) => title === route.page);
   const pageTitle = route.panel ? resourceTitles[route.panel] : app ? app.title : route.page;
+  // A unique browser tab title for every page, so tabs, history and screen readers say where you are.
+  useEffect(() => {
+    const title = route.panel === 'search' && route.query ? `Search results for “${route.query}”` : pageTitle;
+    document.title =
+      route.page === 'Home' && !route.panel ? 'FERN — Facility Management' : /\bFERN\b/.test(title) ? title : `${title} – FERN`;
+  }, [pageTitle, route]);
   const crumbs = [
     { text: 'FERN', href: nav.href('Home') },
     ...(route.panel === 'search'

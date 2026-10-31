@@ -180,6 +180,41 @@
 .admin-demo details {
   margin-top: 22px;
 }
+/* Disclosure rows in the content administration walkthrough (the portal itself uses Cloudscape expandable sections). */
+.admin-demo details > summary {
+  position: relative;
+  display: block;
+  list-style: none;
+  min-height: 44px;
+  padding: 0.625rem 1rem 0.625rem 2.5rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.admin-demo details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.admin-demo details > summary::marker {
+  content: '';
+}
+
+.admin-demo details > summary::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: calc(0.625rem + 0.75em);
+  width: 0;
+  height: 0;
+  border-top: 0.3em solid transparent;
+  border-bottom: 0.3em solid transparent;
+  border-left: 0.4em solid currentColor;
+  transform: translateY(-50%);
+}
+
+.admin-demo details[open] > summary::before {
+  transform: translateY(-50%) rotate(90deg);
+}
 .admin-demo li {
   overflow-wrap: anywhere;
 }

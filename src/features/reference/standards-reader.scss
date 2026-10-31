@@ -31,7 +31,8 @@
   color: awsui.$color-text-link-default;
   text-decoration: underline;
 }
-@media (max-width: 700px) {
+/* Cloudscape xs (mobile) breakpoint. */
+@media (max-width: 688px) {
   .fs-original object {
     height: 420px;
   }

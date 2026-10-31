@@ -1,3 +1,5 @@
+import Link from '@cloudscape-design/components/link';
+import SpaceBetween from '@cloudscape-design/components/space-between';
 import Button from '@cloudscape-design/components/button';
 import { Card, Section, usePortalNavigation, TextGrid } from '../../app/ui';
 import { openStandardCollection } from '../reference/standardContext';
@@ -45,15 +47,17 @@ export default function LeadershipPolicyPage() {
         </ol>
         <p>An explanatory view of the relationship; authority and obligations come from the applicable sources.</p>
       </Card>
-      <nav aria-label="On this page" className="fern-inline-links">
-        <a href="#fm-direction">Purpose &amp; mission</a>
-        <a href="#fm-principles">Policy principles</a>
-        <a href="#fm-leadership">Leadership in practice</a>
-        <a href="#fm-decision-route">Decision route</a>
-        <a href="#bxm-expertise">BXM expertise</a>
-        <a href="#fm-guidance">Policies &amp; sources</a>
-        <a href="#fm-topics">FM governance topics</a>
-        <a href="#fm-clarification">Responsibilities &amp; review</a>
+      <nav aria-label="On this page">
+        <SpaceBetween direction="horizontal" size="l">
+          <Link href="#fm-direction">Purpose &amp; mission</Link>
+          <Link href="#fm-principles">Policy principles</Link>
+          <Link href="#fm-leadership">Leadership in practice</Link>
+          <Link href="#fm-decision-route">Decision route</Link>
+          <Link href="#bxm-expertise">BXM expertise</Link>
+          <Link href="#fm-guidance">Policies &amp; sources</Link>
+          <Link href="#fm-topics">FM governance topics</Link>
+          <Link href="#fm-clarification">Responsibilities &amp; review</Link>
+        </SpaceBetween>
       </nav>
       <Card id="fm-direction" title={<>FM purpose &amp; mission</>}>
         <p className="lead-emphasis">
@@ -174,12 +178,14 @@ export default function LeadershipPolicyPage() {
         {onNavigate && (
           <p>
             <Button
+              iconName="arrow-right"
+              iconAlign="right"
               onClick={() => {
                 openStandardCollection('all');
                 onNavigate('Standards & Reference Library');
               }}
             >
-              Explore BBM standards →
+              Explore BBM standards
             </Button>
           </p>
         )}
