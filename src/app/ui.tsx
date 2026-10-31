@@ -1,6 +1,7 @@
-// Shared Cloudscape building blocks for the FERN portal: theme, in-portal links, expandable reading sections and pages.
+// Shared Cloudscape building blocks for the FERN portal: in-portal links, expandable reading sections and pages.
+// No theme is applied: buttons, links and accents use the Cloudscape default colours, and text the default font (Open Sans).
 import { Children, createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
-import { applyTheme } from '@cloudscape-design/components/theming';
+//import { applyTheme } from '@cloudscape-design/components/theming';
 import Button, { type ButtonProps } from '@cloudscape-design/components/button';
 import ColumnLayout from '@cloudscape-design/components/column-layout';
 import ContentLayout from '@cloudscape-design/components/content-layout';
@@ -14,22 +15,22 @@ import SpaceBetween from '@cloudscape-design/components/space-between';
 import TextContent from '@cloudscape-design/components/text-content';
 import './cloudscape.scss';
 
-// FERN blue for primary actions and links. Text uses the Cloudscape default font (Open Sans, bundled in styles/index.css).
-applyTheme({
-  theme: {
-    tokens: {
-      colorBackgroundButtonPrimaryDefault: '#1a3fb5',
-      colorBorderButtonPrimaryDefault: '#1a3fb5',
-      colorBackgroundButtonPrimaryHover: '#0d2464',
-      colorBorderButtonPrimaryHover: '#0d2464',
-      colorBackgroundButtonPrimaryActive: '#0d2464',
-      colorBorderButtonPrimaryActive: '#0d2464',
-      colorTextLinkDefault: '#1a3fb5',
-      colorTextLinkHover: '#0d2464',
-      colorTextAccent: '#1a3fb5',
-    },
-  },
-});
+// To restore FERN blue, uncomment this block (needs a CSP that allows inline styles)
+// applyTheme({
+//   theme: {
+//     tokens: {
+//       colorBackgroundButtonPrimaryDefault: '#1a3fb5',
+//       colorBorderButtonPrimaryDefault: '#1a3fb5',
+//       colorBackgroundButtonPrimaryHover: '#0d2464',
+//       colorBorderButtonPrimaryHover: '#0d2464',
+//       colorBackgroundButtonPrimaryActive: '#0d2464',
+//       colorBorderButtonPrimaryActive: '#0d2464',
+//       colorTextLinkDefault: '#1a3fb5',
+//       colorTextLinkHover: '#0d2464',
+//       colorTextAccent: '#1a3fb5',
+//     },
+//   },
+// });
 
 /** Navigation by page label (e.g. "Performance & KPIs", "Learn"); href gives the shareable URL for the same target. */
 export type Navigate = (page: string, pillar?: number) => void;

@@ -39,7 +39,7 @@ Every page now uses Cloudscape components (`@cloudscape-design/components`). The
 | Demo sign-in | Custom form | The FERN brand panel is kept; the form uses Cloudscape `Container`, `Form` (with `errorText`), `FormField`, `Input`, a "Show password" `Checkbox` and a primary `Button`. Privacy, terms and help open a dismissible `Alert`. It is still a demonstration and will be replaced by Midway |
 | Content-administration walkthrough | — | Unchanged. The CMS keeps its own editing screens (agreed: Cloudscape for the portal, not the CMS) |
 
-The look follows Cloudscape defaults, with FERN blue for primary buttons and links. The portal uses the standard Cloudscape integration: `@cloudscape-design/global-styles` provides normalize.css and **Open Sans** (300, 400, 700 and 800, normal and italic, embedded WOFF2, about 184 KB of CSS), so there is no Google Fonts or other external font request. Tailwind is no longer used. That Open Sans covers Basic Latin and Latin-1 only: the Czech letter "Č" in ČSN standard codes (about 420 occurrences in the BBM data) and a few other Latin Extended characters display in the fallback font (Helvetica Neue / Arial), and weight 600 renders as the nearest available weight. Whether Amazon internal tools should use Amazon Ember instead is to be confirmed with Guzman.
+The look follows Cloudscape defaults, including its colours: primary buttons, links and accents use the Cloudscape blue (`#006ce0`); FERN blue remains in the logo, mascot and photographs. No theme is applied (see section 12). The portal uses the standard Cloudscape integration: `@cloudscape-design/global-styles` provides normalize.css and **Open Sans** (300, 400, 700 and 800, normal and italic, embedded WOFF2, about 184 KB of CSS), so there is no Google Fonts or other external font request. Tailwind is no longer used. That Open Sans covers Basic Latin and Latin-1 only: the Czech letter "Č" in ČSN standard codes (about 420 occurrences in the BBM data) and a few other Latin Extended characters display in the fallback font (Helvetica Neue / Arial), and weight 600 renders as the nearest available weight. Whether Amazon internal tools should use Amazon Ember instead is to be confirmed with Guzman.
 
 **FERN imagery is kept inside the Cloudscape layout** (`app/visuals.tsx`):
 
@@ -52,7 +52,7 @@ The look follows Cloudscape defaults, with FERN blue for primary buttons and lin
 | Pillar icons | Home mission summary |
 | Topic icons | Home starting points, Workspace cards |
 
-Icons are Lucide stroke icons inside the Cloudscape `Icon` component, in FERN blue and hidden from screen readers (see section 8). The cartoon teaser illustrations are not used, because they clash with the Cloudscape style.
+Icons are Lucide stroke icons inside the Cloudscape `Icon` component, in the accent colour and hidden from screen readers (see section 8). The cartoon teaser illustrations are not used, because they clash with the Cloudscape style.
 
 ### 2. Amazon review fixes
 
@@ -108,8 +108,8 @@ Checked against [Cloudscape colors](https://cloudscape.design/foundation/visual-
 
 | Guideline | Result |
 | --- | --- |
-| Use design tokens, not hard-coded colours | Portal styles that are not Cloudscape components (`src/app/cloudscape.scss`, `src/auth/demo-sign-in.scss`, `src/features/reference/standards-reader.scss`) use `@cloudscape-design/design-tokens` through Sass, for example `awsui.$color-text-body-secondary`; 59 hard-coded colours were replaced. The only remaining colour values are the FERN blue theme tokens in `src/app/ui.tsx` (`applyTheme`) and the content-administration walkthrough, which keeps its own screens |
-| Blue for primary actions, links and interactive accents | Yes; FERN blue is applied as theme tokens, so token-based styles (links, accents, primary buttons) follow it |
+| Use design tokens, not hard-coded colours | Portal styles that are not Cloudscape components (`src/app/cloudscape.scss`, `src/auth/demo-sign-in.scss`, `src/features/reference/standards-reader.scss`) use `@cloudscape-design/design-tokens` through Sass, for example `awsui.$color-text-body-secondary`; 59 hard-coded colours were replaced. The only remaining colour values are in the content-administration walkthrough, which keeps its own screens |
+| Blue for primary actions, links and interactive accents | Yes; the Cloudscape default blue (`#006ce0`), with no theme applied (section 12). Token-based styles (icons, accents) follow it |
 | Red and green only for status | Yes; the three mission values on Mission & Pillars now use a neutral check icon instead of the green success indicator |
 | Do not rely on colour alone; sufficient contrast | All badges and statuses carry text or icons; 0 contrast failures across 1,403 text elements on 20 routes (WCAG AA) |
 
@@ -181,12 +181,25 @@ Checked against [Cloudscape spacing](https://cloudscape.design/foundation/visual
 
 The native `<details>` disclosure rules (10 px padding, rem units) left `src/styles/index.css`: the portal uses Cloudscape expandable sections, and only the content administration walkthrough still uses `<details>`, so the rules now live in `admin-demo.css`, scoped to `.admin-demo`, unchanged.
 
+### 12. Theming: Cloudscape default colours
+
+Checked against [Cloudscape theming](https://cloudscape.design/foundation/visual-foundation/theming/), which says to theme only when the product needs it. The FERN blue theme (`applyTheme` with nine brand tokens in `src/app/ui.tsx`) was removed, so buttons, links and accents use the Cloudscape default blue.
+
+| | FERN blue theme (before) | Cloudscape default (now) |
+| --- | --- | --- |
+| Primary button, link, accent | `#1a3fb5`, hover `#0d2464` | `#006ce0`, hover `#002b66` |
+| Contrast on white / on light grey | 8.67:1 | 4.97:1 / 4.61:1 (WCAG AA) |
+| Inline `<style>` at runtime | Yes: needs a Content Security Policy that allows inline styles | None |
+| Dark mode values | Not defined | Provided by Cloudscape |
+
+The logo, mascot and photographs keep FERN blue. Side-by-side screenshots of both options are produced in `test-results/theme-compare/` (not committed). To bring the brand colour back, restore the `applyTheme` block from git history, preferably as build-time theming if the hosting uses a strict Content Security Policy.
+
 ## Developer notes
 
 | File | Purpose |
 | --- | --- |
 | `src/app/FernWorkspace.tsx` | Shell: header, navigation, breadcrumbs, notifications, help panel, routing, page switch |
-| `src/app/ui.tsx` | Shared blocks: Cloudscape theme, `Page`, `Card`, `Section`, `ExpandAllControls`, `Terms`, `TextGrid`, `NavLink` / `NavButton`, `revealSection`, `usePageNotifications` |
+| `src/app/ui.tsx` | Shared blocks: `Page`, `Card`, `Section`, `ExpandAllControls`, `Terms`, `TextGrid`, `NavLink` / `NavButton`, `revealSection`, `usePageNotifications` |
 | `src/app/pageHelp.tsx` | Help panel text for each kind of page (draft until guides are approved) |
 | `src/app/cloudscape.scss` | Sticky header, list markers and indent in text content, wide-table helper, scroll offset for anchors. New portal styles go in `.scss` and use design tokens (`@use '@cloudscape-design/design-tokens/index.scss' as awsui;`) |
 | `src/app/portalRoutes.ts` | URL ↔ page, plus `routeFor(label)`, which maps a page, resource, lesson or application name to its route |
