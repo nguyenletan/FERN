@@ -411,7 +411,7 @@ export default function UserAdministration({ onContentWalkthrough }: { onContent
             }}
           >
             <Form>
-              <SpaceBetween size="m">
+              <SpaceBetween size="l">
                 <FormField label="Name" errorText={nameError}>
                   <Input
                     value={editing.name}

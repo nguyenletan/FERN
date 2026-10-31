@@ -125,7 +125,7 @@ Checked against [Cloudscape design tokens](https://cloudscape.design/foundation/
 | Use each token for its purpose | `color-background-item-selected` (selected items) was used as a decorative tint on the sign-in panel, the mobile sign-in bar and the guide mascot; these now use the neutral `color-background-cell-shaded` |
 | Do not override Cloudscape components | The standards reader had rules for native buttons, headings and summaries left from the earlier design. The button rule still reached Cloudscape buttons inside the reader (44 px tall, own border and radius, and a stray line under expandable section headers); it was removed, so reader buttons now match the rest of the portal. About 290 lines of reader CSS for classes no longer rendered were removed |
 
-Not converted, on purpose: component dimensions (image sizes, `max-width`, the embedded PDF height, breakpoints), the 72 px anchor offset that matches the header, the FERN wordmark weight and tracking, and the emoji flag size. `src/styles/index.css` (global reset and disclosure arrows) is plain CSS and stays without tokens. `src/features/reference/region-labels.css` became `region-labels.scss` to use tokens.
+Not converted, on purpose: component dimensions (image sizes, `max-width`, the embedded PDF height, breakpoints), the 72 px anchor offset that matches the header, the FERN wordmark weight and tracking, and the emoji flag size. `src/styles/index.css` (global reset) is plain CSS and stays without tokens; its disclosure-arrow rules moved to `admin-demo.css`, the only place that still uses native `<details>` (see section 11). `src/features/reference/region-labels.css` became `region-labels.scss` to use tokens.
 
 ### 8. Icons follow the Cloudscape iconography
 
@@ -167,6 +167,19 @@ Checked against [Cloudscape motion](https://cloudscape.design/foundation/visual-
 | Respect reduced motion | Cloudscape turns off non-essential motion under `prefers-reduced-motion`; the portal adds none of its own |
 | Loading motion only for real work | The demo sign-in no longer waits 900 ms behind a “Signing in” spinner; the demo check is instant |
 | Turn motion off in automated tests | All four browser suites run with `reducedMotion: 'reduce'` |
+
+### 11. Spacing follows the Cloudscape guidelines
+
+Checked against [Cloudscape spacing](https://cloudscape.design/foundation/visual-foundation/spacing/):
+
+| Guideline | Result |
+| --- | --- |
+| 4 px grid; spacing from the scale and tokens, not hard-coded pixels | Portal `.scss` uses `$space-scaled-*` (section 7); no inline margin or padding in components; spacing between components uses `SpaceBetween` (sizes xxxs–l only) |
+| Page header to content 16, container padding 20, header to description 2, label to control 4 | Provided by `ContentLayout`, `Container`, `Header` and `FormField` |
+| Buttons in an action stripe 8 apart | All horizontal button groups use `xs` |
+| Form fields 20 apart | All forms now use `SpaceBetween size="l"` between fields: the add/edit user form and the standards search form changed from `m` (16 px) |
+
+The native `<details>` disclosure rules (10 px padding, rem units) left `src/styles/index.css`: the portal uses Cloudscape expandable sections, and only the content administration walkthrough still uses `<details>`, so the rules now live in `admin-demo.css`, scoped to `.admin-demo`, unchanged.
 
 ## Developer notes
 

@@ -279,7 +279,7 @@ export default function StandardsLibrary() {
                 </Header>
               }
             >
-              <SpaceBetween size="m">
+              <SpaceBetween size="l">
                 <FormField
                   label="Search standards"
                   stretch
