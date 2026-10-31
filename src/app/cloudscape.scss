@@ -7,6 +7,12 @@
   z-index: 1002;
 }
 
+/* Browser autofill keeps the Cloudscape input colours instead of its own yellow (and follows dark mode if it is enabled). */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px awsui.$color-background-input-default inset;
+  -webkit-text-fill-color: awsui.$color-text-body-default;
+}
+
 /* Sections opened from links scroll clear of the sticky top navigation. */
 #fern-main [id] {
   scroll-margin-top: 72px;
