@@ -9,7 +9,7 @@ import data from './frameworkContent.json';
 import FrameworkContent from './FrameworkContent';
 import { sectionSummary } from './sectionSummary';
 import { ExpandAllControls, NavLink, Page, Prose, Section } from '../../app/ui';
-import { IconTitle, PageBanner, pillarIcons, topicIcons } from '../../app/visuals';
+import { PageBanner } from '../../app/visuals';
 
 /** A Workspace topic: overview, guidance sections, evidence and next steps, with the detailed practice guide one click away. */
 export default function IntegratedWorkspace({ title, children }: { title: string; children: ReactNode }) {
@@ -20,15 +20,10 @@ export default function IntegratedWorkspace({ title, children }: { title: string
     document.querySelector<HTMLElement>('#fern-main h1')?.focus({ preventScroll: true });
   }, [practice]);
   const intro = page.intro.split('\n\n');
-  const heading = (
-    <IconTitle icon={topicIcons[title]} size={34}>
-      {title}
-    </IconTitle>
-  );
   if (practice)
     return (
       <Page
-        title={heading}
+        title={title}
         description="Detailed practice guidance"
         actions={
           <Button iconName="arrow-left" onClick={() => setPractice(false)}>
@@ -44,7 +39,7 @@ export default function IntegratedWorkspace({ title, children }: { title: string
     );
   return (
     <Page
-      title={heading}
+      title={title}
       description={intro[0].replace(/\*\*/g, '')}
       actions={<Button onClick={() => setPractice(true)}>Open detailed practice guide</Button>}
     >
@@ -61,9 +56,9 @@ export default function IntegratedWorkspace({ title, children }: { title: string
           <SpaceBetween direction="horizontal" size="xs" alignItems="center">
             <Box variant="awsui-key-label">Guided by</Box>
             {page.pillars.map((n) => (
-              <IconTitle key={n} icon={pillarIcons[n - 1]} size={18}>
-                <Badge color="blue">{data.pillars[n - 1].name}</Badge>
-              </IconTitle>
+              <Badge key={n} color="blue">
+                {data.pillars[n - 1].name}
+              </Badge>
             ))}
             <NavLink to="Mission & Pillars">About the pillars</NavLink>
           </SpaceBetween>

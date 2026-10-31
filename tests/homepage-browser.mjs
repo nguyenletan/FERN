@@ -37,6 +37,13 @@ try {
     .click();
   await h1('Pricing Template Generator').waitFor();
   await home();
+  // Enter lists every keyword match on the search results page (?page=search&q=…).
+  await search.fill('kpi');
+  await search.press('Enter');
+  await h1('Search results').waitFor();
+  assert.match(page.url(), /[?&]page=search&q=kpi/);
+  await page.locator('#fern-main').getByRole('link', { name: 'Performance & KPIs', exact: true }).waitFor();
+  await home();
   await page.locator('#fern-main').getByRole('link', { name: 'Get started', exact: true }).click();
   await h1('Get started').waitFor();
   await home();

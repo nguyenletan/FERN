@@ -1,5 +1,5 @@
 import Button from '@cloudscape-design/components/button';
-import { Card, Section, usePortalNavigation } from '../../app/ui';
+import { Card, Section, usePortalNavigation, TextGrid } from '../../app/ui';
 
 const areas = [
   [
@@ -65,9 +65,9 @@ export default function FmOverviewPage() {
           assessment has been completed.
         </p>
         <p>Use the areas below to review guidance for the topic.</p>
-        <div className="fern-grid">
+        <TextGrid>
           {areas.map(([title, text, action, destination]) => (
-            <div key={title} className="fern-block">
+            <div key={title}>
               <h3>{title}</h3>
               <p>{text}</p>
               <Button onClick={() => onNavigate(destination)}>
@@ -76,7 +76,7 @@ export default function FmOverviewPage() {
               </Button>
             </div>
           ))}
-        </div>
+        </TextGrid>
       </Card>
       <Card title={<>Read the overview with its evidence</>}>
         <Section header={<>Keep mandatory issues separate</>}>

@@ -1,7 +1,8 @@
 import teamImage from '../assets/fern-team-transparent.png';
 import guideImage from '../assets/fern-guide-transparent.png';
 import fernMark from '../assets/home-fern.png';
-import { Buildings, ShieldCheck, ChartBar } from '@phosphor-icons/react';
+import { Building2, ChartColumn, ShieldCheck } from 'lucide-react';
+import { FernIcon } from '../app/visuals';
 import Alert from '@cloudscape-design/components/alert';
 import Box from '@cloudscape-design/components/box';
 import Button from '@cloudscape-design/components/button';
@@ -12,7 +13,7 @@ import FormField from '@cloudscape-design/components/form-field';
 import Header from '@cloudscape-design/components/header';
 import Input from '@cloudscape-design/components/input';
 import SpaceBetween from '@cloudscape-design/components/space-between';
-import './demo-sign-in.css';
+import './demo-sign-in.scss';
 import { DEMO_EMAIL, DEMO_PASSWORD } from './demoCredentials.ts';
 import React, { useState } from 'react';
 
@@ -98,17 +99,17 @@ export default function DemoSignIn({ renderApp }: { renderApp: (onSignOut: () =>
         <h3>One platform. Complete visibility.</h3>
         <div className="fern-signin-benefits">
           <div>
-            <Buildings size={26} aria-hidden="true" />
+            <FernIcon icon={Building2} size="big" />
             <h4>Smart facilities</h4>
             <p>Connected data across every site.</p>
           </div>
           <div>
-            <ShieldCheck size={26} aria-hidden="true" />
+            <FernIcon icon={ShieldCheck} size="big" />
             <h4>Trusted intelligence</h4>
             <p>Guidance with governance and control.</p>
           </div>
           <div>
-            <ChartBar size={26} aria-hidden="true" />
+            <FernIcon icon={ChartColumn} size="big" />
             <h4>Better outcomes</h4>
             <p>Optimise cost, risk and performance.</p>
           </div>

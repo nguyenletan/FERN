@@ -1,34 +1,26 @@
 // FERN imagery inside the Cloudscape layout: page photographs, the home hero, the FERN guide mascot and the
-// Phosphor icons used for applications, pillars, Workspace topics, lessons and help topics.
+// symbol icons for applications, pillars and Workspace topics (Lucide stroke icons inside the Cloudscape Icon component).
 import { useEffect, useState, type ReactNode } from 'react';
+import Icon from '@cloudscape-design/components/icon';
 import {
-  ArrowsClockwise,
-  ArrowsLeftRight,
+  ArrowLeftRight,
   BookOpen,
-  Buildings,
+  Building2,
   Calculator,
-  ChartLineUp,
-  ChatCircleText,
-  CheckSquare,
-  ClipboardText,
+  ClipboardList,
   Compass,
-  FileMagnifyingGlass,
   FileText,
   Flag,
   GraduationCap,
   House,
   Lightbulb,
-  LockKey,
-  Megaphone,
-  Scales,
-  SealCheck,
+  RefreshCw,
   ShieldCheck,
-  ShieldWarning,
-  TreeStructure,
-  UsersThree,
-  Wrench,
-  type Icon,
-} from '@phosphor-icons/react';
+  SquareCheck,
+  TrendingUp,
+  Users,
+  type LucideIcon,
+} from 'lucide-react';
 import mission from '../features/visual/human-images/mission.jpg';
 import leadership from '../features/visual/human-images/leadership.jpg';
 import overview from '../features/visual/human-images/overview.jpg';
@@ -93,61 +85,45 @@ export function PageBanner({ scene }: { scene: string }) {
   );
 }
 
-// Icons, in the same order as their lists elsewhere (homeApplications, frameworkContent pillars, lessons, help topics).
-export const applicationIcons: Icon[] = [FileText, ChartLineUp, UsersThree, Calculator, ClipboardText];
-export const pillarIcons: Icon[] = [
+// Icons, in the same order as their lists elsewhere (homeApplications, frameworkContent pillars).
+// Cloudscape iconography: symbol icons sit to the left of a labelled resource, never beside page or section headings.
+export const applicationIcons: LucideIcon[] = [FileText, TrendingUp, Users, Calculator, ClipboardList];
+export const pillarIcons: LucideIcon[] = [
   Compass,
-  UsersThree,
+  Users,
   Flag,
   Lightbulb,
   GraduationCap,
-  CheckSquare,
-  ChartLineUp,
-  ArrowsClockwise,
+  SquareCheck,
+  TrendingUp,
+  RefreshCw,
 ];
-export const topicIcons: Record<string, Icon> = {
+export const topicIcons: Record<string, LucideIcon> = {
   'Mission & Pillars': Compass,
-  'Leadership & Policy': UsersThree,
+  'Leadership & Policy': Users,
   'FM Overview': House,
-  'Planning & Objectives': ClipboardText,
-  'Performance & KPIs': ChartLineUp,
+  'Planning & Objectives': ClipboardList,
+  'Performance & KPIs': TrendingUp,
   'Risk & Compliance': ShieldCheck,
   'Audit & Assurance': FileText,
-  'Continual Improvement': ArrowsLeftRight,
-  Workspace: UsersThree,
+  'Continual Improvement': ArrowLeftRight,
+  Workspace: Users,
   'Standards & Reference Library': BookOpen,
-  Learn: Buildings,
-};
-export const lessonIcons: Record<string, Icon> = {
-  'Understanding FERN': BookOpen,
-  'Service models explained': TreeStructure,
-  'From tender to transition': ClipboardText,
-  'Assets, condition and lifecycle': ArrowsClockwise,
-  'Risk, criticality and maintenance': ShieldWarning,
-  'Performance, KPIs and SLAs': ChartLineUp,
-  'Sources and evidence': FileMagnifyingGlass,
-  'Policies, BBM standards and requirements': Scales,
-  'Assurance and Continual Improvement': SealCheck,
-};
-export const helpIcons: Record<string, Icon> = {
-  'Using FERN': Compass,
-  'FM guidance': BookOpen,
-  'Data & evidence problem': FileMagnifyingGlass,
-  'Access problem': LockKey,
-  'Technical problem': Wrench,
-  'Content question': ChatCircleText,
-  'Improvement suggestion': Lightbulb,
-  'What’s new in FERN': Megaphone,
+  Learn: Building2,
 };
 
-/** A decorative FERN-blue icon (hidden from screen readers; the text beside it carries the meaning). */
-export function FernIcon({ icon: Glyph, size = 24 }: { icon?: Icon; size?: number }) {
+export type FernIconSize = 'normal' | 'medium' | 'big';
+/** A decorative FERN-blue icon (hidden from screen readers; the text beside it carries the meaning).
+ *  Cloudscape sizes it (normal 16, medium 20, big 32 px) and sets the stroke width; match the size to the text beside it. */
+export function FernIcon({ icon: Glyph, size = 'medium' }: { icon?: LucideIcon; size?: FernIconSize }) {
   return Glyph ? (
-    <Glyph className="fern-icon" size={size} weight="duotone" aria-hidden="true" focusable="false" />
+    <span className="fern-icon">
+      <Icon svg={<Glyph focusable="false" />} size={size} />
+    </span>
   ) : null;
 }
-/** Text with its icon in front, for card headers, section headers and page titles. */
-export function IconTitle({ icon, size, children }: { icon?: Icon; size?: number; children: ReactNode }) {
+/** A labelled resource with its symbol icon in front: navigation cards and resource lists, not page or section headings. */
+export function IconTitle({ icon, size, children }: { icon?: LucideIcon; size?: FernIconSize; children: ReactNode }) {
   return (
     <span className="fern-icon-title">
       <FernIcon icon={icon} size={size} />

@@ -1,7 +1,6 @@
 // DEMONSTRATION of the FERN Administration area requested by Amazon: add people, assign roles and choose what each
 // role can see. Sample data only (adminSample.ts); nothing is sent to Midway, APM or any Amazon system.
 import { useEffect, useMemo, useState } from 'react';
-import Alert from '@cloudscape-design/components/alert';
 import Badge from '@cloudscape-design/components/badge';
 import Box from '@cloudscape-design/components/box';
 import Button from '@cloudscape-design/components/button';
@@ -9,6 +8,7 @@ import Cards from '@cloudscape-design/components/cards';
 import Checkbox from '@cloudscape-design/components/checkbox';
 import ColumnLayout from '@cloudscape-design/components/column-layout';
 import Container from '@cloudscape-design/components/container';
+import type { FlashbarProps } from '@cloudscape-design/components/flashbar';
 import Form from '@cloudscape-design/components/form';
 import FormField from '@cloudscape-design/components/form-field';
 import Header from '@cloudscape-design/components/header';
@@ -22,7 +22,7 @@ import Table from '@cloudscape-design/components/table';
 import Tabs from '@cloudscape-design/components/tabs';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import { homeApplications } from '../dashboard/homeApplications.ts';
-import { Page } from '../../app/ui';
+import { Page, usePageNotifications } from '../../app/ui';
 import {
   loadAdminState,
   saveAdminState,
@@ -44,6 +44,32 @@ export default function UserAdministration({ onContentWalkthrough }: { onContent
   const [state, setState] = useState<AdminState>(loadAdminState);
   useEffect(() => saveAdminState(state), [state]);
   const [notice, setNotice] = useState('');
+  // Page-level messages go to the app layout's flashbar: the latest change first, then the demonstration notice.
+  const notifications = useMemo<FlashbarProps.MessageDefinition[]>(
+    () => [
+      ...(notice
+        ? [
+            {
+              id: 'change',
+              type: 'success' as const,
+              content: notice,
+              dismissible: true,
+              dismissLabel: 'Dismiss message',
+              onDismiss: () => setNotice(''),
+            },
+          ]
+        : []),
+      {
+        id: 'demonstration',
+        type: 'info',
+        header: 'Demonstration with sample data',
+        content:
+          'Nothing on this page is saved to an Amazon system, and the people listed are fictitious. In production, people sign in with Midway; whether their roles are managed here or taken from APM is still to be confirmed. Benito or Richard would approve new users. Changes are kept only in this browser tab.',
+      },
+    ],
+    [notice],
+  );
+  usePageNotifications(notifications);
   const roleName = (id: string) => state.roles.find((role) => role.id === id)?.name ?? id;
   const roleOptions = state.roles.map((role) => ({ value: role.id, label: role.name, description: role.description }));
 
@@ -145,16 +171,6 @@ export default function UserAdministration({ onContentWalkthrough }: { onContent
         </SpaceBetween>
       }
     >
-      <Alert type="info" header="Demonstration with sample data">
-        Nothing on this page is saved to an Amazon system, and the people listed are fictitious. In production, people
-        sign in with Midway; whether their roles are managed here or taken from APM is still to be confirmed. Benito or
-        Richard would approve new users. Changes are kept only in this browser tab.
-      </Alert>
-      {notice && (
-        <Alert type="success" dismissible onDismiss={() => setNotice('')}>
-          {notice}
-        </Alert>
-      )}
       <Tabs
         tabs={[
           {
@@ -227,7 +243,8 @@ export default function UserAdministration({ onContentWalkthrough }: { onContent
                 }
                 columnDefinitions={[
                   { id: 'name', header: 'Name', cell: (user) => user.name },
-                  { id: 'alias', header: 'Amazon alias', cell: (user) => user.alias },
+                  // Aliases are ID strings: Cloudscape monospace code style.
+                  { id: 'alias', header: 'Amazon alias', cell: (user) => <Box variant="code">{user.alias}</Box> },
                   {
                     id: 'roles',
                     header: 'Roles',

@@ -1,3 +1,5 @@
+@use '@cloudscape-design/design-tokens/index.scss' as awsui;
+
 /* FERN portal on Cloudscape. Keep the top navigation visible while the page scrolls. */
 .fern-top-navigation {
   position: sticky;
@@ -13,7 +15,7 @@
 /* Consistent list markers and indent inside Cloudscape text content. */
 [class*='awsui_text-content_'] ul,
 [class*='awsui_text-content_'] ol {
-  padding-left: 1.4rem;
+  padding-left: awsui.$space-scaled-xl;
 }
 [class*='awsui_text-content_'] ul {
   list-style: disc;
@@ -32,37 +34,29 @@
   height: clamp(160px, 28vw, 420px);
   object-fit: cover;
   object-position: 35% 5%;
-  border-radius: 16px;
+  border-radius: awsui.$border-radius-container;
 }
+/* Symbol icons: Cloudscape Icon (sized and stroked by Cloudscape) in the FERN accent colour. */
 .fern-icon {
+  display: inline-flex;
   flex-shrink: 0;
-  color: #1a3fb5;
+  color: awsui.$color-text-accent;
 }
 .fern-icon-title {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: awsui.$space-scaled-xs;
 }
 .fern-guide-mascot img {
   object-fit: contain !important;
-  background: #eef3ff;
+  background: awsui.$color-background-cell-shaded;
 }
 
 /* Secondary text placed after a section title (e.g. "Planned Maintenance — what it covers"). */
 .fern-section-description {
   display: block;
-  font-weight: 400;
-  color: var(--color-text-body-secondary-h9w9la, #5f6b7a);
-}
-
-/* Responsive grid of small blocks inside a container. */
-.fern-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  gap: 16px;
-}
-.fern-grid > * {
-  min-width: 0;
+  font-weight: awsui.$font-weight-normal;
+  color: awsui.$color-text-body-secondary;
 }
 
 /* Wide source tables scroll sideways instead of widening the page. */
@@ -76,11 +70,11 @@
 }
 .fern-table-scroll th,
 .fern-table-scroll td {
-  border: 1px solid #d1d5db;
-  padding: 6px 8px;
+  border: 1px solid awsui.$color-border-divider-default;
+  padding: awsui.$space-scaled-xxs awsui.$space-scaled-xs;
   text-align: left;
   vertical-align: top;
 }
 .fern-table-scroll th {
-  background: #f3f4f6;
+  background: awsui.$color-background-cell-shaded;
 }

@@ -9,6 +9,7 @@ import Badge from '@cloudscape-design/components/badge';
 import Box from '@cloudscape-design/components/box';
 import Button from '@cloudscape-design/components/button';
 import Checkbox from '@cloudscape-design/components/checkbox';
+import ColumnLayout from '@cloudscape-design/components/column-layout';
 import Container from '@cloudscape-design/components/container';
 import FormField from '@cloudscape-design/components/form-field';
 import Header from '@cloudscape-design/components/header';
@@ -24,7 +25,7 @@ import { type StandardEntry } from './standardsSearch';
 import { ExpandAllControls, Prose, Section } from '../../app/ui';
 import { usePortalPreferences } from '../../app/preferences';
 import { standardOverview, relatedStandards, readStandardLocation, standardLocation } from './standardContext';
-import './standards-reader.css';
+import './standards-reader.scss';
 type Cell = { text: string; col: number; colSpan: number; rowSpan: number };
 type Block = { type: string; text?: string; widths?: number[]; header?: boolean; rows?: Cell[][] };
 type Page = { number: number; text: string; blocks: Block[]; figures?: string[] };
@@ -48,6 +49,15 @@ const links = Object.fromEntries(
 );
 const browseTopics = ['Emergency lighting', 'Fire doors', 'Legionella', 'Air conditioning', 'Lifts', 'Generators'];
 const kindLabel = (kind: string) => (kind === 'PM' ? 'Preventive Maintenance' : 'Compliance');
+// Cloudscape typography: ID strings such as BBM object codes use the monospace code style.
+const ObjectCode = ({ code, bold }: { code: string; bold?: boolean }) =>
+  code === 'INTRODUCTION' ? (
+    <>{code}</>
+  ) : (
+    <Box variant="code" fontWeight={bold ? 'bold' : undefined}>
+      {code}
+    </Box>
+  );
 const countryOptions = [
   { value: '', label: 'All countries' },
   ...countryCodes.map((code) => ({ value: code, label: `${regionLabel(code).flag} ${regionLabel(code).label}` })),
@@ -388,9 +398,11 @@ export default function StandardsLibrary() {
                 {!filtered ? (
                   <Button onClick={() => setShowAll(true)}>Browse all {results.length} standards</Button>
                 ) : (
-                  <ul className="fs-results">
+                  // Cloudscape column layout; list roles keep the results announced as a list.
+                  <div role="list" aria-label="Matching standards">
+                  <ColumnLayout columns={2} minColumnWidth={320}>
                     {results.slice(0, limit).map(({ entry: e, reason }) => (
-                      <li key={e.id} id={'result-' + e.id} tabIndex={-1}>
+                      <div role="listitem" key={e.id} id={'result-' + e.id} tabIndex={-1}>
                         <SpaceBetween size="xxs">
                           <Link
                             fontSize="heading-s"
@@ -408,7 +420,7 @@ export default function StandardsLibrary() {
                           </Link>
                           <SpaceBetween direction="horizontal" size="xs">
                             <Badge color={e.kind === 'PM' ? 'grey' : 'blue'}>{kindLabel(e.kind)}</Badge>
-                            <Box variant="small">{e.code}</Box>
+                            <ObjectCode code={e.code} />
                             <Box variant="small">
                               {e.edition} · pp. {e.page}
                               {e.endPage !== e.page ? '–' + e.endPage : ''}
@@ -446,9 +458,10 @@ export default function StandardsLibrary() {
                             </>
                           )}
                         </SpaceBetween>
-                      </li>
+                      </div>
                     ))}
-                  </ul>
+                  </ColumnLayout>
+                  </div>
                 )}
                 {filtered && results.length > limit && (
                   <Button onClick={() => setLimit(limit + 20)}>Show 20 more standards</Button>
@@ -530,7 +543,12 @@ export default function StandardsLibrary() {
               header={
                 <Header
                   variant="h2"
-                  description={`${entry.code} · ${kindLabel(entry.kind)} · ${entry.edition} · PDF pages ${entry.page}–${entry.endPage}`}
+                  description={
+                    <>
+                      <ObjectCode code={entry.code} /> · {kindLabel(entry.kind)} · {entry.edition} · PDF pages {entry.page}–
+                      {entry.endPage}
+                    </>
+                  }
                   actions={
                     <SpaceBetween direction="horizontal" size="xs">
                       <Button iconName="arrow-left" onClick={back}>
@@ -624,11 +642,11 @@ export default function StandardsLibrary() {
                               <li key={r.kind + r.code}>
                                 {r.target ? (
                                   <Link onFollow={() => choose(r.target!.id)}>
-                                    {r.label}: {r.target.title} · {r.code}
+                                    {r.label}: {r.target.title} · <ObjectCode code={r.code} />
                                   </Link>
                                 ) : (
                                   <>
-                                    {r.label}: <strong>{r.code}</strong> — No exact code match in the supplied edition.
+                                    {r.label}: <ObjectCode code={r.code} bold /> — No exact code match in the supplied edition.
                                     Check the source or an authorised code mapping.
                                   </>
                                 )}

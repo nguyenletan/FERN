@@ -1,5 +1,5 @@
 import Button from '@cloudscape-design/components/button';
-import { Card, Section, usePortalNavigation } from '../../app/ui';
+import { Card, Section, usePortalNavigation, TextGrid } from '../../app/ui';
 import { openStandardCollection } from '../reference/standardContext';
 
 const sources = [
@@ -51,8 +51,8 @@ export default function RiskCompliancePage() {
   return (
     <div className="fern-practice">
       <Card>
-        <p className="risk-intro">Understand what could affect FM outcomes and which requirements must be met.</p>
-        <div className="fern-grid">
+        <p>Understand what could affect FM outcomes and which requirements must be met.</p>
+        <TextGrid>
           <div>
             <h2>Risk</h2>
             <p>What could happen, and what would the consequence be?</p>
@@ -61,7 +61,7 @@ export default function RiskCompliancePage() {
             <h2>Compliance</h2>
             <p>Which requirement applies, and does the evidence demonstrate that it has been addressed?</p>
           </div>
-        </div>
+        </TextGrid>
         <p>
           A high-risk issue is not automatically a compliance failure. A low risk assessment does not make an applicable
           mandatory requirement optional.
@@ -110,14 +110,14 @@ export default function RiskCompliancePage() {
             <li key={step}>{step}</li>
           ))}
         </ol>
-        <div className="fern-grid">
+        <TextGrid>
           {sources.map(([title, text]) => (
             <div key={title}>
               <h3>{title}</h3>
               <p>{text}</p>
             </div>
           ))}
-        </div>
+        </TextGrid>
         <Section header={<>Maintenance and compliance work together</>}>
           <p>
             Some compliance requirements can be demonstrated through appropriate maintenance and its supporting records.

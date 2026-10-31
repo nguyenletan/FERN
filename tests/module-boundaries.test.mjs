@@ -44,8 +44,11 @@ test('Relative imports stay inside src', () => {
 });
 test('The website is a single Vite application in src', () => {
   // FERN applications and the CMS live elsewhere; this repository is the portal only (WEB-SCOPE-03).
-  for (const removed of ['apps', 'packages', 'pnpm-workspace.yaml', 'vite.app.config.ts'])
+  for (const removed of ['apps', 'packages', 'vite.app.config.ts'])
     assert.ok(!fs.existsSync(removed), removed + ' should not exist');
+  // pnpm-workspace.yaml holds pnpm settings only (pnpm 11 reads settings there); it must not declare workspace packages.
+  if (fs.existsSync('pnpm-workspace.yaml'))
+    assert.doesNotMatch(fs.readFileSync('pnpm-workspace.yaml', 'utf8'), /^packages\s*:/m);
   assert.match(fs.readFileSync('index.html', 'utf8'), /src="\/src\/main\.tsx"/);
   assert.ok(fs.existsSync('src/main.tsx'));
 });

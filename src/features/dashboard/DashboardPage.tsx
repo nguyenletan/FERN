@@ -65,7 +65,7 @@ export default function DashboardPage() {
         cardsPerRow={[{ cards: 1 }, { minWidth: 640, cards: 3 }]}
         cardDefinition={{
           header: (item) => (
-            <IconTitle icon={topicIcons[item.to]} size={30}>
+            <IconTitle icon={topicIcons[item.to]}>
               <NavLink to={item.to} fontSize="heading-m">
                 {item.title}
               </NavLink>

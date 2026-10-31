@@ -1,7 +1,7 @@
 import { homeApplications } from '../features/dashboard/homeApplications.ts';
 import { resourceDestinations, legacyResourcePanels } from '../features/dashboard/resourceDestinations.ts';
 
-export type HomePanel = 'about' | 'facility' | 'guide' | 'learn' | 'reference' | 'help' | 'updates' | null;
+export type HomePanel = 'about' | 'facility' | 'guide' | 'learn' | 'reference' | 'help' | 'updates' | 'search' | null;
 const pages: Record<string, string> = {
   home: 'Home',
   workspace: 'Workspace',
@@ -26,6 +26,8 @@ const panels: Record<string, HomePanel> = {
   help: 'help',
   updates: 'updates',
   facility: 'facility',
+  // Search results for the header search, e.g. ?page=search&q=kpi
+  search: 'search',
 };
 export const lessonTitles = [
   'Understanding FERN',
@@ -43,7 +45,7 @@ const slug = (title: string) =>
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
-export type PortalRoute = { page: string; panel: HomePanel; lesson?: string; pillar?: number };
+export type PortalRoute = { page: string; panel: HomePanel; lesson?: string; pillar?: number; query?: string };
 export function readPortalRoute(search: string): PortalRoute {
   const params = new URLSearchParams(search);
   if (params.has('bbm') || params.has('bbmKind')) return { page: 'Home', panel: 'reference' };
@@ -56,6 +58,7 @@ export function readPortalRoute(search: string): PortalRoute {
     panel,
     pillar,
     lesson: panel === 'learn' ? lessonTitles.find((title) => slug(title) === params.get('lesson')) : undefined,
+    query: panel === 'search' ? (params.get('q') ?? '') : undefined,
   };
 }
 export function portalLocation(search: string, route: PortalRoute) {
@@ -80,6 +83,8 @@ export function portalLocation(search: string, route: PortalRoute) {
   )
     params.set('pillar', String(route.pillar));
   else params.delete('pillar');
+  if (route.panel === 'search' && route.query) params.set('q', route.query);
+  else params.delete('q');
   return params.size ? '?' + params.toString() : '';
 }
 /** The route for a destination label used across the portal: a page, a resource, a lesson or an application name. */

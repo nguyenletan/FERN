@@ -32,7 +32,7 @@ export function ApplicationCards({
       cardsPerRow={[{ cards: 1 }, { minWidth: 640, cards: 2 }, { minWidth: 1100, cards: 3 }]}
       cardDefinition={{
         header: (item) => (
-          <IconTitle icon={applicationIcons[homeApplications.indexOf(item)]} size={28}>
+          <IconTitle icon={applicationIcons[homeApplications.indexOf(item)]}>
             {/* The title is the card's only link (one way in per destination, per Amazon review 30 Oct 2026). */}
             <NavLink to={item.name} fontSize="heading-m" ariaLabel={'About ' + item.title}>
               {item.title}
