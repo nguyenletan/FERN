@@ -29,13 +29,13 @@ const panels: Record<string, HomePanel> = {
 };
 export const lessonTitles = [
   'Understanding FERN',
-  'Service Models Explained',
-  'From Tender to Transition',
-  'Assets, Condition and Lifecycle',
-  'Risk, Criticality and Maintenance',
+  'Service models explained',
+  'From tender to transition',
+  'Assets, condition and lifecycle',
+  'Risk, criticality and maintenance',
   'Performance, KPIs and SLAs',
-  'Sources and Evidence',
-  'Policies, BBM Standards and Requirements',
+  'Sources and evidence',
+  'Policies, BBM standards and requirements',
   'Assurance and Continual Improvement',
 ];
 const slug = (title: string) =>

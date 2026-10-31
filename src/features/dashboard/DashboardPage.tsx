@@ -1,13 +1,12 @@
 import Box from '@cloudscape-design/components/box';
 import Cards from '@cloudscape-design/components/cards';
-import ColumnLayout from '@cloudscape-design/components/column-layout';
 import Container from '@cloudscape-design/components/container';
 import Header from '@cloudscape-design/components/header';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import { HomeMission } from '../framework/MissionPillars';
 import HomeApplications from './HomeApplications.tsx';
 import { NavButton, NavLink, Page } from '../../app/ui';
-import { IconTitle, hero, lessonIcons, topicIcons, useMediaPosition } from '../../app/visuals';
+import { IconTitle, hero, topicIcons, useMediaPosition } from '../../app/visuals';
 
 const routes = [
   { to: 'Workspace', title: 'Workspace', description: 'FM direction and practical guidance.' },
@@ -16,15 +15,15 @@ const routes = [
     title: 'Standards & Reference Library',
     description: 'Find and read the BBM standards and source material.',
   },
-  { to: 'Learn', title: 'Learn', description: 'Build your understanding of FM at your own pace.' },
+  {
+    to: 'Learn',
+    title: 'Learn',
+    description: 'Learning material for FM, from introductions to standards and processes.',
+  },
 ];
-// One main way in to each destination (Amazon review, 30 Oct 2026): About and Get started are the hero actions;
-// Workspace, the library and Learn are the three starting points; lessons below open a specific topic.
-const lessons = [
-  ['Understanding FERN', 'An overview of FERN and how its tools support facility management.'],
-  ['Service Models Explained', 'Learn about service models and where to start a comparison.'],
-  ['From Tender to Transition', 'Follow the steps from assessment to mobilisation.'],
-];
+// One way in to each destination (Amazon review, 30 Oct 2026): About and Get started are the hero actions;
+// Workspace, the library and Learn are the three starting points. Lessons are chosen inside Learn, which will
+// link to Amazon's LMS, so Home has no separate learning-topics block.
 export default function DashboardPage() {
   const mediaPosition = useMediaPosition();
   return (
@@ -45,7 +44,7 @@ export default function DashboardPage() {
             Find the tools, guidance and knowledge to plan your next step.
           </Box>
           <SpaceBetween direction="horizontal" size="xs">
-            <NavButton to="Get Started" variant="primary">
+            <NavButton to="Get started" variant="primary">
               Get started
             </NavButton>
             <NavButton to="About FERN">What is FERN?</NavButton>
@@ -77,26 +76,6 @@ export default function DashboardPage() {
       />
       <HomeMission />
       <HomeApplications />
-      <Container
-        header={
-          <Header variant="h2" description="Short introductions you can read at your own pace.">
-            Popular learning topics
-          </Header>
-        }
-      >
-        <ColumnLayout columns={3}>
-          {lessons.map(([title, text]) => (
-            <div key={title}>
-              <IconTitle icon={lessonIcons[title]}>
-                <NavLink to={title} fontSize="heading-s">
-                  {title}
-                </NavLink>
-              </IconTitle>
-              <div>{text}</div>
-            </div>
-          ))}
-        </ColumnLayout>
-      </Container>
     </Page>
   );
 }

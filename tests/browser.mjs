@@ -74,6 +74,12 @@ try {
     5,
   );
   assert.equal(await page.locator('#fern-main').getByText('Coming soon', { exact: true }).count(), 5);
+  // One way in per destination: each application has exactly one link in the Home body (the card title).
+  for (const slug of ['pre-contract', 'lifecycle', 'contract-service-model', 'pricing', 'mobilisation'])
+    assert.equal(await page.locator(`#fern-main a[href$="?page=${slug}"]`).count(), 1, slug);
+  // Kim (30 Oct 2026): one way in to Learn on Home, and no separate "learn at your own pace" lesson links.
+  assert.equal(await page.locator('#fern-main a[href$="?page=learn"]').count(), 1);
+  assert.equal(await page.locator('#fern-main a[href*="lesson="]').count(), 0);
   await page.getByRole('link', { name: 'About Pricing Template Generator', exact: true }).click();
   await h1('Pricing Template Generator').waitFor();
   assert.ok(new URL(page.url()).searchParams.get('page') === 'pricing');
@@ -99,12 +105,14 @@ try {
   await h1('Leadership & Policy').waitFor();
   assert.equal(await page.getByRole('heading', { name: 'Choose your facility', exact: true }).count(), 0);
   await page.setViewportSize({ width: 390, height: 844 });
-  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true);
+  // The Cloudscape layout re-lays out after a viewport change; fail only if the overflow persists.
+  await page.waitForFunction(() => document.documentElement.scrollWidth <= window.innerWidth, null, { timeout: 3000 });
   // Review-fix acceptance: history, lessons and deep links survive demo sign-in.
-  await nav('Home');
-  await page.locator('#fern-main').getByRole('link', { name: 'Service Models Explained', exact: true }).click();
+  // Home has no lesson links (one way in to Learn); Get started links straight to a lesson.
+  await nav('Get started');
+  await page.locator('#fern-main').getByRole('link', { name: 'Read about service models', exact: true }).click();
   await page.waitForURL('**page=learn&lesson=service-models-explained');
-  await expanded('Service Models Explained').waitFor();
+  await expanded('Service models explained').waitFor();
   await nav('Help & Guidance');
   await page.waitForURL('**page=help');
   await page.goBack();
@@ -113,7 +121,7 @@ try {
   await page.reload();
   await h1('Learn').waitFor();
   assert.equal(await page.getByPlaceholder('Enter demo').count(), 0);
-  await expanded('Service Models Explained').waitFor();
+  await expanded('Service models explained').waitFor();
   // Signing out ends the session: reopening the deep link asks for sign-in again.
   const lessonUrl = page.url();
   await page.setViewportSize({ width: 1440, height: 1000 });
@@ -126,7 +134,7 @@ try {
   await page.getByPlaceholder('Enter your password').fill('demo');
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
   await h1('Learn').waitFor();
-  await expanded('Service Models Explained').waitFor();
+  await expanded('Service models explained').waitFor();
   assert.deepEqual(errors, []);
   fs.writeFileSync(
     'test-results/website-review.json',

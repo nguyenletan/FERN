@@ -84,7 +84,7 @@ export default function DemoSignIn({ renderApp }: { renderApp: (onSignOut: () =>
           <strong>FERN</strong>
           <img src={fernMark} alt="" />
         </div>
-        <h2>Digital FM Ecosystem</h2>
+        <h2>Digital FM ecosystem</h2>
         <p className="fern-signin-tagline">
           Trusted insights. Smarter decisions.
           <br />
@@ -121,7 +121,7 @@ export default function DemoSignIn({ renderApp }: { renderApp: (onSignOut: () =>
             <strong>FERN</strong>
             <img src={fernMark} alt="" />
           </div>
-          <p>Digital FM Ecosystem</p>
+          <p>Digital FM ecosystem</p>
         </div>
         <img className="fern-signin-mobile-guide" src={guideImage} alt="" />
       </header>

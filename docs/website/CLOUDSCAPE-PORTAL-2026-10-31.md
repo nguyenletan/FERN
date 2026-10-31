@@ -29,7 +29,7 @@ Every page now uses Cloudscape components (`@cloudscape-design/components`). The
 | Area | Before | Now |
 | --- | --- | --- |
 | Shell | Custom header, two sidebars, footer | `TopNavigation` (logo, search, language, country, user menu) + `AppLayout` + `SideNavigation` + breadcrumbs |
-| Home | Hero image, illustrated panels | Hero `Container` (photo beside the welcome text and the Get started / What is FERN? buttons), three starting points, mission summary, application cards, popular learning topics |
+| Home | Hero image, illustrated panels | Hero `Container` (photo beside the welcome text and the Get started / What is FERN? buttons), three starting points, mission summary and application cards (each card has one link: its title) |
 | Workspace topics (7) and Mission & Pillars | Custom cards and `<details>` | `Container`, `ExpandableSection`, "Expand all / Collapse all" |
 | Detailed practice guides (7) | Page-specific CSS cards | `Card` (Container) and `Section` (ExpandableSection); converted with an AST codemod so the text is verbatim |
 | Applications | Cards on Home only | Cards on Home plus an **Applications** page with a filter (`?page=applications`) and an introduction page per application |
@@ -39,7 +39,7 @@ Every page now uses Cloudscape components (`@cloudscape-design/components`). The
 | Demo sign-in | Custom form | The FERN brand panel is kept; the form uses Cloudscape `Container`, `Form` (with `errorText`), `FormField`, `Input`, a "Show password" `Checkbox` and a primary `Button`. Privacy, terms and help open a dismissible `Alert`. It is still a demonstration and will be replaced by Midway |
 | Content-administration walkthrough | — | Unchanged. The CMS keeps its own editing screens (agreed: Cloudscape for the portal, not the CMS) |
 
-The look follows Cloudscape defaults, with FERN blue for primary buttons and links. Text uses **Open Sans**, the Cloudscape default font, bundled with the site through `@fontsource/open-sans` (Latin and Latin Extended; weights 300, 400, 400 italic, 600, 700 and 800; about 216 KB of WOFF2). There is no Google Fonts or other external font request, so the portal and the single-file export render the same offline. The Standards & Reference Library and the content-administration walkthrough use the same font. Whether Amazon internal tools should use Amazon Ember instead is to be confirmed with Guzman.
+The look follows Cloudscape defaults, with FERN blue for primary buttons and links. The portal uses the standard Cloudscape integration: `@cloudscape-design/global-styles` provides normalize.css and **Open Sans** (300, 400, 700 and 800, normal and italic, embedded WOFF2, about 184 KB of CSS), so there is no Google Fonts or other external font request. Tailwind is no longer used. That Open Sans covers Basic Latin and Latin-1 only: the Czech letter "Č" in ČSN standard codes (about 420 occurrences in the BBM data) and a few other Latin Extended characters display in the fallback font (Helvetica Neue / Arial), and weight 600 renders as the nearest available weight. Whether Amazon internal tools should use Amazon Ember instead is to be confirmed with Guzman.
 
 **FERN imagery is kept inside the Cloudscape layout** (`app/visuals.tsx`):
 
@@ -61,7 +61,7 @@ Icons are the Phosphor duotone icons used before, in FERN blue and hidden from s
 | Eight pillar links all led to the same page | One "Explore our mission & pillars" button; pillar names are plain text |
 | Mission & Pillars repeated on the Workspace page and in the footer | Footer removed |
 | One consistent name for the library | "Standards & Reference Library" everywhere (menu, search, pages, links) |
-| "Learn" reached from several places that open the same page | Home has one way in to each destination: About and Get started are the header buttons; Workspace, the library and Learn are the three starting points; the lesson links open specific lessons. Help is in the menu only |
+| "Learn" reached from several places that open the same page | Home has one way in to each destination: About and Get started are the header buttons; Workspace, the library and Learn are the three starting points. Following Kim's comment that the purpose of "Learn at your own pace" was unclear, the Popular learning topics block was removed from Home (lessons are chosen inside Learn, which will link to Amazon's LMS), and each application card links only from its title. Help is in the menu only |
 | Language and country on the main menu, chosen independently | Two header dropdowns (see below) |
 | Administration tab for users and roles | Demonstration page (see below) |
 | Applications must not launch (WEB-SCOPE-01) | Application pages describe the tool only; every card shows "Coming soon" |
@@ -88,13 +88,26 @@ The proposed roles are: Site manager, RME planner, Commercial & pricing speciali
 
 The page also links to the existing content-administration walkthrough.
 
+### 5. Typography follows the Cloudscape guidelines
+
+Checked against [Cloudscape typography](https://cloudscape.design/foundation/visual-foundation/typography/) on all 24 routes:
+
+| Guideline | Result |
+| --- | --- |
+| Open Sans | All rendered text |
+| Type scale only (12/16, 14/20, 16/20, 18/22, 20/24, 24/30, 42/48) | All text, including the sign-in brand panel, which now uses display large (42/48), heading x-large (24/30), heading large (20/24), heading x-small (14/18), body medium (14/20) and body small (12/16) |
+| One `h1` per page, no skipped heading levels, nothing below 12px | Yes |
+| Sentence case | About 300 headings, section titles, buttons and link labels changed from Title Case to sentence case (for example "Turn direction into a plan"). Only capitalisation changed, not wording |
+
+Sentence case keeps capitals for names: page and application names (for example "Leadership & Policy", "Pricing Template Generator"), the pillars, FERN, Workspace, Learn, Amazon and BBM terms (Blue Badge, IFM Hybrid, Prime / Plus / Core), demo role names, and acronyms (FM, KPIs, SLAs, AI, PDF). Lesson titles changed too (for example "Service models explained"); their URLs are unchanged because lesson slugs are lower case. New content should be written in sentence case.
+
 ## Developer notes
 
 | File | Purpose |
 | --- | --- |
 | `src/app/FernWorkspace.tsx` | Shell: header, navigation, breadcrumbs, routing, page switch |
 | `src/app/ui.tsx` | Shared blocks: Cloudscape theme, `Page`, `Card`, `Section`, `ExpandAllControls`, `Terms`, `NavLink` / `NavButton`, `revealSection` |
-| `src/app/cloudscape.css` | Sticky header, list markers under the Tailwind reset, grid and wide-table helpers, scroll offset for anchors |
+| `src/app/cloudscape.css` | Sticky header, list markers and indent in text content, grid and wide-table helpers, scroll offset for anchors |
 | `src/app/portalRoutes.ts` | URL ↔ page, plus `routeFor(label)`, which maps a page, resource, lesson or application name to its route |
 | `src/app/preferences.ts` | Header country preference |
 | `src/app/visuals.tsx` | Photographs (`PageBanner`), hero, mascot, icon sets and `IconTitle` / `FernIcon` |
@@ -102,7 +115,7 @@ The page also links to the existing content-administration walkthrough.
 
 - **Links inside the portal** use `NavLink` or `NavButton` with a page label (e.g. `<NavLink to="Performance & KPIs">`). They render a real `href`, so ctrl/cmd-click opens a new tab, and a plain click navigates in place.
 - **Reading sections** use `Section`. "Expand all" opens every section inside the nearest `[data-reading-scope]`. A `#id` link, or `revealSection(id)`, opens the section that contains the target and scrolls to it.
-- **Cloudscape global styles are not imported.** The portal already applies the Tailwind reset, and in the single-file export the normalize stylesheet would also restyle the sign-in page.
+- **Cloudscape global styles are imported** in `src/styles/index.css` (`@cloudscape-design/global-styles/index.css`). Portal base rules (block images, pointer cursor) sit in `@layer base`, so Cloudscape and page styles always take precedence. Switching from the Tailwind reset changed only the Users & roles table, whose rows are now slightly taller (Cloudscape's intended spacing); a 48-screenshot comparison found the other pages pixel-identical.
 - **Search** is `features/search/FernAISearch.tsx`. It returns keyword matches, not AI answers. Quick Suite integration is still outstanding.
 
 ### Routes

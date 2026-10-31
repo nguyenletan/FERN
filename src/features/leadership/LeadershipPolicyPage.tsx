@@ -46,16 +46,16 @@ export default function LeadershipPolicyPage() {
         <p>An explanatory view of the relationship; authority and obligations come from the applicable sources.</p>
       </Card>
       <nav aria-label="On this page" className="fern-inline-links">
-        <a href="#fm-direction">Purpose &amp; Mission</a>
-        <a href="#fm-principles">Policy Principles</a>
-        <a href="#fm-leadership">Leadership in Practice</a>
-        <a href="#fm-decision-route">Decision Route</a>
-        <a href="#bxm-expertise">BXM Expertise</a>
-        <a href="#fm-guidance">Policies &amp; Sources</a>
-        <a href="#fm-topics">FM Governance Topics</a>
-        <a href="#fm-clarification">Responsibilities &amp; Review</a>
+        <a href="#fm-direction">Purpose &amp; mission</a>
+        <a href="#fm-principles">Policy principles</a>
+        <a href="#fm-leadership">Leadership in practice</a>
+        <a href="#fm-decision-route">Decision route</a>
+        <a href="#bxm-expertise">BXM expertise</a>
+        <a href="#fm-guidance">Policies &amp; sources</a>
+        <a href="#fm-topics">FM governance topics</a>
+        <a href="#fm-clarification">Responsibilities &amp; review</a>
       </nav>
-      <Card id="fm-direction" title={<>FM Purpose &amp; Mission</>}>
+      <Card id="fm-direction" title={<>FM purpose &amp; mission</>}>
         <p className="lead-emphasis">
           Support safe, reliable, efficient and sustainable facilities through clear evidence, accountable decisions and
           verified outcomes.
@@ -83,7 +83,7 @@ export default function LeadershipPolicyPage() {
             </p>
           </div>
           <div>
-            <h3>FERN’s Role</h3>
+            <h3>FERN’s role</h3>
             <p>
               FERN’s direction is to connect guidance and evidence across the FM decision process. This website provides
               guidance and access points; operational records and transactions remain in APM and other authorised
@@ -92,7 +92,7 @@ export default function LeadershipPolicyPage() {
           </div>
         </div>
       </Card>
-      <Card id="fm-principles" title={<>FM Policy Principles</>}>
+      <Card id="fm-principles" title={<>FM policy principles</>}>
         <p>
           Use these principles to frame an FM discussion. They explain the intended approach; they do not create a new
           mandatory policy, approve expenditure or replace an applicable Amazon requirement.
@@ -106,7 +106,7 @@ export default function LeadershipPolicyPage() {
           ))}
         </div>
       </Card>
-      <Card id="fm-leadership" title={<>Leadership in Practice</>}>
+      <Card id="fm-leadership" title={<>Leadership in practice</>}>
         <p>
           Amazon’s Leadership Principles provide the behavioural reference. The examples below show how that thinking
           can inform FM work; they do not replace the official principles.
@@ -120,7 +120,7 @@ export default function LeadershipPolicyPage() {
           ))}
         </div>
       </Card>
-      <Card id="fm-decision-route" title={<>From Need to Verified Outcome</>}>
+      <Card id="fm-decision-route" title={<>From need to verified outcome</>}>
         <p>
           Use this sequence to understand how the parts of an FM decision connect. It is a guidance route, not an active
           assessment or approval workflow on this website.
@@ -133,7 +133,7 @@ export default function LeadershipPolicyPage() {
             </li>
           ))}
         </ol>
-        <Section header={<>Understand the Cost Before Comparing Options</>}>
+        <Section header={<>Understand the cost before comparing options</>}>
           <p>
             Separate the cost of closing a requirement gap from costs that can legitimately be optimised. Also examine
             unclear scope, duplicate charges, weak cost records or other cost-governance issues. These are different
@@ -144,7 +144,7 @@ export default function LeadershipPolicyPage() {
             owner before reporting a saving. No universal target or saving is assumed.
           </p>
         </Section>
-        <Section header={<>Keep Delivery Model and Service Tier Separate</>}>
+        <Section header={<>Keep delivery model and service tier separate</>}>
           <p>
             The delivery model describes how the service is delivered; the service tier describes its intensity.
             Resource classification describes who provides the work. Compare these separately and retain applicable
@@ -156,7 +156,7 @@ export default function LeadershipPolicyPage() {
           </p>
         </Section>
       </Card>
-      <Card id="bxm-expertise" title={<>BXM FM Expertise</>}>
+      <Card id="bxm-expertise" title={<>BXM FM expertise</>}>
         <p className="lead-emphasis">
           BXM develops and maintains FM Policies, BBM Standards, FM practices and methodologies within its remit.
         </p>
@@ -170,7 +170,7 @@ export default function LeadershipPolicyPage() {
           functions retain their respective authority.
         </p>
       </Card>
-      <Card id="fm-guidance" title={<>Policies, BBM Standards &amp; Guidance</>}>
+      <Card id="fm-guidance" title={<>Policies, BBM standards &amp; guidance</>}>
         {onNavigate && (
           <p>
             <Button
@@ -179,7 +179,7 @@ export default function LeadershipPolicyPage() {
                 onNavigate('Standards & Reference Library');
               }}
             >
-              Explore BBM Standards →
+              Explore BBM standards →
             </Button>
           </p>
         )}
@@ -195,7 +195,7 @@ export default function LeadershipPolicyPage() {
             </div>
           ))}
         </div>
-        <Section header={<>How BBM Standards Support FM Direction</>}>
+        <Section header={<>How BBM standards support FM direction</>}>
           <p>
             FM policy sets direction and expectations. BBM Standards support their practical application through
             maintenance and compliance guidance for building systems and equipment.
@@ -210,7 +210,7 @@ export default function LeadershipPolicyPage() {
             replace the original document or the specialist judgement needed to apply it.
           </p>
         </Section>
-        <Section header={<>How to Use External References</>}>
+        <Section header={<>How to use external references</>}>
           <p>
             External standards, including ISO 41001, can inform the structure of FM guidance. A reference does not
             establish Amazon adoption, conformity, certification or a contractual commitment.
@@ -221,7 +221,7 @@ export default function LeadershipPolicyPage() {
           </p>
         </Section>
       </Card>
-      <Card id="fm-topics" title={<>FM Governance Topics</>}>
+      <Card id="fm-topics" title={<>FM governance topics</>}>
         <p>
           Explore how the principles apply across FM. Workspace pages explain the subjects; operational records and
           approvals remain in the relevant authorised systems.
@@ -237,13 +237,13 @@ export default function LeadershipPolicyPage() {
           </Section>
         ))}
       </Card>
-      <Card id="fm-clarification" title={<>Responsibilities &amp; Review</>}>
+      <Card id="fm-clarification" title={<>Responsibilities &amp; review</>}>
         <p>
           Before acting, establish the decision owner, service delivery responsibility, specialist adviser and approval
           authority from the applicable policy, contract or delegation. A draft, supplier submission or tool
           recommendation does not itself constitute approval.
         </p>
-        <Section header={<>When Evidence or Authority Is Unclear</>}>
+        <Section header={<>When evidence or authority is unclear</>}>
           <p>
             Keep the conflicting sources and their versions visible. Record the question and refer it to the owner or
             specialist identified in the applicable source. Do not silently overwrite a contradiction, average
@@ -254,14 +254,14 @@ export default function LeadershipPolicyPage() {
             invent delegation limits or treat a lower service tier as permission to omit a mandatory requirement.
           </p>
         </Section>
-        <Section header={<>Use AI With Accountable Judgement</>}>
+        <Section header={<>Use AI with accountable judgement</>}>
           <p>
             AI assistance can help retrieve, compare and explain permitted information when the approved service is
             available. Review the cited evidence and its limitations. An AI answer does not decide legal applicability,
             grant authority or replace professional judgement.
           </p>
         </Section>
-        <Section header={<>Review Outcomes and Learn</>}>
+        <Section header={<>Review outcomes and learn</>}>
           <p>
             Review service outcomes, evidence gaps, repeat failures, corrective-action effectiveness, lifecycle effects
             and user effort. Check whether the original decision remains valid when requirements or conditions change.

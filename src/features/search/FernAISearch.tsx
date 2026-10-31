@@ -15,7 +15,7 @@ const topics = [
   ['Continual Improvement', 'improvement lessons learning actions'],
   ['Standards & Reference Library', 'reference library standards bbm maintenance source documents compliance'],
   ['Learn', 'learn learning training courses service models'],
-  ['Get Started', 'start introduction beginning'],
+  ['Get started', 'start introduction beginning'],
   ['Help & Guidance', 'help support guidance'],
 ];
 export function findGuidance(query: string) {

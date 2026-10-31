@@ -17,7 +17,7 @@ export const categories = [
     'The originating requirement and its authority, kept separate from FM guidance or interpretation.',
   ],
   [
-    'Technical FM Guidance',
+    'Technical FM guidance',
     'Specialist explanations that support the use of relevant policies, BBM Standards and methodologies.',
   ],
 ];
@@ -121,7 +121,7 @@ export const commitments = [
 export const decisionSteps = [
   ['Understand the Need', 'Identify the service user, facility context and outcome required.'],
   ['Establish Requirements', 'Check applicable obligations and the evidence needed to demonstrate them.'],
-  ['Assess Risk and Assets', 'Consider condition, criticality, failure consequences and resilience.'],
+  ['Assess risk and Assets', 'Consider condition, criticality, failure consequences and resilience.'],
   [
     'Compare Whole-Life Options',
     'Evaluate maintenance, repair or replacement, delivery arrangements and service intensity.',
@@ -130,7 +130,7 @@ export const decisionSteps = [
     'Define Delivery and Evidence',
     'Make scope, responsibilities, performance measures and evidence expectations clear.',
   ],
-  ['Review the Outcome', 'Verify results, address findings and use lessons to inform the next decision.'],
+  ['Review the outcome', 'Verify results, address findings and use lessons to inform the next decision.'],
 ];
 export const leadershipBehaviours = [
   ['Begin With the User', 'Understand the operational problem and test whether the proposed FM outcome meets it.'],

@@ -102,7 +102,7 @@ try {
   await home();
   await page.locator('#fern-main').getByRole('link', { name: 'Get started', exact: true }).click();
   await h1('Get started').waitFor();
-  report.checks.push('Get Started');
+  report.checks.push('Get started');
   for (const [label, heading] of [
     ['Learn', 'Learn'],
     ['Help & Guidance', 'Help & Guidance'],
@@ -119,7 +119,7 @@ try {
   assert.match(await first.innerText(), /CT.FIRE.DOORS/);
   await first.getByRole('link').first().click();
   await page.locator('#bbm-standard-title').waitFor();
-  for (const name of ['Download Selected Standard', 'Download full source PDF']) {
+  for (const name of ['Download selected standard', 'Download full source PDF']) {
     const ready = page.waitForEvent('download');
     await page.getByRole('button', { name, exact: true }).click();
     const d = await ready;
@@ -135,7 +135,7 @@ try {
     .getByRole('button', { expanded: true })
     .first()
     .waitFor();
-  await page.getByRole('button', { name: 'Back to Results', exact: true }).click();
+  await page.getByRole('button', { name: 'Back to results', exact: true }).click();
   assert.equal(await search.inputValue(), 'fire doors');
   report.checks.push('BBM exact result, source disclosure and preserved query on return');
   await home();
@@ -182,7 +182,8 @@ try {
   report.checks.push('Administration demo: validation, add user with role, preview as role');
   await page.screenshot({ path: 'test-results/handover-desktop.png' });
   await page.setViewportSize({ width: 390, height: 844 });
-  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true);
+  // The Cloudscape layout re-lays out after a viewport change; fail only if the overflow persists.
+  await page.waitForFunction(() => document.documentElement.scrollWidth <= window.innerWidth, null, { timeout: 3000 });
   await page.getByRole('button', { name: 'Show navigation', exact: true }).click();
   await sideNav.getByRole('link', { name: 'Home', exact: true }).waitFor();
   await page.screenshot({ path: 'test-results/handover-mobile-menu.png' });

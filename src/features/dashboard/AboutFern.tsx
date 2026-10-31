@@ -7,47 +7,47 @@ export default function AboutFern() {
       title="About FERN"
       description="Facility Expert Reference Network brings FM guidance and decision-support tools together. Its purpose is to help you understand the information behind a facility, asset or service decision and identify the next useful step."
     >
-      <Card title="Start With Your Question">
+      <Card title="Start with your question">
         <p>
           A maintenance decision may depend on condition, previous failures, operating demands, requirements and cost. A
           contract decision may depend on scope, responsibilities, service levels and supplier capability. FERN helps
           you organise those questions rather than treating one figure as the whole answer.
         </p>
         <SpaceBetween direction="horizontal" size="l">
-          <NavLink to="Get Started">Find your starting point: choose the task or decision you need help with</NavLink>
+          <NavLink to="Get started">Find your starting point: choose the task or decision you need help with</NavLink>
           <NavLink to="Learn">Understand the FM concepts: explore learning topics before using a tool</NavLink>
         </SpaceBetween>
       </Card>
       <Card
-        title="Who Is FERN For?"
+        title="Who is FERN for?"
         description="Your role describes the work you do; access to information still depends on the permissions provided by your organisation."
       >
         <Terms
           items={[
             [
-              'Facility, FM and Engineering Teams',
+              'Facility, FM and engineering teams',
               'Review assets, maintenance, service needs and the evidence behind technical decisions.',
             ],
             [
-              'Business Owners and Regional Teams',
+              'Business owners and regional teams',
               'Understand options, operational consequences and the decisions requiring review.',
             ],
             [
-              'Procurement and Finance Teams',
+              'Procurement and finance teams',
               'Review scope, pricing assumptions, service arrangements and longer-term costs.',
             ],
             [
-              'Compliance and Assurance Specialists',
+              'Compliance and assurance specialists',
               'Connect requirements, evidence, findings and the actions needed.',
             ],
             [
-              'New and Occasional Users',
+              'New and occasional users',
               'Find guidance and learn the concepts without first understanding every application.',
             ],
           ]}
         />
       </Card>
-      <Card title="A Practical Path Through FERN">
+      <Card title="A practical path through FERN">
         <ol>
           <li>
             <strong>Define the question.</strong> Decide what you need to understand or compare.
@@ -69,7 +69,7 @@ export default function AboutFern() {
           </li>
         </ol>
       </Card>
-      <Card title="Read Results With Their Evidence">
+      <Card title="Read results with their evidence">
         <p>
           A requirement, a supporting reference and a FERN explanation serve different purposes. Check the original
           source and its applicability. A recommendation is an option to review, not an approval.
@@ -79,7 +79,7 @@ export default function AboutFern() {
           appropriate outcome is that more evidence or specialist review is needed before deciding.
         </p>
       </Card>
-      <Card title="FERN and Your Operational Systems">
+      <Card title="FERN and your operational systems">
         <p>
           FERN is intended to support understanding and decisions alongside systems that record and execute operational
           work. A closed maintenance work order alone does not establish that all required evidence exists or that no
@@ -91,7 +91,7 @@ export default function AboutFern() {
         </p>
       </Card>
       <Card
-        title="Need Help?"
+        title="Need help?"
         description="Explore Help & Guidance if you are unsure which area to use or how to interpret information."
         actions={<NavButton to="Help & Guidance">Open Help &amp; Guidance</NavButton>}
       />

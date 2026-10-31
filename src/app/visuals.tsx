@@ -120,24 +120,24 @@ export const topicIcons: Record<string, Icon> = {
 };
 export const lessonIcons: Record<string, Icon> = {
   'Understanding FERN': BookOpen,
-  'Service Models Explained': TreeStructure,
-  'From Tender to Transition': ClipboardText,
-  'Assets, Condition and Lifecycle': ArrowsClockwise,
-  'Risk, Criticality and Maintenance': ShieldWarning,
+  'Service models explained': TreeStructure,
+  'From tender to transition': ClipboardText,
+  'Assets, condition and lifecycle': ArrowsClockwise,
+  'Risk, criticality and maintenance': ShieldWarning,
   'Performance, KPIs and SLAs': ChartLineUp,
-  'Sources and Evidence': FileMagnifyingGlass,
-  'Policies, BBM Standards and Requirements': Scales,
+  'Sources and evidence': FileMagnifyingGlass,
+  'Policies, BBM standards and requirements': Scales,
   'Assurance and Continual Improvement': SealCheck,
 };
 export const helpIcons: Record<string, Icon> = {
   'Using FERN': Compass,
-  'FM Guidance': BookOpen,
-  'Data & Evidence Problem': FileMagnifyingGlass,
-  'Access Problem': LockKey,
-  'Technical Problem': Wrench,
-  'Content Question': ChatCircleText,
-  'Improvement Suggestion': Lightbulb,
-  'What’s New in FERN': Megaphone,
+  'FM guidance': BookOpen,
+  'Data & evidence problem': FileMagnifyingGlass,
+  'Access problem': LockKey,
+  'Technical problem': Wrench,
+  'Content question': ChatCircleText,
+  'Improvement suggestion': Lightbulb,
+  'What’s new in FERN': Megaphone,
 };
 
 /** A decorative FERN-blue icon (hidden from screen readers; the text beside it carries the meaning). */

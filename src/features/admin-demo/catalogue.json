@@ -138,7 +138,7 @@
   {
     "id": "leadership-1",
     "page": "Leadership & Policy",
-    "title": "FM Policy Commitments",
+    "title": "FM policy commitments",
     "body": "- **Start With Service Users:** define the outcome the service needs to achieve before choosing the solution.\n- **Protect Applicable Requirements:** establish the relevant legal, statutory, life-safety, Amazon, OEM and warranty obligations before comparing options.\n- **Make Accountability Clear:** identify decision, delivery, advice and verification responsibilities and use the applicable authority.\n- **Use Traceable Evidence:** retain source, scope, date, assumptions, limitations and reasoning.\n- **Consider Whole-Life Value:** examine service, cost, condition, reliability, resilience, resource use and lifecycle consequences together.\n- **Keep Controls Useful:** reuse authoritative systems and apply validated regional or country differences without duplicating records.\n- **Develop Competence:** match responsibilities with skills, information and specialist support.\n- **Verify and Improve:** check that actions work and reconsider decisions when controlled evidence changes.",
     "asset": "",
     "alt": ""
@@ -146,7 +146,7 @@
   {
     "id": "leadership-2",
     "page": "Leadership & Policy",
-    "title": "Leadership in Practice",
+    "title": "Leadership in practice",
     "body": "Leadership provides direction, resources and support. The accountable owner follows the result across team boundaries; the authorised approver decides within the applicable delegation. BXM contributes specialist FM methods and guidance within its remit. Finance, Procurement, Sustainability, Legal and other functions retain authority for the matters they own.\n\nPolicy is communicated to the people who use and deliver the service. Explain what it means for their work, identify the relevant learning and give them a confirmed route for questions. Changes to scope, requirements or policy are communicated to the affected groups through the controlled publication process.",
     "asset": "",
     "alt": ""
@@ -154,7 +154,7 @@
   {
     "id": "leadership-3",
     "page": "Leadership & Policy",
-    "title": "Management Review",
+    "title": "Management review",
     "body": "Management review evaluates whether the FM system remains suitable, adequately supported and effective. At the agreed review points, examine previous actions, changes in business needs, performance, risks, audit findings and improvement opportunities. Decide whether scope, priorities, resources or controls need to change. Record the decisions, owners and follow-up, and communicate the results.",
     "asset": "",
     "alt": ""
@@ -171,7 +171,7 @@
     "id": "leadership-5",
     "page": "Leadership & Policy",
     "title": "Continue your work",
-    "body": "[Understand the FM System](#6-fm-overview) or [Turn Direction Into a Plan](#7-planning-objectives).",
+    "body": "[Understand the FM system](#6-fm-overview) or [Turn direction into a plan](#7-planning-objectives).",
     "asset": "",
     "alt": ""
   },
@@ -186,7 +186,7 @@
   {
     "id": "overview-1",
     "page": "FM Overview",
-    "title": "Understand the FM System",
+    "title": "Understand the FM system",
     "body": "1. **Identify the Context:** business needs, relevant users, facilities, services and external conditions.\n2. **Establish the Scope:** boundaries, applicability and interaction with other management systems.\n3. **Connect the Services:** retained and outsourced responsibilities, operational dependencies and communication.\n4. **Read the Evidence:** sources, reporting periods, definitions and limitations.\n5. **Prepare the Decision:** the issue, responsible authority, available options and follow-up needed.\n\nService coordination protects the primary activities of the business. A change in one service can affect another: maintenance access, operating hours, cleaning, specialist inspections and contractor activity need compatible arrangements. Review these interfaces during planning and when conditions change.",
     "asset": "",
     "alt": ""
@@ -194,7 +194,7 @@
   {
     "id": "overview-2",
     "page": "FM Overview",
-    "title": "Prepare for Management Review",
+    "title": "Prepare for management review",
     "body": "Bring together changes in context, prior decisions, service results, material risks, audit findings and improvement outcomes. Examine what the combined evidence means for service scope, resources and controls. Management review concludes with decisions and follow-up; it is broader than a dashboard or a supplier performance meeting.\n\nRead summaries alongside their sources. Compare trends only when the periods, definitions, populations and evidence are comparable. Keep mandatory exceptions visible separately from general performance. An unavailable summary does not mean that no issues exist.",
     "asset": "",
     "alt": ""
@@ -211,7 +211,7 @@
     "id": "overview-4",
     "page": "FM Overview",
     "title": "Continue your work",
-    "body": "[Plan an Outcome](#7-planning-objectives), [Review Results](#8-performance-kpis) or [Check Findings](#10-audit-assurance).",
+    "body": "[Plan an outcome](#7-planning-objectives), [Review results](#8-performance-kpis) or [Check findings](#10-audit-assurance).",
     "asset": "",
     "alt": ""
   },
@@ -226,7 +226,7 @@
   {
     "id": "planning-1",
     "page": "Planning & Objectives",
-    "title": "Build the Plan",
+    "title": "Build the plan",
     "body": "| Planning element | Information to establish |\n|---|---|\n| Need and purpose | The problem or opportunity, affected users and policy connection |\n| Outcome and scope | The intended result and affected facilities, services or assets |\n| Requirements | Applicable obligations and the sources supporting them |\n| Evidence baseline | Relevant starting data, period, method and limitations |\n| Success measure | How results will be evaluated, with the applicable target or agreed acceptance basis |\n| Accountability | The decision owner, delivery responsibilities and approval boundary |\n| Resources and capability | People, competence, budget, access, information and specialist support |\n| Risks and dependencies | Constraints, consequences and connected services or teams |\n| Timing and review | Delivery timing, review responsibilities and change triggers |",
     "asset": "",
     "alt": ""
@@ -234,7 +234,7 @@
   {
     "id": "planning-2",
     "page": "Planning & Objectives",
-    "title": "Prepare for Delivery",
+    "title": "Prepare for delivery",
     "body": "Compare feasible alternatives using service needs, mandatory requirements, risk, asset condition, resources and whole-life consequences. Keep the delivery model distinct from the service tier. A model describes how a service is delivered; a tier describes the level of service under the applicable framework. Neither removes a mandatory requirement.\n\nSeparate the cost of closing a requirement gap from costs that can legitimately be optimised. Examine unclear scope, duplicate charges or weak cost records as distinct cost-governance issues. These problems can require different actions; a lower total alone does not explain whether the service is adequate or the saving is supportable.\n\nEstablish operating criteria and coordinate handovers before delivery. Identify what information the receiving team needs and who confirms readiness. Where specialist competence is necessary, include its evidence and availability in the plan.",
     "asset": "",
     "alt": ""
@@ -242,7 +242,7 @@
   {
     "id": "planning-3",
     "page": "Planning & Objectives",
-    "title": "Review Progress and Change",
+    "title": "Review progress and change",
     "body": "Check progress against the intended outcome, not only activity completion. Reconsider the plan when needs, requirements, evidence or resources change. Record the reason for the change, affected interfaces, decision authority and revised evaluation basis. Review unintended effects on people, services and future costs.",
     "asset": "",
     "alt": ""
@@ -259,7 +259,7 @@
     "id": "planning-5",
     "page": "Planning & Objectives",
     "title": "Continue your work",
-    "body": "[Check Requirements and Risks](#9-risk-compliance), [Define the Measures](#8-performance-kpis) or [Find Learning Support](#12-learn-reference-library-and-assistance).",
+    "body": "[Check requirements and risks](#9-risk-compliance), [Define the measures](#8-performance-kpis) or [Find learning support](#12-learn-reference-library-and-assistance).",
     "asset": "",
     "alt": ""
   },
@@ -274,7 +274,7 @@
   {
     "id": "performance-1",
     "page": "Performance & KPIs",
-    "title": "Define and Interpret a Measure",
+    "title": "Define and interpret a measure",
     "body": "A KPI measures an important aspect of FM performance. An SLA establishes an applicable service expectation. The source defines the target, clock rules, population and contractual significance; a familiar measure name is not sufficient.\n\nCheck the unit, calculation, exclusions, baseline, source version and assessment period. For time measures, distinguish acknowledgement, attendance, restoration and permanent repair. Use tier-specific targets only where the applicable methodology defines them.\n\nRead reliability and quality alongside user experience, risk, resources and whole-life value where relevant. A positive overall result does not cancel a mandatory exception. Do not assign red, amber or green without an applicable threshold and adequate evidence.",
     "asset": "",
     "alt": ""
@@ -282,7 +282,7 @@
   {
     "id": "performance-2",
     "page": "Performance & KPIs",
-    "title": "From Result to Decision",
+    "title": "From result to decision",
     "body": "1. Confirm the definition and context.\n2. Check the records and calculation.\n3. Identify significant exceptions and supported trends.\n4. Investigate limitations, conflicting information and potential causes.\n5. Connect the finding to an owner, response and review.\n\nService reviews examine delivery. Management review considers whether the wider FM approach, priorities and resources remain effective. Carry relevant evidence and decisions into the appropriate review.\n\nFinance controls the baseline and attribution method for financial benefit claims. Potential exposure, avoided-cost scenarios and realised savings remain distinguishable. Commercial consequences depend on the applicable contract and authorised interpretation; a KPI result alone does not establish a payment or service credit.",
     "asset": "",
     "alt": ""
@@ -299,7 +299,7 @@
     "id": "performance-4",
     "page": "Performance & KPIs",
     "title": "Continue your work",
-    "body": "[Examine the Evidence](#10-audit-assurance) or [Investigate an Improvement](#11-continual-improvement).",
+    "body": "[Examine the evidence](#10-audit-assurance) or [Investigate an improvement](#11-continual-improvement).",
     "asset": "",
     "alt": ""
   },
@@ -314,7 +314,7 @@
   {
     "id": "risk-1",
     "page": "Risk & Compliance",
-    "title": "Establish What Applies",
+    "title": "Establish what applies",
     "body": "Identify the exact source, version, effective date and relevant jurisdiction, facility, service, asset and activity. Read the conditions and competence requirements. Amazon and BBM material, legal sources, contracts and OEM requirements remain identifiable rather than being merged into an unexplained statement.\n\nMaintenance can provide evidence for a compliance requirement without covering every element of it. Some requirements need additional inspection, testing, assessment or specialist records. An evidence-upload interval is not necessarily the interval for physical work.",
     "asset": "",
     "alt": ""
@@ -322,7 +322,7 @@
   {
     "id": "risk-2",
     "page": "Risk & Compliance",
-    "title": "Assess the Response",
+    "title": "Assess the response",
     "body": "Consider the function at risk, asset condition, criticality, safeguards, redundancy, failure history and operational dependencies. Identify opportunities as well as threats. Establish the response, responsible owner, authority and evidence needed to evaluate effectiveness. Use an appropriate method with defined scales where scoring is involved.\n\nConsider whether climate-related change affects intended FM outcomes and whether relevant parties have climate-related requirements. Connect relevant findings to objectives, preparedness and review. This context assessment does not itself prescribe a universal emissions target or maintenance interval. [ISO/IAF climate-context explanation](https://www.iso.org/files/live/sites/isoorg/files/standards/popular_standards/management_systems/ISO-IAF%20Joint%20Communique%20Feb%202024.pdf).\n\nWhere epidemic-related disruption is relevant, use the applicable preparedness, response and recovery arrangements with the responsible specialists. The supplied 41017 draft informs that specific topic; it does not replace the organisation\u2019s wider emergency arrangements.",
     "asset": "",
     "alt": ""
@@ -330,7 +330,7 @@
   {
     "id": "risk-3",
     "page": "Risk & Compliance",
-    "title": "Reach a Traceable Conclusion",
+    "title": "Reach a traceable conclusion",
     "body": "Applicability, evidence sufficiency and the assessment result are separate decisions. A certificate or closed work order needs to match the requirement, asset, activity and period. Retain conflicts and seek the appropriate specialist decision where necessary. Risk acceptance does not waive a legal or other mandatory obligation.",
     "asset": "",
     "alt": ""
@@ -347,7 +347,7 @@
     "id": "risk-5",
     "page": "Risk & Compliance",
     "title": "Continue your work",
-    "body": "[Find Source Material](#12-learn-reference-library-and-assistance), [Review Evidence](#10-audit-assurance) or [Plan a Response](#7-planning-objectives).",
+    "body": "[Find source material](#12-learn-reference-library-and-assistance), [Review evidence](#10-audit-assurance) or [Plan a response](#7-planning-objectives).",
     "asset": "",
     "alt": ""
   },
@@ -362,7 +362,7 @@
   {
     "id": "audit-1",
     "page": "Audit & Assurance",
-    "title": "Prepare the Assessment",
+    "title": "Prepare the assessment",
     "body": "Start with the requirement and define the purpose, scope, period and criteria. Keep self-assessment distinct from formal or independent audit. The internal-audit programme establishes methods, responsibilities, timing and reporting, taking account of process importance and previous findings. Select competent auditors and preserve objectivity and impartiality.\n\nUse clear questions linked to the requirement, applicability, methodology version and expected evidence. BXM contributes FM methods within its remit; the relevant arrangement establishes authority and assessment responsibilities.",
     "asset": "",
     "alt": ""
@@ -370,7 +370,7 @@
   {
     "id": "audit-2",
     "page": "Audit & Assurance",
-    "title": "Evaluate Evidence and Findings",
+    "title": "Evaluate evidence and findings",
     "body": "Review records for relevance, completeness, period, source and required competence. Evidence can include work orders, inspection and test records, certificates, photographs, service reports and observations. Select what the criteria require; the existence of a record alone is insufficient.\n\nA finding explains what was identified, against which criteria and using which evidence. Use severity or confidence categories only where the applicable methodology defines them. Do not compare scores derived from different scopes or methods as if they were equivalent. An aggregate result must not hide a material mandatory exception.",
     "asset": "",
     "alt": ""
@@ -378,7 +378,7 @@
   {
     "id": "audit-3",
     "page": "Audit & Assurance",
-    "title": "Follow Through to Verification",
+    "title": "Follow through to verification",
     "body": "Connect the finding to the responsible action, due date and evidence required for closure. Establish responsibility from the service arrangement before attributing an issue to a supplier. The assessor and the person addressing the issue can be different.\n\nVerify completion and effectiveness as required by the criteria. Report findings to relevant management and retain the record for management review. Repeated findings can identify a need for investigation, but recurrence alone does not establish a proven cause.",
     "asset": "",
     "alt": ""
@@ -395,7 +395,7 @@
     "id": "audit-5",
     "page": "Audit & Assurance",
     "title": "Continue your work",
-    "body": "[Check Applicability](#9-risk-compliance) or [Address Causes and Capture Learning](#11-continual-improvement).",
+    "body": "[Check applicability](#9-risk-compliance) or [Address causes and capture learning](#11-continual-improvement).",
     "asset": "",
     "alt": ""
   },
@@ -410,7 +410,7 @@
   {
     "id": "improvement-1",
     "page": "Continual Improvement",
-    "title": "Distinguish the Type of Action",
+    "title": "Distinguish the type of action",
     "body": "| Action | Purpose | Practical test |\n|---|---|---|\n| Correction | Address the immediate issue and its consequences | Has the immediate problem been controlled or corrected? |\n| Corrective action | Address the cause of a nonconformity and prevent recurrence | Is there evidence that the cause has been addressed and the action is effective? |\n| Preventive action | Address a potential service or performance gap before failure | Has the potential gap been evaluated and the response tested? |\n| Improvement | Enhance the FM system or its outcomes | Is there a supported, sustained benefit without unacceptable consequences elsewhere? |",
     "asset": "",
     "alt": ""
@@ -418,7 +418,7 @@
   {
     "id": "improvement-2",
     "page": "Continual Improvement",
-    "title": "Develop and Verify the Change",
+    "title": "Develop and verify the change",
     "body": "Investigate why the issue occurred and whether similar conditions exist elsewhere. Establish the action, responsible person, authority, dependencies and expected result. Consider mandatory requirements, consequences, evidence strength and potential unintended effects alongside effort and cost.\n\nImplementation and success are separate. Compare the outcome against a suitable baseline, using comparable conditions, periods and populations. Check whether the result is sustained. Retain limitations where the evidence cannot support a conclusion.\n\nBenefits can include safer work, reliability, resilience, service quality, reduced repeat failure, better information or less administration. Financial claims use the authorised Finance baseline and attribution method. An estimate is not automatically a realised benefit.",
     "asset": "",
     "alt": ""
@@ -426,7 +426,7 @@
   {
     "id": "improvement-3",
     "page": "Continual Improvement",
-    "title": "Make Learning Useful",
+    "title": "Make learning useful",
     "body": "Explain what the experience teaches and where it applies. Review a local success before extending it to other facilities, services or regions. Update plans, methods, learning or controls through the authorised process. Policy or strategy changes follow the relevant authority; not every process improvement requires a new policy.\n\nUse verified outcomes to inform future objectives, risk assessments and management review. Continue to examine whether the change remains effective as operating conditions evolve.",
     "asset": "",
     "alt": ""
@@ -443,7 +443,7 @@
     "id": "improvement-5",
     "page": "Continual Improvement",
     "title": "Continue your work",
-    "body": "[Update the Plan](#7-planning-objectives), [Review the Wider Outcome](#6-fm-overview) or [Connect Learning](#12-learn-reference-library-and-assistance).",
+    "body": "[Update the plan](#7-planning-objectives), [Review the wider outcome](#6-fm-overview) or [Connect learning](#12-learn-reference-library-and-assistance).",
     "asset": "",
     "alt": ""
   },
@@ -451,22 +451,22 @@
     "id": "learn-1",
     "page": "Learn",
     "title": "Understanding FERN",
-    "body": "FERN brings facilities guidance and decision-support tools into one workspace.\n\nStart from your question and find the information or tool that helps you answer it.\n\nUse Get Started to find Workspace guidance, introductory learning and reference information. No facility selection is needed.\n\nA tool output is not formal approval. Check the supporting evidence and required review.",
+    "body": "FERN brings facilities guidance and decision-support tools into one workspace.\n\nStart from your question and find the information or tool that helps you answer it.\n\nUse Get started to find Workspace guidance, introductory learning and reference information. No facility selection is needed.\n\nA tool output is not formal approval. Check the supporting evidence and required review.",
     "asset": "learning",
     "alt": "Open learning book with fern"
   },
   {
     "id": "learn-2",
     "page": "Learn",
-    "title": "Service Models Explained",
-    "body": "A delivery model describes how services are delivered; a service tier describes the required level of service.\n\nKeeping them separate makes comparisons clearer.\n\nCompare internal Blue Badge, external IFM, mixed IFM Hybrid and output-based Fully Contained arrangements alongside Prime, Plus and Core tiers.\n\nActual responsibilities follow the applicable arrangement and contract. Mandatory requirements apply at every tier.",
+    "title": "Service models explained",
+    "body": "A delivery model describes how services are delivered; a service tier describes the required level of service.\n\nKeeping them separate makes comparisons clearer.\n\nCompare internal Blue Badge, external IFM, mixed IFM Hybrid and output-based Fully contained arrangements alongside Prime, Plus and Core tiers.\n\nActual responsibilities follow the applicable arrangement and contract. Mandatory requirements apply at every tier.",
     "asset": "learning",
     "alt": "Open learning book with fern"
   },
   {
     "id": "learn-3",
     "page": "Learn",
-    "title": "From Tender to Transition",
+    "title": "From tender to transition",
     "body": "A connected journey from defining an FM requirement to preparing a change in service delivery.\n\nDecisions made before a contract affect resources, pricing, assets and mobilisation.\n\nStart with pre-contract assessment, review service options and pricing, consider lifecycle implications, then plan the transition.\n\nMoving between tools does not automatically approve a contract or confirm operational readiness.",
     "asset": "learning",
     "alt": "Open learning book with fern"
@@ -474,7 +474,7 @@
   {
     "id": "learn-4",
     "page": "Learn",
-    "title": "Assets, Condition and Lifecycle",
+    "title": "Assets, condition and lifecycle",
     "body": "Lifecycle assessment considers an asset\u2019s condition, service needs and future options over time.\n\nAge alone does not establish when replacement is needed.\n\nReview quantities, condition, maintenance history and supported service-life assumptions in Lifecycle & Asset Analysis.\n\nDo not infer missing service life, failure history or costs. Engineering review is needed for material adjustments.",
     "asset": "learning",
     "alt": "Open learning book with fern"
@@ -482,7 +482,7 @@
   {
     "id": "learn-5",
     "page": "Learn",
-    "title": "Risk, Criticality and Maintenance",
+    "title": "Risk, criticality and maintenance",
     "body": "Criticality describes the importance of an asset or service; risk considers what could happen and its consequences.\n\nOperating conditions, redundancy and recovery capability influence maintenance decisions.\n\nExplore risk and compliance guidance alongside the relevant asset and maintenance evidence.\n\nA lower cost or service tier cannot remove applicable mandatory requirements. Scores need a validated method.",
     "asset": "learning",
     "alt": "Open learning book with fern"
@@ -498,7 +498,7 @@
   {
     "id": "learn-7",
     "page": "Learn",
-    "title": "Sources and Evidence",
+    "title": "Sources and evidence",
     "body": "Sources explain where information came from; evidence supports the interpretation or result.\n\nVersion, date, status and applicability affect whether information can support your decision.\n\nReview source records and distinguish confirmed information, assumptions and gaps.\n\nMissing evidence is not proof that a requirement was met. A secondary explanation does not replace an authoritative source.",
     "asset": "learning",
     "alt": "Open learning book with fern"
@@ -506,7 +506,7 @@
   {
     "id": "learn-8",
     "page": "Learn",
-    "title": "Policies, BBM Standards and Requirements",
+    "title": "Policies, BBM standards and requirements",
     "body": "Policies provide direction; BBM Standards and applicable requirements inform the expected FM outcomes.\n\nGuidance and supporting references have different authority from applicable requirements.\n\nStart with Leadership & Policy and check the original source, version and applicability.\n\nExternal references do not automatically establish Amazon adoption or certification. FERN explanations do not create mandatory requirements.",
     "asset": "learning",
     "alt": "Open learning book with fern"

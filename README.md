@@ -26,6 +26,8 @@ Open http://127.0.0.1:4173 and sign in with `demo` / `demo`. This is demonstrati
 - `pnpm test:browser:pdf` — BBM PDF downloads in the server build and the single-file export (run after `pnpm build` and `pnpm export:portal`).
 - `pnpm verify` — typecheck, tests, builds and browser suite; writes `test-results/verification.json`.
 
+> The `scripts/` folder (used by `verify` and `export:portal`, plus the BBM data generator) is development tooling and will be deleted when FERN is deployed to Amazon's environment. See [Deployment note](docs/start/ARCHITECTURE.md#deployment-note-scripts-is-not-deployed).
+
 Browser suites need Playwright Chromium: `pnpm exec playwright install chromium`.
 
 ## Where things are

@@ -61,7 +61,7 @@ export default function GetStarted() {
       />
       <Card
         id="start-task-section"
-        title="1. What Are You Trying to Do?"
+        title="1. What are you trying to do?"
         description="Choose a topic to read the relevant Workspace guidance."
       >
         <ul>
@@ -72,7 +72,7 @@ export default function GetStarted() {
           ))}
         </ul>
       </Card>
-      <Card title="2. Explore Guidance and Learning">
+      <Card title="2. Explore guidance and learning">
         <p>
           Browse the Workspace sections to understand FM governance and practices. Visit Learn for introductory topics,
           or the Standards &amp; Reference Library for guidance on sources and document status. You do not need to
@@ -84,28 +84,28 @@ export default function GetStarted() {
         </SpaceBetween>
       </Card>
       <Card
-        title="3. Check the Information and Its Sources"
+        title="3. Check the information and its sources"
         description="When reading guidance, check its source, date and applicability. These terms help you understand what is available and what still needs confirmation."
       >
         <Terms
           items={[
             ['Available', 'Information can be reviewed. Check its source and whether it applies to your task.'],
-            ['Not Available', 'The information is not currently available.'],
-            ['Not Confirmed', 'Information exists but needs confirmation before the intended use.'],
-            ['Evidence Required', 'Additional supporting information is needed.'],
+            ['Not available', 'The information is not currently available.'],
+            ['Not confirmed', 'Information exists but needs confirmation before the intended use.'],
+            ['Evidence required', 'Additional supporting information is needed.'],
           ]}
         />
         <p>A FERN explanation does not replace the authoritative source or establish approval.</p>
       </Card>
       <Card
-        title="Compare Service Options"
-        actions={<NavButton to="Service Models Explained">Read About Service Models</NavButton>}
+        title="Compare service options"
+        actions={<NavButton to="Service models explained">Read about service models</NavButton>}
       >
         <p>
           The delivery model describes <strong>how the service is delivered</strong>. The service tier describes{' '}
           <strong>the level of service required</strong>. Compare them separately before reviewing combinations.
         </p>
-        <Section variant="default" header="Understand Delivery Models and Service Tiers">
+        <Section variant="default" header="Understand delivery models and service tiers">
           <Terms
             items={[
               ['Blue Badge', 'Amazon employees delivering activities internally.'],
@@ -114,7 +114,7 @@ export default function GetStarted() {
                 'External Yellow Badge provision against specified inputs, resources, activities and requirements.',
               ],
               ['IFM Hybrid', 'Mixed Blue Badge and Yellow Badge delivery under the applicable service arrangement.'],
-              ['Fully Contained', 'External Yellow Badge provision against defined output-based service requirements.'],
+              ['Fully contained', 'External Yellow Badge provision against defined output-based service requirements.'],
             ]}
           />
           <p>
@@ -128,7 +128,7 @@ export default function GetStarted() {
         </Section>
       </Card>
       <Card
-        title="Need Help Finding Your Way?"
+        title="Need help finding your way?"
         actions={<NavButton to="Help & Guidance">Explore Help &amp; Guidance</NavButton>}
       />
     </Page>

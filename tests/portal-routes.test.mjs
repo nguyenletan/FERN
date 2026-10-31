@@ -25,7 +25,7 @@ test('All baseline pages and resource panels survive a copied URL', () => {
 test('Every learning topic has a stable restorable URL', () => {
   assert.equal(
     readPortalRoute(portalLocation('', { page: 'Home', panel: 'learn', lesson: 'Service models explained' })).lesson,
-    'Service Models Explained',
+    'Service models explained',
   );
   for (const lesson of lessonTitles)
     assert.equal(readPortalRoute(portalLocation('', { page: 'Home', panel: 'learn', lesson })).lesson, lesson);
