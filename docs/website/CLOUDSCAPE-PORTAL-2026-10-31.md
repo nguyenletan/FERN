@@ -254,6 +254,19 @@ Checked against [Cloudscape: building accessible experiences](https://cloudscape
 | Motion | Section 10 |
 | Table headers | Data tables use Cloudscape `Table`. The original source tables in the reader reproduce the PDF tables and have no marked header cells, because the extracted data does not say which row is the header; the task reading view is the structured, accessible version of the same content |
 
+### 17. Responsive design
+
+Checked against [Cloudscape responsive design](https://cloudscape.design/foundation/core-principles/responsive-design/):
+
+| Guideline | Result |
+| --- | --- |
+| Review at 320 px | No horizontal page scroll on any route (section 16) |
+| Review at 400% zoom (1280 × 1024 screen = 320 × 256 px) | Sign-in, home, navigation drawer, help panel, the add-user modal, standards search, the reader and search results all work; every main action can be reached and clicked; the sticky header takes 41 of 256 px |
+| Modals, panels and drawers do not hide calls to action | Close buttons and modal footers (Cancel / Add user) stay visible; long modal content scrolls above the footer |
+| Fluid layouts from the system tools | `ColumnLayout`, `Grid`, `KeyValuePairs` and `Cards` (section 9) |
+| Don't remove content on small screens | Fixed: on phones the sign-in page hid its whole introduction (tagline, team illustration, "One platform. Complete visibility.", the three benefits and "FERN is an Amazon internal platform"). It now appears below the form, benefits in one column; only the logo and title it repeats from the mobile header are hidden |
+| Use the system breakpoints | Fixed: custom breakpoints now use Cloudscape's (xxs 465, xs 688 = mobile, s 912): sign-in 767 → 688 and 360 → 465, reader PDF height 700 → 688, navigation open by default and closed on page change 900 → 912. The home and help media position already used 688. Sign-in, reader and app layout now switch to their phone layouts together |
+
 ## Developer notes
 
 | File | Purpose |

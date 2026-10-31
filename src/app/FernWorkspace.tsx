@@ -67,7 +67,8 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
   const [lesson, setLesson] = useState<{ title: string; request: number } | null>(() =>
     route.lesson ? { title: route.lesson, request: 0 } : null,
   );
-  const [navigationOpen, setNavigationOpen] = useState(() => window.innerWidth >= 900);
+  // Navigation starts open from the Cloudscape s breakpoint (912 px) up; below it, it opens on demand.
+  const [navigationOpen, setNavigationOpen] = useState(() => window.innerWidth >= 912);
   // Help panel (tools region): closed until asked for; it follows the page.
   const [toolsOpen, setToolsOpen] = useState(false);
   const [notifications, setNotifications] = useState<FlashbarProps.MessageDefinition[]>([]);
@@ -87,7 +88,7 @@ export default function FernWorkspace({ onSignOut, onAdmin }: { onSignOut: () =>
   const applyRoute = (next: PortalRoute) => {
     setRoute(next);
     setLesson((previous) => (next.lesson ? { title: next.lesson, request: (previous?.request ?? 0) + 1 } : null));
-    if (window.innerWidth < 900) {
+    if (window.innerWidth < 912) {
       setNavigationOpen(false);
       setToolsOpen(false);
     }
